@@ -1,0 +1,7 @@
+{
+  "name": "aastrika-mobile-app",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}
