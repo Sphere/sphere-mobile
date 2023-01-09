@@ -3,6 +3,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { RouteReuseStrategy } from '@angular/router';
 import { IonicModule, IonicRouteStrategy } from '@ionic/angular';
 import { AppComponent } from './app.component';
+import { ComponentsModule } from './components/components.module';
 import { AppRoutingModule } from './app-routing.module';
 import 'hammerjs'
 import { HttpClientModule } from '@angular/common/http';
@@ -22,12 +23,13 @@ const appInitFactory = (initSvc: InitService, logger: LoggerService)=> async()=>
 @NgModule({
   declarations: [AppComponent],
   imports: [BrowserModule, 
+    AppRoutingModule,
+    ComponentsModule,
     ImageCropModule,
     PipeSafeSanitizerModule,
     IonicModule.forRoot(), 
      ...WIDGET_REGISTERED_MODULES,
-    WidgetResolverModule.forRoot(WIDGET_REGISTRATION_CONFIG),
-    AppRoutingModule],
+    WidgetResolverModule.forRoot(WIDGET_REGISTRATION_CONFIG),],
   providers: [{ provide: RouteReuseStrategy, useClass: IonicRouteStrategy },
     {
       provide: APP_INITIALIZER,
