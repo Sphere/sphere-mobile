@@ -8,8 +8,13 @@ import { WidgetResolverModule } from '@ws-widget/resolver'
 import {  WIDGET_REGISTERED_MODULES, WIDGET_REGISTRATION_CONFIG } from '@ws-widget/collection'
 
 import 'hammerjs'
+import { HttpClientModule } from '@angular/common/http';
+import { MatSnackBarModule } from '@angular/material';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+
 @NgModule({
   declarations: [AppComponent],
+
   imports: [BrowserModule, 
     IonicModule.forRoot(), 
      ...WIDGET_REGISTERED_MODULES,
