@@ -1,5 +1,5 @@
-@import 'ws-common';
-@import 'ws-vars';
+@import 'styles/_ws-common.scss';
+@import 'styles/_ws-vars.scss';
 
 @mixin breakpoint-xs {
   @media only screen and (max-width: 599px) {

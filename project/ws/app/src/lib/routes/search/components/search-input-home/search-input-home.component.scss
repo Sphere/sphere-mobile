@@ -1,6 +1,6 @@
-@import 'ws-vars';
-@import 'ws-mixins';
-@import 'ws-common';
+@import 'styles/_ws-vars.scss';
+@import 'styles/_ws-mixins.scss';
+@import 'styles/_ws-common.scss';
 
 ws-app-search-input-home .autocomplete-form {
   width: 100%;

@@ -1,6 +1,6 @@
-@import 'ws-common';
-@import 'ws-vars';
-@import 'ws-mixins';
+@import 'styles/_ws-common.scss';
+@import 'styles/_ws-vars.scss';
+@import 'styles/_ws-mixins.scss';
 $color-cdg-project: #e94a48;
 .project-snapshot-wrapper {
   hr {

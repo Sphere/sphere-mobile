@@ -1,5 +1,5 @@
-@import 'ws-common';
-@import 'ws-vars';
+@import 'styles/_ws-common.scss';
+@import 'styles/_ws-vars.scss';
 
 .sidenav-container {
   min-height: calc(100vh - 2 * #{$mat-toolbar-gt-xs});

@@ -1,4 +1,4 @@
-@import 'ws-mixins';
+@import 'styles/_ws-mixins.scss';
 .small-height-toolbar{
   @include breakpoint-xs {
     height: 32px;
