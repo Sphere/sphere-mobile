@@ -30,7 +30,17 @@
                 "output": "./svg"
               }
             ],
-            "styles": ["src/theme/variables.scss", "src/global.scss","node_modules/pdfjs-dist/web/pdf_viewer.css"],
+            "stylePreprocessorOptions": {
+              "includePaths": [
+                "src/styles"
+              ]
+            },
+            "styles": [
+              "src/theme/variables.scss", 
+            "src/global.scss",
+            "./styles/styles.scss",
+           
+            "node_modules/pdfjs-dist/web/pdf_viewer.css"],
             "scripts": []
           },
           "configurations": {
