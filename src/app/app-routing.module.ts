@@ -10,7 +10,11 @@ const routes: Routes = [
     path: '',
     redirectTo: 'public/home',
     pathMatch: 'full'
-  }
+  },
+  {
+    path: 'routes/create-account',
+    loadChildren: () => import('./modules/public/create-account.module').then( m => m.CreateAccountModule)
+  },
 ];
 
 @NgModule({
