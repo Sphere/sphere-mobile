@@ -2,28 +2,32 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { PublicHomeComponent } from './components/public-home/public-home.component';
 import { PublicHomeRoutingModule } from './public-home-routing.module';
-import { PublicAppHeaderComponent } from './components/public-app-header/public-app-header.component';
-import { PublicAppFooterComponent } from './components/public-app-footer/public-app-footer.component';
 import { FormsModule } from '@angular/forms';
 import { IonicModule } from '@ionic/angular';
-
+import { MobilePageComponent } from './components/mobile-page/mobile-page.component';
+import { MobileHomeComponent } from './components/mobile-home/mobile-home.component';
+import { WidgetResolverModule } from '@ws-widget/resolver'
+import {  WIDGET_REGISTERED_MODULES, WIDGET_REGISTRATION_CONFIG } from '@ws-widget/collection'
 @NgModule({
   declarations: [PublicHomeComponent,
-    PublicAppHeaderComponent,
-    PublicAppFooterComponent],
+    MobilePageComponent,
+    MobileHomeComponent,
+    ],
   imports: [
     CommonModule,
     FormsModule,
     IonicModule,
     PublicHomeRoutingModule,
+    ...WIDGET_REGISTERED_MODULES,
+    WidgetResolverModule.forRoot(WIDGET_REGISTRATION_CONFIG)
   ],
   entryComponents: [
-    PublicAppHeaderComponent,
-    PublicAppFooterComponent
+    MobilePageComponent,
+    MobileHomeComponent,
   ],
   exports: [
-    PublicAppHeaderComponent,
-    PublicAppFooterComponent
+    MobilePageComponent,
+    MobileHomeComponent,
   ]
 })
 export class PublicModule { }

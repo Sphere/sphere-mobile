@@ -1,4 +1,10 @@
 <ion-app>
   <ws-app-public-nav-bar></ws-app-public-nav-bar>
+  <div class="height-adjust" [ngClass]="{
+    'height-on-bottom custom-scroll':
+      (isXSmall$ | async) === true && showNavbar
+  }">
+  
   <ion-router-outlet></ion-router-outlet>
+  </div>
 </ion-app>

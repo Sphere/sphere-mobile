@@ -39,7 +39,7 @@ import {  WIDGET_REGISTERED_MODULES, WIDGET_REGISTRATION_CONFIG } from '@ws-widg
 import {  ImageCropModule, LoggerService, PipeSafeSanitizerModule } from '@ws-widget/utils'
 import { InitService } from './services/init.service';
 import { AuthKeycloakService } from '../../library/ws-widget/utils/src/lib/services/auth-keycloak.service'
-
+import { PublicModule } from './modules/public/public.module';
 const appInitFactory = (initSvc: InitService, logger: LoggerService)=> async()=>{
   try {
     await initSvc.init()
@@ -79,7 +79,8 @@ const appInitFactory = (initSvc: InitService, logger: LoggerService)=> async()=>
     KeycloakAngularModule,
     IonicModule.forRoot(), 
      ...WIDGET_REGISTERED_MODULES,
-    WidgetResolverModule.forRoot(WIDGET_REGISTRATION_CONFIG),],
+    WidgetResolverModule.forRoot(WIDGET_REGISTRATION_CONFIG),
+    PublicModule],
   providers: [{ provide: RouteReuseStrategy, useClass: IonicRouteStrategy },
     {
       provide: APP_INITIALIZER,
