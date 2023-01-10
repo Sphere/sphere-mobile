@@ -9,7 +9,8 @@
     "build": "ng build",
     "watch": "ng build --watch --configuration development",
     "test": "ng test",
-    "lint": "ng lint"
+    "lint": "ng lint",
+    "ionic-start":"ionic serve -- --proxy-config proxy/localhost.proxy.json"
   },
   "private": true,
   "dependencies": {
