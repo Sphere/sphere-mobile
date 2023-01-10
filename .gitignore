@@ -28,8 +28,6 @@ speed-measure-plugin.json
 .history/*
 
 
-
-/src/assets
 package-lock.json
 yarn.lock
 # Proxy JSON
