@@ -50,6 +50,7 @@ const appInitFactory = (initSvc: InitService, logger: LoggerService)=> async()=>
 @NgModule({
   declarations: [AppComponent],
   imports: [BrowserModule,
+    BrowserAnimationsModule,
     MatSliderModule,
     MatButtonModule,
     MatCardModule,

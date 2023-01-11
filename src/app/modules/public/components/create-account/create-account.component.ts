@@ -2,7 +2,7 @@ import { Component, ElementRef, HostListener, OnInit, ViewChild } from '@angular
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { MatDialog, MatSnackBar } from '@angular/material';
 import { Router } from '@angular/router';
-import { SignupService } from 'src/app/services/signup/signup.service';
+import { SignupService } from '../../services/signup/signup.service';
 import { mustMatch } from '../../routes/password-validator';
 
 @Component({
@@ -12,10 +12,7 @@ import { mustMatch } from '../../routes/password-validator';
 })
 export class CreateAccountComponent implements OnInit {
   uploadSaveData = false
-  showPassword1 = false;
-  showPassword2 = false;
-  eyeoff = "../../../../../assets/icons/eye-off.svg";
-  languageIcon = '../../../../../assets/images/lang-icon.png'
+  languageIcon = '../../../fusion-assets/images/lang-icon.png'
   @ViewChild('toastSuccess', { static: true }) toastSuccess!: ElementRef<any>
   @ViewChild('toastError', { static: true }) toastError!: ElementRef<any>
   emailOrMobile: any
@@ -27,22 +24,35 @@ export class CreateAccountComponent implements OnInit {
   emailPhoneType: any
   otpPage = false
   languageDialog = false
+  spherFormBuilder: FormBuilder
   createAccountForm: FormGroup
   otpCodeForm: FormGroup
   hide1 = true
   hide2 = true
-  iconChange1 = 'fa fa-eye-slash'
-  iconChange2 = 'fa fa-eye-slash'
+  iconChange1 = 'fas fa-eye-slash'
+  iconChange2 = 'fas fa-eye-slash'
   langDialog: any
   preferedLanguage: any = { id: 'en', lang: 'English' }
+  @HostListener('window:popstate', ['$event'])
+  onPopState() {
+    window.location.href = '/public/home'
+  }
   constructor(
-    private spherFormBuilder: FormBuilder,
+    formBuilder: FormBuilder,
     private snackBar: MatSnackBar,
     private signupService: SignupService,
     private router: Router,
     public dialog: MatDialog
   ) {
-    // this.spherFormBuilder = spherFormBuilder
+    this.spherFormBuilder = formBuilder
+    localStorage.removeItem(`userUUID`)
+  }
+
+
+  ngOnInit() {
+    this.initializeFormFields()
+  }
+  initializeFormFields() {
     this.createAccountForm = this.spherFormBuilder.group({
       firstname: new FormControl('', [Validators.required, Validators.pattern(/^[a-zA-Z '.-]*$/)]),
       lastname: new FormControl('', [Validators.required, Validators.pattern(/^[a-zA-Z '.-]*$/)]),
@@ -56,14 +66,12 @@ export class CreateAccountComponent implements OnInit {
     this.otpCodeForm = this.spherFormBuilder.group({
       otpCode: new FormControl('', [Validators.required]),
     })
-    localStorage.removeItem(`userUUID`)
   }
-
-  @HostListener('window:popstate', ['$event'])
-  onPopState() {
-    window.location.href = '/public/home'
+  showParentForm(event: any) {
+    if (event === 'true') {
+      this.initializeFormFields()
+    }
   }
-
   toggle1() {
     this.hide1 = !this.hide1
     if (this.hide1) {
@@ -80,45 +88,15 @@ export class CreateAccountComponent implements OnInit {
       this.iconChange2 = 'fas fa-eye'
     }
   }
-
-  initializeFormFields() {
-    this.createAccountForm = this.spherFormBuilder.group({
-      firstname: new FormControl('', [Validators.required, Validators.pattern(/^[a-zA-Z '.-]*$/)]),
-      lastname: new FormControl('', [Validators.required, Validators.pattern(/^[a-zA-Z '.-]*$/)]),
-      // tslint:disable-next-line:max-line-length
-      emailOrMobile: new FormControl('', [Validators.required, Validators.pattern(/^(([- ]*)[6-9][0-9]{9}([- ]*)|^[a-zA-Z0-9 .!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9 ]([- ]*))?)*$)$/)]),
-      password: new FormControl('', [Validators.required,
-      Validators.pattern(/^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#\$%\^&\ *])(?=.{8,})/g)]),
-      confirmPassword: new FormControl('', [Validators.required]),
-    }, { validator: mustMatch('password', 'confirmPassword') })
-
-    this.otpCodeForm = this.spherFormBuilder.group({
-      otpCode: new FormControl('', [Validators.required]),
-    })
-  }
-
-  showParentForm(event: any) {
-    if (event === 'true') {
-      this.initializeFormFields()
-    }
-  }
-
-  ngOnInit() {
-  }
-
   onSubmit(form: any) {
     sessionStorage.setItem('login-btn', 'clicked')
     let phone = this.createAccountForm.controls.emailOrMobile.value
-    // const validphone = /^[6-9]\d{9}$/.test(phone)
     phone = phone.replace(/[^0-9+#]/g, '')
     if (phone.length >= 10) {
-      // this.otpPage = true
       this.isMobile = true
       this.emailPhoneType = 'phone'
       this.email = false
-      // Call OTP Api, show resend Button true
     } else {
-      // this.otpPage = true
       this.email = /^[a-zA-Z0-9 .!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9- ]+)*$/.test(
         this.createAccountForm.controls.emailOrMobile.value
       )
@@ -138,7 +116,6 @@ export class CreateAccountComponent implements OnInit {
       this.signupService.signup(reqObj).subscribe(res => {
         if (res.status) {
           this.openSnackbar(res.msg)
-          // this.generateOtp('email', form.value.emailOrMobile)
           this.showAllFields = false
           this.uploadSaveData = false
           this.otpPage = true
@@ -185,16 +162,17 @@ export class CreateAccountComponent implements OnInit {
     }
   }
   eventTrigger(p1: string, p2: string) {
-    let obj = {
+    const obj = {
       EventDetails: {
         EventName: p1,
-        Name: p2
-      }
+        Name: p2,
+      },
     }
     // @ts-ignore: Unreachable code error
     const userdata = Object.assign(MainVisitorDetails, obj)
     this.signupService.plumb5SendEvent(userdata).subscribe((res: any) => {
       // @ts-ignore: Unreachable code error
+      // tslint:disable-next-line
       console.log(res)
     })
   }

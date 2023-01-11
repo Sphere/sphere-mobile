@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
+import { CreateAccountComponent } from './modules/public/components/create-account/create-account.component';
 
 const routes: Routes = [
   {
@@ -12,8 +13,8 @@ const routes: Routes = [
     pathMatch: 'full'
   },
   {
-    path: 'routes/create-account',
-    loadChildren: () => import('./modules/public/create-account.module').then( m => m.CreateAccountModule)
+    path: 'app/create-account',
+    component: CreateAccountComponent,
   },
 ];
 
