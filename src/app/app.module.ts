@@ -40,7 +40,7 @@ import {  ImageCropModule, LoggerService, PipeSafeSanitizerModule } from '@ws-wi
 import { InitService } from './services/init.service';
 import { AuthKeycloakService } from '../../library/ws-widget/utils/src/lib/services/auth-keycloak.service'
 import { PublicModule } from './modules/public/public.module';
-import { SearchModule } from '@ws/app/src/public-api'
+// import { SearchModule } from '@ws/app/src/public-api'
 const appInitFactory = (initSvc: InitService, logger: LoggerService)=> async()=>{
   try {
     await initSvc.init()
