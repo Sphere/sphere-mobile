@@ -14,7 +14,8 @@ import {
 })
 export class AppComponent implements OnInit{
   isCommonChatEnabled = true
-  showNavbar = true
+  showPublicNavbar = true
+  showNavbar = false
   isXSmall$ = this.valueSvc.isXSmall$
   constructor(private valueSvc: ValueService,public router:Router) {
 
@@ -23,7 +24,7 @@ export class AppComponent implements OnInit{
     this.router.events.subscribe((event:any)=>{
       if(event instanceof NavigationStart){
         if(event.url.includes('/app/create-account')){
-          this.showNavbar= false
+          this.showPublicNavbar= false
         }
       }
     })
