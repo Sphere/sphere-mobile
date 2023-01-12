@@ -2,7 +2,7 @@
 <mat-toolbar *ngIf="showPublicNavbar" [color]="navBar?.color" [ngStyle]="navBar?.styles">
   <a name="application-logo" class="padding-remove-small application-logo" routerLink="." i18n-matTooltip
     matTooltip="Home">
-    <img src="../../../fusion-assets/images/sphere-new-logo.svg" width="125px" height="65px"
+    <img src="../../../fusion-assets/images/sphere-new-logo.svg" class="app-icon"
       *ngIf=" (isXSmall$ | async) === true" />
   </a>
   <ng-container [ngTemplateOutlet]="navbarSide" [ngTemplateOutletContext]="{ item: item }"
