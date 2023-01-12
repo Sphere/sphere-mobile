@@ -1,10 +1,14 @@
 <ion-app>
-  <ws-app-public-nav-bar *ngIf="showNavbar"></ws-app-public-nav-bar>
+  <ws-app-public-nav-bar *ngIf="showPublicNavbar"></ws-app-public-nav-bar>
   <div class="height-adjust" [ngClass]="{
     'height-on-bottom custom-scroll':
       (isXSmall$ | async) === true && showNavbar
   }">
-  
   <ion-router-outlet></ion-router-outlet>
+  <ng-container>
+    <!-- <ws-app-nav-bar class="bottom-nav-bar"  [mode]="'bottom'"
+      [hidden]="!showNavbar" [authorised]="configSvc.isAuthenticated">
+    </ws-app-nav-bar> -->
+  </ng-container>
   </div>
 </ion-app>
