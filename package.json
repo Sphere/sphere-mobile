@@ -10,7 +10,8 @@
     "watch": "ng build --watch --configuration development",
     "test": "ng test",
     "lint": "ng lint",
-    "ionic-start": "ionic serve -- --proxy-config proxy/localhost.proxy.json"
+    "ionic-start": "ionic serve -- --proxy-config proxy/localhost.proxy.json",
+    "ionic-build": "ng build --eval--source-map --configuration=$npm_config_angular_configuration && cordova build android"
   },
   "private": true,
   "dependencies": {
