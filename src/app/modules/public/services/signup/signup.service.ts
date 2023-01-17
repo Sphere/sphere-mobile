@@ -5,30 +5,37 @@ import { map } from 'rxjs/operators'
 import * as _ from 'lodash'
 import { v4 as uuid } from 'uuid'
 import { ConfigurationsService } from '@ws-widget/utils/src/public-api'
-
+import { DataService } from '../../../core/services/data.service'
 
 const API_END_POINTS = {
-  USER_SIGNUP: `https://sphere.aastrika.org/apis/public/v8/emailMobile/signup`,
-  REGISTERUSERWITHMOBILE: `https://sphere.aastrika.org/apis/public/v8/emailMobile/registerUserWithMobile`,
-  GENERATE_OTP: `https://sphere.aastrika.org/apis/public/v8/emailMobile/generateOtp`,
-  VALIDATE_OTP: `https://sphere.aastrika.org/apis/public/v8/emailMobile/validateOtp`,
-  VERIFY_OTP: `https://sphere.aastrika.org/apis/public/v8/forgot-password/verifyOtp`,
-  RESET_PASSWORD: `https://sphere.aastrika.org/apis/public/v8/forgot-password/reset/proxy/password`,
-  SETPASSWORD_OTP: `https://sphere.aastrika.org/apis/public/v8/forgot-password/verifyOtp`,
-  profilePid: 'https://sphere.aastrika.org/apis/proxies/v8/api/user/v2/read',
+  USER_SIGNUP: `apis/public/v8/emailMobile/signup`,
+  REGISTERUSERWITHMOBILE: `apis/public/v8/emailMobile/registerUserWithMobile`,
+  GENERATE_OTP: `apis/public/v8/emailMobile/generateOtp`,
+  VALIDATE_OTP: `apis/public/v8/emailMobile/validateOtp`,
+  VERIFY_OTP: `apis/public/v8/forgot-password/verifyOtp`,
+  RESET_PASSWORD: `apis/public/v8/forgot-password/reset/proxy/password`,
+  SETPASSWORD_OTP: `apis/public/v8/forgot-password/verifyOtp`,
+  profilePid: 'apis/proxies/v8/api/user/v2/read',
 }
 
 @Injectable({
   providedIn: 'root',
 })
-export class SignupService {
-
-  constructor(private http: HttpClient,
+export class SignupService extends DataService {
+  baseUrl: string;
+  constructor(public  http: HttpClient,
     private configSvc: ConfigurationsService
-  ) { }
+  ) {
+    super(http)
+    this.baseUrl = 'https://sphere.aastrika.org/'
+   }
 
   signup(data: any): Observable<any> {
-    return this.http.post<any>(API_END_POINTS.USER_SIGNUP, data).pipe(
+    const options = {
+      url: API_END_POINTS.USER_SIGNUP,
+      data: data,
+    };
+    return this.post(options).pipe(
       map(response => {
         return response
       }),
@@ -36,26 +43,61 @@ export class SignupService {
   }
 
   registerWithMobile(data: any) {
-    return this.http.post<any>(API_END_POINTS.REGISTERUSERWITHMOBILE, data).pipe(
+    const options = {
+      url: API_END_POINTS.REGISTERUSERWITHMOBILE,
+      data: data,
+    };
+    return this.post(options).pipe(
       map(response => {
         return response
-      })
+      }),
     )
   }
 
   verifyUserMobile(data: any) {
-    return this.http.post<any>(API_END_POINTS.VERIFY_OTP, data).pipe(
+    const options = {
+      url: API_END_POINTS.VERIFY_OTP,
+      data: data,
+    };
+    return this.post(options).pipe(
       map(response => {
         return response
-      })
+      }),
     )
   }
 
   generateOtp(data: any) {
-    return this.http.post<any>(API_END_POINTS.GENERATE_OTP, data).pipe(
+    const options = {
+      url: API_END_POINTS.VERIFY_OTP,
+      data: data,
+    };
+    return this.post(options).pipe(
       map(response => {
         return response
-      })
+      }),
+    )
+  }
+  validateOtp(data: any) {
+    const options = {
+      url: API_END_POINTS.VALIDATE_OTP,
+      data: data,
+    };
+    return this.post(options).pipe(
+      map(response => {
+        return response
+      }),
+    )
+  }
+
+  public forgotPassword(data: any): Observable<any> {
+    const options = {
+      url: API_END_POINTS.RESET_PASSWORD,
+      data: data,
+    };
+    return this.post(options).pipe(
+      map(response => {
+        return response
+      }),
     )
   }
   plumb5SendEvent(data: any) {
@@ -65,20 +107,7 @@ export class SignupService {
       })
     )
   }
-  validateOtp(data: any) {
-    return this.http.post<any>(API_END_POINTS.VALIDATE_OTP, data).pipe(
-      map(response => {
-        return response
-      })
-    )
-  }
-
-  public forgotPassword(request: any): Observable<any> {
-    return this.http.post(API_END_POINTS.RESET_PASSWORD, request).pipe(
-      map((response: any) => {
-        return response
-      }))
-  }
+  
 
   setPasswordWithOtp(request: any): Observable<any> {
     return this.http.post(API_END_POINTS.SETPASSWORD_OTP, request).pipe(
