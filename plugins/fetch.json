@@ -38,21 +38,5 @@
     },
     "is_top_level": true,
     "variables": {}
-  },
-  "sb-cordova-plugin-utility": {
-    "source": {
-      "type": "registry",
-      "id": "github:Sunbird-Ed/sb-cordova-plugin-utility#release-3.9.0"
-    },
-    "is_top_level": true,
-    "variables": {}
-  },
-  "cordova-plugin-androidx-adapter": {
-    "source": {
-      "type": "registry",
-      "id": "cordova-plugin-androidx-adapter@^1.1.3"
-    },
-    "is_top_level": true,
-    "variables": {}
   }
 }

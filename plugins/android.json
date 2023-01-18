@@ -21,12 +21,6 @@
     },
     "cordova-plugin-ionic-keyboard": {
       "PACKAGE_NAME": "com.aastrika.sphere"
-    },
-    "sb-cordova-plugin-utility": {
-      "PACKAGE_NAME": "com.aastrika.sphere"
-    },
-    "cordova-plugin-androidx-adapter": {
-      "PACKAGE_NAME": "com.aastrika.sphere"
     }
   },
   "dependent_plugins": {}
