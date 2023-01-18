@@ -187,6 +187,20 @@
               "src/**/*.html"
             ]
           }
+        },
+        "ionic-cordova-build": {
+          "builder": "@ionic/angular-toolkit:cordova-build",
+          "options": {
+            "browserTarget": "app:build"
+          },
+          "configurations": {
+            "production": {
+              "browserTarget": "app:build:production"
+            },
+            "hmr": {
+              "browserTarget": "app:build:hmr"
+            }
+          }
         }
       }
     },

@@ -1,8 +1,12 @@
 {
   "name": "aastrika-mobile-app",
   "integrations": {
-    "capacitor": {},
-    "cordova": {}
+    "capacitor": {
+      "enabled": false
+    },
+    "cordova": {
+      "enabled": true
+    }
   },
   "type": "angular"
 }
