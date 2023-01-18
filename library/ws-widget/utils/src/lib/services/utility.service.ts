@@ -14,6 +14,8 @@ interface IRecursiveData {
   children: null | IRecursiveData[]
 }
 
+declare const sbutility;
+
 @Injectable({
   providedIn: 'root',
 })
@@ -22,6 +24,23 @@ export class UtilityService {
     private http: HttpClient,
     private platform: Platform,
   ) { }
+
+  getBuildConfigValue(property): Promise<string> {
+    return new Promise<string>((resolve, reject) => {
+        try {
+          sbutility.getBuildConfigValue('com.aastrika.sphere', property, (entry: string) => {
+              resolve(entry);
+            }, err => {
+               console.error(err);
+                reject(err);
+            });
+        } catch (xc) {
+          console.log('utilityservise catch')
+            console.error(xc);
+            reject(xc);
+        }
+    });
+}
 
   get randomId() {
     return RANDOM_ID_PER_USER + 1
@@ -93,4 +112,5 @@ export class UtilityService {
     }
     return null
   }
+  
 }

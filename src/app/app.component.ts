@@ -4,6 +4,7 @@ import {
   AuthKeycloakService,
   ConfigurationsService,
   TelemetryService,
+  UtilityService,
   ValueService,
   WsEvents,
 } from '@ws-widget/utils'
@@ -14,16 +15,17 @@ import {
 })
 export class AppComponent implements OnInit{
   isCommonChatEnabled = true
+  showPublicNavbar = true
   showNavbar = true
   isXSmall$ = this.valueSvc.isXSmall$
-  constructor(private valueSvc: ValueService,public router:Router) {
+  constructor(private valueSvc: ValueService,public router:Router, private utilityService: UtilityService) {
 
   }
   ngOnInit() {
     this.router.events.subscribe((event:any)=>{
       if(event instanceof NavigationStart){
         if(event.url.includes('/app/create-account')){
-          this.showNavbar= false
+          this.showPublicNavbar= false
         }
       }
     })
