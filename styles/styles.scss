@@ -3,6 +3,10 @@
 @import './utility.scss';
 @import '../node_modules/quill/dist/quill.snow.css';
 
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
 @include print {
   * {
     display: none !important;
