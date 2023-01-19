@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core'
 import { RouterModule, Routes } from '@angular/router'
 import { PageResolve } from '@ws-widget/utils'
-import { GeneralGuard } from '../../../../../../../src/app/guards/general.guard'
+// import { GeneralGuard } from '../../../../../../../src/app/guards/general.guard'
 // import { AppTocCohortsComponent } from './components/app-toc-cohorts/app-toc-cohorts.component'
 
 import { KnowledgeArtifactDetailsComponent } from './components/knowledge-artifact-details/knowledge-artifact-details.component'
@@ -15,7 +15,7 @@ import { AppTocOverviewComponent as AppTocOverviewRootComponent } from './routes
 import { AppTocCohortsComponent } from './components/app-toc-cohorts/app-toc-cohorts.component'
 import { LicenseComponent } from './components/license/license.component'
 import { AllDiscussionWidgetComponent } from './routes/widget/all-discussion-widget/all-discussion-widget.component'
-import { DiscussConfigResolve } from '../../../../../../../src/app/routes/discussion-forum/wrapper/resolvers/discuss-config-resolve'
+// import { DiscussConfigResolve } from '../../../../../../../src/app/routes/discussion-forum/wrapper/resolvers/discuss-config-resolve'
 const routes: Routes = [
   {
     path: ':id',
@@ -41,7 +41,7 @@ const routes: Routes = [
         resolve: {
           pageData: PageResolve,
         },
-        canActivate: [GeneralGuard],
+        // canActivate: [GeneralGuard],
         runGuardsAndResolvers: 'always',
       },
       {
@@ -55,9 +55,9 @@ const routes: Routes = [
       {
         path: 'discussion-forum',
         component: AllDiscussionWidgetComponent,
-        resolve: {
-          data: DiscussConfigResolve,
-        },
+        // resolve: {
+        //   data: DiscussConfigResolve,
+        // },
       },
       {
         path: 'details',
@@ -69,7 +69,7 @@ const routes: Routes = [
           import('./routes/app-toc-certification/app-toc-certification.module').then(
             u => u.AppTocCertificationModule,
           ),
-        canActivate: [GeneralGuard],
+        // canActivate: [GeneralGuard],
         resolve: {
           certificationMetaResolve: CertificationMetaResolver,
           contentMetaResolve: ContentCertificationResolver,

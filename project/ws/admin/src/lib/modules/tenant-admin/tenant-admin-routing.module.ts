@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core'
 import { RouterModule, Routes } from '@angular/router'
-import { GeneralGuard } from 'src/app/guards/general.guard'
+// import { GeneralGuard } from 'src/app/guards/general.guard'
 import { UserRegistrationComponent } from './routes/user-registration/user-registration.component'
 import { TenantAdminComponent } from './tenant-admin.component'
 import { TenantAdminResolverService } from './service/tenant-admin-resolver.service'
@@ -20,7 +20,7 @@ const routes: Routes = [
   {
     path: 'user-registration',
     component: UserRegistrationComponent,
-    canActivate: [GeneralGuard],
+    // canActivate: [GeneralGuard],
     data: {
       requiredFeatures: ['adminFeatureUserRegistration'],
     },
@@ -28,7 +28,7 @@ const routes: Routes = [
   {
     path: 'registered-users',
     component: RegisteredUsersComponent,
-    canActivate: [GeneralGuard],
+    // canActivate: [GeneralGuard],
     data: {
       requiredFeatures: ['adminFeatureRegisteredUsers'],
     },
@@ -49,7 +49,7 @@ const routes: Routes = [
   },
   {
     path: 'system-roles-management',
-    canActivate: [GeneralGuard],
+    // canActivate: [GeneralGuard],
     data: {
       requiredFeatures: ['adminFeatureSystemRolesMgmt'],
     },
@@ -67,7 +67,7 @@ const routes: Routes = [
   },
   {
     path: 'users',
-    canActivate: [GeneralGuard],
+    // canActivate: [GeneralGuard],
     data: {
       requiredFeatures: ['adminFeatureUsers'],
     },
@@ -92,7 +92,7 @@ const routes: Routes = [
       import('../../../../../app/src/lib/routes/content-assignment/content-assignment.module').then(
         u => u.ContentAssignmentModule,
       ),
-    canActivate: [GeneralGuard],
+    // canActivate: [GeneralGuard],
     data: {
       requiredFeatures: ['adminFeatureContentAssignment'],
     },

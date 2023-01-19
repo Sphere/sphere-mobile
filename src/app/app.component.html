@@ -5,8 +5,9 @@
       'height-on-bottom custom-scroll':
         (isXSmall$ | async) === true && showNavbar
     }">
-    
+
     <ion-router-outlet></ion-router-outlet>
     </div>
   </ion-content>
+  <ws-app-nav-bar [mode]="'bottom'"></ws-app-nav-bar>
 </ion-app>

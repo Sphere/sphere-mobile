@@ -294,10 +294,10 @@ export class QuizComponent implements OnInit, OnChanges, OnDestroy {
     const updatedQuizData = this.quizStoreSvc.collectiveQuiz[this.currentId]
 
     const hasTimeChanged =
-      (this.metaContentService.upDatedContent[this.currentId] || {}).duration &&
+      (this.metaContentService.upDatedContent[this.currentId] || /*{}*/ null).duration &&
       this.quizDuration !== this.metaContentService.upDatedContent[this.currentId].duration
     const doUploadJson = this.quizStoreSvc.hasChanged || hasTimeChanged
-    if (!(this.metaContentService.getUpdatedMeta(this.currentId) || {}).duration) {
+    if (!(this.metaContentService.getUpdatedMeta(this.currentId) || /*{}*/ null).duration) {
       this.metaContentService.setUpdatedMeta({ duration: this.quizDuration } as any, this.currentId)
     }
     return (doUploadJson
@@ -659,7 +659,7 @@ export class QuizComponent implements OnInit, OnChanges, OnDestroy {
             : 0,
       }
 
-      const updatedContent = this.metaContentService.upDatedContent[this.currentId] || {}
+      const updatedContent = this.metaContentService.upDatedContent[this.currentId] || null /*{}*/
       const updatedMeta = this.metaContentService.getUpdatedMeta(this.currentId)
       const needSave = Object.keys(this.metaContentService.upDatedContent[this.currentId] || {})
         .length

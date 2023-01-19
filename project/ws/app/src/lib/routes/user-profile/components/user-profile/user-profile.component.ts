@@ -31,7 +31,7 @@ import { BtnProfileService } from '@ws-widget/collection/src/lib/btn-profile/btn
 import * as _ from 'lodash'
 import { HttpClient } from '@angular/common/http'
 import moment from 'moment'
-import { LanguageDialogComponent } from '../../../../../../../../../src/app/routes/language-dialog/language-dialog.component'
+// import { LanguageDialogComponent } from '../../../../../../../../../src/app/routes/language-dialog/language-dialog.component'
 @Component({
   selector: 'ws-app-user-profile',
   templateUrl: './user-profile.component.html',
@@ -1396,48 +1396,48 @@ export class UserProfileComponent implements OnInit, AfterViewInit, OnDestroy {
   }
 
   changeLanguage() {
-    this.langDialog = this.dialog.open(LanguageDialogComponent, {
-      panelClass: 'language-modal',
-      data: {
-        selected: this.preferedLanguage,
-      },
-    })
+    // this.langDialog = this.dialog.open(LanguageDialogComponent, {
+    //   panelClass: 'language-modal',
+    //   data: {
+    //     selected: this.preferedLanguage,
+    //   },
+    // })
 
-    this.langDialog.afterClosed().subscribe((result: any) => {
-      this.preferedLanguage = result
-      if (this.configSvc.userProfileV2) {
-        let user: any
-        const userid = this.configSvc.userProfileV2.userId
-        this.userProfileSvc.getUserdetailsFromRegistry(userid).subscribe((data: any) => {
-          user = data
-          const obj = {
-            preferences: {
-              language: result.id,
-            },
-          }
-          const userdata = Object.assign(user['profileDetails'], obj)
-          // this.chosenLanguage = path.value
-          const reqUpdate = {
-            request: {
-              userId: userid,
-              profileDetails: userdata,
-            },
-          }
-          this.userProfileSvc.updateProfileDetails(reqUpdate).subscribe(
-            () => {
-              if (result.id === 'en') {
-                // this.chosenLanguage = ''
-                window.location.assign(`${location.origin}/page/home`)
-                // window.location.reload(true)
-              } else {
-                // window.location.reload(true)
-                window.location.assign(`${location.origin}/${result.id}/page/home`)
-              }
-            },
-            () => {
-            })
-        })
-      }
-    })
+    // this.langDialog.afterClosed().subscribe((result: any) => {
+    //   this.preferedLanguage = result
+    //   if (this.configSvc.userProfileV2) {
+    //     let user: any
+    //     const userid = this.configSvc.userProfileV2.userId
+    //     this.userProfileSvc.getUserdetailsFromRegistry(userid).subscribe((data: any) => {
+    //       user = data
+    //       const obj = {
+    //         preferences: {
+    //           language: result.id,
+    //         },
+    //       }
+    //       const userdata = Object.assign(user['profileDetails'], obj)
+    //       // this.chosenLanguage = path.value
+    //       const reqUpdate = {
+    //         request: {
+    //           userId: userid,
+    //           profileDetails: userdata,
+    //         },
+    //       }
+    //       this.userProfileSvc.updateProfileDetails(reqUpdate).subscribe(
+    //         () => {
+    //           if (result.id === 'en') {
+    //             // this.chosenLanguage = ''
+    //             window.location.assign(`${location.origin}/page/home`)
+    //             // window.location.reload(true)
+    //           } else {
+    //             // window.location.reload(true)
+    //             window.location.assign(`${location.origin}/${result.id}/page/home`)
+    //           }
+    //         },
+    //         () => {
+    //         })
+    //     })
+    //   }
+    // })
   }
 }

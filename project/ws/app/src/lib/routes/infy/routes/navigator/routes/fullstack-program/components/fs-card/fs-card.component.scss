@@ -1,5 +1,5 @@
-@import '~src/styles/ws-vars';
-@import '~src/styles/ws-mixins';
+// @import '~src/styles/ws-vars';
+// @import '~src/styles/ws-mixins';
 
 $medium-badge-size: 90px;
 $small-badge-size: 50px;
@@ -11,31 +11,31 @@ $badge-padding: 12px;
   height: 400px;
   margin: 20px 20px;
 
-  @include breakpoint-xs {
-    // width: 230px;
-    height: 350px;
-  }
+  // @include breakpoint-xs {
+  //   // width: 230px;
+  //   height: 350px;
+  // }
 }
 
 .card-image {
   width: 290px;
   border-radius: 8px 8px 0 0;
 
-  @include breakpoint-xs {
-    // width: 230px;
-  }
+  // @include breakpoint-xs {
+  //   // width: 230px;
+  // }
 }
 
 .mat-card {
   padding: 0;
 
-  @include breakpoint-xs {
-    height: 370px;
-  }
+  // @include breakpoint-xs {
+  //   height: 370px;
+  // }
 }
 
 .card-information {
-  margin: $size-s $size-m;
+  // margin: $size-s $size-m;
   display: flex;
   flex-direction: column;
 }
@@ -43,27 +43,27 @@ $badge-padding: 12px;
 .button-holder {
   display: flex;
   justify-content: flex-end;
-  margin-top: ($size-xl * 5) - $size-xs;
+  // margin-top: ($size-xl * 5) - $size-xs;
   border-radius: 0;
   align-content: center;
   border: none;
   position: absolute;
-  margin-left: ($size-xl * 5) - ($size-m * 4);
+  // margin-left: ($size-xl * 5) - ($size-m * 4);
 
   span {
     margin-right: 5px;
   }
 
-  @include breakpoint-xs {
-    margin-top: ($size-xl * 5) + ($size-xs);
+  // @include breakpoint-xs {
+  //   margin-top: ($size-xl * 5) + ($size-xs);
 
-    margin-left: ($size-l + $size-l/2);
-  }
+  //   margin-left: ($size-l + $size-l/2);
+  // }
 }
 
-.title {
-  margin-left: $size-xs;
-}
+// .title {
+//   margin-left: $size-xs;
+// }
 
 .card {
   height: 350px;

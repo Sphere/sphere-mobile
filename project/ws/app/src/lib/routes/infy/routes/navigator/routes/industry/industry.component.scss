@@ -1,5 +1,5 @@
-@import '~src/styles/ws-vars';
-@import '~src/styles/ws-mixins';
+// @import '~src/styles/ws-vars';
+// @import '~src/styles/ws-mixins';
 
 .banner {
   // background-image: url("/assets/common//navigator/banners/bi_nso.jpg");
@@ -8,27 +8,27 @@
   height: 200px;
   width: 100%;
 
-  @include breakpoint-xs {
-    height: 250px;
-  }
+  // @include breakpoint-xs {
+  //   height: 250px;
+  // }
 }
 
 .banner-description {
-  padding: 0 $size-xl;
+  // padding: 0 $size-xl;
   margin: 0 16px;
 }
 
-.small-banner-text {
-  @include breakpoint-xs {
-    font-size: 1.5rem;
-  }
-}
+// .small-banner-text {
+//   @include breakpoint-xs {
+//     font-size: 1.5rem;
+//   }
+// }
 
-.small-banner-description {
-  @include breakpoint-xs {
-    font-size: 1.2rem;
-  }
-}
+// .small-banner-description {
+//   @include breakpoint-xs {
+//     font-size: 1.2rem;
+//   }
+// }
 
 .grid-display {
   display: grid;

@@ -1,5 +1,5 @@
 import { Component, OnInit, OnChanges, Input, Output, EventEmitter } from '@angular/core'
-import { NsTnc } from '../../../../../../../../../src/app/models/tnc.model'
+// import { NsTnc } from '../../../../../../../../../src/app/models/tnc.model'
 import { MatSelectChange } from '@angular/material'
 
 @Component({
@@ -9,12 +9,15 @@ import { MatSelectChange } from '@angular/material'
 })
 export class TncRendererComponent implements OnInit, OnChanges {
 
-  @Input() tncData: NsTnc.ITnc | null = null
+  // @Input() tncData: NsTnc.ITnc | null = null
+  @Input() tncData: any | null = null
   @Output() tncChange = new EventEmitter<string>()
   @Output() dpChange = new EventEmitter<string>()
 
-  generalTnc: NsTnc.ITncUnit | null = null
-  dpTnc: NsTnc.ITncUnit | null = null
+  // generalTnc: NsTnc.ITncUnit | null = null
+  // dpTnc: NsTnc.ITncUnit | null = null
+  generalTnc: any | null = null
+  dpTnc: any | null = null
 
   // UI Vars
   currentPanel: 'tnc' | 'dp' = 'tnc'

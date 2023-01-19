@@ -26,8 +26,8 @@ import { VIEWER_ROUTE_FROM_MIME } from '@ws-widget/collection'
 import { NotificationService } from '@ws/author/src/lib/services/notification.service'
 import { AccessControlService } from '@ws/author/src/lib/modules/shared/services/access-control.service'
 import { BreakpointObserver, Breakpoints, BreakpointState } from '@angular/cdk/layout'
-import { HeaderServiceService } from './../../../../../../../../../../../../../src/app/services/header-service.service'
-import { RootService } from 'src/app/component/root/root.service'
+// import { HeaderServiceService } from './../../../../../../../../../../../../../src/app/services/header-service.service'
+// import { RootService } from 'src/app/component/root/root.service'
 import { FlatTreeControl } from '@angular/cdk/tree'
 
 @Component({
@@ -92,16 +92,16 @@ export class CourseCollectionComponent implements OnInit, OnDestroy {
     private accessControlSvc: AccessControlService,
     private breakpointObserver: BreakpointObserver,
     private fb: FormBuilder,
-    private headerService: HeaderServiceService,
-    private rootSvc: RootService,
+    // private headerService: HeaderServiceService,
+    // private rootSvc: RootService,
   ) {
-    this.callSaveFn = this.headerService.isSavePressed
-    this.rootSvc.showNavbarDisplay$.next(false)
-    this.headerService.headerSaveData.subscribe(data => {
-      if (data) {
-        this.save()
-      }
-    })
+    // this.callSaveFn = this.headerService.isSavePressed
+    // this.rootSvc.showNavbarDisplay$.next(false)
+    // this.headerService.headerSaveData.subscribe(data => {
+    //   if (data) {
+    //     this.save()
+    //   }
+    // })
   }
 
   ngOnInit() {
@@ -207,9 +207,9 @@ export class CourseCollectionComponent implements OnInit, OnDestroy {
 
       this.activateRoute.parent.url.subscribe(data => {
         const urlParam = data[0].path
-        if (urlParam === 'collection') {
-          this.headerService.showCreatorHeader(this.courseName)
-        }
+        // if (urlParam === 'collection') {
+        //   this.headerService.showCreatorHeader(this.courseName)
+        // }
 
       })
     }
@@ -250,8 +250,8 @@ export class CourseCollectionComponent implements OnInit, OnDestroy {
 
   ngOnDestroy() {
     this.loaderService.changeLoad.next(false)
-    this.headerService.showCreatorHeader('showlogo')
-    this.rootSvc.showNavbarDisplay$.next(true)
+    // this.headerService.showCreatorHeader('showlogo')
+    // this.rootSvc.showNavbarDisplay$.next(true)
   }
 
   addChapterName() {

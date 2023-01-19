@@ -1,5 +1,5 @@
 import { Component, OnInit, OnDestroy } from '@angular/core'
-import { NsTnc } from '../../../../../../../../../src/app/models/tnc.model'
+// import { NsTnc } from '../../../../../../../../../src/app/models/tnc.model'
 import { Subscription } from 'rxjs'
 import { NsWidgetResolver } from '../../../../../../../../../library/ws-widget/resolver/src/public-api'
 import {
@@ -13,8 +13,8 @@ import {
   ConfigurationsService,
   NsPage,
 } from '../../../../../../../../../library/ws-widget/utils/src/public-api'
-import { TncAppResolverService } from '../../../../../../../../../src/app/services/tnc-app-resolver.service'
-import { TncPublicResolverService } from '../../../../../../../../../src/app/services/tnc-public-resolver.service'
+// import { TncAppResolverService } from '../../../../../../../../../src/app/services/tnc-app-resolver.service'
+// import { TncPublicResolverService } from '../../../../../../../../../src/app/services/tnc-public-resolver.service'
 import { Globals } from '../../globals'
 
 @Component({
@@ -23,7 +23,8 @@ import { Globals } from '../../globals'
   styleUrls: ['./tnc.component.scss'],
 })
 export class TncComponent implements OnInit, OnDestroy {
-  tncData: NsTnc.ITnc | null = null
+  // tncData: NsTnc.ITnc | null = null
+  tncData: any | null = null
   routeSubscription: Subscription | null = null
   // errorFetchingTnc = false
   isAcceptInProgress = false
@@ -46,8 +47,8 @@ export class TncComponent implements OnInit, OnDestroy {
     private http: HttpClient,
     private loggerSvc: LoggerService,
     private configSvc: ConfigurationsService,
-    private tncProtectedSvc: TncAppResolverService,
-    private tncPublicSvc: TncPublicResolverService,
+    // private tncProtectedSvc: TncAppResolverService,
+    // private tncPublicSvc: TncPublicResolverService,
     private globals: Globals,
   ) {}
 
@@ -78,20 +79,20 @@ export class TncComponent implements OnInit, OnDestroy {
   }
 
   getTnc(locale: string) {
-    if (this.tncData) {
-      if (this.isPublic) {
-        this.tncPublicSvc.getPublicTnc(locale).subscribe(data => {
-          this.assignTncData(data)
-        })
-      } else {
-        this.tncProtectedSvc.getTnc(locale).subscribe(data => {
-          this.assignTncData(data)
-        })
-      }
-    }
+    // if (this.tncData) {
+    //   if (this.isPublic) {
+    //     this.tncPublicSvc.getPublicTnc(locale).subscribe(data => {
+    //       this.assignTncData(data)
+    //     })
+    //   } else {
+    //     this.tncProtectedSvc.getTnc(locale).subscribe(data => {
+    //       this.assignTncData(data)
+    //     })
+    //   }
+    // }
   }
 
-  private assignTncData(data: NsTnc.ITnc) {
+  private assignTncData(data: /*NsTnc.ITnc*/ any) {
     if (this.tncData) {
       this.tncData = {
         ...data,
@@ -100,25 +101,26 @@ export class TncComponent implements OnInit, OnDestroy {
   }
 
   getDp(locale: string) {
-    let tncData: NsTnc.ITncUnit
+    let tncData: /*NsTnc.ITncUnit*/ any
     if (this.tncData) {
       tncData = this.tncData.termsAndConditions.filter(term => term.name === 'Generic T&C')[0]
       const dpTerm = this.tncData.termsAndConditions.filter(term => term.name === 'Data Privacy')[0]
       if (locale === dpTerm.language) {
         return
       }
-      if (this.isPublic) {
-        this.tncPublicSvc.getPublicTnc(locale).subscribe(data => {
-          this.assignDp(tncData, data)
-        })
-      } else {
-        this.tncProtectedSvc.getTnc(locale).subscribe(data => {
-          this.assignDp(tncData, data)
-        })
-      }
+      // if (this.isPublic) {
+      //   this.tncPublicSvc.getPublicTnc(locale).subscribe(data => {
+      //     this.assignDp(tncData, data)
+      //   })
+      // } else {
+      //   this.tncProtectedSvc.getTnc(locale).subscribe(data => {
+      //     this.assignDp(tncData, data)
+      //   })
+      // }
     }
   }
-  assignDp(tncData: NsTnc.ITncUnit, data: NsTnc.ITnc) {
+  // assignDp(tncData: NsTnc.ITncUnit, data: NsTnc.ITnc) {
+    assignDp(tncData: any, data: any) {
     data.termsAndConditions[0] = tncData
     if (this.tncData) {
       this.tncData = {
@@ -135,7 +137,7 @@ export class TncComponent implements OnInit, OnDestroy {
       const dataPrivacy = this.tncData.termsAndConditions.filter(
         tncUnit => tncUnit.name === 'Data Privacy',
       )[0]
-      const termsAccepted: NsTnc.ITermAccepted[] = []
+      const termsAccepted: /*NsTnc.ITermAccepted[]*/ any = []
       if (generalTnc) {
         termsAccepted.push({
           acceptedLanguage: generalTnc.language,

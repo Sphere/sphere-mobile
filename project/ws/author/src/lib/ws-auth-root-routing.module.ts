@@ -1,7 +1,7 @@
 import { CreateCourseComponent } from './routing/modules/create/components/create-course/create-course.component'
 import { NgModule } from '@angular/core'
 import { RouterModule, Routes } from '@angular/router'
-import { GeneralGuard } from '../../../../../src/app/guards/general.guard'
+// import { GeneralGuard } from '../../../../../src/app/guards/general.guard'
 import { AuthRootComponent } from './components/root/root.component'
 import { ViewerComponent } from './routing/components/viewer/viewer.component'
 import { CreateComponent } from './routing/modules/create/components/create/create.component'
@@ -52,7 +52,7 @@ const routes: Routes = [
       load: ['create', 'ordinals'],
       requiredFeatures: ['authoring'],
     },
-    canActivate: [GeneralGuard],
+    // canActivate: [GeneralGuard],
     component: CreateComponent,
     resolve: {
       script: InitResolver,
@@ -64,7 +64,7 @@ const routes: Routes = [
       // load: ['create', 'ordinals'],
       requiredFeatures: ['authoring'],
     },
-    canActivate: [GeneralGuard],
+    // canActivate: [GeneralGuard],
     component: CreateCourseComponent,
     resolve: {
       script: InitResolver,

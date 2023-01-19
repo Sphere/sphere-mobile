@@ -8,7 +8,7 @@ import {
 import { map } from 'rxjs/operators'
 import { ConfigurationsService, NsPage } from '@ws-widget/utils'
 import { ActivatedRoute } from '@angular/router'
-import { IAboutObject } from '../../../../../../../../../src/app/routes/public/public-about/about.model'
+// import { IAboutObject } from '../../../../../../../../../src/app/routes/public/public-about/about.model'
 import { Subscription } from 'rxjs'
 
 @Component({
@@ -21,7 +21,7 @@ export class AboutHomeComponent implements OnInit, OnDestroy {
   headerBanner: SafeStyle | null = null
   footerBanner: SafeStyle | null = null
   pageNavbar: Partial<NsPage.INavBackground> = this.configSvc.pageNavBar
-  aboutPage: IAboutObject | null = null
+  aboutPage: /*IAboutObject*/ any | null = null
   private subscriptionAbout: Subscription | null = null
 
   isSmallScreen$ = this.breakpointObserver

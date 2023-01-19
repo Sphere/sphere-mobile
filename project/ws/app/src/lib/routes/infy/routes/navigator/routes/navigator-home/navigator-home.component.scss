@@ -1,9 +1,9 @@
-@import 'src/styles/ws-vars';
-@import 'src/styles/ws-mixins';
+// @import 'src/styles/ws-vars';
+// @import 'src/styles/ws-mixins';
 
 .card-section {
   width: 30%;
-  margin: $size-m;
+  // margin: $size-m;
 
   @media only screen and (max-width: 1018px) {
     width: 45%;
@@ -13,14 +13,14 @@
     width: 40%;
   }
 
-  @include breakpoint-xs {
-    width: 95%;
-    margin: $size-s;
-  }
+  // @include breakpoint-xs {
+  //   width: 95%;
+  //   margin: $size-s;
+  // }
 }
 
 .category-title {
-  margin-top: $size-xs + ($size-xs/4)
+  // margin-top: $size-xs + ($size-xs/4)
 }
 
 
@@ -29,5 +29,5 @@
 }
 
 .container {
-  margin: ($size-xl * 1.5) 0;
+  // margin: ($size-xl * 1.5) 0;
 }

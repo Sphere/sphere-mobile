@@ -16,7 +16,7 @@ export class AccessControlService {
   ) { }
 
   hasRole(role: string[]): boolean {
-    let returnValue = false
+    let returnValue: boolean = false
     role.forEach(v => {
       if ((this.configService.userRoles || new Set()).has(v.toLowerCase())) {
         returnValue = true
