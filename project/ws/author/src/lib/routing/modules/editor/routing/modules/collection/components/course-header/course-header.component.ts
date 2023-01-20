@@ -2,7 +2,7 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core'
 import { ConfigurationsService } from '@ws-widget/utils/src/public-api'
 import { SafeUrl, DomSanitizer } from '@angular/platform-browser'
-import { HeaderServiceService } from './../../../../../../../../../../../../../src/app/services/header-service.service'
+// import { HeaderServiceService } from './../../../../../../../../../../../../../src/app/services/header-service.service'
 import { IActionButtonConfig, IActionButton } from '@ws/author/src/lib/interface/action-button'
 import { CollectionStoreService } from '../../services/store.service'
 
@@ -22,11 +22,11 @@ export class CourseHeaderComponent implements OnInit {
   requiredConfig: IActionButton[] = []
 
   constructor(private configSvc: ConfigurationsService, private domSanitizer: DomSanitizer,
-              private headerService: HeaderServiceService,
+              // private headerService: HeaderServiceService,
               private store: CollectionStoreService) {
-                this.headerService.showCourseHeader.subscribe(data => {
-                  this.courseNameHeader = data
-                })
+                // this.headerService.showCourseHeader.subscribe(data => {
+                //   this.courseNameHeader = data
+                // })
    }
 
   ngOnInit() {

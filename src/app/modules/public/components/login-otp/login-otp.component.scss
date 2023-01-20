@@ -64,6 +64,13 @@
   position: absolute;
   right: 0;
 }
+
+.login-button:disabled {
+  background: #BFBFBF;
+  color: #808080;
+  cursor: default;
+}
+
 .resend-text{
   color: #2873b2;
 }

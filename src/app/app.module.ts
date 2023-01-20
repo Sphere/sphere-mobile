@@ -41,6 +41,8 @@ import { InitService } from './services/init.service';
 import { AuthKeycloakService } from '../../library/ws-widget/utils/src/lib/services/auth-keycloak.service'
 import { PublicModule } from './modules/public/public.module';
 import { CoreModule } from './modules/core/core.module';
+import { SearchModule } from '@ws/app/src/public-api'
+import { AppNavBarComponent } from './components/app-nav-bar/app-nav-bar.component';
 const appInitFactory = (initSvc: InitService, logger: LoggerService)=> async()=>{
   try {
     await initSvc.init()
@@ -49,7 +51,10 @@ const appInitFactory = (initSvc: InitService, logger: LoggerService)=> async()=>
   }
 }
 @NgModule({
-  declarations: [AppComponent],
+  declarations: [
+    AppComponent,
+    AppNavBarComponent
+  ],
   imports: [BrowserModule,
     BrowserAnimationsModule,
     MatSliderModule,
@@ -83,7 +88,9 @@ const appInitFactory = (initSvc: InitService, logger: LoggerService)=> async()=>
      ...WIDGET_REGISTERED_MODULES,
     WidgetResolverModule.forRoot(WIDGET_REGISTRATION_CONFIG),
     PublicModule,
-    CoreModule],
+    SearchModule,
+    CoreModule
+  ],
   providers: [{ provide: RouteReuseStrategy, useClass: IonicRouteStrategy },
     {
       provide: APP_INITIALIZER,

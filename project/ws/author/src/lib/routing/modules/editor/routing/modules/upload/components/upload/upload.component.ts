@@ -157,7 +157,7 @@ export class UploadComponent implements OnInit, OnDestroy {
   }
 
   save(nextAction?: string) {
-    const updatedContent = this.contentService.upDatedContent[this.currentContent] || {}
+    const updatedContent = this.contentService.upDatedContent[this.currentContent] || null /*{}*/
     if (Object.keys(updatedContent).length) {
       this.isChanged = true
       this.loaderService.changeLoad.next(true)
@@ -278,7 +278,7 @@ export class UploadComponent implements OnInit, OnDestroy {
             : 0,
       }
 
-      const updatedContent = this.contentService.upDatedContent[this.currentContent] || {}
+      const updatedContent = this.contentService.upDatedContent[this.currentContent] || null /*{}*/
       const needSave = Object.keys(this.contentService.upDatedContent[this.currentContent] || {})
         .length
       const updatedMeta = this.contentService.getUpdatedMeta(this.currentContent)
@@ -356,7 +356,7 @@ export class UploadComponent implements OnInit, OnDestroy {
   }
 
   preview() {
-    const updatedContent = this.contentService.upDatedContent[this.currentContent] || {}
+    const updatedContent = this.contentService.upDatedContent[this.currentContent] || null /*{}*/
     const saveCall = Object.keys(updatedContent).length
       ? this.triggerSave(updatedContent, this.currentContent)
       : of({} as any)

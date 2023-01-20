@@ -18,7 +18,7 @@ import { NOTIFICATION_TIME } from '../../constants/quiz-constants'
 import { QuizStoreService } from '../../services/store.service'
 
 import { ConfirmDialogComponent } from '@ws/author/src/lib/modules/shared/components/confirm-dialog/confirm-dialog.component'
-import { NotificationComponent } from '@ws/author/src/lib/modules/shared/components/notification/notification.component.ts'
+// import { NotificationComponent } from '@ws/author/src/lib/modules/shared/components/notification/notification.component.ts'
 import { McqQuiz, Option } from '../quiz-class'
 import { Notify } from '@ws/author/src/lib/constants/notificationMessage'
 import { OpenPlainCkEditorComponent } from '../../shared/components/open-plain-ck-editor/open-plain-ck-editor.component'
@@ -37,7 +37,7 @@ export class MultipleChoiceQuestionComponent implements OnInit, OnChanges, OnDes
   selectedQuiz?: McqQuiz
   quizForm!: FormGroup
   mcqOptions: any = {}
-  snackbarRef?: MatSnackBarRef<NotificationComponent>
+  // snackbarRef?: MatSnackBarRef<NotificationComponent>
   contentLoaded = false
   showDeleteForCard?: number
   identifier = ''
@@ -65,7 +65,7 @@ export class MultipleChoiceQuestionComponent implements OnInit, OnChanges, OnDes
 
   openCkEditor(index: number) {
     const hint =
-      (((this.quizForm.controls.options as FormArray).at(index).get('hint') as FormControl) || {})
+      (((this.quizForm.controls.options as FormArray).at(index).get('hint') as FormControl) || /*{}*/ null)
         .value || ''
     const dialogRef = this.dialog.open(OpenPlainCkEditorComponent, {
       width: '800px',
@@ -147,12 +147,12 @@ export class MultipleChoiceQuestionComponent implements OnInit, OnChanges, OnDes
         this.createOptionControl(newOption)
         this.selectedQuiz.options.push(newOption)
       } else {
-        this.snackBar.openFromComponent(NotificationComponent, {
-          data: {
-            type: Notify.MAX_OPTIONS_REACHED,
-          },
-          duration: NOTIFICATION_TIME * 1000,
-        })
+        // this.snackBar.openFromComponent(NotificationComponent, {
+        //   data: {
+        //     type: Notify.MAX_OPTIONS_REACHED,
+        //   },
+        //   duration: NOTIFICATION_TIME * 1000,
+        // })
       }
     }
   }
@@ -176,22 +176,22 @@ export class MultipleChoiceQuestionComponent implements OnInit, OnChanges, OnDes
 
   onSelected($event: any) {
     this.selectedCount = $event.checked ? this.selectedCount + 1 : this.selectedCount - 1
-    if (
-      this.selectedQuiz &&
-      this.selectedQuiz.options &&
-      this.selectedCount === this.selectedQuiz.options.length
-    ) {
-      this.snackbarRef = this.snackBar.openFromComponent(NotificationComponent, {
-        data: {
-          type: Notify.MCQ_ALL_OPTIONS_CORRECT,
-        },
-        duration: NOTIFICATION_TIME * 500,
-      })
-    } else {
-      if (this.snackbarRef) {
-        this.snackbarRef.dismiss()
-      }
-    }
+    // if (
+    //   this.selectedQuiz &&
+    //   this.selectedQuiz.options &&
+    //   this.selectedCount === this.selectedQuiz.options.length
+    // ) {
+    //   this.snackbarRef = this.snackBar.openFromComponent(NotificationComponent, {
+    //     data: {
+    //       type: Notify.MCQ_ALL_OPTIONS_CORRECT,
+    //     },
+    //     duration: NOTIFICATION_TIME * 500,
+    //   })
+    // } else {
+    //   if (this.snackbarRef) {
+    //     this.snackbarRef.dismiss()
+    //   }
+    // }
   }
 
   createOptionControl(optionObj: Option) {

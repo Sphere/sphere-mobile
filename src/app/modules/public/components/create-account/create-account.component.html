@@ -10,7 +10,7 @@
       <div class="display-language">
         <h3 class="mb-2"><span i18n>Language for Learning </span>: <span class="display-language" i18n>
             {{preferedLanguage.lang}}</span></h3>
-       </div>
+      </div>
       <div class="input-content">
         <div class="input-content-wrapper">
           <form [formGroup]="createAccountForm" id="form-login" action="" method="post">
@@ -56,16 +56,17 @@
             </div>
             <div class="form-group">
               <div class="input-group pwd" id="show_hide_password_1">
-                <ion-item  lines="none" class="item-password">
-                <input class="form-control" i18n formControlName="password" placeholder="Password" id="password-field"
-                  i18n-placeholder [type]="hide1 ? 'password' : 'text'">
-                    <a class="type-toggle" (click)="toggleShow1()">
-                      <ion-icon class="show-option" [hidden]="showPassword1" [src]="eyeoff" slot="end"></ion-icon>
-                      <ion-icon class="hide-option" [hidden]="!showPassword1" name="eye" slot="end"></ion-icon>
-                   </a> 
-                  </ion-item>
+                <ion-item lines="none" class="item-password">
+                  <input class="form-control" i18n formControlName="password" placeholder="Password" id="password-field"
+                    i18n-placeholder [type]="hide1 ? 'password' : 'text'">
+                  <a class="type-toggle" (click)="toggleShow1()">
+                    <ion-icon class="show-option" [hidden]="showPassword1" [src]="eyeoff" slot="end"></ion-icon>
+                    <ion-icon class="hide-option" [hidden]="!showPassword1" name="eye" slot="end"></ion-icon>
+                  </a>
+                </ion-item>
               </div>
-              <label class="label-text">( <span i18n>Password must contain a minimum of 8 characters including numerals,
+              <label class="label-text">( <span i18n>Password must contain a minimum of 8 characters including
+                  numerals,
                   lower and
                   upper
                   case alphabets and special characters without space </span>)</label>
@@ -78,14 +79,15 @@
             </div>
             <div class="form-group">
               <div class="input-group pwd">
-                <ion-item  lines="none" class="item-password">
-                  <input class="form-control" i18n formControlName="confirmPassword" [type]="hide2 ? 'password' : 'text'"
-                  i18n-placeholder placeholder="Confirm Password" id="confpassword-field">
+                <ion-item lines="none" class="item-password">
+                  <input class="form-control" i18n formControlName="confirmPassword"
+                    [type]="hide2 ? 'password' : 'text'" i18n-placeholder placeholder="Confirm Password"
+                    id="confpassword-field">
                   <a class="type-toggle" (click)="toggleShow2()">
                     <ion-icon class="show-option" [hidden]="showPassword2" [src]="eyeoff" slot="end"></ion-icon>
                     <ion-icon class="hide-option" [hidden]="!showPassword2" name="eye" slot="end"></ion-icon>
-                 </a> 
-              </ion-item>
+                  </a>
+                </ion-item>
               </div>
               <mat-error class="text-danger" i18n
                 *ngIf="createAccountForm.controls['confirmPassword'].hasError('required') &&
@@ -124,7 +126,8 @@
 <input type="hidden" i18-value i18-aria-value aria-value="unable to signup" value="Error Signing up!" #toastError />
 
 <!-- OTP Form -->
- <div *ngIf="otpPage">
-  <ws-login-otp [signUpdata]="createAccountForm" (redirectToParent)="showParentForm($event)"></ws-login-otp>
-</div> 
+<ng-container *ngIf="otpPage">
+  <ws-login-otp class="h-full" [signUpdata]="createAccountForm"
+    (redirectToParent)="showParentForm($event)"></ws-login-otp>
+</ng-container>
 <!-- OTP Form Close-->

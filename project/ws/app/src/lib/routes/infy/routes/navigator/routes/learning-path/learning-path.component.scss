@@ -1,5 +1,5 @@
 @import 'styles/_ws-vars.scss';
-@import '~src/styles/ws-mixins';
+// @import '~src/styles/ws-mixins';
 
 
 .banner {
@@ -9,9 +9,9 @@
   height: 200px;
   width: 100%;
 
-  @include breakpoint-xs {
-    height: 250px;
-  }
+  // @include breakpoint-xs {
+  //   height: 250px;
+  // }
 }
 
 .banner-description {
@@ -44,17 +44,17 @@
 }
 
 .small-banner-text {
-  @include breakpoint-xs {
-    font-size: 1.8rem;
-  }
+  // @include breakpoint-xs {
+  //   font-size: 1.8rem;
+  // }
 }
 
 
-.small-banner-description {
-  @include breakpoint-xs {
-    font-size: 1.2rem;
-  }
-}
+// .small-banner-description {
+//   @include breakpoint-xs {
+//     font-size: 1.2rem;
+//   }
+// }
 
 .text-bold {
   font-weight: 500

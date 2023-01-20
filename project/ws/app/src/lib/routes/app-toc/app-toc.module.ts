@@ -51,7 +51,7 @@ import { TrainingApiService } from '../infy/routes/training/apis/training-api.se
 // custom modules
 import { WidgetResolverModule } from '@ws-widget/resolver'
 import { DiscussionUiModule } from '@aastrika_npmjs/discussions-ui-v8'
-import { WrapperModule } from '../../../../../../../src/app/routes/discussion-forum/wrapper/wrapper.module'
+// import { WrapperModule } from '../../../../../../../src/app/routes/discussion-forum/wrapper/wrapper.module'
 import {
   PipeDurationTransformModule,
   PipeSafeSanitizerModule,
@@ -207,7 +207,7 @@ import { AssessmentDetailComponent } from './components/assessment-detail/assess
     ProfileImageModule,
     NgCircleProgressModule.forRoot({}),
     DiscussionUiModule,
-    WrapperModule,
+    // WrapperModule,
   ],
   providers: [
     AppTocResolverService,

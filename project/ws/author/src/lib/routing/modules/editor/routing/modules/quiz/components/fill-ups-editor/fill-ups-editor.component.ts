@@ -14,7 +14,7 @@ import { Observable, Subscription } from 'rxjs'
 import { BreakpointObserver, BreakpointState } from '@angular/cdk/layout'
 
 import { ConfirmDialogComponent } from '@ws/author/src/lib/modules/shared/components/confirm-dialog/confirm-dialog.component'
-import { NotificationComponent } from '@ws/author/src/lib/modules/shared/components/notification/notification.component.ts'
+// import { NotificationComponent } from '@ws/author/src/lib/modules/shared/components/notification/notification.component.ts'
 import { FillUps, Option } from '../quiz-class'
 import { NOTIFICATION_TIME } from '../../constants/quiz-constants'
 
@@ -82,7 +82,7 @@ export class FillUpsEditorComponent implements OnInit, OnChanges, OnDestroy {
 
   openCkEditor(index: number) {
     const hint =
-      (((this.quizForm.controls.options as FormArray).at(index).get('hint') as FormControl) || {})
+      (((this.quizForm.controls.options as FormArray).at(index).get('hint') as FormControl) || /*{}*/ null)
         .value || ''
     const dialogRef = this.dialog.open(OpenPlainCkEditorComponent, {
       width: '800px',
@@ -117,12 +117,12 @@ export class FillUpsEditorComponent implements OnInit, OnChanges, OnDestroy {
       this.createOptionControl(newOption)
       this.selectedQuiz.options.push(newOption)
     } else {
-      this.snackBar.openFromComponent(NotificationComponent, {
-        data: {
-          type: Notify.MAX_OPTIONS_REACHED,
-        },
-        duration: NOTIFICATION_TIME * 1000,
-      })
+      // this.snackBar.openFromComponent(NotificationComponent, {
+      //   data: {
+      //     type: Notify.MAX_OPTIONS_REACHED,
+      //   },
+      //   duration: NOTIFICATION_TIME * 1000,
+      // })
     }
   }
 

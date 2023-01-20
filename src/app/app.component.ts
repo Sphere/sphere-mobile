@@ -15,7 +15,7 @@ import {
 export class AppComponent implements OnInit{
   isCommonChatEnabled = true
   showPublicNavbar = true
-  showNavbar = false
+  showNavbar = true
   isXSmall$ = this.valueSvc.isXSmall$
   constructor(private valueSvc: ValueService,public router:Router) {
 

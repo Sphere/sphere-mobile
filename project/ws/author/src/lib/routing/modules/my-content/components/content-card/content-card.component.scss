@@ -1,6 +1,6 @@
-@import '~src/styles/_ws-vars';
-$card-padding: $size-m;
-$action-btn-size: 2.5 * $size-m; // 40px
+// @import '~src/styles/_ws-vars';
+// $card-padding: $size-m;
+// $action-btn-size: 2.5 * $size-m; // 40px
 .card-container {
   position: relative;
   width: 265px;
@@ -63,8 +63,8 @@ mat-card {
 }
 mat-card-actions {
   position: absolute;
-  bottom: $card-padding;
-  width: calc(100% - #{$card-padding});
+  // bottom: $card-padding;
+  // width: calc(100% - #{$card-padding});
   z-index: 1;
   display: flex;
   justify-content: space-between;
@@ -73,15 +73,15 @@ mat-card-actions {
 
 mat-card-content {
   margin-top: 0px;
-  margin-bottom: ($card-padding / 2) + $action-btn-size;
-  margin-left: -0.5 * $card-padding;
-  margin-right: -0.5 * $card-padding;
+  // margin-bottom: ($card-padding / 2) + $action-btn-size;
+  // margin-left: -0.5 * $card-padding;
+  // margin-right: -0.5 * $card-padding;
 }
 
 mat-card-actions {
   position: absolute;
-  bottom: $card-padding;
-  width: calc(100% - #{$card-padding});
+  // bottom: $card-padding;
+  // width: calc(100% - #{$card-padding});
   z-index: 1;
   display: flex;
   justify-content: space-between;

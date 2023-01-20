@@ -49,7 +49,7 @@ export class AppNavBarComponent implements OnInit, OnChanges {
     private configSvc: ConfigurationsService,
     private tourService: CustomTourService,
     private router: Router,
-    private accessService: AccessControlService,
+    // private accessService: AccessControlService,
     private valueSvc: ValueService,
     public dialog: MatDialog
   ) {
@@ -72,7 +72,7 @@ export class AppNavBarComponent implements OnInit, OnChanges {
     if (localStorage.getItem('orgValue') === 'nhsrc') {
       this.hideCreateButton = false
     }
-    this.allowAuthor = this.accessService.hasRole(CREATE_ROLE)
+    // this.allowAuthor = this.accessService.hasRole(CREATE_ROLE)
     this.router.events.subscribe((e: Event) => {
       if (e instanceof NavigationEnd) {
         if ((e.url.includes('/app/setup') && this.configSvc.instanceConfig && !this.configSvc.instanceConfig.showNavBarInSetup)) {

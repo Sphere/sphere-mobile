@@ -8,7 +8,7 @@ import { SocialComponent } from './routes/social/social.component'
 import { HomeComponent } from './routes/home/home.component'
 import { PeopleComponent } from './routes/people/people.component'
 import { PageResolve } from '@ws-widget/utils'
-import { GeneralGuard } from 'src/app/guards/general.guard'
+// import { GeneralGuard } from 'src/app/guards/general.guard'
 
 const routes: Routes = [
   {
@@ -65,7 +65,7 @@ const routes: Routes = [
       pageroute: 'people',
       requiredFeatures: ['peopleSearch'],
     },
-    canActivate: [GeneralGuard],
+    // // canActivate: [GeneralGuard],
     resolve: {
       pageData: PageResolve,
     },

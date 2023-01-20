@@ -557,7 +557,7 @@ export class WebModuleEditorComponent implements OnInit, OnDestroy {
             : 0,
       }
 
-      const updatedContent = this.metaContentService.upDatedContent[this.currentId] || {}
+      const updatedContent = this.metaContentService.upDatedContent[this.currentId] || null /*{}*/
       const updatedMeta = this.metaContentService.getUpdatedMeta(this.currentId)
       const needSave = Object.keys(this.metaContentService.upDatedContent[this.currentId] || {})
         .length

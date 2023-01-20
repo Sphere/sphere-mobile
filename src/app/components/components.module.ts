@@ -30,7 +30,7 @@ import { WidgetResolverModule } from '@ws-widget/resolver'
 import {  WIDGET_REGISTERED_MODULES, WIDGET_REGISTRATION_CONFIG } from '@ws-widget/collection'
 
 import { AppPublicNavBarComponent } from './app-public-nav-bar/app-public-nav-bar.component';
-import { AppNavBarComponent } from './app-nav-bar/app-nav-bar.component';
+// import { AppNavBarComponent } from './app-nav-bar/app-nav-bar.component';
 @NgModule({
   declarations: [
     AppPublicNavBarComponent,
