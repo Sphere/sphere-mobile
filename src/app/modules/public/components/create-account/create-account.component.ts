@@ -22,7 +22,7 @@ export class CreateAccountComponent implements OnInit {
   isMobile = false
   isOtpValid = false
   emailPhoneType: any
-  otpPage = false
+  otpPage = true
   languageDialog = false
   spherFormBuilder: FormBuilder
   createAccountForm: FormGroup

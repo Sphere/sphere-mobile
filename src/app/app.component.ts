@@ -25,6 +25,7 @@ export class AppComponent implements OnInit{
       if(event instanceof NavigationStart){
         if(event.url.includes('/app/create-account')){
           this.showPublicNavbar= false
+          this.showNavbar = false
         }
       }
     })
