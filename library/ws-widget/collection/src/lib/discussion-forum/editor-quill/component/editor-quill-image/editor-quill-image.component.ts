@@ -5,7 +5,7 @@ import { MatSnackBar } from '@angular/material'
 
 import { NOTIFICATION_TIME } from '@ws/author/src/lib/constants/constant'
 import { Notify } from '@ws/author/src/lib/constants/notificationMessage'
-import { NotificationComponent } from './../notification/notification.component'
+// import { NotificationComponent } from './../notification/notification.component'
 // import { LoaderService } from '@ws/author/src/public-api'
 import { WsDiscussionForumService } from './../../../ws-discussion-forum.services'
 
@@ -79,12 +79,12 @@ export class EditorQuillImageComponent implements OnInit {
         const fileExtension = file.name.toLowerCase().split('.')
         if (IMAGE_SUPPORT_TYPES.indexOf(`.${fileExtension[fileExtension.length - 1]}`) > -1) {
           if (file.size > IMAGE_MAX_SIZE) {
-            this.snackBar.openFromComponent(NotificationComponent, {
+            /* this.snackBar.openFromComponent(NotificationComponent, {
               data: {
                 type: Notify.SIZE_ERROR,
               },
               duration: NOTIFICATION_TIME * 1000,
-            })
+            }) */
             return
           }
 
@@ -102,32 +102,32 @@ export class EditorQuillImageComponent implements OnInit {
                                           `${AUTHORING_CONTENT_BASE}${encodeURIComponent(url)}`,
                   )
 
-                  this.snackBar.openFromComponent(NotificationComponent, {
+                  /* this.snackBar.openFromComponent(NotificationComponent, {
                     data: {
                       type: Notify.UPLOAD_SUCCESS,
                     },
                     duration: NOTIFICATION_TIME * 1000,
-                  })
+                  }) */
                   // this.loaderService.changeLoad.next(false)
                 }
               },
               () => {
                 // this.loaderService.changeLoad.next(false)
-                this.snackBar.openFromComponent(NotificationComponent, {
+                /* this.snackBar.openFromComponent(NotificationComponent, {
                   data: {
                     type: Notify.UPLOAD_FAIL,
                   },
                   duration: NOTIFICATION_TIME * 1000,
-                })
+                }) */
               },
             )
         } else {
-          this.snackBar.openFromComponent(NotificationComponent, {
+          /* this.snackBar.openFromComponent(NotificationComponent, {
             data: {
               type: Notify.INVALID_FORMAT,
             },
             duration: NOTIFICATION_TIME * 1000,
-          })
+          }) */
           return
         }
       }

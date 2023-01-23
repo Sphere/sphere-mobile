@@ -22,7 +22,7 @@
     "importHelpers": true,
     "target": "es2015",
     "types": [ "node" ],
-    "typeRoots": ["node_modules/@types", "./custom_typings"],
+    "typeRoots": ["node_modules/@types", "./custom_typings", "./custom_typings/sb-cordova-plugin-utility.d.ts"],
     "module": "esnext",
     "lib": [
       "es2018", 
@@ -46,7 +46,9 @@
       "@ws/viewer": ["project/ws/viewer"],
       "@ws/viewer/*": ["project/ws/viewer/*"],
       "@ws/learning-hub": ["project/ws/learning-hub"],
-      "@ws/learning-hub/*": ["project/ws/learning-hub/*"]
+      "@ws/learning-hub/*": ["project/ws/learning-hub/*"],
+      "sunbird-sdk": ["node_modules/@project-sunbird/sunbird-sdk"],
+      "sunbird-sdk/*": ["node_modules/@project-sunbird/sunbird-sdk/*"],
     }
     
   },

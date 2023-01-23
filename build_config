@@ -1,0 +1,2 @@
+cordova-plugin=https://github.com/Sunbird-Ed/sb-cordova-plugin-utility.git#release-4.1.0
+cordova-plugin=cordova-plugin-androidx-adapter

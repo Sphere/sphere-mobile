@@ -6,6 +6,7 @@ import * as _ from 'lodash'
 import { v4 as uuid } from 'uuid'
 import { ConfigurationsService } from '@ws-widget/utils/src/public-api'
 import { DataService } from '../../../core/services/data.service'
+import { UtilityService } from '../../../core/services/utility-service'
 
 const API_END_POINTS = {
   USER_SIGNUP: `apis/public/v8/emailMobile/signup`,
@@ -24,9 +25,14 @@ const API_END_POINTS = {
 export class SignupService extends DataService {
   baseUrl: string;
   constructor(public  http: HttpClient,
-    private configSvc: ConfigurationsService
+    private configSvc: ConfigurationsService,
+    private utilityService:UtilityService
   ) {
     super(http)
+    console.log('>>>>>>>>>here')
+    this.utilityService.getBuildConfigValue('BASE_URL').then((url)=>{
+      console.log('url here', url)
+    })
     this.baseUrl = 'https://sphere.aastrika.org/'
    }
 

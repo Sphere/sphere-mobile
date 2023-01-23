@@ -40,7 +40,6 @@
               "src/theme/variables.scss", 
             "src/global.scss",
             "./styles/styles.scss",
-            "node_modules/bootstrap/dist/css/bootstrap.min.css",
             {
               "input": "src/themes/theme-deep-purple.scss",
               "bundleName": "theme-deep-purple",
@@ -187,6 +186,37 @@
               "src/**/*.ts",
               "src/**/*.html"
             ]
+          }
+        },
+        "ionic-cordova-build": {
+          "builder": "@ionic/angular-toolkit:cordova-build",
+          "options": {
+            "browserTarget": "app:build"
+          },
+          "configurations": {
+            "production": {
+              "browserTarget": "app:build:production"
+            },
+            "hmr": {
+              "browserTarget": "app:build:hmr"
+            }
+          }
+        },
+        "ionic-cordova-serve": {
+          "builder": "@ionic/angular-toolkit:cordova-serve",
+          "options": {
+            "cordovaBuildTarget": "app:ionic-cordova-build",
+            "devServerTarget": "app:serve"
+          },
+          "configurations": {
+            "production": {
+              "cordovaBuildTarget": "app:ionic-cordova-build:production",
+              "devServerTarget": "app:serve:production"
+            },
+            "hmr": {
+              "cordovaBuildTarget": "app:ionic-cordova-build:hmr",
+              "devServerTarget": "app:serve:hmr"
+            }
           }
         }
       }
