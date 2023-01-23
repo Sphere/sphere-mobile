@@ -9,5 +9,5 @@
     <ion-router-outlet></ion-router-outlet>
     </div>
   </ion-content>
-  <ws-app-nav-bar [mode]="'bottom'"></ws-app-nav-bar>
+  <ws-app-nav-bar *ngIf="showNavbar" [mode]="'bottom'"></ws-app-nav-bar>
 </ion-app>
