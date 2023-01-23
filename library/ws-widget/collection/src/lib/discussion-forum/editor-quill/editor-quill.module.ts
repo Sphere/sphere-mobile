@@ -5,7 +5,7 @@ import { EditorQuillImageComponent } from './component/editor-quill-image/editor
 import { FormsModule, ReactiveFormsModule } from '@angular/forms'
 import { QuillModule } from 'ngx-quill'
 import { HttpClientModule } from '@angular/common/http'
-import { NotificationComponent } from './component/notification/notification.component'
+// import { NotificationComponent } from './component/notification/notification.component'
 import { ApiService } from '@ws/author/src/lib/modules/shared/services/api.service'
 import { MatIconModule } from '@angular/material/icon'
 
@@ -32,7 +32,7 @@ const SUPPORTED_FORMATS = [
 ]
 
 @NgModule({
-  declarations: [EditorQuillComponent, EditorQuillImageComponent, NotificationComponent],
+  declarations: [EditorQuillComponent, EditorQuillImageComponent/* , NotificationComponent */],
   imports: [
     CommonModule,
     FormsModule,
@@ -65,8 +65,8 @@ const SUPPORTED_FORMATS = [
       theme: 'snow',
     }),
   ],
-  exports: [EditorQuillComponent, EditorQuillImageComponent, NotificationComponent],
+  exports: [EditorQuillComponent, EditorQuillImageComponent/* , NotificationComponent */],
   providers: [ApiService],
-  entryComponents: [NotificationComponent],
+  entryComponents: [/* NotificationComponent */],
 })
 export class EditorQuillModule { }

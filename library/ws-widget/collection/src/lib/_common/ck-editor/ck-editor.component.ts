@@ -5,7 +5,7 @@ import { AUTHORING_CONTENT_BASE, CONTENT_BASE_STATIC, CONTENT_BASE_STREAM, CONTE
 import { NOTIFICATION_TIME } from '@ws/author/src/lib/constants/constant'
 import { Notify } from '@ws/author/src/lib/constants/notificationMessage'
 import { FILE_MAX_SIZE, IMAGE_MAX_SIZE, IMAGE_SUPPORT_TYPES } from '@ws/author/src/lib/constants/upload'
-import { NotificationComponent } from '@ws/author/src/lib/modules/shared/components/notification/notification.component'
+// import { NotificationComponent } from '@ws/author/src/lib/modules/shared/components/notification/notification.component'
 import { AccessControlService } from '@ws/author/src/lib/modules/shared/services/access-control.service'
 import { UploadService } from '@ws/author/src/lib/routing/modules/editor/shared/services/upload.service'
 import { LoaderService } from '@ws/author/src/lib/services/loader.service'
@@ -177,7 +177,7 @@ export class CkEditorComponent implements AfterViewInit, OnInit, OnDestroy {
         if (file) {
           const fileExtension = file.name.toLowerCase().split('.')
           if (IMAGE_SUPPORT_TYPES.indexOf(`.${fileExtension[fileExtension.length - 1]}`) > -1) {
-            if (file.size > IMAGE_MAX_SIZE) {
+            /* if (file.size > IMAGE_MAX_SIZE) {
               this.snackBar.openFromComponent(NotificationComponent, {
                 data: {
                   type: Notify.SIZE_ERROR,
@@ -186,7 +186,7 @@ export class CkEditorComponent implements AfterViewInit, OnInit, OnDestroy {
               })
               input.remove()
               return
-            }
+            } */
             const form = new FormData()
             form.set('content', file, file.name.replace(/[^A-Za-z0-9.]/g, ''))
             this.loaderService.changeLoad.next(true)
@@ -207,34 +207,34 @@ export class CkEditorComponent implements AfterViewInit, OnInit, OnDestroy {
                         url,
                       )}'></img>`,
                     )
-                    this.snackBar.openFromComponent(NotificationComponent, {
+                    /* this.snackBar.openFromComponent(NotificationComponent, {
                       data: {
                         type: Notify.UPLOAD_SUCCESS,
                       },
                       duration: NOTIFICATION_TIME * 1000,
-                    })
+                    }) */
                     input.remove()
                     this.loaderService.changeLoad.next(false)
                   }
                 },
                 () => {
                   this.loaderService.changeLoad.next(false)
-                  this.snackBar.openFromComponent(NotificationComponent, {
+                  /* this.snackBar.openFromComponent(NotificationComponent, {
                     data: {
                       type: Notify.UPLOAD_FAIL,
                     },
                     duration: NOTIFICATION_TIME * 1000,
-                  })
+                  }) */
                   input.remove()
                 },
               )
           } else {
-            this.snackBar.openFromComponent(NotificationComponent, {
+            /* this.snackBar.openFromComponent(NotificationComponent, {
               data: {
                 type: Notify.INVALID_FORMAT,
               },
               duration: NOTIFICATION_TIME * 1000,
-            })
+            }) */
             input.remove()
             return
           }
@@ -258,12 +258,12 @@ export class CkEditorComponent implements AfterViewInit, OnInit, OnDestroy {
         if (file) {
           if (file.name.toLowerCase().endsWith('.zip')) {
             if (file.size > FILE_MAX_SIZE) {
-              this.snackBar.openFromComponent(NotificationComponent, {
+             /*  this.snackBar.openFromComponent(NotificationComponent, {
                 data: {
                   type: Notify.SIZE_ERROR,
                 },
                 duration: NOTIFICATION_TIME * 1000,
-              })
+              }) */
               input.remove()
               return
             }
@@ -285,35 +285,35 @@ export class CkEditorComponent implements AfterViewInit, OnInit, OnDestroy {
                     this.editor.instance.insertHtml(
                       `<a href='${url}' download>Click here to download</a>`,
                     )
-                    this.snackBar.openFromComponent(NotificationComponent, {
+                    /* this.snackBar.openFromComponent(NotificationComponent, {
                       data: {
                         type: Notify.UPLOAD_SUCCESS,
                       },
                       duration: NOTIFICATION_TIME * 1000,
-                    })
+                    }) */
                     input.remove()
                     this.loaderService.changeLoad.next(false)
                   }
                 },
                 () => {
                   this.loaderService.changeLoad.next(false)
-                  this.snackBar.openFromComponent(NotificationComponent, {
+                  /* this.snackBar.openFromComponent(NotificationComponent, {
                     data: {
                       type: Notify.UPLOAD_FAIL,
                     },
                     duration: NOTIFICATION_TIME * 1000,
-                  })
+                  }) */
                   input.remove()
                 },
               )
           } else {
             input.remove()
-            this.snackBar.openFromComponent(NotificationComponent, {
+            /* this.snackBar.openFromComponent(NotificationComponent, {
               data: {
                 type: Notify.INVALID_FORMAT,
               },
               duration: NOTIFICATION_TIME * 1000,
-            })
+            }) */
             return
           }
         }
