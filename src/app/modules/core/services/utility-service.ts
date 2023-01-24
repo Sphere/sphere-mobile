@@ -1,3 +1,4 @@
+
 import {Injectable} from '@angular/core';
 import {DeviceSpecification} from 'sunbird-sdk';
 import {GenericAppConfig} from '../../../app.constant';

@@ -22,7 +22,7 @@
     "importHelpers": true,
     "target": "es2015",
     "types": [ "node" ],
-    "typeRoots": ["node_modules/@types", "./custom_typings", "./custom_typings/sb-cordova-plugin-utility.d.ts"],
+    "typeRoots": ["node_modules/@types", "./custom_typings"],
     "module": "esnext",
     "lib": [
       "es2018", 
@@ -52,6 +52,10 @@
     }
     
   },
+  "include": [
+    "./typings/*.d.ts",
+    "**/*.ts"
+  ],
   "angularCompilerOptions": {
     "enableI18nLegacyMessageIdFormat": false,
     "strictInjectionParameters": true,
