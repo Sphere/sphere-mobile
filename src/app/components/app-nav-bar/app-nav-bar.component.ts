@@ -18,7 +18,7 @@ export class AppNavBarComponent implements OnInit, OnChanges {
   allowAuthor = false
   @Input() mode: 'top' | 'bottom' = 'top'
   @Input() authorised = false
-  
+
   basicBtnAppsConfig: NsWidgetResolver.IRenderConfigWithTypedData<IBtnAppsConfig> = {
     widgetType: 'actionButton',
     widgetSubType: 'actionButtonApps',
@@ -94,6 +94,8 @@ export class AppNavBarComponent implements OnInit, OnChanges {
       } else {
         this.showCreateBtn = false
       }
+      // Bellow code is added tepararly until login is handled
+      // this.showCreateBtn = false
     })
 
     if (this.configSvc.instanceConfig) {
