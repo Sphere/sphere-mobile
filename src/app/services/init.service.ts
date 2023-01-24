@@ -49,6 +49,7 @@ export class InitService {
       this.configSvc.userGroups,
       this.configSvc.restrictedFeatures,
     )
+    this.updateNavConfig()
   }
 
   private async fetchDefaultConfig(): Promise<NsInstanceConfig.IConfig> {
@@ -143,5 +144,22 @@ export class InitService {
         .map(u => WidgetResolverService.getWidgetKey(u)),
     )
     return this.configSvc.restrictedWidgets
+  }
+
+
+  private updateNavConfig() {
+    if (this.configSvc.instanceConfig) {
+      const background = this.configSvc.instanceConfig.backgrounds
+      if (background.primaryNavBar) {
+        this.configSvc.primaryNavBar = background.primaryNavBar
+      }
+      if (background.pageNavBar) {
+        this.configSvc.pageNavBar = background.pageNavBar
+      }
+
+      if (this.configSvc.instanceConfig.primaryNavBarConfig) {
+        this.configSvc.primaryNavBarConfig = this.configSvc.instanceConfig.primaryNavBarConfig
+      }
+    }
   }
 }
