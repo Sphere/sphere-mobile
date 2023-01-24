@@ -16,6 +16,7 @@ export class AppComponent implements OnInit{
   isCommonChatEnabled = true
   showPublicNavbar = true
   showNavbar = true
+  isNavBarRequired = false
   isXSmall$ = this.valueSvc.isXSmall$
   constructor(private valueSvc: ValueService,public router:Router) {
 
@@ -26,6 +27,10 @@ export class AppComponent implements OnInit{
         if(event.url.includes('/app/create-account')){
           this.showPublicNavbar= false
           this.showNavbar = false
+        } else if (event.url.includes('page/home')) {
+          this.isNavBarRequired = true
+          this.showPublicNavbar= false
+          this.showNavbar = true
         }
       }
     })
