@@ -43,6 +43,7 @@ import { PublicModule } from './modules/public/public.module';
 import { CoreModule } from './modules/core/core.module';
 import { SearchModule } from '@ws/app/src/public-api'
 import { AppNavBarComponent } from './components/app-nav-bar/app-nav-bar.component';
+import { PageModule } from './modules/pages/page.module';
 const appInitFactory = (initSvc: InitService, logger: LoggerService)=> async()=>{
   try {
     await initSvc.init()
@@ -52,10 +53,17 @@ const appInitFactory = (initSvc: InitService, logger: LoggerService)=> async()=>
 }
 import { SunbirdSdk } from 'sunbird-sdk';
 import { HomeModule } from './modules/home/home.module';
+// import { SunbirdSdk } from 'sunbird-sdk';
+// import { MobileDashboardComponent } from './modules/pages/components/mobile-dashboard/mobile-dashboard.component';
+// import { MobileCategoryComponent } from './modules/pages/components/mobile-category/mobile-category.component';
+// import { MobileCourseViewComponent } from './modules/pages/components/mobile-course-view/mobile-course-view.component';
+// import { MobileHowDoesWorkComponent } from './modules/pages/components/mobile-how-does-work/mobile-how-does-work.component';
 @NgModule({
   declarations: [
     AppComponent,
-    AppNavBarComponent
+    AppNavBarComponent,
+   
+
   ],
   imports: [BrowserModule,
     BrowserAnimationsModule,
@@ -92,7 +100,8 @@ import { HomeModule } from './modules/home/home.module';
     PublicModule,
     HomeModule,
     SearchModule,
-    CoreModule
+    CoreModule,
+    PageModule
   ],
   providers: [{ provide: RouteReuseStrategy, useClass: IonicRouteStrategy },
     {
