@@ -51,6 +51,7 @@ const appInitFactory = (initSvc: InitService, logger: LoggerService)=> async()=>
   }
 }
 import { SunbirdSdk } from 'sunbird-sdk';
+import { HomeModule } from './modules/home/home.module';
 @NgModule({
   declarations: [
     AppComponent,
@@ -89,6 +90,7 @@ import { SunbirdSdk } from 'sunbird-sdk';
      ...WIDGET_REGISTERED_MODULES,
     WidgetResolverModule.forRoot(WIDGET_REGISTRATION_CONFIG),
     PublicModule,
+    HomeModule,
     SearchModule,
     CoreModule
   ],

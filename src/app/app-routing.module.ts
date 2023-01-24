@@ -16,6 +16,10 @@ const routes: Routes = [
     path: 'app/create-account',
     component: CreateAccountComponent,
   },
+  {
+    path: 'page/home',
+    loadChildren: () => import('./modules/home/home.module').then( m => m.HomeModule)
+  },
 ];
 
 @NgModule({
