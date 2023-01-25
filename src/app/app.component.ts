@@ -31,6 +31,9 @@ export class AppComponent implements OnInit{
           this.isNavBarRequired = true
           this.showPublicNavbar= false
           this.showNavbar = true
+        } else if (event.url.includes('app/new-tnc')) {
+          this.showPublicNavbar= false
+          this.showNavbar = false
         }
       }
     })

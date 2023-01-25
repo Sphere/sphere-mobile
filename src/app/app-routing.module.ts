@@ -2,6 +2,8 @@ import { NgModule } from '@angular/core';
 import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
 import { CreateAccountComponent } from './modules/public/components/create-account/create-account.component';
 import { MobileDashboardComponent } from './modules/pages/components/mobile-dashboard/mobile-dashboard.component';
+import { NewTncComponent } from './routes/new-tnc/new-tnc.component';
+import { TncPublicResolverService } from './services/tnc-public-resolver.service';
 
 const routes: Routes = [
   {
@@ -21,6 +23,13 @@ const routes: Routes = [
     path: 'page/home',
     loadChildren:() => import('./modules/pages/page.module').then(m => m.PageModule)
     // component: MobileDashboardComponent
+  },
+  {
+    path: 'app/new-tnc',
+    component: NewTncComponent,
+    resolve: {
+      tnc: TncPublicResolverService,
+    },
   },
 ];
 

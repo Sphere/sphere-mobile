@@ -44,6 +44,10 @@ import { CoreModule } from './modules/core/core.module';
 import { SearchModule } from '@ws/app/src/public-api'
 import { AppNavBarComponent } from './components/app-nav-bar/app-nav-bar.component';
 import { PageModule } from './modules/pages/page.module';
+import { NewTncComponent } from './routes/new-tnc/new-tnc.component';
+import { TncPublicResolverService } from './services/tnc-public-resolver.service';
+import { TncRendererComponent } from './components/tnc-renderer/tnc-renderer.component';
+import { TncAppResolverService } from './services/tnc-app-resolver.service';
 const appInitFactory = (initSvc: InitService, logger: LoggerService)=> async()=>{
   try {
     await initSvc.init()
@@ -60,6 +64,8 @@ const appInitFactory = (initSvc: InitService, logger: LoggerService)=> async()=>
   declarations: [
     AppComponent,
     AppNavBarComponent,
+    NewTncComponent,
+    TncRendererComponent
    
 
   ],
@@ -107,7 +113,10 @@ const appInitFactory = (initSvc: InitService, logger: LoggerService)=> async()=>
       deps: [InitService, LoggerService],
       multi: true,
     },
-    AuthKeycloakService],
+    AuthKeycloakService,
+    TncPublicResolverService,
+    TncAppResolverService
+  ],
   bootstrap: [AppComponent],
 })
 export class AppModule {}
