@@ -83,11 +83,11 @@
           *ngFor="let result of searchResults.result.content; trackBy: contentTrackBy"
           [displayType]="resultsDisplayType" [content]="result"></ws-app-learning-card>
       </ng-container>
-      <!-- <ng-container *ngIf="(isXSmall$ | async) === true">
+      <ng-container *ngIf="(isXSmall$ | async) === true">
         <ws-mobile-course-view *ngFor="let result of searchResults.result.content; trackBy: contentTrackBy"
           [courseData]="result">
         </ws-mobile-course-view>
-      </ng-container> -->
+      </ng-container> 
 
       <div *ngIf="searchRequestStatus === 'fetching'" class="margin-top-m flex flex-center">
         <mat-spinner></mat-spinner>

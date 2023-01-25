@@ -35,9 +35,7 @@ import { PageHomeRoutingModule } from './page-home-routing.module';
         MobileDashboardComponent,
         MobileCategoryComponent,
         MobileCourseViewComponent,
-        MobileHowDoesWorkComponent,
-        
-     
+        MobileHowDoesWorkComponent,   
     ]
   })
 

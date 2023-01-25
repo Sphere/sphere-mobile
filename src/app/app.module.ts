@@ -52,7 +52,6 @@ const appInitFactory = (initSvc: InitService, logger: LoggerService)=> async()=>
   }
 }
 import { SunbirdSdk } from 'sunbird-sdk';
-import { HomeModule } from './modules/home/home.module';
 // import { SunbirdSdk } from 'sunbird-sdk';
 // import { MobileDashboardComponent } from './modules/pages/components/mobile-dashboard/mobile-dashboard.component';
 // import { MobileCategoryComponent } from './modules/pages/components/mobile-category/mobile-category.component';
@@ -98,7 +97,6 @@ import { HomeModule } from './modules/home/home.module';
      ...WIDGET_REGISTERED_MODULES,
     WidgetResolverModule.forRoot(WIDGET_REGISTRATION_CONFIG),
     PublicModule,
-    HomeModule,
     SearchModule,
     CoreModule,
     PageModule

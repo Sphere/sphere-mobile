@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
 import { CreateAccountComponent } from './modules/public/components/create-account/create-account.component';
 import { MobileDashboardComponent } from './modules/pages/components/mobile-dashboard/mobile-dashboard.component';
+import { PageResolve } from '@ws-widget/utils';
 
 const routes: Routes = [
   {
@@ -22,6 +23,18 @@ const routes: Routes = [
     loadChildren:() => import('./modules/pages/page.module').then(m => m.PageModule)
     // component: MobileDashboardComponent
   },
+  {
+    path: 'app/search',
+    loadChildren: () =>
+      import('./modules/overviews/routes/route-search-app.module').then(u => u.RouteSearchAppModule),
+      data: {
+        pageType: 'feature',
+        pageKey: 'search',
+      },
+      resolve: {
+        searchPageData: PageResolve,
+      }
+    },
 ];
 
 @NgModule({

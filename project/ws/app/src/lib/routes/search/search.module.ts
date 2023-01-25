@@ -32,7 +32,7 @@ import {
   DisplayContentTypeModule,
   PipeContentRouteModule,
   BtnKbAnalyticsModule,
-  UserAutocompleteModule,
+  UserAutocompleteModule
 } from '@ws-widget/collection'
 import { WidgetResolverModule } from '@ws-widget/resolver'
 import {
@@ -56,6 +56,7 @@ import { SocialComponent } from './routes/social/social.component'
 import { SearchRoutingModule } from './search-routing.module'
 import { PeopleComponent } from './routes/people/people.component'
 import { SearchInputHomeComponent } from './components/search-input-home/search-input-home.component'
+import { PageModule } from 'src/app/modules/pages/page.module'
 // import { PublicHomeModule } from '../../../../../../../src/app/routes/public/public-home/public-home.module'
 @NgModule({
   declarations: [
@@ -117,6 +118,7 @@ import { SearchInputHomeComponent } from './components/search-input-home/search-
     BtnChannelAnalyticsModule,
     MatDividerModule,
     UserAutocompleteModule,
+    PageModule
     // PublicHomeModule,
   ],
   exports: [ItemTileComponent, SearchInputComponent, SearchInputHomeComponent],
