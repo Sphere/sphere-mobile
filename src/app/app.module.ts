@@ -44,6 +44,10 @@ import { CoreModule } from './modules/core/core.module';
 import { SearchModule } from '@ws/app/src/public-api'
 import { AppNavBarComponent } from './components/app-nav-bar/app-nav-bar.component';
 import { HomeModule } from './modules/home/home.module';
+import { TncRendererComponent } from './components/tnc-renderer/tnc-renderer.component';
+import { NewTncComponent } from './routes/new-tnc/new-tnc.component';
+import { TncAppResolverService } from './services/tnc-app-resolver.service';
+import { TncPublicResolverService } from './services/tnc-public-resolver.service';
 const appInitFactory = (initSvc: InitService, logger: LoggerService)=> async()=>{
   try {
     await initSvc.init()
@@ -57,6 +61,8 @@ import { SunbirdSdk } from 'sunbird-sdk';
   declarations: [
     AppComponent,
     AppNavBarComponent,
+    NewTncComponent,
+    TncRendererComponent
    
 
   ],
@@ -104,7 +110,10 @@ import { SunbirdSdk } from 'sunbird-sdk';
       deps: [InitService, LoggerService],
       multi: true,
     },
-    AuthKeycloakService],
+    AuthKeycloakService,
+    TncPublicResolverService,
+    TncAppResolverService
+  ],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

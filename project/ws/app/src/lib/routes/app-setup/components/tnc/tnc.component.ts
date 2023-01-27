@@ -13,7 +13,7 @@ import {
   ConfigurationsService,
   NsPage,
 } from '../../../../../../../../../library/ws-widget/utils/src/public-api'
-// import { TncAppResolverService } from '../../../../../../../../../src/app/services/tnc-app-resolver.service'
+import { TncAppResolverService } from '../../../../../../../../../src/app/services/tnc-app-resolver.service'
 // import { TncPublicResolverService } from '../../../../../../../../../src/app/services/tnc-public-resolver.service'
 import { Globals } from '../../globals'
 
@@ -47,7 +47,7 @@ export class TncComponent implements OnInit, OnDestroy {
     private http: HttpClient,
     private loggerSvc: LoggerService,
     private configSvc: ConfigurationsService,
-    // private tncProtectedSvc: TncAppResolverService,
+    private tncProtectedSvc: TncAppResolverService,
     // private tncPublicSvc: TncPublicResolverService,
     private globals: Globals,
   ) {}
@@ -79,17 +79,17 @@ export class TncComponent implements OnInit, OnDestroy {
   }
 
   getTnc(locale: string) {
-    // if (this.tncData) {
-    //   if (this.isPublic) {
-    //     this.tncPublicSvc.getPublicTnc(locale).subscribe(data => {
-    //       this.assignTncData(data)
-    //     })
-    //   } else {
-    //     this.tncProtectedSvc.getTnc(locale).subscribe(data => {
-    //       this.assignTncData(data)
-    //     })
-    //   }
-    // }
+    if (this.tncData) {
+      if (this.isPublic) {
+        // this.tncPublicSvc.getPublicTnc(locale).subscribe(data => {
+        //   this.assignTncData(data)
+        // })
+      } else {
+        this.tncProtectedSvc.getTnc(locale).subscribe(data => {
+          this.assignTncData(data)
+        })
+      }
+    }
   }
 
   private assignTncData(data: /*NsTnc.ITnc*/ any) {
@@ -108,15 +108,15 @@ export class TncComponent implements OnInit, OnDestroy {
       if (locale === dpTerm.language) {
         return
       }
-      // if (this.isPublic) {
-      //   this.tncPublicSvc.getPublicTnc(locale).subscribe(data => {
-      //     this.assignDp(tncData, data)
-      //   })
-      // } else {
-      //   this.tncProtectedSvc.getTnc(locale).subscribe(data => {
-      //     this.assignDp(tncData, data)
-      //   })
-      // }
+      if (this.isPublic) {
+        // this.tncPublicSvc.getPublicTnc(locale).subscribe(data => {
+        //   this.assignDp(tncData, data)
+        // })
+      } else {
+        this.tncProtectedSvc.getTnc(locale).subscribe(data => {
+          this.assignDp(tncData, data)
+        })
+      }
     }
   }
   // assignDp(tncData: NsTnc.ITncUnit, data: NsTnc.ITnc) {

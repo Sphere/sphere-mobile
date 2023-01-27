@@ -4,7 +4,6 @@ import { NavigationExtras, Router } from '@angular/router'
 import { delay } from 'rxjs/operators'
 import { WidgetUserService } from '../../../../../../library/ws-widget/collection/src/public-api'
 import { ConfigurationsService } from '../../../../../../library/ws-widget/utils/src/public-api'
-import { OrgServiceService } from '../../../../../../project/ws/app/src/lib/routes/org/org-service.service'
 import { forkJoin } from 'rxjs'
 import * as _ from 'lodash-es'
 
@@ -26,7 +25,7 @@ export class MobileDashboardComponent implements OnInit {
   topCertifiedCourseIdentifier: any = []
   featuredCourseIdentifier: any = []
 
-  constructor(private orgService: OrgServiceService,
+  constructor(
               private configSvc: ConfigurationsService,
               private userSvc: WidgetUserService,
               private router: Router,
@@ -60,7 +59,7 @@ export class MobileDashboardComponent implements OnInit {
       this.firstName = 'vishali'
       // this.userId = this.configSvc.userProfile.userId || 'fc7a6dd1-313e-48e0-beba-1faee25e170b'
       this.userId ='fc7a6dd1-313e-48e0-beba-1faee25e170b'
-      forkJoin([this.userSvc.fetchUserBatchList(this.userId), this.orgService.getLiveSearchResults(),
+      forkJoin([this.userSvc.fetchUserBatchList(this.userId), this.userSvc.getLiveSearchResults(),
       this.http.get(`assets/configurations/mobile-home.json`)]).pipe().subscribe((res: any) => {
        this.homeFeature = res[2].userLoggedInSection
         this.topCertifiedCourseIdentifier = res[2].topCertifiedCourseIdentifier
