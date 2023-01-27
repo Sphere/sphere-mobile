@@ -7,7 +7,7 @@ import { Subscription } from 'rxjs'
 import { RootService } from '../../../../../src/app/component/root/root.service'
 import { TStatus, ViewerDataService } from './viewer-data.service'
 import { ViewerUtilService } from './viewer-util.service'
-import { DiscussConfigResolve } from '../../../../../src/app/routes/discussion-forum/wrapper/resolvers/discuss-config-resolve'
+import { DiscussConfigResolve } from '../../../../../src/app/modules/overviews/routes/discussion-forum/wrapper/resolvers/discuss-config-resolve'
 export enum ErrorType {
   accessForbidden = 'accessForbidden',
   notFound = 'notFound',

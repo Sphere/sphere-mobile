@@ -55,6 +55,7 @@ const appInitFactory = (initSvc: InitService, logger: LoggerService)=> async()=>
     logger.error('ERROR DURING APP INITIALIZATION >', error)
   }
 }
+import { SunbirdSdk } from 'sunbird-sdk';
 // import { SunbirdSdk } from 'sunbird-sdk';
 @NgModule({
   declarations: [

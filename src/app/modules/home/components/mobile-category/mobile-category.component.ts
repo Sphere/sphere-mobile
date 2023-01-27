@@ -11,9 +11,9 @@ export class MobileCategoryComponent implements OnInit {
   constructor(private http: HttpClient) { }
 
   ngOnInit() {
-    // this.http.get('/apis/protected/v8/catalog').subscribe((data: any) => {
-    //   this.categories =  data.terms
-    // })
+     this.http.get('/apis/protected/v8/catalog').subscribe((data: any) => {
+       this.categories =  data.terms
+     })
   }
 
 }

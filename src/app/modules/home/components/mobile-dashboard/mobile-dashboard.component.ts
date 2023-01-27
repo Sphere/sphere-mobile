@@ -5,7 +5,7 @@ import { delay } from 'rxjs/operators'
 import { WidgetUserService } from '../../../../../../library/ws-widget/collection/src/public-api'
 import { ConfigurationsService } from '../../../../../../library/ws-widget/utils/src/public-api'
 import { forkJoin } from 'rxjs'
-import * as _ from 'lodash'
+import * as _ from 'lodash-es'
 
 @Component({
   selector: 'ws-mobile-dashboard',
@@ -61,8 +61,7 @@ export class MobileDashboardComponent implements OnInit {
       this.userId ='fc7a6dd1-313e-48e0-beba-1faee25e170b'
       forkJoin([this.userSvc.fetchUserBatchList(this.userId), this.userSvc.getLiveSearchResults(),
       this.http.get(`assets/configurations/mobile-home.json`)]).pipe().subscribe((res: any) => {
-        console.log(res);
-        this.homeFeature = res[2].userLoggedInSection
+       this.homeFeature = res[2].userLoggedInSection
         this.topCertifiedCourseIdentifier = res[2].topCertifiedCourseIdentifier
         this.featuredCourseIdentifier = res[2].featuredCourseIdentifier
         this.formatmyCourseResponse(res[0])
