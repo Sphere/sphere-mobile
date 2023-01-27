@@ -7,8 +7,8 @@
   "_phantomChildren": {},
   "_requested": {
     "type": "git",
-    "raw": "https://github.com/Sunbird-Ed/sb-cordova-plugin-utility.git#release-4.1.0",
-    "rawSpec": "https://github.com/Sunbird-Ed/sb-cordova-plugin-utility.git#release-4.1.0",
+    "raw": "git+https://github.com/Sunbird-Ed/sb-cordova-plugin-utility.git#release-4.1.0",
+    "rawSpec": "git+https://github.com/Sunbird-Ed/sb-cordova-plugin-utility.git#release-4.1.0",
     "saveSpec": "git+https://github.com/Sunbird-Ed/sb-cordova-plugin-utility.git#release-4.1.0",
     "fetchSpec": "https://github.com/Sunbird-Ed/sb-cordova-plugin-utility.git",
     "gitCommittish": "release-4.1.0"
@@ -18,8 +18,8 @@
     "#USER"
   ],
   "_resolved": "git+https://github.com/Sunbird-Ed/sb-cordova-plugin-utility.git#d6818e60c15fdccd97036f2d9236791a942566c8",
-  "_spec": "https://github.com/Sunbird-Ed/sb-cordova-plugin-utility.git#release-4.1.0",
-  "_where": "/home/sonashaju/Videos/sphere-mobile",
+  "_spec": "git+https://github.com/Sunbird-Ed/sb-cordova-plugin-utility.git#release-4.1.0",
+  "_where": "/home/aman/OFFICE/SPHERE/sphere-mobile",
   "author": "",
   "bundleDependencies": false,
   "cordova": {
