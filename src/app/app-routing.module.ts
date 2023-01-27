@@ -1,7 +1,6 @@
 import { NgModule } from '@angular/core';
 import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
 import { CreateAccountComponent } from './modules/public/components/create-account/create-account.component';
-import { MobileDashboardComponent } from './modules/pages/components/mobile-dashboard/mobile-dashboard.component';
 
 const routes: Routes = [
   {
@@ -19,8 +18,7 @@ const routes: Routes = [
   },
   {
     path: 'page/home',
-    loadChildren:() => import('./modules/pages/page.module').then(m => m.PageModule)
-    // component: MobileDashboardComponent
+    loadChildren:() => import('./modules/home/home.module').then(m => m.HomeModule)
   },
 ];
 

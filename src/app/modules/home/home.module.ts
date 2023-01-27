@@ -41,4 +41,4 @@ import { PageHomeRoutingModule } from './page-home-routing.module';
     ]
   })
 
-export class PageModule { }
+export class HomeModule { }
