@@ -39,6 +39,7 @@ const API_END_POINTS = {
   FETCH_USER_ENROLLMENT_LIST: (userId: string | undefined) =>
     // tslint:disable-next-line: max-line-length
     `/apis/proxies/v8/learner/course/v1/user/enrollment/list/${userId}?orgdetails=orgName,email&licenseDetails=name,description,url&fields=contentType,topic,name,channel,mimeType,appIcon,gradeLevel,resourceType,thumbnail,identifier,medium,pkgVersion,board,subject,trackable,posterImage,duration,creatorLogo,license&batchDetails=name,endDate,startDate,status,enrollmentType,createdBy,certificates`,
+  SEARCH_V6PUBLIC: '/apis/public/v8/publicContent/v1/search',
 }
 
 @Injectable({
@@ -287,7 +288,7 @@ export class WidgetContentService {
   publicContentSearch(req: NSSearch.ISearchV6Request) {
     req.query = req.query || ''
     return this.http.post<NSSearch.ISearchV6ApiResult>(API_END_POINTS.PUBLIC_CONTENT_SEARCH,
-                                                       req,
+      req,
     )
   }
   fetchContentRating(contentId: string): Observable<{ rating: number }> {
@@ -332,11 +333,11 @@ export class WidgetContentService {
   }
 
   loginAuth(req: any): Observable<any> {
-  return this.http.post<any>(API_END_POINTS.LOGIN_USER, req).pipe(retry(1),
-                                                                  map(
-          (data: any) => data
-        )
+    return this.http.post<any>(API_END_POINTS.LOGIN_USER, req).pipe(retry(1),
+      map(
+        (data: any) => data
       )
+    )
   }
   googleAuthenticate(req: any): Observable<any> {
     return this.http.post<any>(API_END_POINTS.GOOGLE_AUTHENTICATE, req).pipe(catchError(this.handleError))
@@ -357,5 +358,16 @@ export class WidgetContentService {
 
   getLatestCourse() {
     return this.http.get<any>(`${API_END_POINTS.LATEST_HOMEPAGE_COURSE}`)
+  }
+
+  getLiveSearchResults(): Observable<any> {
+    const req = {
+      request: {
+        filters: {
+          primaryCategory: ['Course'], contentType: ['Course'], status: ['Live'],
+        },
+      }, query: '', sort: [{ lastUpdatedOn: 'desc' }],
+    }
+    return this.http.post<any>(API_END_POINTS.SEARCH_V6PUBLIC, req)
   }
 }

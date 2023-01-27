@@ -16,7 +16,6 @@ const API_END_POINTS = {
   FETCH_USER_ENROLLMENT_LIST_V2: (userId: string | undefined, orgdetails: string, licenseDetails: string, fields: string, batchDetails: string) =>
     // tslint:disable-next-line:max-line-length
     `apis/proxies/v8/learner/course/v1/user/enrollment/list/${userId}?orgdetails=${orgdetails}&licenseDetails=${licenseDetails}&fields=${fields}&batchDetails=${batchDetails}`,
-  SEARCH_V6PUBLIC: '/apis/public/v8/publicContent/v1/search',
 }
 
 @Injectable({
@@ -68,14 +67,4 @@ export class WidgetUserService {
       )
   }
 
-  getLiveSearchResults(): Observable<any> {
-    const req = {
-      request: {
-        filters: {
-          primaryCategory: ['Course'], contentType: ['Course'], status: ['Live'],
-        },
-      }, query: '', sort: [{ lastUpdatedOn: 'desc' }],
-    }
-    return this.http.post<any>(API_END_POINTS.SEARCH_V6PUBLIC, req)
-  }
 }
