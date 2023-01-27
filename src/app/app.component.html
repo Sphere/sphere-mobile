@@ -1,5 +1,6 @@
 <ion-app>
   <ws-app-public-nav-bar *ngIf="showPublicNavbar"></ws-app-public-nav-bar>
+  <ws-app-nav-bar class="top-nav-bar" *ngIf="isNavBarRequired && showNavbar" [mode]="'top'"></ws-app-nav-bar>
   <ion-content overflow-scroll="true">
     <div class="height-adjust" [ngClass]="{
       'height-on-bottom custom-scroll':
