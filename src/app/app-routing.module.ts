@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
 import { CreateAccountComponent } from './modules/public/components/create-account/create-account.component';
+import { PageResolve } from '@ws-widget/utils';
 
 const routes: Routes = [
   {
@@ -20,6 +21,18 @@ const routes: Routes = [
     path: 'page/home',
     loadChildren:() => import('./modules/home/home.module').then(m => m.HomeModule)
   },
+  {
+    path: 'app/search',
+    loadChildren: () =>
+      import('./modules/overviews/routes/route-search-app.module').then(u => u.RouteSearchAppModule),
+      data: {
+        pageType: 'feature',
+        pageKey: 'search',
+      },
+      resolve: {
+        searchPageData: PageResolve,
+      }
+    },
 ];
 
 @NgModule({
