@@ -204,16 +204,19 @@ export class WidgetContentService extends DataService {
   }
 
   fetchContentHistory(contentId: string): Observable<NsContent.IContinueLearningData> {
-    return this.http.get<NsContent.IContinueLearningData>(
-      `${API_END_POINTS.CONTENT_HISTORY}/${contentId}`,
-    )
+    const options = {
+      url: `${API_END_POINTS.CONTENT_HISTORY}/${contentId}`,
+    }
+    return this.get(options)
   }
 
   fetchContentHistoryV2(req: NsContent.IContinueLearningDataReq): Observable<NsContent.IContinueLearningData> {
     req.request.fields = ['progressdetails']
-    return this.http.post<NsContent.IContinueLearningData>(
-      `${API_END_POINTS.CONTENT_HISTORYV2}/${req.request.courseId}`, req
-    )
+    const options = {
+      url: `${API_END_POINTS.CONTENT_HISTORYV2}/${req.request.courseId}`,
+      data: req,
+    };
+    return this.post(options)
   }
   async continueLearning(id: string, collectionId?: string, collectionType?: string): Promise<any> {
     return new Promise(async resolve => {
@@ -248,7 +251,11 @@ export class WidgetContentService extends DataService {
   }
   saveContinueLearning(content: NsContent.IViewerContinueLearningRequest): Observable<any> {
     const url = API_END_POINTS.USER_CONTINUE_LEARNING
-    return this.http.post<any>(url, content)
+    const options = {
+      url: url,
+      data: content,
+    };
+    return this.post(options)
   }
 
   setS3Cookie(
@@ -261,20 +268,30 @@ export class WidgetContentService extends DataService {
   }
 
   setS3ImageCookie(): Observable<any> {
-    return this.http.post(API_END_POINTS.SET_S3_IMAGE_COOKIE, {}).pipe(catchError(_err => of(true)))
+    const options = {
+      url: API_END_POINTS.SET_S3_IMAGE_COOKIE,
+      data: {},
+    };
+    return this.post(options).pipe(catchError(_err => of(true)))
   }
 
   fetchManifest(url: string): Observable<any> {
-    return this.http.post(API_END_POINTS.FETCH_MANIFEST, { url })
+    const options = {
+      url: API_END_POINTS.FETCH_MANIFEST,
+      data: { url },
+    };
+    return this.post(options)
   }
   fetchWebModuleContent(url: string): Observable<any> {
-    return this.http.get(`${API_END_POINTS.FETCH_WEB_MODULE_FILES}?url=${encodeURIComponent(url)}`)
+    return this.get(`${API_END_POINTS.FETCH_WEB_MODULE_FILES}?url=${encodeURIComponent(url)}`)
   }
   search(req: NSSearch.ISearchRequest): Observable<NSSearch.ISearchApiResult> {
     req.query = req.query || ''
-    return this.http.post<NSSearch.ISearchApiResult>(API_END_POINTS.CONTENT_SEARCH_V5, {
-      request: req,
-    })
+    const options = {
+      url: API_END_POINTS.CONTENT_SEARCH_V5,
+      data: { request: req,},
+    };
+    return this.post(options)
   }
 
   searchRegionRecommendation(
@@ -288,10 +305,11 @@ export class WidgetContentService extends DataService {
       ...req.filters,
       labels: [req.preLabelValue || ''],
     }
-    return this.http.post<NsContentStripMultiple.IContentStripResponseApi>(
-      API_END_POINTS.CONTENT_SEARCH_REGION_RECOMMENDATION,
-      { request: req },
-    )
+    const options = {
+      url: API_END_POINTS.CONTENT_SEARCH_REGION_RECOMMENDATION,
+      data: { request: req },
+    };
+    return this.post(options)
   }
   searchV6(req: NSSearch.ISearchV6Request) {
     req.query = req.query || ''
@@ -300,23 +318,37 @@ export class WidgetContentService extends DataService {
         lastUpdatedOn: 'desc',
       },
     ]
-    return this.http.post<NSSearch.ISearchV6ApiResult>(API_END_POINTS.PUBLIC_CONTENT_SEARCH, req)
+    const options = {
+      url: API_END_POINTS.PUBLIC_CONTENT_SEARCH,
+      data: req,
+    };
+    return this.post(options)
   }
 
   publicContentSearch(req: NSSearch.ISearchV6Request) {
     req.query = req.query || ''
-    return this.http.post<NSSearch.ISearchV6ApiResult>(API_END_POINTS.PUBLIC_CONTENT_SEARCH,
-      req,
-    )
+    const options = {
+      url: API_END_POINTS.PUBLIC_CONTENT_SEARCH,
+      data: req,
+    };
+    return this.post(options)
   }
   fetchContentRating(contentId: string): Observable<{ rating: number }> {
-    return this.http.get<{ rating: number }>(`${API_END_POINTS.CONTENT_RATING}/${contentId}`)
+    const url = `${API_END_POINTS.CONTENT_RATING}/${contentId}`
+    const options = {
+      url:url,
+    };
+    return this.get(options)
   }
   deleteContentRating(contentId: string): Observable<any> {
     return this.http.delete(`${API_END_POINTS.CONTENT_RATING}/${contentId}`)
   }
   addContentRating(contentId: string, data: { rating: number }): Observable<any> {
-    return this.http.post<any>(`${API_END_POINTS.CONTENT_RATING}/${contentId}`, data)
+    const options = {
+      url: `${API_END_POINTS.CONTENT_RATING}/${contentId}`,
+      data: data,
+    };
+    return this.post(options)
   }
 
   getFirstChildInHierarchy(content: NsContent.IContent): NsContent.IContent {
@@ -343,22 +375,37 @@ export class WidgetContentService extends DataService {
   }
 
   getRegistrationStatus(source: string): Promise<{ hasAccess: boolean; registrationUrl?: string }> {
-    return this.http.get<any>(`${API_END_POINTS.REGISTRATION_STATUS}/${source}`).toPromise()
+    const url = `${API_END_POINTS.REGISTRATION_STATUS}/${source}`
+    const options = {
+      url:url,
+    };
+    return this.get(options).toPromise()
   }
 
   fetchConfig(url: string) {
-    return this.http.get<any>(url)
+    const options = {
+      url:url,
+    };
+    return this.get(options)
   }
 
   loginAuth(req: any): Observable<any> {
-    return this.http.post<any>(API_END_POINTS.LOGIN_USER, req).pipe(retry(1),
+    const options = {
+      url: API_END_POINTS.LOGIN_USER,
+      data: req,
+    };
+    return this.post(options).pipe(retry(1),
       map(
         (data: any) => data
       )
     )
   }
   googleAuthenticate(req: any): Observable<any> {
-    return this.http.post<any>(API_END_POINTS.GOOGLE_AUTHENTICATE, req).pipe(catchError(this.handleError))
+    const options = {
+      url: API_END_POINTS.GOOGLE_AUTHENTICATE,
+      data: req,
+    };
+    return this.post(options).pipe(catchError(this.handleError))
   }
   handleError(error: HttpErrorResponse) {
     return throwError(error)
@@ -375,7 +422,11 @@ export class WidgetContentService extends DataService {
   }
 
   getLatestCourse() {
-    return this.http.get<any>(`${API_END_POINTS.LATEST_HOMEPAGE_COURSE}`)
+    const url = `${API_END_POINTS.LATEST_HOMEPAGE_COURSE}`
+    const options = {
+      url:url,
+    };
+    return this.get(options)
   }
 
   getLiveSearchResults(): Observable<any> {
@@ -386,6 +437,10 @@ export class WidgetContentService extends DataService {
         },
       }, query: '', sort: [{ lastUpdatedOn: 'desc' }],
     }
-    return this.http.post<any>(API_END_POINTS.SEARCH_V6PUBLIC, req)
+    const options = {
+      url: API_END_POINTS.SEARCH_V6PUBLIC,
+      data: req,
+    };
+    return this.post(options)
   }
 }
