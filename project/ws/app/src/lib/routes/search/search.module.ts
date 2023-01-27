@@ -56,7 +56,7 @@ import { SocialComponent } from './routes/social/social.component'
 import { SearchRoutingModule } from './search-routing.module'
 import { PeopleComponent } from './routes/people/people.component'
 import { SearchInputHomeComponent } from './components/search-input-home/search-input-home.component'
-import { PageModule } from 'src/app/modules/pages/page.module'
+import { HomeModule } from 'src/app/modules/home/home.module'
 // import { PublicHomeModule } from '../../../../../../../src/app/routes/public/public-home/public-home.module'
 @NgModule({
   declarations: [
@@ -118,7 +118,7 @@ import { PageModule } from 'src/app/modules/pages/page.module'
     BtnChannelAnalyticsModule,
     MatDividerModule,
     UserAutocompleteModule,
-    PageModule
+    HomeModule
     // PublicHomeModule,
   ],
   exports: [ItemTileComponent, SearchInputComponent, SearchInputHomeComponent],
