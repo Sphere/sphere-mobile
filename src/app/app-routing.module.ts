@@ -41,6 +41,10 @@ const routes: Routes = [
     resolve: {
       searchPageData: PageResolve,
     }
+  }, 
+  {
+    path: 'app/toc',
+    loadChildren: () => import('./modules/overview-toc/overview-toc.module').then(u => u.OverviewTocModule),
   },
 ];
 
