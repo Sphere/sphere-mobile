@@ -7,8 +7,8 @@ import { MobileCategoryComponent } from './components/mobile-category/mobile-cat
 import { MobileCourseViewComponent } from './components/mobile-course-view/mobile-course-view.component';
 import { MobileDashboardComponent } from './components/mobile-dashboard/mobile-dashboard.component';
 import { MobileHowDoesWorkComponent } from './components/mobile-how-does-work/mobile-how-does-work.component';
-import { PageHomeComponent } from './components/page-home/page-home.component';
-import { PageHomeRoutingModule } from './page-home-routing.module';
+import { HomeComponent } from './components/home/home.component';
+import { HomeRoutingModule } from './home-routing.module';
 
 @NgModule({
     declarations: [
@@ -16,7 +16,7 @@ import { PageHomeRoutingModule } from './page-home-routing.module';
         MobileCategoryComponent,
         MobileCourseViewComponent,
         MobileHowDoesWorkComponent,
-        PageHomeComponent
+        HomeComponent
       ],
     imports: [
         CommonModule,
@@ -26,7 +26,7 @@ import { PageHomeRoutingModule } from './page-home-routing.module';
         MatInputModule, 
         MatIconModule,
         ReactiveFormsModule,
-        PageHomeRoutingModule
+        HomeRoutingModule
     ],
     entryComponents: [
      
