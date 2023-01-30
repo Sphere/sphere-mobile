@@ -2,7 +2,7 @@ import { HttpClient } from '@angular/common/http'
 import { Component, OnInit } from '@angular/core'
 import { NavigationExtras, Router } from '@angular/router'
 import { delay } from 'rxjs/operators'
-import { WidgetUserService } from '../../../../../../library/ws-widget/collection/src/public-api'
+import { WidgetContentService, WidgetUserService } from '../../../../../../library/ws-widget/collection/src/public-api'
 import { ConfigurationsService } from '../../../../../../library/ws-widget/utils/src/public-api'
 import { forkJoin } from 'rxjs'
 import * as _ from 'lodash-es'
@@ -28,6 +28,7 @@ export class MobileDashboardComponent implements OnInit {
   constructor(
               private configSvc: ConfigurationsService,
               private userSvc: WidgetUserService,
+              private ContentSvc : WidgetContentService,
               private router: Router,
               private http: HttpClient
   ) {
@@ -59,7 +60,7 @@ export class MobileDashboardComponent implements OnInit {
       this.firstName = 'vishali'
       // this.userId = this.configSvc.userProfile.userId || 'fc7a6dd1-313e-48e0-beba-1faee25e170b'
       this.userId ='fc7a6dd1-313e-48e0-beba-1faee25e170b'
-      forkJoin([this.userSvc.fetchUserBatchList(this.userId), this.userSvc.getLiveSearchResults(),
+      forkJoin([this.userSvc.fetchUserBatchList(this.userId), this.ContentSvc.getLiveSearchResults(),
       this.http.get(`assets/configurations/mobile-home.json`)]).pipe().subscribe((res: any) => {
        this.homeFeature = res[2].userLoggedInSection
         this.topCertifiedCourseIdentifier = res[2].topCertifiedCourseIdentifier
