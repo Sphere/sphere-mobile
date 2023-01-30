@@ -304,9 +304,11 @@ export class WidgetContentService extends DataService {
 
   publicContentSearch(req: NSSearch.ISearchV6Request) {
     req.query = req.query || ''
-    return this.http.post<NSSearch.ISearchV6ApiResult>(API_END_POINTS.PUBLIC_CONTENT_SEARCH,
-                                                       req,
-    )
+    const options = {
+      url: API_END_POINTS.PUBLIC_CONTENT_SEARCH,
+      data: req,
+    };
+    return this.post(options)
   }
   fetchContentRating(contentId: string): Observable<{ rating: number }> {
     return this.http.get<{ rating: number }>(`${API_END_POINTS.CONTENT_RATING}/${contentId}`)
