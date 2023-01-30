@@ -38,6 +38,7 @@
     "@ionic/angular": "5.7.0",
     "@material-extended/mde": "^2.3.1",
     "@project-sunbird/client-services": "3.9.5",
+    "@project-sunbird/sb-styles": "0.0.7",
     "@types/ckeditor": "^4.9.10",
     "@types/lodash": "^4.14.170",
     "angularx-qrcode": "~2.1.4",

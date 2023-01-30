@@ -1,35 +1,34 @@
-// @import 'ws-common';
-// @import 'ws-mixins';
+@import 'styles/_ws-common.scss';
+@import 'styles/_ws-mixins.scss';
 
 .login-page-content {
   box-sizing: border-box;
-  // padding: $size-m;
-//   @extend %page-center;
-//   @extend %height-mat-toolbar-sibling;
+  @extend %page-center;
+  @extend %height-mat-toolbar-sibling;
   padding: 0;
   box-sizing: border-box;
 
-//   @include breakpoint-gt-s {
-//     max-width: 30%;
-//   }
+  @include breakpoint-gt-s {
+    max-width: 30%;
+  }
 
-//   @include breakpoint-gt-m {
-//     max-width: 25%;
-//   }
+  @include breakpoint-gt-m {
+    max-width: 25%;
+  }
 
-//   @include breakpoint-gt-l {
-//     max-width: 20%;
-//   }
+  @include breakpoint-gt-l {
+    max-width: 20%;
+  }
 
-//   @include breakpoint-s {
-//     max-width: 50%;
-//     padding: 12px;
-//   }
+  @include breakpoint-s {
+    max-width: 50%;
+    padding: 12px;
+  }
 
-//   @include breakpoint-xs {
-//     max-width: 90%;
-//     margin: auto;
-//   }
+  @include breakpoint-xs {
+    max-width: 90%;
+    margin: auto;
+  }
 }
 
 .login-card {
@@ -90,13 +89,13 @@ a {
 }
 
 
-// .register {
-//   @include breakpoint-xs {
-//     font-size: 16px !important;
-//     font-weight: 500 !important;
-//     line-height: 20px !important;
-//   }
-// }
+.register {
+  @include breakpoint-xs {
+    font-size: 16px !important;
+    font-weight: 500 !important;
+    line-height: 20px !important;
+  }
+}
 
 .non-register {
   font-size: 40px !important;
