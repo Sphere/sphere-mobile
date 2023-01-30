@@ -35,6 +35,10 @@ export class AppComponent implements OnInit{
           this.showPublicNavbar= false
           this.showNavbar = false
         }
+        else if (event.url.includes('public/home')) {
+          this.showPublicNavbar= true
+          this.showNavbar = true
+        }
       }
     })
   }
