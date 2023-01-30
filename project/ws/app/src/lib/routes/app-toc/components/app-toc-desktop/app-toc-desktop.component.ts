@@ -288,7 +288,7 @@ export class AppTocDesktopComponent implements OnInit, OnChanges, OnDestroy {
             batchId: batch.batchId,
           },
         }
-        this.contentSvc.enrollUserToBatch(req).then((data: any) => {
+        this.contentSvc.enrollUserToBatch(req).subscribe((data: any) => {
           if (data && data.result && data.result.response === 'SUCCESS') {
             this.batchData = {
               content: [batch],
@@ -477,7 +477,7 @@ export class AppTocDesktopComponent implements OnInit, OnChanges, OnDestroy {
             if (this.enrolledCourse && this.enrolledCourse.issuedCertificates.length > 0) {
               const certID = this.enrolledCourse.issuedCertificates[0].identifier || ''
               const name = this.enrolledCourse.courseName
-              this.contentSvc.downloadCertificateAPI(certID).toPromise().then((response: any) => {
+              this.contentSvc.downloadCertificateAPI(certID).subscribe((response: any) => {
                 if (response.responseCode) {
                   const img = new Image()
                   const url = response.result.printUri
@@ -852,7 +852,7 @@ export class AppTocDesktopComponent implements OnInit, OnChanges, OnDestroy {
           batchId: batchData[0].batchId,
         },
       }
-      this.contentSvc.enrollUserToBatch(req).then((data: any) => {
+      this.contentSvc.enrollUserToBatch(req).subscribe((data: any) => {
 
         if (data && data.result && data.result.response === 'SUCCESS') {
           // this.batchData = {
@@ -883,10 +883,6 @@ export class AppTocDesktopComponent implements OnInit, OnChanges, OnDestroy {
           this.disableEnrollBtn = false
         }
       })
-        .catch((err: any) => {
-
-          this.openSnackbar(err.error.params.errmsg)
-        })
     }
 
   }

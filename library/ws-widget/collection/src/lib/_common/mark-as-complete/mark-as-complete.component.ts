@@ -56,11 +56,9 @@ export class MarkAsCompleteComponent implements OnInit, OnChanges {
         if (this.content) {
           if (!this.forPreview) {
             this.contentSvc
-              .fetchMarkAsCompleteMeta(this.content.identifier)
-              .then(progress => {
+              .fetchMarkAsCompleteMeta(this.content.identifier).subscribe((progress:any)=>{
                 this.content.progress = progress
               })
-              .catch(() => { })
             this.reqBody = {
               content_type: this.content.contentType,
               current: ['1'],

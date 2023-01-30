@@ -6,7 +6,7 @@ import { catchError, retry, map } from 'rxjs/operators'
 import { NsContentStripMultiple } from '../content-strip-multiple/content-strip-multiple.model'
 import { NsContent } from './widget-content.model'
 import { NSSearch } from './widget-search.model'
-
+import { DataService } from '../../../../../../src/app/modules/core/services/data.service'
 // TODO: move this in some common place
 const PROTECTED_SLAG_V8 = '/apis/protected/v8'
 const PUBLIC_SLAG = '/apis/public/v8'
@@ -44,76 +44,86 @@ const API_END_POINTS = {
 @Injectable({
   providedIn: 'root',
 })
-export class WidgetContentService {
+export class WidgetContentService extends DataService {
   private messageSource = new Subject<any>()
   public currentMessage = this.messageSource.asObservable()
   public _updateValue = new BehaviorSubject<any>(undefined)
   // Observable navItem stream
   updateValue$ = this._updateValue.asObservable()
   constructor(
-    private http: HttpClient,
+    public http: HttpClient,
     private configSvc: ConfigurationsService
-  ) { }
+  ) { 
+    super(http)
+    this.baseUrl = 'https://sphere.aastrika.org/'
+  }
 
-  fetchMarkAsCompleteMeta(identifier: string): Promise<any> {
-    const url = API_END_POINTS.MARK_AS_COMPLETE_META(identifier)
-    return this.http.get(url).toPromise()
+  fetchMarkAsCompleteMeta(identifier: string) {
+    
+    const options = {
+      url: API_END_POINTS.MARK_AS_COMPLETE_META(identifier),
+    };
+    return this.get(options).pipe(
+      map(response => {
+        return response
+      }),
+    )
+    
   }
   changeMessage(message: string) {
     this.messageSource.next(message)
   }
-  // fetchContent(
-  //   contentId: string,
-  //   hierarchyType: 'all' | 'minimal' | 'detail' = 'detail',
-  //   additionalFields: string[] = [],
-  // ): Observable<NsContent.IContent> {
-  //   console.log('Fetch content 666')
-  //   const url = `${API_END_POINTS.CONTENT}/${contentId}?hierarchyType=${hierarchyType}`
-  //   return this.http
-  //     .post<NsContent.IContent>(url, { additionalFields })
-  //     .pipe(retry(1))
-  // }
+
 
   // tslint:disable-next-line:max-line-length
   fetchUserBatchList(userId: string | undefined): Observable<NsContent.ICourse[]> {
-    let path = ''
-    path = API_END_POINTS.FETCH_USER_ENROLLMENT_LIST(userId)
-    return this.http
-      .get(path)
-      .pipe(
-        catchError(this.handleError),
-        map(
-          (data: any) => data.result.courses
-        )
-      )
+    const options = {
+      url: API_END_POINTS.FETCH_USER_ENROLLMENT_LIST(userId),
+    };
+    return this.get(options).pipe(
+      map(
+        (data: any) => data.result.courses
+      ),
+    )
   }
 
   fetchHierarchyContent(contentId: string): Observable<NsContent.IContent> {
     const url = `/apis/proxies/v8/action/content/v3/hierarchy/${contentId}?hierarchyType=detail`
-    const apiData = this.http
-      .get<NsContent.IContent>(url)
-      .pipe(retry(1))
-    return apiData
+    const options = {
+      url:url,
+    };
+   return this.get(options).pipe(
+      retry(1),
+    )
   }
 
   processCertificate(req: any): Observable<any> {
     const url = `/apis/proxies/v8/course/batch/cert/v1/issue/`
-    return this.http.post<any>(url, req)
+    const options = {
+      url: url,
+      data: req,
+    };
+    return this.post(options)
   }
 
   downloadCertificateAPI(certificateId: string): Observable<any> {
     const url = `/apis/proxies/v8/certreg/v2/certs/download/${certificateId}`
-    const apiData = this.http
-      .get<any>(url)
-      .pipe(retry(1))
-    return apiData
+    const options = {
+      url:url,
+    };
+    return this.get(options).pipe(
+      retry(1),
+    )
   }
 
   getCertificateAPI(certificateId: string): Observable<any> {
     const url = `/apis/proxies/v8/certreg/v2/certs/download/${certificateId}`
-    const apiData = this.http
-      .get<any>(url)
-      .pipe(retry(1), map(res => this._updateValue.next({ [certificateId]: res.result.printUri })))
+    const options = {
+      url:url,
+    };
+    const apiData =  this.get(options).pipe(
+      retry(1),map(res => this._updateValue.next({ [certificateId]: res.result.printUri }))
+    )
     return apiData
   }
 
@@ -123,23 +133,18 @@ export class WidgetContentService {
     _additionalFields: string[] = [],
     primaryCategory?: string | null,
   ): Observable<NsContent.IContent> {
-    // const url = `${API_END_POINTS.CONTENT}/${contentId}?hierarchyType=${hierarchyType}`
     let url = ''
     if (primaryCategory && this.isResource(primaryCategory)) {
       url = `/apis/proxies/v8/action/content/v3/read/${contentId}`
     } else {
       url = `/apis/proxies/v8/action/content/v3/hierarchy/${contentId}?hierarchyType=${hierarchyType}`
     }
-    // return this.http
-    //   .post<NsContent.IContent>(url, { additionalFields })
-    //   .pipe(retry(1))
-    const apiData = this.http
-      .get<NsContent.IContent>(url)
-      .pipe(retry(1))
-    // if (apiData && apiData.result) {
-    //   return apiData.result.content
-    // }
-    return apiData
+    const options = {
+      url:url,
+    };
+    return this.get(options).pipe(
+      retry(1),
+    )
   }
 
   isResource(primaryCategory: string) {
@@ -152,25 +157,38 @@ export class WidgetContentService {
 
   fetchAuthoringContent(contentId: string): Observable<NsContent.IContent> {
     const url = `${API_END_POINTS.AUTHORING_CONTENT}/${contentId}`
-    return this.http.get<NsContent.IContent>(url).pipe(retry(1))
-  }
-  fetchMultipleContent(ids: string[]): Observable<NsContent.IContent[]> {
-    return this.http.get<NsContent.IContent[]>(
-      `${API_END_POINTS.MULTIPLE_CONTENT}/${ids.join(',')}`,
+    const options = {
+      url:url,
+    };
+    return this.get(options).pipe(
+      retry(1),
     )
   }
+  fetchMultipleContent(ids: string[]): Observable<NsContent.IContent[]> {
+    const url = `${API_END_POINTS.MULTIPLE_CONTENT}/${ids.join(',')}`
+    const options = {
+      url:url,
+    };
+    return this.get(options)
+  }
   fetchCollectionHierarchy(type: string, id: string, pageNumber: number = 0, pageSize: number = 1) {
-    return this.http.get<NsContent.ICollectionHierarchyResponse>(
-      `${API_END_POINTS.COLLECTION_HIERARCHY(
-        type,
-        id,
-      )}?pageNumber=${pageNumber}&pageSize=${pageSize}`,
+    const url =  `${API_END_POINTS.COLLECTION_HIERARCHY(
+      type,
+      id,
+    )}?pageNumber=${pageNumber}&pageSize=${pageSize}`
+    const options = {
+      url:url,
+    };
+    return this.get(
+      options
     )
   }
   enrollUserToBatch(req: any) {
-    return this.http
-      .post(API_END_POINTS.ENROLL_BATCH, req)
-      .toPromise()
+    const options = {
+      url: API_END_POINTS.ENROLL_BATCH,
+      data: req,
+    };
+    return this.post(options)
   }
 
   fetchContentLikes(contentIds: { content_id: string[] }) {

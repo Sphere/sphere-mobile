@@ -456,7 +456,7 @@ export class AppTocHomePageComponent implements OnInit, OnDestroy {
           batchId: batchData.content[0].batchId,
         },
       }
-      this.contentSvc.enrollUserToBatch(req).then((data: any) => {
+      this.contentSvc.enrollUserToBatch(req).subscribe((data: any) => {
         if (data && data.result && data.result.response === 'SUCCESS') {
           this.getUserEnrollmentList()
           this.router.navigate(
@@ -477,10 +477,10 @@ export class AppTocHomePageComponent implements OnInit, OnDestroy {
           this.openSnackbar('Something went wrong, please try again later!')
         }
       })
-        .catch((err: any) => {
+        // .catch((err: any) => {
 
-          this.openSnackbar(err.error.params.errmsg)
-        })
+        //   this.openSnackbar(err.error.params.errmsg)
+        // })
     }
 
   }
