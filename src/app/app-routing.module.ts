@@ -4,6 +4,7 @@ import { CreateAccountComponent } from './modules/public/components/create-accou
 import { NewTncComponent } from './routes/new-tnc/new-tnc.component';
 import { TncPublicResolverService } from './services/tnc-public-resolver.service';
 import { PageResolve } from '@ws-widget/utils';
+import { LoginComponent } from './modules/public/components/login/login.component';
 
 const routes: Routes = [
   {
@@ -45,6 +46,10 @@ const routes: Routes = [
   {
     path: 'app/toc',
     loadChildren: () => import('./modules/overview-toc/overview-toc.module').then(u => u.OverviewTocModule),
+  },
+  {
+    path: 'app/login',
+    component: LoginComponent,
   },
 ];
 
