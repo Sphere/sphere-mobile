@@ -37,10 +37,7 @@ import { AppTocOverviewComponent } from './components/app-toc-overview/app-toc-o
 import { AppTocContentCardComponent } from './components/app-toc-content-card/app-toc-content-card.component'
 
 // services
-import { AppTocResolverService } from './resolvers/app-toc-resolver.service'
-import { ProfileResolverService } from './../user-profile/resolvers/profile-resolver.service'
 import { AppTocService } from './services/app-toc.service'
-import { TrainingApiService } from '../infy/routes/training/apis/training-api.service'
 
 // custom modules
 import { WidgetResolverModule } from '@ws-widget/resolver'
@@ -72,7 +69,6 @@ import {
   ContentProgressModule,
   UserContentRatingModule,
   PipeContentRouteModule,
-  PipeContentRoutePipe,
   BtnKbModule,
   MarkAsCompleteModule,
   PlayerBriefModule,
@@ -80,14 +76,9 @@ import {
   UserAutocompleteModule,
 
 } from '@ws-widget/collection'
-import { CertificationMetaResolver } from './routes/app-toc-certification/resolvers/certification-meta.resolver'
-import { ContentCertificationResolver } from './routes/app-toc-certification/resolvers/content-certification.resolver'
-import { CertificationApiService } from './routes/app-toc-certification/apis/certification-api.service'
 import { AppTocCertificationModule } from './routes/app-toc-certification/app-toc-certification.module'
-import { TrainingService } from '../infy/routes/training/services/training.service'
 import { ProfileImageModule } from '../../../../../../../library/ws-widget/collection/src/lib/_common/profile-image/profile-image.module'
-import { EditorService } from '../../../../../author/src/lib/routing/modules/editor/services/editor.service'
-import { ApiService, AccessControlService } from '../../../../../author/src/public-api'
+import { AccessControlService } from '../../../../../author/src/public-api'
 import { LicenseComponent } from './components/license/license.component'
 import { AllDiscussionWidgetComponent } from './routes/widget/all-discussion-widget/all-discussion-widget.component'
 import { AppTocHomePageComponent } from './components/app-toc-home-page/app-toc-home-page.component'
@@ -172,18 +163,8 @@ import { AssessmentDetailComponent } from './components/assessment-detail/assess
     DiscussionUiModule,
   ],
   providers: [
-    AppTocResolverService,
     AppTocService,
-    PipeContentRoutePipe,
-    TrainingApiService,
-    TrainingService,
-    CertificationApiService,
-    CertificationMetaResolver,
-    ContentCertificationResolver,
-    EditorService,
-    ApiService,
     AccessControlService,
-    ProfileResolverService,
   ],
   exports: [
     AssessmentDetailComponent,    
