@@ -286,7 +286,7 @@ export class AppTocBannerComponent implements OnInit, OnChanges, OnDestroy {
             batchId: batch.batchId,
           },
         }
-        this.contentSvc.enrollUserToBatch(req).then((data: any) => {
+        this.contentSvc.enrollUserToBatch(req).subscribe((data: any) => {
           if (data && data.result && data.result.response === 'SUCCESS') {
             this.batchData = {
               content: [batch],
@@ -822,7 +822,7 @@ export class AppTocBannerComponent implements OnInit, OnChanges, OnDestroy {
           batchId: batchData[0].batchId,
         },
       }
-      this.contentSvc.enrollUserToBatch(req).then((data: any) => {
+      this.contentSvc.enrollUserToBatch(req).subscribe((data: any) => {
 
         if (data && data.result && data.result.response === 'SUCCESS') {
           // this.batchData = {
@@ -853,10 +853,10 @@ export class AppTocBannerComponent implements OnInit, OnChanges, OnDestroy {
           this.disableEnrollBtn = false
         }
       })
-        .catch((err: any) => {
+        // .catch((err: any) => {
 
-          this.openSnackbar(err.error.params.errmsg)
-        })
+        //   this.openSnackbar(err.error.params.errmsg)
+        // })
     }
 
   }
