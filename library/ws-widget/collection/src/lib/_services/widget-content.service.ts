@@ -54,13 +54,13 @@ export class WidgetContentService extends DataService {
   constructor(
     public http: HttpClient,
     private configSvc: ConfigurationsService
-  ) { 
+  ) {
     super(http)
     this.baseUrl = 'https://sphere.aastrika.org/'
   }
 
   fetchMarkAsCompleteMeta(identifier: string) {
-    
+
     const options = {
       url: API_END_POINTS.MARK_AS_COMPLETE_META(identifier),
     };
@@ -69,7 +69,7 @@ export class WidgetContentService extends DataService {
         return response
       }),
     )
-    
+
   }
   changeMessage(message: string) {
     this.messageSource.next(message)
@@ -91,9 +91,9 @@ export class WidgetContentService extends DataService {
   fetchHierarchyContent(contentId: string): Observable<NsContent.IContent> {
     const url = `/apis/proxies/v8/action/content/v3/hierarchy/${contentId}?hierarchyType=detail`
     const options = {
-      url:url,
+      url: url,
     };
-   return this.get(options).pipe(
+    return this.get(options).pipe(
       retry(1),
     )
   }
@@ -110,7 +110,7 @@ export class WidgetContentService extends DataService {
   downloadCertificateAPI(certificateId: string): Observable<any> {
     const url = `/apis/proxies/v8/certreg/v2/certs/download/${certificateId}`
     const options = {
-      url:url,
+      url: url,
     };
     return this.get(options).pipe(
       retry(1),
@@ -120,10 +120,10 @@ export class WidgetContentService extends DataService {
   getCertificateAPI(certificateId: string): Observable<any> {
     const url = `/apis/proxies/v8/certreg/v2/certs/download/${certificateId}`
     const options = {
-      url:url,
+      url: url,
     };
-    const apiData =  this.get(options).pipe(
-      retry(1),map(res => this._updateValue.next({ [certificateId]: res.result.printUri }))
+    const apiData = this.get(options).pipe(
+      retry(1), map(res => this._updateValue.next({ [certificateId]: res.result.printUri }))
     )
     return apiData
   }
@@ -141,7 +141,7 @@ export class WidgetContentService extends DataService {
       url = `/apis/proxies/v8/action/content/v3/hierarchy/${contentId}?hierarchyType=${hierarchyType}`
     }
     const options = {
-      url:url,
+      url: url,
     };
     return this.get(options).pipe(
       retry(1),
@@ -159,7 +159,7 @@ export class WidgetContentService extends DataService {
   fetchAuthoringContent(contentId: string): Observable<NsContent.IContent> {
     const url = `${API_END_POINTS.AUTHORING_CONTENT}/${contentId}`
     const options = {
-      url:url,
+      url: url,
     };
     return this.get(options).pipe(
       retry(1),
@@ -168,17 +168,17 @@ export class WidgetContentService extends DataService {
   fetchMultipleContent(ids: string[]): Observable<NsContent.IContent[]> {
     const url = `${API_END_POINTS.MULTIPLE_CONTENT}/${ids.join(',')}`
     const options = {
-      url:url,
+      url: url,
     };
     return this.get(options)
   }
   fetchCollectionHierarchy(type: string, id: string, pageNumber: number = 0, pageSize: number = 1) {
-    const url =  `${API_END_POINTS.COLLECTION_HIERARCHY(
+    const url = `${API_END_POINTS.COLLECTION_HIERARCHY(
       type,
       id,
     )}?pageNumber=${pageNumber}&pageSize=${pageSize}`
     const options = {
-      url:url,
+      url: url,
     };
     return this.get(
       options
@@ -193,14 +193,18 @@ export class WidgetContentService extends DataService {
   }
 
   fetchContentLikes(contentIds: { content_id: string[] }) {
-    return this.http
-      .post<{ [identifier: string]: number }>(API_END_POINTS.CONTENT_LIKES, contentIds)
-      .toPromise()
+    const options = {
+      url: API_END_POINTS.CONTENT_LIKES,
+      data: contentIds,
+    }
+    return this.post(options).toPromise()
   }
   fetchContentRatings(contentIds: { contentIds: string[] }) {
-    return this.http
-      .post(`${API_END_POINTS.CONTENT_RATING}/rating`, contentIds)
-      .toPromise()
+    const options = {
+      url: `${API_END_POINTS.CONTENT_RATING}/rating`,
+      data: contentIds,
+    }
+    return this.post(options).toPromise()
   }
 
   fetchContentHistory(contentId: string): Observable<NsContent.IContinueLearningData> {
@@ -262,9 +266,11 @@ export class WidgetContentService extends DataService {
     contentId: string,
     // _path: string,
   ): Observable<any> {
-    return this.http
-      .post(API_END_POINTS.SET_S3_COOKIE, { contentId })
-      .pipe(catchError(_err => of(true)))
+    const options = {
+      url: API_END_POINTS.SET_S3_COOKIE,
+      data: { contentId },
+    };
+    return this.post(options).pipe(catchError(_err => of(true)))
   }
 
   setS3ImageCookie(): Observable<any> {
@@ -289,7 +295,7 @@ export class WidgetContentService extends DataService {
     req.query = req.query || ''
     const options = {
       url: API_END_POINTS.CONTENT_SEARCH_V5,
-      data: { request: req,},
+      data: { request: req, },
     };
     return this.post(options)
   }
@@ -336,12 +342,15 @@ export class WidgetContentService extends DataService {
   fetchContentRating(contentId: string): Observable<{ rating: number }> {
     const url = `${API_END_POINTS.CONTENT_RATING}/${contentId}`
     const options = {
-      url:url,
+      url: url,
     };
     return this.get(options)
   }
   deleteContentRating(contentId: string): Observable<any> {
-    return this.http.delete(`${API_END_POINTS.CONTENT_RATING}/${contentId}`)
+    const options = {
+      url: `${API_END_POINTS.CONTENT_RATING}/${contentId}`,
+    }
+    return this.delete(options)
   }
   addContentRating(contentId: string, data: { rating: number }): Observable<any> {
     const options = {
@@ -377,14 +386,14 @@ export class WidgetContentService extends DataService {
   getRegistrationStatus(source: string): Promise<{ hasAccess: boolean; registrationUrl?: string }> {
     const url = `${API_END_POINTS.REGISTRATION_STATUS}/${source}`
     const options = {
-      url:url,
+      url: url,
     };
     return this.get(options).toPromise()
   }
 
   fetchConfig(url: string) {
     const options = {
-      url:url,
+      url: url,
     };
     return this.get(options)
   }
@@ -411,20 +420,22 @@ export class WidgetContentService extends DataService {
     return throwError(error)
   }
   fetchCourseBatches(req: any): Observable<NsContent.IBatchListResponse> {
-    return this.http
-      .post<NsContent.IBatchListResponse>(API_END_POINTS.COURSE_BATCH_LIST, req)
-      .pipe(
-        retry(1),
-        map(
-          (data: any) => data.result.response
-        )
+    const options = {
+      url: API_END_POINTS.COURSE_BATCH_LIST,
+      data: req,
+    };
+    return this.post(options).pipe(
+      retry(1),
+      map(
+        (data: any) => data.result.response
       )
+    )
   }
 
   getLatestCourse() {
     const url = `${API_END_POINTS.LATEST_HOMEPAGE_COURSE}`
     const options = {
-      url:url,
+      url: url,
     };
     return this.get(options)
   }

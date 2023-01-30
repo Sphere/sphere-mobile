@@ -42,7 +42,7 @@ export class DataService {
       }));
   }
    /**
-   * for making get api calls
+   * for making post api calls
    *
    * @param requestParam interface
    */
@@ -62,6 +62,20 @@ export class DataService {
         
       })
     )
+  }
+  delete(requestParam:any):Observable<any>{
+    const httpOptions: any = {
+      headers: requestParam.header ? requestParam.header : this.getHeader(),
+      params: requestParam.param,
+      observe: 'response'
+    };
+    return this.http.delete(this.baseUrl +  requestParam.url, httpOptions).pipe(
+      mergeMap(({ body, headers }: any) => {
+        if (body.responseCode !== 'OK') {
+          return observableThrowError(body);
+        }
+        return observableOf(body);
+      }));
   }
   /**
    * for preparing headers

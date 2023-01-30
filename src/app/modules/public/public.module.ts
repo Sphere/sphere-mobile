@@ -12,6 +12,7 @@ import { HeaderComponent } from './components/header/header.component';
 import { LoginOtpComponent } from './components/login-otp/login-otp.component';
 import { WidgetResolverModule } from '@ws-widget/resolver'
 import {  WIDGET_REGISTERED_MODULES, WIDGET_REGISTRATION_CONFIG } from '@ws-widget/collection'
+import { LoginComponent } from './components/login/login.component';
 @NgModule({
   declarations: [
     PublicHomeComponent,
@@ -19,7 +20,8 @@ import {  WIDGET_REGISTERED_MODULES, WIDGET_REGISTRATION_CONFIG } from '@ws-widg
     MobileHomeComponent,
     CreateAccountComponent,
     HeaderComponent,
-    LoginOtpComponent
+    LoginOtpComponent,
+    LoginComponent
     ],
   imports: [
     CommonModule,
