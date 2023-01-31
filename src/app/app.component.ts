@@ -34,6 +34,9 @@ export class AppComponent implements OnInit{
         } else if (event.url.includes('app/new-tnc')) {
           this.showPublicNavbar= false
           this.showNavbar = false
+        } else if (event.url.includes('app/login')) {
+          this.showPublicNavbar= false
+          this.showNavbar = false
         }
       }
     })
