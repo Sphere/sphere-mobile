@@ -76,7 +76,6 @@ import {
   UserAutocompleteModule,
 
 } from '@ws-widget/collection'
-import { AppTocOverviewComponent as AppTocOverviewRootComponent } from './routes/app-toc-overview/app-toc-overview.component'
 import { AppTocCertificationModule } from './routes/app-toc-certification/app-toc-certification.module'
 import { ProfileImageModule } from '../../../../../../../library/ws-widget/collection/src/lib/_common/profile-image/profile-image.module'
 import { AccessControlService } from '../../../../../author/src/public-api'
@@ -85,8 +84,6 @@ import { AllDiscussionWidgetComponent } from './routes/widget/all-discussion-wid
 import { AppTocHomePageComponent } from './components/app-toc-home-page/app-toc-home-page.component'
 import { AppTocDesktopComponent } from './components/app-toc-desktop/app-toc-desktop.component'
 import { AssessmentDetailComponent } from './components/assessment-detail/assessment-detail.component'
-import { AppTocDialogIntroVideoComponent } from './components/app-toc-dialog-intro-video/app-toc-dialog-intro-video.component'
-import { AppTocOverviewDirective } from './routes/app-toc-overview/app-toc-overview.directive'
 @NgModule({
   declarations: [
     AppTocContentsComponent,
@@ -96,10 +93,7 @@ import { AppTocOverviewDirective } from './routes/app-toc-overview/app-toc-overv
     AppTocHomePageComponent,
     AppTocDesktopComponent,    
     AssessmentDetailComponent,
-    AppTocDialogIntroVideoComponent,
     AllDiscussionWidgetComponent,
-    AppTocOverviewDirective,
-    AppTocOverviewRootComponent,
     LicenseComponent,
   ],
   imports: [
@@ -178,8 +172,7 @@ import { AppTocOverviewDirective } from './routes/app-toc-overview/app-toc-overv
   entryComponents: [
     AppTocHomeComponent,
     AppTocOverviewComponent,
-    AppTocHomePageComponent,
-    AppTocDialogIntroVideoComponent
+    AppTocHomePageComponent
   ],
 })
 export class AppTocModule { }
