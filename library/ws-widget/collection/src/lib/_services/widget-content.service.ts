@@ -56,7 +56,7 @@ export class WidgetContentService extends DataService {
     private configSvc: ConfigurationsService
   ) {
     super(http)
-    this.baseUrl = 'https://sphere.aastrika.org/'
+    this.baseUrl = 'https://sphere.aastrika.org'
   }
 
   fetchMarkAsCompleteMeta(identifier: string) {
