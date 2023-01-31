@@ -85,6 +85,9 @@
                 "bundleName": "theme-igot",
                 "lazy": true
               },
+              {
+                "input": "node_modules/bootstrap/scss/bootstrap.scss"
+              },
               "node_modules/pdfjs-dist/web/pdf_viewer.css"
             ],
             "scripts": []
