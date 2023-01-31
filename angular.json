@@ -37,55 +37,59 @@
               ]
             },
             "styles": [
-              "src/theme/variables.scss", 
-            "src/global.scss",
-            "./styles/styles.scss",
-            {
-              "input": "src/themes/theme-deep-purple.scss",
-              "bundleName": "theme-deep-purple",
-              "lazy": true
-            },
-            {
-              "input": "src/themes/theme-grey.scss",
-              "bundleName": "theme-grey",
-              "lazy": true
-            },
-            {
-              "input": "src/themes/theme-indigo.scss",
-              "bundleName": "theme-indigo",
-              "lazy": true
-            },
-            {
-              "input": "src/themes/theme-lite-blue.scss",
-              "bundleName": "theme-lite-blue",
-              "lazy": true
-            },
-            {
-              "input": "src/themes/theme-orange.scss",
-              "bundleName": "theme-orange",
-              "lazy": true
-            },
-            {
-              "input": "src/themes/theme-teal.scss",
-              "bundleName": "theme-teal",
-              "lazy": true
-            },
-            {
-              "input": "src/themes/theme-blue.scss",
-              "bundleName": "theme-blue",
-              "lazy": true
-            },
-            {
-              "input": "src/themes/theme-deep-blue.scss",
-              "bundleName": "theme-deep-blue",
-              "lazy": true
-            },
-            {
-              "input": "src/themes/theme-igot.scss",
-              "bundleName": "theme-igot",
-              "lazy": true
-            },
-            "node_modules/pdfjs-dist/web/pdf_viewer.css"],
+              "src/theme/variables.scss",
+              "src/global.scss",
+              "./styles/styles.scss",
+              {
+                "input": "src/themes/theme-deep-purple.scss",
+                "bundleName": "theme-deep-purple",
+                "lazy": true
+              },
+              {
+                "input": "src/themes/theme-grey.scss",
+                "bundleName": "theme-grey",
+                "lazy": true
+              },
+              {
+                "input": "src/themes/theme-indigo.scss",
+                "bundleName": "theme-indigo",
+                "lazy": true
+              },
+              {
+                "input": "src/themes/theme-lite-blue.scss",
+                "bundleName": "theme-lite-blue",
+                "lazy": true
+              },
+              {
+                "input": "src/themes/theme-orange.scss",
+                "bundleName": "theme-orange",
+                "lazy": true
+              },
+              {
+                "input": "src/themes/theme-teal.scss",
+                "bundleName": "theme-teal",
+                "lazy": true
+              },
+              {
+                "input": "src/themes/theme-blue.scss",
+                "bundleName": "theme-blue",
+                "lazy": true
+              },
+              {
+                "input": "src/themes/theme-deep-blue.scss",
+                "bundleName": "theme-deep-blue",
+                "lazy": true
+              },
+              {
+                "input": "src/themes/theme-igot.scss",
+                "bundleName": "theme-igot",
+                "lazy": true
+              },
+              {
+                "input": "node_modules/bootstrap/scss/bootstrap.scss"
+              },
+              "node_modules/pdfjs-dist/web/pdf_viewer.css"
+            ],
             "scripts": []
           },
           "configurations": {

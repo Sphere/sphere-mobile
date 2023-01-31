@@ -137,11 +137,12 @@ export class AppPublicNavBarComponent implements OnInit, OnChanges, OnDestroy {
     this.router.navigateByUrl('app/create-account')
   }
   login(key: 'E' | 'N' | 'S') {
-    if (localStorage.getItem('login_url')) {
-      const url: any = localStorage.getItem('login_url')
-      window.location.href = url
-    }
-    this.authSvc.login(key, this.redirectUrl)
+    // if (localStorage.getItem('login_url')) {
+    //   const url: any = localStorage.getItem('login_url')
+    //   window.location.href = url
+    // }
+    // this.authSvc.login(key, this.redirectUrl)
+    window.location.href = `app/login`
   }
 
   ngOnDestroy() {
