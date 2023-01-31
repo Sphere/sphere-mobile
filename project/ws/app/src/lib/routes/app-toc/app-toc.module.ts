@@ -35,13 +35,18 @@ import { AppTocContentsComponent } from './routes/app-toc-contents/app-toc-conte
 import { AppTocHomeComponent } from './components/app-toc-home/app-toc-home.component'
 import { AppTocOverviewComponent } from './components/app-toc-overview/app-toc-overview.component'
 import { AppTocContentCardComponent } from './components/app-toc-content-card/app-toc-content-card.component'
+import { AppTocHomeComponent as AppTocHomeRootComponent } from './routes/app-toc-home/app-toc-home.component'
+import { AppTocBannerComponent } from './components/app-toc-banner/app-toc-banner.component'
 
 // services
 import { AppTocService } from './services/app-toc.service'
+import { AppTocResolverService } from './resolvers/app-toc-resolver.service'
+import { ProfileResolverService } from './../user-profile/resolvers/profile-resolver.service'
 
 // custom modules
 import { WidgetResolverModule } from '@ws-widget/resolver'
 import { DiscussionUiModule } from '@aastrika_npmjs/discussions-ui-v8'
+import { AppTocHomeDirective } from './routes/app-toc-home/app-toc-home.directive'
 import {
   PipeDurationTransformModule,
   PipeSafeSanitizerModule,
@@ -74,8 +79,9 @@ import {
   PlayerBriefModule,
   CardContentModule,
   UserAutocompleteModule,
-
+  PipeContentRoutePipe
 } from '@ws-widget/collection'
+import { AppTocOverviewComponent as AppTocOverviewRootComponent } from './routes/app-toc-overview/app-toc-overview.component'
 import { AppTocCertificationModule } from './routes/app-toc-certification/app-toc-certification.module'
 import { ProfileImageModule } from '../../../../../../../library/ws-widget/collection/src/lib/_common/profile-image/profile-image.module'
 import { AccessControlService } from '../../../../../author/src/public-api'
@@ -84,6 +90,10 @@ import { AllDiscussionWidgetComponent } from './routes/widget/all-discussion-wid
 import { AppTocHomePageComponent } from './components/app-toc-home-page/app-toc-home-page.component'
 import { AppTocDesktopComponent } from './components/app-toc-desktop/app-toc-desktop.component'
 import { AssessmentDetailComponent } from './components/assessment-detail/assessment-detail.component'
+import { AppTocDialogIntroVideoComponent } from './components/app-toc-dialog-intro-video/app-toc-dialog-intro-video.component'
+import { AppTocOverviewDirective } from './routes/app-toc-overview/app-toc-overview.directive'
+import { RetainScrollDirective } from './components/app-toc-home/retain-scroll.directive'
+
 @NgModule({
   declarations: [
     AppTocContentsComponent,
@@ -91,9 +101,16 @@ import { AssessmentDetailComponent } from './components/assessment-detail/assess
     AppTocOverviewComponent,
     AppTocHomeComponent,
     AppTocHomePageComponent,
+    AppTocBannerComponent,
     AppTocDesktopComponent,    
     AssessmentDetailComponent,
+    AppTocDialogIntroVideoComponent,
     AllDiscussionWidgetComponent,
+    AppTocOverviewDirective,
+    AppTocOverviewRootComponent,
+    AppTocHomeRootComponent,
+    AppTocHomeDirective,
+    RetainScrollDirective,
     LicenseComponent,
   ],
   imports: [
@@ -165,6 +182,9 @@ import { AssessmentDetailComponent } from './components/assessment-detail/assess
   providers: [
     AppTocService,
     AccessControlService,
+    AppTocResolverService,
+    ProfileResolverService,
+    PipeContentRoutePipe
   ],
   exports: [
     AssessmentDetailComponent,    
@@ -172,7 +192,8 @@ import { AssessmentDetailComponent } from './components/assessment-detail/assess
   entryComponents: [
     AppTocHomeComponent,
     AppTocOverviewComponent,
-    AppTocHomePageComponent
+    AppTocHomePageComponent,
+    AppTocDialogIntroVideoComponent
   ],
 })
 export class AppTocModule { }
