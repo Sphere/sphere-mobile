@@ -59,7 +59,7 @@ export class MobileDashboardComponent implements OnInit {
       // this.firstName = this.configSvc.userProfile
       this.firstName = 'vishali'
       // this.userId = this.configSvc.userProfile.userId || 'fc7a6dd1-313e-48e0-beba-1faee25e170b'
-      this.userId ='c7a6dd1-313e-48e0-beba-1faee25e170b'
+      this.userId ='fc7a6dd1-313e-48e0-beba-1faee25e170b'
       forkJoin([this.userSvc.fetchUserBatchList(this.userId), this.ContentSvc.getLiveSearchResults(),
       this.http.get(`assets/configurations/mobile-home.json`)]).pipe().subscribe((res: any) => {
        this.homeFeature = res[2].userLoggedInSection

@@ -89,7 +89,7 @@ export class WidgetContentService extends DataService {
   }
 
   fetchHierarchyContent(contentId: string): Observable<NsContent.IContent> {
-    const url = `/apis/proxies/v8/action/content/v3/hierarchy/${contentId}?hierarchyType=detail`
+    const url = `apis/proxies/v8/action/content/v3/hierarchy/${contentId}?hierarchyType=detail`
     const options = {
       url:url,
     };
@@ -136,9 +136,9 @@ export class WidgetContentService extends DataService {
   ): Observable<NsContent.IContent> {
     let url = ''
     if (primaryCategory && this.isResource(primaryCategory)) {
-      url = `/apis/proxies/v8/action/content/v3/read/${contentId}`
+      url = `apis/proxies/v8/action/content/v3/read/${contentId}`
     } else {
-      url = `/apis/proxies/v8/action/content/v3/hierarchy/${contentId}?hierarchyType=${hierarchyType}`
+      url = `apis/proxies/v8/action/content/v3/hierarchy/${contentId}?hierarchyType=${hierarchyType}`
     }
     const options = {
       url:url,

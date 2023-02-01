@@ -41,13 +41,14 @@ import { InitService } from './services/init.service';
 import { AuthKeycloakService } from '../../library/ws-widget/utils/src/lib/services/auth-keycloak.service'
 import { PublicModule } from './modules/public/public.module';
 import { CoreModule } from './modules/core/core.module';
-import { SearchModule } from '@ws/app/src/public-api'
+import { AppTocModule, SearchModule } from '@ws/app'
 import { AppNavBarComponent } from './components/app-nav-bar/app-nav-bar.component';
 import { HomeModule } from './modules/home/home.module';
 import { TncRendererComponent } from './components/tnc-renderer/tnc-renderer.component';
 import { NewTncComponent } from './routes/new-tnc/new-tnc.component';
 import { TncAppResolverService } from './services/tnc-app-resolver.service';
 import { TncPublicResolverService } from './services/tnc-public-resolver.service';
+
 const appInitFactory = (initSvc: InitService, logger: LoggerService)=> async()=>{
   try {
     await initSvc.init()
@@ -56,6 +57,8 @@ const appInitFactory = (initSvc: InitService, logger: LoggerService)=> async()=>
   }
 }
 import { SunbirdSdk } from 'sunbird-sdk';
+import { APP_BASE_HREF, PlatformLocation } from '@angular/common';
+import { getBaseHref } from '@ws/author/src/public-api';
 // import { SunbirdSdk } from 'sunbird-sdk';
 @NgModule({
   declarations: [
@@ -101,7 +104,8 @@ import { SunbirdSdk } from 'sunbird-sdk';
     PublicModule,
     SearchModule,
     CoreModule,
-    HomeModule
+    HomeModule,
+    AppTocModule
   ],
   providers: [{ provide: RouteReuseStrategy, useClass: IonicRouteStrategy },
     {
@@ -109,6 +113,11 @@ import { SunbirdSdk } from 'sunbird-sdk';
       useFactory: appInitFactory,
       deps: [InitService, LoggerService],
       multi: true,
+    },
+    {
+      provide: APP_BASE_HREF,
+      useFactory: getBaseHref,
+      deps: [PlatformLocation],
     },
     AuthKeycloakService,
     TncPublicResolverService,
