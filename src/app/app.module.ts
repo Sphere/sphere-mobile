@@ -56,13 +56,16 @@ const appInitFactory = (initSvc: InitService, logger: LoggerService)=> async()=>
   }
 }
 import { SunbirdSdk } from 'sunbird-sdk';
+import { ForgotPasswordComponent } from './modules/public/components/forgot-password/forgot-password.component';
+import { ReactiveFormsModule } from '@angular/forms';
 // import { SunbirdSdk } from 'sunbird-sdk';
 @NgModule({
   declarations: [
     AppComponent,
     AppNavBarComponent,
+    ForgotPasswordComponent,
     NewTncComponent,
-    TncRendererComponent
+    TncRendererComponent,
    
 
   ],
@@ -101,7 +104,8 @@ import { SunbirdSdk } from 'sunbird-sdk';
     PublicModule,
     SearchModule,
     CoreModule,
-    HomeModule
+    HomeModule,
+    ReactiveFormsModule
   ],
   providers: [{ provide: RouteReuseStrategy, useClass: IonicRouteStrategy },
     {

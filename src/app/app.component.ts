@@ -24,19 +24,17 @@ export class AppComponent implements OnInit{
   ngOnInit() {
     this.router.events.subscribe((event:any)=>{
       if(event instanceof NavigationStart){
-        if(event.url.includes('/app/create-account')){
+        if(event.url.includes('/app/create-account') 
+        || event.url.includes('app/new-tnc')
+        || event.url.includes('app/login')
+        || event.url.includes('public/forgot-password')
+        ){
           this.showPublicNavbar= false
           this.showNavbar = false
         } else if (event.url.includes('page/home')) {
           this.isNavBarRequired = true
           this.showPublicNavbar= false
           this.showNavbar = true
-        } else if (event.url.includes('app/new-tnc')) {
-          this.showPublicNavbar= false
-          this.showNavbar = false
-        } else if (event.url.includes('app/login')) {
-          this.showPublicNavbar= false
-          this.showNavbar = false
         }
         else if (event.url.includes('public/home')) {
           this.showPublicNavbar= true
