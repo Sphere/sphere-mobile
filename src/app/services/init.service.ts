@@ -41,9 +41,13 @@ export class InitService {
     await this.fetchDefaultConfig()
     const appConfig = appsConfig as any
     this.configSvc.appsConfig = this.processAppsConfig(appConfig)
-    
+    await this.fetchStartUpDetails()
     await this.fetchInstanceConfig() 
     await this.fetchFeaturesStatus()
+
+    
+    
+    this.updateNavConfig()
     console.log(this.configSvc)
     const widgetConfig:any = []
     this.processWidgetStatus(widgetConfig)
@@ -53,8 +57,6 @@ export class InitService {
       this.configSvc.userGroups,
       this.configSvc.restrictedFeatures,
     )
-    this.updateNavConfig()
-    await this.fetchStartUpDetails()
   }
   private async fetchStartUpDetails(): Promise<any> {
     
