@@ -195,7 +195,7 @@ export class SignupService extends DataService {
         return e
       }
     }
-    return { group: [], profileDetailsStatus: true, roles: new Set(['Public']), tncStatus: true, isActive: true }
+    //return { group: [], profileDetailsStatus: true, roles: new Set(['Public']), tncStatus: true, isActive: true }
   }
 
   hasRole(role: string[]): boolean {

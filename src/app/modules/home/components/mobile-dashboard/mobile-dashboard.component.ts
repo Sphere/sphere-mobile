@@ -55,11 +55,9 @@ export class MobileDashboardComponent implements OnInit {
         description: 'Receive downloadable and shareable certificates',
       },
     ]
-    // if (this.configSvc.userProfile) {
-      // this.firstName = this.configSvc.userProfile
-      this.firstName = 'vishali'
-      // this.userId = this.configSvc.userProfile.userId || 'fc7a6dd1-313e-48e0-beba-1faee25e170b'
-      this.userId ='fc7a6dd1-313e-48e0-beba-1faee25e170b'
+    if (this.configSvc.userProfile) {
+      this.firstName = this.configSvc.userProfile
+      this.userId = this.configSvc.userProfile.userId 
       forkJoin([this.userSvc.fetchUserBatchList(this.userId), this.ContentSvc.getLiveSearchResults(),
       this.http.get(`assets/configurations/mobile-home.json`)]).pipe().subscribe((res: any) => {
        this.homeFeature = res[2].userLoggedInSection
@@ -71,7 +69,7 @@ export class MobileDashboardComponent implements OnInit {
           this.formatFeaturedCourseResponse(res[1])
         }
       })
-    // }
+    }
 
   }
   formatFeaturedCourseResponse(res: any) {

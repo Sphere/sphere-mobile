@@ -10,7 +10,7 @@ import { delay } from 'lodash';
 import { Subscription, of } from 'rxjs';
 import { mergeMap } from 'rxjs/operators';
 import { NsTnc } from 'src/app/models/tnc.model';
-import { SignupService } from 'src/app/services/signup.service';
+import { SignupService } from '../../../app/modules/public/services/signup/signup.service';
 import { TncAppResolverService } from 'src/app/services/tnc-app-resolver.service';
 import { TncPublicResolverService } from 'src/app/services/tnc-public-resolver.service';
 

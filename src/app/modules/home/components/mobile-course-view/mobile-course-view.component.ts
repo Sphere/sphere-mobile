@@ -4,7 +4,7 @@ import { delay, mergeMap } from 'rxjs/operators'
 import { of } from 'rxjs'
 import { ConfigurationsService } from '../../../../../../library/ws-widget/utils/src/lib/services/configurations.service'
 import { UserProfileService } from '../../../../../../project/ws/app/src/lib/routes/user-profile/services/user-profile.service'
-import { SignupService } from '../../../../services/signup.service'
+import { SignupService } from '../../../public/services/signup/signup.service'
 
 @Component({
   selector: 'ws-mobile-course-view',

@@ -21,17 +21,21 @@ import siteConfig from '../../assets/configuration/site.config.json'
 import * as _ from "lodash"
 import { map } from 'rxjs/operators'
 import { v4 as uuid } from 'uuid'
-
+import { HttpClient } from '@angular/common/http';
+const API_END_POINTS = {
+  USER_READ: '/apis/proxies/v8/api/user/v2/read',
+}
 @Injectable({
   providedIn: 'root'
 })
 export class InitService {
-
+  
   constructor(
     private logger: LoggerService,
     private configSvc: ConfigurationsService,
     private widgetResolverService: WidgetResolverService,
-    domSanitizer: DomSanitizer
+    domSanitizer: DomSanitizer,
+    private http: HttpClient,
   ) { }
   async init() {
     await this.fetchDefaultConfig()
@@ -50,8 +54,90 @@ export class InitService {
       this.configSvc.restrictedFeatures,
     )
     this.updateNavConfig()
+    await this.fetchStartUpDetails()
+  }
+  private async fetchStartUpDetails(): Promise<any> {
+    
+    if (this.configSvc.instanceConfig ) {
+      let userPidProfile: any | null = null
+      try {
+        userPidProfile = await this.http
+          .get<any>(API_END_POINTS.USER_READ)
+          .pipe(map((res: any) => res.result.response))
+          .toPromise()
+
+        if (userPidProfile && userPidProfile.roles && userPidProfile.roles.length > 0 &&
+          this.hasRole(userPidProfile.roles)) {
+          
+          if (localStorage.getItem('telemetrySessionId')) {
+            localStorage.removeItem('telemetrySessionId')
+          }
+          localStorage.setItem('telemetrySessionId', uuid())
+          this.configSvc.unMappedUser = userPidProfile
+          const profileV2 = _.get(userPidProfile, 'profileDetails.profileReq')
+          this.configSvc.userProfile = {
+            country: _.get(profileV2, 'personalDetails.countryCode') || null,
+            email: _.get(profileV2, 'profileDetails.officialEmail') || userPidProfile.email,
+            givenName: userPidProfile.firstName,
+            userId: userPidProfile.userId,
+            firstName: userPidProfile.firstName,
+            lastName: userPidProfile.lastName,
+            rootOrgId: userPidProfile.rootOrgId,
+            rootOrgName: userPidProfile.channel,
+            // tslint:disable-next-line: max-line-length
+            // userName: `${userPidProfile.firstName ? userPidProfile.firstName : ' '}${userPidProfile.lastName ? userPidProfile.lastName : ' '}`,
+            userName: userPidProfile.userName,
+            profileImage: userPidProfile.thumbnail,
+            departmentName: userPidProfile.channel,
+            dealerCode: null,
+            isManager: false,
+            phone: _.get(userPidProfile, 'phone'),
+            language: (userPidProfile.profileDetails && userPidProfile.profileDetails.preferences && userPidProfile.profileDetails.preferences.language !== undefined) ? userPidProfile.profileDetails.preferences.language : 'en',
+          }
+         
+          if (!this.configSvc.nodebbUserProfile) {
+            this.configSvc.nodebbUserProfile = {
+              username: userPidProfile.userName,
+              email: 'null',
+            }
+          }
+        }
+        const details = {
+          group: [],
+          profileDetailsStatus: !!_.get(userPidProfile, 'profileDetails.mandatoryFieldsExists'),
+          roles: (userPidProfile.roles || []).map((v: { toLowerCase: () => void }) => v.toLowerCase()),
+          tncStatus: !(_.isUndefined(this.configSvc.unMappedUser)),
+          isActive: !!!userPidProfile.isDeleted,
+        }
+        this.configSvc.hasAcceptedTnc = details.tncStatus
+        this.configSvc.profileDetailsStatus = details.profileDetailsStatus
+        this.configSvc.userGroups = new Set(details.group)
+        this.configSvc.userRoles = new Set((details.roles || []).map((v: string) => v.toLowerCase()))
+        this.configSvc.isActive = details.isActive
+        return details
+      } catch (e :any) {
+        // tslint:disable-next-line:no-console
+        console.log(e)
+        this.configSvc.userProfile = null
+        if (e.status === 419) {
+        }
+        return e
+      }
+    } else {
+      return { group: [], profileDetailsStatus: true, roles: new Set(['Public']), tncStatus: true, isActive: true }
+    }
   }
 
+  hasRole(role: string[]): boolean {
+    let returnValue = false
+    const rolesForCBP: any = ['PUBLIC']
+    role.forEach(v => {
+      if ((rolesForCBP).includes(v)) {
+        returnValue = true
+      }
+    })
+    return returnValue
+  }
   private async fetchDefaultConfig(): Promise<NsInstanceConfig.IConfig> {
 
     if ((this.configSvc.userProfile && this.configSvc.userProfile.language === undefined) || (this.configSvc.userProfile && this.configSvc.userProfile.language === 'en')) {
