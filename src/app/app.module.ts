@@ -41,7 +41,7 @@ import { InitService } from './services/init.service';
 import { AuthKeycloakService } from '../../library/ws-widget/utils/src/lib/services/auth-keycloak.service'
 import { PublicModule } from './modules/public/public.module';
 import { CoreModule } from './modules/core/core.module';
-import { SearchModule } from '@ws/app/src/public-api'
+import { AppTocModule, SearchModule } from '@ws/app/src/public-api'
 import { AppNavBarComponent } from './components/app-nav-bar/app-nav-bar.component';
 import { HomeModule } from './modules/home/home.module';
 import { TncRendererComponent } from './components/tnc-renderer/tnc-renderer.component';
@@ -58,6 +58,8 @@ const appInitFactory = (initSvc: InitService, logger: LoggerService)=> async()=>
 import { SunbirdSdk } from 'sunbird-sdk';
 import { ForgotPasswordComponent } from './modules/public/components/forgot-password/forgot-password.component';
 import { ReactiveFormsModule } from '@angular/forms';
+import { APP_BASE_HREF, PlatformLocation } from '@angular/common';
+import { getBaseHref } from '@ws/author/src/public-api';
 // import { SunbirdSdk } from 'sunbird-sdk';
 @NgModule({
   declarations: [
@@ -105,7 +107,8 @@ import { ReactiveFormsModule } from '@angular/forms';
     SearchModule,
     CoreModule,
     HomeModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    AppTocModule
   ],
   providers: [{ provide: RouteReuseStrategy, useClass: IonicRouteStrategy },
     {
@@ -113,6 +116,11 @@ import { ReactiveFormsModule } from '@angular/forms';
       useFactory: appInitFactory,
       deps: [InitService, LoggerService],
       multi: true,
+    },
+    {
+      provide: APP_BASE_HREF,
+      useFactory: getBaseHref,
+      deps: [PlatformLocation],
     },
     AuthKeycloakService,
     TncPublicResolverService,
