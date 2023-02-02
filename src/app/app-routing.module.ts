@@ -5,6 +5,7 @@ import { NewTncComponent } from './routes/new-tnc/new-tnc.component';
 import { TncPublicResolverService } from './services/tnc-public-resolver.service';
 import { PageResolve } from '@ws-widget/utils';
 import { LoginComponent } from './modules/public/components/login/login.component';
+import { ForgotPasswordComponent } from './modules/public/components/forgot-password/forgot-password.component';
 
 const routes: Routes = [
   {
@@ -51,6 +52,10 @@ const routes: Routes = [
     path: 'app/login',
     component: LoginComponent,
   },
+  {
+    path: 'public/forgot-password',
+    component: ForgotPasswordComponent
+  }
 ];
 
 @NgModule({
