@@ -62,7 +62,7 @@ android {
     defaultConfig {
         minSdkVersion 22
         ext.buildNumber = System.getenv("TRAVIS_BUILD_NUMBER") ?: "local"
-        versionName "3.9.$ext.buildNumber"
+        versionName "4.8.$ext.buildNumber"
         manifestPlaceholders = [fabricKey: "${release_fabric_api_key}", fabricSecret: "${release_fabric_api_secret}"]
         resValue("string", "_app_name", "${app_name}")
         multiDexEnabled true
@@ -142,7 +142,7 @@ android {
             buildConfigField 'String', 'PROJECTS_BASE_URL', "\"${staging_projects_base_url}\""
         }
 
-        /* production {
+        production {
             applicationId "${production_app_id}"
             flavorDimensions "default"
             resValue("string", "deeplink_base_url", "${production_deeplink_base_url}")
@@ -161,7 +161,7 @@ android {
             buildConfigField 'String', 'TOU_BASE_URL', "\"${production_tou_base_url}\""
             buildConfigField 'String', 'SURVEY_BASE_URL', "\"${production_survey_base_url}\""
             buildConfigField 'String', 'PROJECTS_BASE_URL', "\"${production_projects_base_url}\""
-        } */
+        }
     }
 
     task myclean(type: Delete) {

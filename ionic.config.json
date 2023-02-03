@@ -1,7 +1,6 @@
 {
-  "name": "aastrika-mobile-app",
+  "name": "SunbirdEd-mobile-app",
   "integrations": {
-    "capacitor": {},
     "cordova": {}
   },
   "type": "angular"

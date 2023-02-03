@@ -1,0 +1,35 @@
+{
+  "_from": "git+https://github.com/project-sunbird/cordova-plugin-qr-scanner.git#release-4.6.0",
+  "_id": "cordova-plugin-qr-scanner@1.0.0",
+  "_inBundle": false,
+  "_integrity": "",
+  "_location": "/cordova-plugin-qr-scanner",
+  "_phantomChildren": {},
+  "_requested": {
+    "type": "git",
+    "raw": "https://github.com/project-sunbird/cordova-plugin-qr-scanner.git#release-4.6.0",
+    "rawSpec": "https://github.com/project-sunbird/cordova-plugin-qr-scanner.git#release-4.6.0",
+    "saveSpec": "git+https://github.com/project-sunbird/cordova-plugin-qr-scanner.git#release-4.6.0",
+    "fetchSpec": "https://github.com/project-sunbird/cordova-plugin-qr-scanner.git",
+    "gitCommittish": "release-4.6.0"
+  },
+  "_requiredBy": [
+    "#DEV:/",
+    "#USER"
+  ],
+  "_resolved": "git+https://github.com/project-sunbird/cordova-plugin-qr-scanner.git#131296137685807c1ddbf32b143cc15cf160a87c",
+  "_spec": "https://github.com/project-sunbird/cordova-plugin-qr-scanner.git#release-4.6.0",
+  "_where": "/home/sonashaju/Music/SunbirdEd-mobile-app",
+  "bundleDependencies": false,
+  "cordova": {
+    "id": "cordova-plugin-qr-scanner",
+    "platforms": [
+      "android",
+      "ios"
+    ]
+  },
+  "deprecated": false,
+  "description": "A starting point for a Cordova Plugin",
+  "name": "cordova-plugin-qr-scanner",
+  "version": "1.0.0"
+}

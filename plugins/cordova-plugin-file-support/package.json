@@ -1,0 +1,35 @@
+{
+  "_from": "git+https://github.com/project-sunbird/cordova-plugin-file-support.git#release-1.15.0",
+  "_id": "cordova-plugin-file-support@1.0.0",
+  "_inBundle": false,
+  "_integrity": "",
+  "_location": "/cordova-plugin-file-support",
+  "_phantomChildren": {},
+  "_requested": {
+    "type": "git",
+    "raw": "git+https://github.com/project-sunbird/cordova-plugin-file-support.git#release-1.15.0",
+    "rawSpec": "git+https://github.com/project-sunbird/cordova-plugin-file-support.git#release-1.15.0",
+    "saveSpec": "git+https://github.com/project-sunbird/cordova-plugin-file-support.git#release-1.15.0",
+    "fetchSpec": "https://github.com/project-sunbird/cordova-plugin-file-support.git",
+    "gitCommittish": "release-1.15.0"
+  },
+  "_requiredBy": [
+    "#DEV:/",
+    "#USER"
+  ],
+  "_resolved": "git+https://github.com/project-sunbird/cordova-plugin-file-support.git#258446190cec872f48c72cca5bf63c3cd194ffae",
+  "_spec": "git+https://github.com/project-sunbird/cordova-plugin-file-support.git#release-1.15.0",
+  "_where": "/home/sonashaju/Music/SunbirdEd-mobile-app",
+  "bundleDependencies": false,
+  "cordova": {
+    "id": "cordova-plugin-file-support",
+    "platforms": [
+      "android",
+      "ios"
+    ]
+  },
+  "deprecated": false,
+  "description": "A Cordova Plugin for sunbird file support",
+  "name": "cordova-plugin-file-support",
+  "version": "1.0.0"
+}

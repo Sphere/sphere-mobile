@@ -1,0 +1,40 @@
+{
+  "_from": "git+https://github.com/swayangjit/cordova-plugin-buildconfig-reader.git#release-2.1.0",
+  "_id": "cordova-plugin-buildconfig-reader@0.0.1",
+  "_inBundle": false,
+  "_integrity": "",
+  "_location": "/cordova-plugin-buildconfig-reader",
+  "_phantomChildren": {},
+  "_requested": {
+    "type": "git",
+    "raw": "git+https://github.com/swayangjit/cordova-plugin-buildconfig-reader.git#release-2.1.0",
+    "rawSpec": "git+https://github.com/swayangjit/cordova-plugin-buildconfig-reader.git#release-2.1.0",
+    "saveSpec": "git+https://github.com/swayangjit/cordova-plugin-buildconfig-reader.git#release-2.1.0",
+    "fetchSpec": "https://github.com/swayangjit/cordova-plugin-buildconfig-reader.git",
+    "gitCommittish": "release-2.1.0"
+  },
+  "_requiredBy": [
+    "#DEV:/",
+    "#USER"
+  ],
+  "_resolved": "git+https://github.com/swayangjit/cordova-plugin-buildconfig-reader.git#aa6249391dae593dc10b872cde6bebae6e83a4b6",
+  "_spec": "git+https://github.com/swayangjit/cordova-plugin-buildconfig-reader.git#release-2.1.0",
+  "_where": "/home/sonashaju/Music/SunbirdEd-mobile-app",
+  "author": "",
+  "bundleDependencies": false,
+  "cordova": {
+    "id": "cordova-plugin-buildconfig-reader",
+    "platforms": [
+      "android"
+    ]
+  },
+  "deprecated": false,
+  "description": "",
+  "keywords": [
+    "ecosystem:cordova",
+    "cordova-android"
+  ],
+  "license": "ISC",
+  "name": "cordova-plugin-buildconfig-reader",
+  "version": "0.0.1"
+}

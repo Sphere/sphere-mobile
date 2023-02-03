@@ -1,0 +1,41 @@
+{
+  "_from": "git+https://github.com/project-sunbird/sb-cordova-plugin-sync.git",
+  "_id": "sb-cordova-plugin-sync@0.0.1",
+  "_inBundle": false,
+  "_integrity": "",
+  "_location": "/sb-cordova-plugin-sync",
+  "_phantomChildren": {},
+  "_requested": {
+    "type": "git",
+    "raw": "https://github.com/project-sunbird/sb-cordova-plugin-sync.git",
+    "rawSpec": "https://github.com/project-sunbird/sb-cordova-plugin-sync.git",
+    "saveSpec": "git+https://github.com/project-sunbird/sb-cordova-plugin-sync.git",
+    "fetchSpec": "https://github.com/project-sunbird/sb-cordova-plugin-sync.git",
+    "gitCommittish": null
+  },
+  "_requiredBy": [
+    "#DEV:/",
+    "#USER"
+  ],
+  "_resolved": "git+https://github.com/project-sunbird/sb-cordova-plugin-sync.git#52aab103df14738550efb5c11f71ca5ffd0b9aba",
+  "_spec": "https://github.com/project-sunbird/sb-cordova-plugin-sync.git",
+  "_where": "/home/sonashaju/Music/SunbirdEd-mobile-app",
+  "author": "",
+  "bundleDependencies": false,
+  "cordova": {
+    "id": "sb-cordova-plugin-sync",
+    "platforms": [
+      "android",
+      "ios"
+    ]
+  },
+  "deprecated": false,
+  "description": "",
+  "keywords": [
+    "ecosystem:cordova",
+    "cordova-android"
+  ],
+  "license": "MIT",
+  "name": "sb-cordova-plugin-sync",
+  "version": "0.0.1"
+}

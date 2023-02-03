@@ -1,25 +1,28 @@
 {
-  "$schema": "./node_modules/@angular/cli/lib/config/schema.json",
+  "$schema": "./node_modules/@angular-devkit/core/src/workspace/workspace-schema.json",
   "version": 1,
+  "defaultProject": "app",
   "newProjectRoot": "projects",
   "projects": {
     "app": {
-      "projectType": "application",
-      "schematics": {},
       "root": "",
       "sourceRoot": "src",
+      "projectType": "application",
       "prefix": "app",
+      "schematics": {},
       "architect": {
         "build": {
-          "builder": "@angular-devkit/build-angular:browser",
+          "builder": "@angular-builders/custom-webpack:browser",
           "options": {
             "outputPath": "www",
             "index": "src/index.html",
+            "customWebpackConfig": {
+              "path": "config/webpack.config.js"
+            },
             "main": "src/main.ts",
             "polyfills": "src/polyfills.ts",
-            "tsConfig": "tsconfig.app.json",
+            "tsConfig": "src/tsconfig.app.json",
             "assets": [
-              "src/fusion-assets",
               {
                 "glob": "**/*",
                 "input": "src/assets",
@@ -29,123 +32,135 @@
                 "glob": "**/*.svg",
                 "input": "node_modules/ionicons/dist/ionicons/svg",
                 "output": "./svg"
+              },
+              {
+                "glob": "**/*",
+                "input": "content-player",
+                "output": "content-player"
+              },
+              {
+                "glob": "**/*.*",
+                "input": "./node_modules/@project-sunbird/common-consumption-v9/assets",
+                "output": "./assets/common-consumption"
+              },
+              {
+                "glob": "**/*",
+                "input": "node_modules/@project-sunbird/sunbird-pdf-player-v9/lib/assets/",
+                "output": "/assets/"
+              },
+              {
+                "glob": "**/*.*",
+                "input": "./node_modules/@project-sunbird/discussions-ui-v8/assets",
+                "output": "./assets/discussion-ui"
+              },
+              {
+                "glob": "**/*",
+                "input": "./node_modules/@project-sunbird/sunbird-quml-player-v9/lib/assets/",
+                "output": "/assets/"
+              },
+              {
+                "glob": "**/*",
+                "input": "./node_modules/@project-sunbird/sunbird-video-player-v9/lib/assets/",
+                "output": "/assets/"
               }
             ],
-            "stylePreprocessorOptions": {
-              "includePaths": [
-                "src/styles"
-              ]
+            "sourceMap": {
+              "scripts": true,
+              "styles": true,
+              "vendor": true
             },
             "styles": [
-              "src/theme/variables.scss",
-              "src/global.scss",
-              "./styles/styles.scss",
+              "src/assets/styles/quml-styles/quml-carousel.css",
+              "node_modules/katex/dist/katex.min.css",
+              "node_modules/video.js/dist/video-js.min.css",
+              "node_modules/@project-sunbird/sb-styles/assets/_styles.scss",
+              "node_modules/@project-sunbird/discussions-ui-v8/assets/styles/global.scss",
+              "node_modules/@project-sunbird/sunbird-video-player-v9/lib/assets/videojs.markers.min.css",
+              "node_modules/videojs-http-source-selector/dist/videojs-http-source-selector.css",
+              "node_modules/datatables.net-dt/css/jquery.dataTables.css",
+              "node_modules/@project-sunbird/sb-themes/themes/themes-df.scss",
               {
-                "input": "src/themes/theme-deep-purple.scss",
-                "bundleName": "theme-deep-purple",
-                "lazy": true
-              },
-              {
-                "input": "src/themes/theme-grey.scss",
-                "bundleName": "theme-grey",
-                "lazy": true
-              },
-              {
-                "input": "src/themes/theme-indigo.scss",
-                "bundleName": "theme-indigo",
-                "lazy": true
-              },
-              {
-                "input": "src/themes/theme-lite-blue.scss",
-                "bundleName": "theme-lite-blue",
-                "lazy": true
-              },
-              {
-                "input": "src/themes/theme-orange.scss",
-                "bundleName": "theme-orange",
-                "lazy": true
-              },
-              {
-                "input": "src/themes/theme-teal.scss",
-                "bundleName": "theme-teal",
-                "lazy": true
-              },
-              {
-                "input": "src/themes/theme-blue.scss",
-                "bundleName": "theme-blue",
-                "lazy": true
-              },
-              {
-                "input": "src/themes/theme-deep-blue.scss",
-                "bundleName": "theme-deep-blue",
-                "lazy": true
-              },
-              {
-                "input": "src/themes/theme-igot.scss",
-                "bundleName": "theme-igot",
-                "lazy": true
-              },
-              {
-                "input": "node_modules/bootstrap/scss/bootstrap.scss"
-              },
-              "node_modules/pdfjs-dist/web/pdf_viewer.css"
+                "input": "src/global.scss"
+              }
             ],
-            "scripts": []
+            "scripts": [
+              "node_modules/@project-sunbird/telemetry-sdk/index.js",
+              "node_modules/epubjs/dist/epub.js",
+              "node_modules/katex/dist/katex.min.js",
+              "node_modules/jquery/dist/jquery.min.js",
+              "node_modules/datatables.net/js/jquery.dataTables.js",
+              "node_modules/video.js/dist/video.js",
+              "node_modules/@project-sunbird/sunbird-video-player-v9/lib/assets/videojs-markers.js",
+              "node_modules/videojs-contrib-quality-levels/dist/videojs-contrib-quality-levels.min.js",
+              "node_modules/videojs-http-source-selector/dist/videojs-http-source-selector.min.js",
+              "node_modules/datatables.net-fixedcolumns/js/dataTables.fixedColumns.min.js"
+            ],
+            "es5BrowserSupport": true,
+            "preserveSymlinks": true
           },
           "configurations": {
             "production": {
+              "fileReplacements": [
+                {
+                  "replace": "src/configuration/configuration.ts",
+                  "with": "src/configuration/configuration.prod.ts"
+                }
+              ],
+              "optimization": true,
+              "outputHashing": "all",
+              "sourceMap": false,
+              "extractCss": true,
+              "namedChunks": false,
+              "aot": true,
+              "extractLicenses": true,
+              "vendorChunk": false,
+              "buildOptimizer": true,
               "budgets": [
                 {
                   "type": "initial",
                   "maximumWarning": "2mb",
-                  "maximumError": "5mb"
-                },
-                {
-                  "type": "anyComponentStyle",
-                  "maximumWarning": "2kb",
-                  "maximumError": "4kb"
+                  "maximumError": "10mb"
                 }
-              ],
+              ]
+            },
+            "hmr": {
               "fileReplacements": [
                 {
-                  "replace": "src/environments/environment.ts",
-                  "with": "src/environments/environment.prod.ts"
+                  "replace": "src/configuration/configuration.ts",
+                  "with": "src/configuration/configuration.hmr.ts"
                 }
-              ],
-              "outputHashing": "all"
+              ]
             },
-            "development": {
-              "buildOptimizer": false,
-              "optimization": false,
-              "vendorChunk": true,
-              "extractLicenses": false,
-              "sourceMap": true,
-              "namedChunks": true
+            "debug": {
+              "fileReplacements": [
+                {
+                  "replace": "src/configuration/configuration.ts",
+                  "with": "src/configuration/configuration.debug.ts"
+                }
+              ]
             },
             "ci": {
               "progress": false
             }
-          },
-          "defaultConfiguration": "production"
+          }
         },
         "serve": {
-          "builder": "@angular-devkit/build-angular:dev-server",
+          "builder": "@angular-builders/dev-server:generic",
           "options": {
-            "browserTarget": "app:build",
-            "proxyConfig": "proxy/localhost.proxy.json"
+            "browserTarget": "app:build"
           },
           "configurations": {
             "production": {
               "browserTarget": "app:build:production"
             },
-            "development": {
-              "browserTarget": "app:build:development"
+            "hmr": {
+              "hmr": true,
+              "browserTarget": "app:build:hmr"
             },
             "ci": {
               "progress": false
             }
-          },
-          "defaultConfiguration": "development"
+          }
         },
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
@@ -158,26 +173,22 @@
           "options": {
             "main": "src/test.ts",
             "polyfills": "src/polyfills.ts",
-            "tsConfig": "tsconfig.spec.json",
-            "karmaConfig": "karma.conf.js",
-            "inlineStyleLanguage": "scss",
+            "tsConfig": "src/tsconfig.spec.json",
+            "karmaConfig": "src/karma.conf.js",
+            "styles": [],
+            "scripts": [],
             "assets": [
+              {
+                "glob": "favicon.ico",
+                "input": "src/",
+                "output": "/"
+              },
               {
                 "glob": "**/*",
                 "input": "src/assets",
-                "output": "assets"
-              },
-              {
-                "glob": "**/*.svg",
-                "input": "node_modules/ionicons/dist/ionicons/svg",
-                "output": "./svg"
+                "output": "/assets"
               }
-            ],
-            "styles": [
-              "src/theme/variables.scss",
-              "src/global.scss"
-            ],
-            "scripts": []
+            ]
           },
           "configurations": {
             "ci": {
@@ -187,12 +198,10 @@
           }
         },
         "lint": {
-          "builder": "@angular-eslint/builder:lint",
+          "builder": "@angular-devkit/build-angular:tslint",
           "options": {
-            "lintFilePatterns": [
-              "src/**/*.ts",
-              "src/**/*.html"
-            ]
+            "tsConfig": ["src/tsconfig.app.json", "src/tsconfig.spec.json"],
+            "exclude": ["**/node_modules/**"]
           }
         },
         "ionic-cordova-build": {
@@ -228,261 +237,44 @@
         }
       }
     },
-    "@ws-widget/resolver": {
-      "projectType": "library",
-      "root": "library/ws-widget/resolver",
-      "sourceRoot": "library/ws-widget/resolver/src",
-      "prefix": "ws-resolver",
+    "app-e2e": {
+      "root": "e2e/",
+      "projectType": "application",
       "architect": {
-        "build": {
-          "builder": "@angular-devkit/build-ng-packagr:build",
+        "e2e": {
+          "builder": "@angular-devkit/build-angular:protractor",
           "options": {
-            "tsConfig": "library/ws-widget/resolver/tsconfig.lib.json",
-            "project": "library/ws-widget/resolver/ng-package.json"
-          }
-        },
-        "test": {
-          "builder": "@angular-devkit/build-angular:karma",
-          "options": {
-            "main": "library/ws-widget/resolver/src/test.ts",
-            "tsConfig": "library/ws-widget/resolver/tsconfig.spec.json",
-            "karmaConfig": "library/ws-widget/resolver/karma.conf.js"
+            "protractorConfig": "e2e/protractor.conf.js",
+            "devServerTarget": "app:serve"
+          },
+          "configurations": {
+            "ci": {
+              "devServerTarget": "app:serve:ci"
+            }
           }
         },
         "lint": {
           "builder": "@angular-devkit/build-angular:tslint",
           "options": {
-            "tsConfig": [
-              "library/ws-widget/resolver/tsconfig.lib.json",
-              "library/ws-widget/resolver/tsconfig.spec.json"
-            ],
-            "exclude": [
-              "**/node_modules/**"
-            ]
-          }
-        }
-      }
-    },
-    "@ws-widget/collection": {
-      "projectType": "library",
-      "root": "library/ws-widget/collection",
-      "sourceRoot": "library/ws-widget/collection/src",
-      "prefix": "ws-widget",
-      "architect": {
-        "build": {
-          "builder": "@angular-devkit/build-ng-packagr:build",
-          "options": {
-            "tsConfig": "library/ws-widget/collection/tsconfig.lib.json",
-            "project": "library/ws-widget/collection/ng-package.json"
-          }
-        },
-        "test": {
-          "builder": "@angular-devkit/build-angular:karma",
-          "options": {
-            "main": "library/ws-widget/collection/src/test.ts",
-            "tsConfig": "library/ws-widget/collection/tsconfig.spec.json",
-            "karmaConfig": "library/ws-widget/collection/karma.conf.js"
-          }
-        },
-        "lint": {
-          "builder": "@angular-devkit/build-angular:tslint",
-          "options": {
-            "tsConfig": [
-              "library/ws-widget/collection/tsconfig.lib.json",
-              "library/ws-widget/collection/tsconfig.spec.json"
-            ],
-            "exclude": [
-              "**/node_modules/**"
-            ]
-          }
-        }
-      }
-    },
-    "@ws-widget/utils": {
-      "projectType": "library",
-      "root": "library/ws-widget/utils",
-      "sourceRoot": "library/ws-widget/utils/src",
-      "prefix": "ws-utils",
-      "architect": {
-        "build": {
-          "builder": "@angular-devkit/build-ng-packagr:build",
-          "options": {
-            "tsConfig": "library/ws-widget/utils/tsconfig.lib.json",
-            "project": "library/ws-widget/utils/ng-package.json"
-          }
-        },
-        "test": {
-          "builder": "@angular-devkit/build-angular:karma",
-          "options": {
-            "main": "library/ws-widget/utils/src/test.ts",
-            "tsConfig": "library/ws-widget/utils/tsconfig.spec.json",
-            "karmaConfig": "library/ws-widget/utils/karma.conf.js"
-          }
-        },
-        "lint": {
-          "builder": "@angular-devkit/build-angular:tslint",
-          "options": {
-            "tsConfig": [
-              "library/ws-widget/utils/tsconfig.lib.json",
-              "library/ws-widget/utils/tsconfig.spec.json"
-            ],
-            "exclude": [
-              "**/node_modules/**"
-            ]
-          }
-        }
-      }
-    },
-    "@ws/app": {
-      "projectType": "library",
-      "root": "project/ws/app",
-      "sourceRoot": "project/ws/app/src",
-      "prefix": "ws-app",
-      "architect": {
-        "build": {
-          "builder": "@angular-devkit/build-ng-packagr:build",
-          "options": {
-            "tsConfig": "project/ws/app/tsconfig.lib.json",
-            "project": "project/ws/app/ng-package.json"
-          }
-        },
-        "test": {
-          "builder": "@angular-devkit/build-angular:karma",
-          "options": {
-            "main": "project/ws/app/src/test.ts",
-            "tsConfig": "project/ws/app/tsconfig.spec.json",
-            "karmaConfig": "project/ws/app/karma.conf.js"
-          }
-        },
-        "lint": {
-          "builder": "@angular-devkit/build-angular:tslint",
-          "options": {
-            "tsConfig": [
-              "project/ws/app/tsconfig.lib.json",
-              "project/ws/app/tsconfig.spec.json"
-            ],
-            "exclude": [
-              "**/node_modules/**"
-            ]
-          }
-        }
-      }
-    },
-    "@ws/author": {
-      "projectType": "library",
-      "root": "project/ws/author",
-      "sourceRoot": "project/ws/author/src",
-      "prefix": "ws-author",
-      "architect": {
-        "build": {
-          "builder": "@angular-devkit/build-ng-packagr:build",
-          "options": {
-            "tsConfig": "project/ws/author/tsconfig.lib.json",
-            "project": "project/ws/author/ng-package.json"
-          }
-        },
-        "test": {
-          "builder": "@angular-devkit/build-angular:karma",
-          "options": {
-            "main": "project/ws/author/src/test.ts",
-            "tsConfig": "project/ws/author/tsconfig.spec.json",
-            "karmaConfig": "project/ws/author/karma.conf.js"
-          }
-        }
-      }
-    },
-    "@ws/admin": {
-      "projectType": "library",
-      "root": "project/ws/admin",
-      "sourceRoot": "project/ws/admin/src",
-      "prefix": "ws-admin",
-      "architect": {
-        "build": {
-          "builder": "@angular-devkit/build-ng-packagr:build",
-          "options": {
-            "tsConfig": "project/ws/admin/tsconfig.lib.json",
-            "project": "project/ws/admin/ng-package.json"
-          }
-        },
-        "test": {
-          "builder": "@angular-devkit/build-angular:karma",
-          "options": {
-            "main": "project/ws/admin/src/test.ts",
-            "tsConfig": "project/ws/admin/tsconfig.spec.json",
-            "karmaConfig": "project/ws/admin/karma.conf.js"
-          }
-        }
-      }
-    },
-    "@ws/analytics": {
-      "projectType": "library",
-      "root": "project/ws/analytics",
-      "sourceRoot": "project/ws/analytics/src",
-      "prefix": "ws-analytics",
-      "architect": {
-        "build": {
-          "builder": "@angular-devkit/build-ng-packagr:build",
-          "options": {
-            "tsConfig": "project/ws/analytics/tsconfig.lib.json",
-            "project": "project/ws/analytics/ng-package.json"
-          }
-        },
-        "test": {
-          "builder": "@angular-devkit/build-angular:karma",
-          "options": {
-            "main": "project/ws/analytics/src/test.ts",
-            "tsConfig": "project/ws/analytics/tsconfig.spec.json",
-            "karmaConfig": "project/ws/analytics/karma.conf.js"
-          }
-        }
-      }
-    },
-    "@ws/viewer": {
-      "projectType": "library",
-      "root": "project/ws/viewer",
-      "sourceRoot": "project/ws/viewer/src",
-      "prefix": "viewer",
-      "architect": {
-        "build": {
-          "builder": "@angular-devkit/build-ng-packagr:build",
-          "options": {
-            "tsConfig": "project/ws/viewer/tsconfig.lib.json",
-            "project": "project/ws/viewer/ng-package.json"
-          }
-        },
-        "test": {
-          "builder": "@angular-devkit/build-angular:karma",
-          "options": {
-            "main": "project/ws/viewer/src/test.ts",
-            "tsConfig": "project/ws/viewer/tsconfig.spec.json",
-            "karmaConfig": "project/ws/viewer/karma.conf.js"
-          }
-        },
-        "lint": {
-          "builder": "@angular-devkit/build-angular:tslint",
-          "options": {
-            "tsConfig": [
-              "project/ws/viewer/tsconfig.lib.json",
-              "project/ws/viewer/tsconfig.spec.json"
-            ],
-            "exclude": [
-              "**/node_modules/**"
-            ]
+            "tsConfig": "e2e/tsconfig.e2e.json",
+            "exclude": ["**/node_modules/**"]
           }
         }
       }
     }
   },
   "cli": {
-    "defaultCollection": "@ionic/angular-toolkit",
-    "analytics": false
+    "defaultCollection": "@ionic/angular-toolkit"
   },
   "schematics": {
     "@ionic/angular-toolkit:component": {
-      "style": "scss"
+      "styleext": "scss"
     },
     "@ionic/angular-toolkit:page": {
-      "style": "scss"
+      "styleext": "scss"
+    },
+    "@schematics/angular:component": {
+      "styleext": "scss"
     }
   }
 }

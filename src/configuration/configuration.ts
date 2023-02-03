@@ -4,7 +4,6 @@
 
 export const configuration = {
   production: false,
-  sitePath: 'sphere.aastrika.org',
   hmr: false,
   debug: false
 };

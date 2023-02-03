@@ -1,65 +1,53 @@
-/* To learn more about this file see: https://angular.io/config/tsconfig. */
 {
+  "allowSyntheticDefaultImports": true,
   "compileOnSave": false,
+  "angularCompilerOptions": {
+    "enableIvy": false
+  },
   "compilerOptions": {
-    "baseUrl": "./",
+    "baseUrl": "./src",
     "outDir": "./dist/out-tsc",
-    "resolveJsonModule": true,
-    "suppressImplicitAnyIndexErrors": true,
-    "allowSyntheticDefaultImports": true,
-    "skipLibCheck": true,
-    "noImplicitAny":false,
-    "strictNullChecks": false,
-    "forceConsistentCasingInFileNames": true,
-    "strict": true,
-    "noImplicitReturns": false,
-    "noFallthroughCasesInSwitch": true,
     "sourceMap": true,
     "declaration": false,
-    "downlevelIteration": true,
-    "experimentalDecorators": true,
+    "module": "es2015",
     "moduleResolution": "node",
+    "emitDecoratorMetadata": true,
+    "allowSyntheticDefaultImports": true,
+    "experimentalDecorators": true,
     "importHelpers": true,
-    "target": "es2015",
-    "types": [ "node" ],
-    "typeRoots": ["node_modules/@types", "./custom_typings"],
-    "module": "esnext",
+    "target": "es5",
+    "skipLibCheck": true,
+    "types": [
+      "node",
+      "reflect-metadata",
+      "jest"
+    ],
+    "typeRoots": [
+      "./node_modules/@types"
+    ],
     "lib": [
-      "es2018", 
+      "es2018",
       "dom"
     ],
     "paths": {
-      "@ws-widget/resolver": ["library/ws-widget/resolver"],
-      "@ws-widget/resolver/*": ["library/ws-widget/resolver/*"],
-      "@ws-widget/collection": ["library/ws-widget/collection"],
-      "@ws-widget/collection/*": ["library/ws-widget/collection/*"],
-      "@ws-widget/utils": ["library/ws-widget/utils"],
-      "@ws-widget/utils/*": ["library/ws-widget/utils/*"],
-      "@ws/app": ["project/ws/app"],
-      "@ws/app/*": ["project/ws/app/*"],
-      "@ws/author": ["project/ws/author"],
-      "@ws/author/*": ["project/ws/author/*"],
-      "@ws/admin": ["project/ws/admin"],
-      "@ws/admin/*": ["project/ws/admin/*"],
-      "@ws/analytics": ["project/ws/analytics"],
-      "@ws/analytics/*": ["project/ws/analytics/*"],
-      "@ws/viewer": ["project/ws/viewer"],
-      "@ws/viewer/*": ["project/ws/viewer/*"],
-      "@ws/learning-hub": ["project/ws/learning-hub"],
-      "@ws/learning-hub/*": ["project/ws/learning-hub/*"],
-      "sunbird-sdk": ["node_modules/@project-sunbird/sunbird-sdk"],
-      "sunbird-sdk/*": ["node_modules/@project-sunbird/sunbird-sdk/*"],
+      "@app/*": ["*"],
+      "sunbird-sdk": ["../node_modules/@project-sunbird/sunbird-sdk"],
+      "sunbird-sdk/*": ["../node_modules/@project-sunbird/sunbird-sdk/*"],
+      "@project-sunbird/common-consumption": ["../node_modules/@project-sunbird/common-consumption-v9"],
+      "@project-sunbird/common-consumption/*": ["../node_modules/@project-sunbird/common-consumption-v9/*"],
+      "common-form-elements": ["../node_modules/common-form-elements-v9"],
+      "common-form-elements/*": ["../node_modules/common-form-elements-v9/*"]
     }
-    
   },
   "include": [
+    "src/**/*.ts",
     "./typings/*.d.ts",
-    "**/*.ts"
+    "./content-player/**/*.ts"
   ],
-  "angularCompilerOptions": {
-    "enableI18nLegacyMessageIdFormat": false,
-    "strictInjectionParameters": true,
-    "strictInputAccessModifiers": true,
-    "strictTemplates": true
-  }
+  "exclude": [
+    "node_modules",
+    "src/**/*.spec.ts",
+    "src/**/*.spec.data.ts",
+    "src/**/__tests__/*.ts"
+  ]
 }

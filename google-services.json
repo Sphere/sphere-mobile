@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "703323246959",
+    "project_id": "sphere-c67f3",
+    "storage_bucket": "sphere-c67f3.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:703323246959:android:dab794491e9c0e07df989a",
+        "android_client_info": {
+          "package_name": "org.sunbird.app"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "703323246959-qiseu152vpru33cu26t0m6r21dsqg329.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD0l3QVIJESMTta6aK71dBDsCV0JGRmTT8"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "703323246959-qiseu152vpru33cu26t0m6r21dsqg329.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

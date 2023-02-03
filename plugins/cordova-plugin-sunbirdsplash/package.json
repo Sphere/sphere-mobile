@@ -1,0 +1,35 @@
+{
+  "_from": "git+https://github.com/project-sunbird/cordova-plugin-sunbirdsplash.git#release-4.10.1",
+  "_id": "cordova-plugin-sunbirdsplash@1.0.0",
+  "_inBundle": false,
+  "_integrity": "",
+  "_location": "/cordova-plugin-sunbirdsplash",
+  "_phantomChildren": {},
+  "_requested": {
+    "type": "git",
+    "raw": "https://github.com/project-sunbird/cordova-plugin-sunbirdsplash.git#release-4.10.1",
+    "rawSpec": "https://github.com/project-sunbird/cordova-plugin-sunbirdsplash.git#release-4.10.1",
+    "saveSpec": "git+https://github.com/project-sunbird/cordova-plugin-sunbirdsplash.git#release-4.10.1",
+    "fetchSpec": "https://github.com/project-sunbird/cordova-plugin-sunbirdsplash.git",
+    "gitCommittish": "release-4.10.1"
+  },
+  "_requiredBy": [
+    "#DEV:/",
+    "#USER"
+  ],
+  "_resolved": "git+https://github.com/project-sunbird/cordova-plugin-sunbirdsplash.git#fafdbb609292d0bfbd0dc720c60dc1da1bd56741",
+  "_spec": "https://github.com/project-sunbird/cordova-plugin-sunbirdsplash.git#release-4.10.1",
+  "_where": "/home/sonashaju/Music/SunbirdEd-mobile-app",
+  "bundleDependencies": false,
+  "cordova": {
+    "id": "cordova-plugin-sunbirdsplash",
+    "platforms": [
+      "android",
+      "ios"
+    ]
+  },
+  "deprecated": false,
+  "description": "A starting point for a Cordova Plugin",
+  "name": "cordova-plugin-sunbirdsplash",
+  "version": "1.0.0"
+}

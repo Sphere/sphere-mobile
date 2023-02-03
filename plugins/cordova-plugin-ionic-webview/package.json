@@ -16,12 +16,12 @@
     "fetchSpec": "^4.2.1"
   },
   "_requiredBy": [
-    "#DEV:/"
+    "/"
   ],
   "_resolved": "https://registry.npmjs.org/cordova-plugin-ionic-webview/-/cordova-plugin-ionic-webview-4.2.1.tgz",
   "_shasum": "42a67bef248472659d421494feb8245ef27becfa",
   "_spec": "cordova-plugin-ionic-webview@^4.2.1",
-  "_where": "/home/aman/OFFICE/SPHERE/sphere-mobile",
+  "_where": "/home/sonashaju/Music/SunbirdEd-mobile-app",
   "author": {
     "name": "Ionic Team"
   },

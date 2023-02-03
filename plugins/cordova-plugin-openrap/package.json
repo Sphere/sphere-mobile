@@ -1,0 +1,40 @@
+{
+  "_from": "git+https://github.com/project-sunbird/cordova-plugin-openrap.git",
+  "_id": "cordova-plugin-openrap@1.0.0",
+  "_inBundle": false,
+  "_integrity": "",
+  "_location": "/cordova-plugin-openrap",
+  "_phantomChildren": {},
+  "_requested": {
+    "type": "git",
+    "raw": "https://github.com/project-sunbird/cordova-plugin-openrap.git",
+    "rawSpec": "https://github.com/project-sunbird/cordova-plugin-openrap.git",
+    "saveSpec": "git+https://github.com/project-sunbird/cordova-plugin-openrap.git",
+    "fetchSpec": "https://github.com/project-sunbird/cordova-plugin-openrap.git",
+    "gitCommittish": null
+  },
+  "_requiredBy": [
+    "#DEV:/",
+    "#USER"
+  ],
+  "_resolved": "git+https://github.com/project-sunbird/cordova-plugin-openrap.git#cdab8ab693e4d327d23f7ca9b17b3616e65c93cc",
+  "_spec": "https://github.com/project-sunbird/cordova-plugin-openrap.git",
+  "_where": "/home/sonashaju/Music/SunbirdEd-mobile-app",
+  "author": "",
+  "bundleDependencies": false,
+  "cordova": {
+    "id": "cordova-plugin-openrap",
+    "platforms": [
+      "android"
+    ]
+  },
+  "deprecated": false,
+  "description": "Cordova plugin for open rap integration",
+  "keywords": [
+    "ecosystem:cordova",
+    "cordova-android"
+  ],
+  "license": "ISC",
+  "name": "cordova-plugin-openrap",
+  "version": "1.0.0"
+}

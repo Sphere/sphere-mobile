@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" class="theme-sphere normal-typography day-mode">
+<html lang="en" dir="ltr" data-theme="DEFAULT">
 
 <head>
   <meta charset="utf-8" />
@@ -11,16 +11,21 @@
   <meta name="format-detection" content="telephone=no" />
   <meta name="msapplication-tap-highlight" content="no" />
 
-  <link rel="icon" type="image/png" href="assets/icons//favicon.png" />
-  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <link rel="icon" type="image/png" href="assets/icon/favicon.png" />
 
   <!-- add to homescreen for ios -->
   <meta name="apple-mobile-web-app-capable" content="yes" />
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  <script src="cordova.js"></script>
 </head>
 
-<body class="mat-app-background mat-body mat-typography custom-scroll">
+<body>
   <app-root></app-root>
 </body>
 
 </html>
+<script>
+  if (global === undefined) {
+    var global = window;
+  }
+</script>
