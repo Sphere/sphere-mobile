@@ -161,6 +161,8 @@ export class AppComponent implements OnInit, AfterViewInit {
       this.networkAvailability.init();
       this.fcmTokenWatcher(); // Notification related
       this.getSystemConfig();
+      const base_url = await this.utilityService.getBuildConfigValue('BASE_URL');
+      console.log('here', base_url);
       this.utilityService.getBuildConfigValue(GenericAppConfig.VERSION_NAME)
         .then(versionName => {
           this.appVersion = versionName;
