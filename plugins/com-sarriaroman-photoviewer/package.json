@@ -16,7 +16,8 @@
     "fetchSpec": "^1.2.5"
   },
   "_requiredBy": [
-    "/"
+    "#DEV:/",
+    "#USER"
   ],
   "_resolved": "https://registry.npmjs.org/com-sarriaroman-photoviewer/-/com-sarriaroman-photoviewer-1.2.5.tgz",
   "_shasum": "e8b2c749f031cedb32bef29dc8f9dcf49e55ccbc",

@@ -16,7 +16,8 @@
     "fetchSpec": "^2.0.0"
   },
   "_requiredBy": [
-    "/"
+    "#DEV:/",
+    "#USER"
   ],
   "_resolved": "https://registry.npmjs.org/cordova-plugin-code-push/-/cordova-plugin-code-push-2.0.0.tgz",
   "_shasum": "d2e9b5d037c51865755b4511ea51d181bc6e202f",

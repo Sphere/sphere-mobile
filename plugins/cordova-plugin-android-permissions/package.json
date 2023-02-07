@@ -16,7 +16,8 @@
     "fetchSpec": "^1.1.2"
   },
   "_requiredBy": [
-    "/"
+    "#DEV:/",
+    "#USER"
   ],
   "_resolved": "https://registry.npmjs.org/cordova-plugin-android-permissions/-/cordova-plugin-android-permissions-1.1.5.tgz",
   "_shasum": "aeecda735c4e5fe39ffc243e67a7a6faa6dd57d4",

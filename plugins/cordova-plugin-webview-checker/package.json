@@ -16,7 +16,8 @@
     "fetchSpec": "^1.0.1"
   },
   "_requiredBy": [
-    "/"
+    "#DEV:/",
+    "#USER"
   ],
   "_resolved": "https://registry.npmjs.org/cordova-plugin-webview-checker/-/cordova-plugin-webview-checker-1.0.1.tgz",
   "_shasum": "991394de57568eec8e1140169946c44988b4d9bb",

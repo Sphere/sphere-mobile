@@ -16,7 +16,8 @@
     "fetchSpec": "^0.9.13"
   },
   "_requiredBy": [
-    "/"
+    "#DEV:/",
+    "#USER"
   ],
   "_resolved": "https://registry.npmjs.org/cordova-plugin-document-viewer/-/cordova-plugin-document-viewer-0.9.13.tgz",
   "_shasum": "aec91b111a93f15d3319c4a3dbe089f4b4c925f7",

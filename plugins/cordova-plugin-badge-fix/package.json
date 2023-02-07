@@ -1,5 +1,5 @@
 {
-  "_from": "cordova-plugin-badge-fix@^0.8.10",
+  "_from": "cordova-plugin-badge-fix@>=0.8.10",
   "_id": "cordova-plugin-badge-fix@0.8.10",
   "_inBundle": false,
   "_integrity": "sha512-4yvfe5Qil9Bz7OTSnVNVkQV5Mru0wSAgfAhBE/myo9aPLT7yjs3sn963Shg4MCDPlVCganS0spJ384fsyYB6lA==",
@@ -8,19 +8,20 @@
   "_requested": {
     "type": "range",
     "registry": true,
-    "raw": "cordova-plugin-badge-fix@^0.8.10",
+    "raw": "cordova-plugin-badge-fix@>=0.8.10",
     "name": "cordova-plugin-badge-fix",
     "escapedName": "cordova-plugin-badge-fix",
-    "rawSpec": "^0.8.10",
+    "rawSpec": ">=0.8.10",
     "saveSpec": null,
-    "fetchSpec": "^0.8.10"
+    "fetchSpec": ">=0.8.10"
   },
   "_requiredBy": [
-    "#DEV:/"
+    "#DEV:/",
+    "#USER"
   ],
   "_resolved": "https://registry.npmjs.org/cordova-plugin-badge-fix/-/cordova-plugin-badge-fix-0.8.10.tgz",
   "_shasum": "ab09f18bf1a11d76ecdcc02b199af18a1a4365f1",
-  "_spec": "cordova-plugin-badge-fix@^0.8.10",
+  "_spec": "cordova-plugin-badge-fix@>=0.8.10",
   "_where": "/home/aman/OFFICE/SPHERE/sphere-mobile",
   "author": {
     "name": "Sebastián Katzer"

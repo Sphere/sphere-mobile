@@ -16,7 +16,8 @@
     "fetchSpec": "^2.5.1"
   },
   "_requiredBy": [
-    "/"
+    "#DEV:/",
+    "#USER"
   ],
   "_resolved": "https://registry.npmjs.org/cordova-plugin-advanced-http/-/cordova-plugin-advanced-http-2.5.1.tgz",
   "_shasum": "19b73d7c0dc0b2f3b1840a6c80fb15752bbc7a9c",

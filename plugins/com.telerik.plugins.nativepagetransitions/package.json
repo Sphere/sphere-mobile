@@ -16,7 +16,8 @@
     "fetchSpec": "^0.7.0"
   },
   "_requiredBy": [
-    "/"
+    "#DEV:/",
+    "#USER"
   ],
   "_resolved": "https://registry.npmjs.org/com.telerik.plugins.nativepagetransitions/-/com.telerik.plugins.nativepagetransitions-0.7.0.tgz",
   "_shasum": "caaa82722fdc27540dd4c36d17bfc8e32053850a",

@@ -16,7 +16,8 @@
     "fetchSpec": "^7.0.0"
   },
   "_requiredBy": [
-    "/"
+    "#DEV:/",
+    "#USER"
   ],
   "_resolved": "https://registry.npmjs.org/cordova-plugin-file/-/cordova-plugin-file-7.0.0.tgz",
   "_shasum": "40e72468e09439c402c81ff063d6ee74fffd763a",

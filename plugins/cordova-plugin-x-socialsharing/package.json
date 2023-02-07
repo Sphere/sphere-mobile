@@ -16,7 +16,8 @@
     "fetchSpec": "^6.0.3"
   },
   "_requiredBy": [
-    "/"
+    "#DEV:/",
+    "#USER"
   ],
   "_resolved": "https://registry.npmjs.org/cordova-plugin-x-socialsharing/-/cordova-plugin-x-socialsharing-6.0.4.tgz",
   "_shasum": "3147a418690895ca2892a8d023398bbe3fca9efa",

@@ -16,7 +16,8 @@
     "fetchSpec": "6.0.0"
   },
   "_requiredBy": [
-    "/"
+    "#DEV:/",
+    "#USER"
   ],
   "_resolved": "https://registry.npmjs.org/cordova-sqlite-storage/-/cordova-sqlite-storage-6.0.0.tgz",
   "_shasum": "25eba8eb4657d2b526c4b753747e6d1533fcb73b",

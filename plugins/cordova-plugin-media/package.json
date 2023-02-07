@@ -16,7 +16,8 @@
     "fetchSpec": "^6.0.0"
   },
   "_requiredBy": [
-    "/"
+    "#DEV:/",
+    "#USER"
   ],
   "_resolved": "https://registry.npmjs.org/cordova-plugin-media/-/cordova-plugin-media-6.1.0.tgz",
   "_shasum": "bbbb44b2ba1a385e0514f8129459ee25c644495c",
