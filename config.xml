@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='utf-8'?>
-<widget android-versionCode="1" id="com.sphere.aastrika" version="staging-2.4.0.01" xmlns="http://www.w3.org/ns/widgets" xmlns:android="http://schemas.android.com/apk/res/android">
+<widget android-versionCode="1" id="org.sunbird.app" version="staging-2.4.0.01" xmlns="http://www.w3.org/ns/widgets" xmlns:android="http://schemas.android.com/apk/res/android">
     <name>@string/_app_name</name>
     <description>Sunbird mobile app</description>
     <author email="" href="">EkStep Team</author>
@@ -18,12 +18,14 @@
     <hook src="scripts/copyContentPlayer.js" type="before_build" />
     <hook src="scripts/copyContentPlayer.js" type="before_run" />
     <platform name="android">
+        <preference name="android-targetSdkVersion" value="31" />
         <hook src="scripts/deleteUnUsableIosIcon.js" type="before_run" />
         <hook src="scripts/deleteUnUsableIosIcon.js" type="before_build" />
         <hook src="scripts/copyGradleFiles.js" type="before_build" />
         <hook src="scripts/copyBundledData.js" type="before_build" />
         <hook src="scripts/copyGradleFiles.js" type="before_run" />
         <hook src="scripts/copyBundledData.js" type="before_run" />
+        <hook src="scripts/android/android-10-migration-fix.js" type="before_build" />
         <hook src="scripts/application/add_application.js" type="before_run" />
         <resource-file src="MainActivity.java" target="app/src/main/java/org/sunbird/app/MainActivity.java" />
         <resource-file src="whitelabel.xml" target="app/src/main/res/values/whitelabel.xml" />
@@ -58,18 +60,18 @@
         <icon density="xhdpi" src="resources/android/icon/drawable-ldpi-icon.png" />
         <icon density="xxhdpi" src="resources/android/icon/drawable-ldpi-icon.png" />
         <icon density="xxxhdpi" src="resources/android/icon/drawable-ldpi-icon.png" />
-        <splash density="land-ldpi" src="resources/android/splash/drawable-land-ldpi-screen.png" />
-        <splash density="land-mdpi" src="resources/android/splash/drawable-land-ldpi-screen.png" />
-        <splash density="land-hdpi" src="resources/android/splash/drawable-land-hdpi-screen.png" />
-        <splash density="land-xhdpi" src="resources/android/splash/drawable-land-hdpi-screen.png" />
-        <splash density="land-xxhdpi" src="resources/android/splash/drawable-land-xhdpi-screen.png" />
-        <splash density="land-xxxhdpi" src="resources/android/splash/drawable-land-xhdpi-screen.png" />
-        <splash density="port-ldpi" src="resources/android/splash/drawable-port-ldpi-screen.png" />
-        <splash density="port-mdpi" src="resources/android/splash/drawable-port-ldpi-screen.png" />
-        <splash density="port-hdpi" src="resources/android/splash/drawable-port-hdpi-screen.png" />
-        <splash density="port-xhdpi" src="resources/android/splash/drawable-port-hdpi-screen.png" />
-        <splash density="port-xxhdpi" src="resources/android/splash/drawable-port-xhdpi-screen.png" />
-        <splash density="port-xxxhdpi" src="resources/android/splash/drawable-port-xhdpi-screen.png" />
+        <splash density="land-ldpi" src="resources/android/splash/drawable-ldpi-splash.png" />
+        <splash density="land-mdpi" src="resources/android/splash/drawable-ldpi-splash.png" />
+        <splash density="land-hdpi" src="resources/android/splash/drawable-hdpi-splash.png" />
+        <splash density="land-xhdpi" src="resources/android/splash/drawable-hdpi-splash.png" />
+        <splash density="land-xxhdpi" src="resources/android/splash/drawable-xhdpi-splash.png" />
+        <splash density="land-xxxhdpi" src="resources/android/splash/drawable-xhdpi-splash.png" />
+        <splash density="port-ldpi" src="resources/android/splash/drawable-ldpi-splash.png" />
+        <splash density="port-mdpi" src="resources/android/splash/drawable-ldpi-splash.png" />
+        <splash density="port-hdpi" src="resources/android/splash/drawable-hdpi-splash.png" />
+        <splash density="port-xhdpi" src="resources/android/splash/drawable-hdpi-splash.png" />
+        <splash density="port-xxhdpi" src="resources/android/splash/drawable-xhdpi-splash.png" />
+        <splash density="port-xxxhdpi" src="resources/android/splash/drawable-xhdpi-splash.png" />
         <resource-file src="resources/android/icon/mipmap-hdpi-icon.png" target="app/src/main/res/mipmap-hdpi/n_icon.png" />
         <resource-file src="resources/android/xml/network_security_config.xml" target="app/src/main/res/xml/network_security_config.xml" />
     </platform>
@@ -77,6 +79,7 @@
         <allow-navigation href="*" />
         <hook src="scripts/ios/ios.js" type="after_prepare" />
         <preference name="WKWebViewOnly" value="true" />
+        <preference name="UseSwiftLanguageVersion" value="4" />
         <edit-config file="*-Info.plist" mode="overwrite" target="UIBackgroundModes">
             <array />
         </edit-config>

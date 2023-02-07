@@ -9,6 +9,8 @@ import { CourseCertificate } from '@project-sunbird/client-services/models';
 import { tap } from 'rxjs/operators';
 import { CertificateDownloadService } from 'sb-svg2pdf';
 import { CertificateService, InteractType } from 'sunbird-sdk';
+import { Location } from '@angular/common';
+declare var cordova;
 
 @Component({
   selector: 'app-certificate-view',
@@ -52,7 +54,8 @@ export class CertificateViewPage implements OnInit, AfterViewInit, OnDestroy {
     private toastController: ToastController,
     private popoverCtrl: PopoverController,
     public platform: Platform,
-    private telemetryGeneratorService: TelemetryGeneratorService
+    private telemetryGeneratorService: TelemetryGeneratorService,
+    private location: Location
   ) {
   }
 
@@ -160,7 +163,33 @@ export class CertificateViewPage implements OnInit, AfterViewInit, OnDestroy {
     if (template.startsWith('data:image/svg+xml,')) {
       template = decodeURIComponent(template.replace(/data:image\/svg\+xml,/, '')).replace(/\<!--\s*[a-zA-Z0-9\-]*\s*--\>/g, '');
     }
-    this.certificateContainer.nativeElement.innerHTML = template;
+    
+    if (this.platform.is('ios')) {
+      template = template.replace("`${maxFontSize}px`", "'18px'");
+      template = template.replace("`${minFontSize}px`", "'13px'");
+      template = template.replace(/`/gi, "\"");
+      var ref = cordova.InAppBrowser.open('', '_blank');
+      ref.executeScript( { code : `
+        var certs = document.createElement('div');
+        certs.setAttribute('id', 'certid');
+        document.body.appendChild(certs);`
+      } );
+  
+      let funcExecute = () => {
+        ref.executeScript({ code: `
+          var certs = document.getElementById('certid');
+          certs.innerHTML = \`${template}\`
+        ` });
+        ref.insertCSS({ code: "body{height: 100%;}" });
+      };
+      setTimeout(funcExecute, 1000);
+      let that = this;
+      ref.addEventListener('exit', function (event) {
+        that.location.back();
+      });
+    } else {
+      this.certificateContainer.nativeElement.innerHTML = template;
+    }
   }
 
   private async listenActionEvents(option) {

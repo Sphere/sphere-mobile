@@ -272,7 +272,7 @@ export class ContentDetailsPage implements OnInit, OnDestroy {
       this.shouldOpenPlayAsPopup = extras.isCourse;
       this.shouldNavigateBack = extras.shouldNavigateBack;
       this.nextContentToBePlayed = extras.content;
-      this.playerType = extras.mimeType === 'video/mp4' ? 'sunbird-video-player' : undefined;
+      this.playerType = extras.mimeType === 'video/mp4' && !this.content.contentData["interceptionPoints"] ? 'sunbird-video-player' : undefined;
       this.checkLimitedContentSharingFlag(extras.content);
       if (this.content && this.content.mimeType === 'application/vnd.sunbird.questionset' && !extras.content) {
         await this.getContentState();
@@ -285,6 +285,14 @@ export class ContentDetailsPage implements OnInit, OnDestroy {
         map((requests) => !!requests.find((request) => request.identifier === this.identifier))
       );
 
+  }
+
+  iosCheck() {
+    if (this.platform.is('ios') && this.content.mimeType === 'application/vnd.sunbird.questionset') {
+      return true;
+    } else {
+      return false;
+    }
   }
 
   async ngOnInit() {
@@ -412,6 +420,10 @@ export class ContentDetailsPage implements OnInit, OnDestroy {
   }
 
   handleNavBackButton() {
+    if (this.platform.is('ios') && (this.screenOrientation.type === 'landscape-secondary' || this.screenOrientation.type === 'landscape-primary')) {
+      this.screenOrientation.lock(this.screenOrientation.ORIENTATIONS.PORTRAIT);
+      return false;
+    }
     this.telemetryGeneratorService.generateBackClickedTelemetry(PageId.CONTENT_DETAIL, Environment.HOME,
       true, this.cardData.identifier, this.corRelationList, this.objRollup, this.telemetryObject);
     this.didViewLoad = false;
@@ -424,13 +436,17 @@ export class ContentDetailsPage implements OnInit, OnDestroy {
 
   handleDeviceBackButton() {
     this.backButtonFunc = this.platform.backButton.subscribeWithPriority(10, () => {
-      this.telemetryGeneratorService.generateBackClickedTelemetry(PageId.CONTENT_DETAIL, Environment.HOME,
-        false, this.cardData.identifier, this.corRelationList, this.objRollup, this.telemetryObject);
-      this.didViewLoad = false;
-      this.popToPreviousPage(false);
-      this.generateEndEvent();
-      if (this.shouldGenerateEndTelemetry) {
-        this.generateQRSessionEndEvent(this.source, this.cardData.identifier);
+      if (this.platform.is('ios') && this.screenOrientation.type === 'landscape-secondary') {
+        this.screenOrientation.lock(this.screenOrientation.ORIENTATIONS.PORTRAIT);
+      } else {
+        this.telemetryGeneratorService.generateBackClickedTelemetry(PageId.CONTENT_DETAIL, Environment.HOME,
+          false, this.cardData.identifier, this.corRelationList, this.objRollup, this.telemetryObject);
+        this.didViewLoad = false;
+        this.popToPreviousPage(false);
+        this.generateEndEvent();
+        if (this.shouldGenerateEndTelemetry) {
+          this.generateQRSessionEndEvent(this.source, this.cardData.identifier);
+        }
       }
     });
   }
@@ -547,6 +563,7 @@ export class ContentDetailsPage implements OnInit, OnDestroy {
     }
 
     this.content = data;
+    this.playerType = this.content.mimeType === 'video/mp4' ? 'sunbird-video-player' : undefined;
     if (data.contentData.licenseDetails && Object.keys(data.contentData.licenseDetails).length) {
       this.licenseDetails = data.contentData.licenseDetails;
     }
@@ -625,8 +642,10 @@ export class ContentDetailsPage implements OnInit, OnDestroy {
     if ( (this.content.mimeType === 'video/mp4' || this.content.mimeType === 'video/webm') &&
     !(typeof this.content.contentData['interceptionPoints'] === 'object' && this.content.contentData['interceptionPoints'] != null &&
      Object.keys(this.content.contentData['interceptionPoints']).length !== 0) ) {
-      this.getNextContent(data.hierarchyInfo, data.identifier);
-      this.playContent(true, true);
+       if (data && data.hierarchyInfo) {
+        this.getNextContent(data.hierarchyInfo, data.identifier);
+       }
+       this.playContent(true, true);
     }
   }
 
@@ -1187,7 +1206,8 @@ export class ContentDetailsPage implements OnInit, OnDestroy {
   async handlePlayer(playerData) {
     this.config = playerData.state.config;
     let playerConfig = await this.formFrameworkUtilService.getPdfPlayerConfiguration();
-    if (["video/mp4", "video/webm"].includes(playerData.state.config['metadata']['mimeType']) && this.checkIsPlayerEnabled(playerConfig , 'videoPlayer').name === "videoPlayer") {
+    if (["video/mp4", "video/webm"].includes(playerData.state.config['metadata']['mimeType']) && this.checkIsPlayerEnabled(playerConfig , 'videoPlayer').name === "videoPlayer" &&
+    (!this.content.contentData['interceptionPoints'] || Object.keys(this.content.contentData['interceptionPoints'].length === 0))) {
       this.config = await this.getNewPlayerConfiguration();
       this.config['config'].sideMenu.showPrint = false;
       this.playerType = 'sunbird-video-player';
@@ -1199,7 +1219,7 @@ export class ContentDetailsPage implements OnInit, OnDestroy {
     const nextContent = this.config['metadata'].hierarchyInfo && this.nextContentToBePlayed ? { name: this.nextContentToBePlayed.contentData.name, identifier: this.nextContentToBePlayed.contentData.identifier } : undefined;
     this.config['context']['pdata']['pid'] = 'sunbird.app.contentplayer';
     if (this.config['metadata'].isAvailableLocally) {
-      this.config['metadata'].contentData.streamingUrl = '/_app_file_' + this.config['metadata'].contentData.streamingUrl;
+      this.config['metadata'].contentData.streamingUrl = '/_app_file_' + this.config['metadata'].basePath ?? this.config['metadata'].contentData.streamingUrl;
     }
     this.config['metadata']['contentData']['basePath'] = '/_app_file_' + this.config['metadata'].basePath;
     this.config['metadata']['contentData']['isAvailableLocally'] = this.config['metadata'].isAvailableLocally;
@@ -1280,13 +1300,16 @@ export class ContentDetailsPage implements OnInit, OnDestroy {
           this.commonUtilService.handleAssessmentStatus(attemptInfo);
         }
       } else if (event.edata['type'] === 'FULLSCREEN') {
-        if (this.screenOrientation.type === 'portrait-primary') {
-          this.screenOrientation.lock(this.screenOrientation.ORIENTATIONS.LANDSCAPE);
-        } else if (this.screenOrientation.type === 'landscape-primary') {
-          this.screenOrientation.lock(this.screenOrientation.ORIENTATIONS.PORTRAIT);
+        if(!this.platform.is('ios') || (this.platform.is('ios') && this.playerType !== "sunbird-video-player")) {
+          if (this.screenOrientation.type === 'portrait-primary') {
+            this.screenOrientation.lock(this.screenOrientation.ORIENTATIONS.LANDSCAPE);
+          } else if (this.screenOrientation.type === 'landscape-primary') {
+            this.screenOrientation.lock(this.screenOrientation.ORIENTATIONS.PORTRAIT);
+          }
         }
       }
     } else if (event.type === 'ended') {
+      this.isContentPlayed = true;
       this.rateContent('manual');
     } else if (event.type === 'REPLAY') {
       this.isPlayerPlaying = true;

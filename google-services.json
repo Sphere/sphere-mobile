@@ -1,33 +1,33 @@
 {
   "project_info": {
-    "project_number": "703323246959",
-    "project_id": "sphere-c67f3",
-    "storage_bucket": "sphere-c67f3.appspot.com"
+    "project_number": "579762618982",
+    "project_id": "sunbird-app",
+    "storage_bucket": "sunbird-health.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:703323246959:android:dab794491e9c0e07df989a",
+        "mobilesdk_app_id": "1:579762618e8c45892a3a7",
         "android_client_info": {
-          "package_name": "com.sphere.aastrika"
+          "package_name": "org.sunbird.app"
         }
       },
       "oauth_client": [
         {
-          "client_id": "703323246959-qiseu152vpru33cu26t0m6r21dsqg329.apps.googleusercontent.com",
+          "client_id": "579762618982-v0l6tq4br5n8c9bff3iv8.apps.googleusercontent.com",
           "client_type": 3
         }
       ],
       "api_key": [
         {
-          "current_key": "AIzaSyD0l3QVIJESMTta6aK71dBDsCV0JGRmTT8"
+          "current_key": "AIzaSyD_7VggEaXsBw9aqmUAj3hRcIRuk"
         }
       ],
       "services": {
         "appinvite_service": {
           "other_platform_oauth_client": [
             {
-              "client_id": "703323246959-qiseu152vpru33cu26t0m6r21dsqg329.apps.googleusercontent.com",
+              "client_id": "579762618982-v0l68c9bff3iv8.apps.googleusercontent.com",
               "client_type": 3
             }
           ]

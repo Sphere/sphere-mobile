@@ -1,72 +1,34 @@
 {
-  "overriddenDefaultChannelId": "013626723470835712431",
-  "theme": {
-    "name": "inded"
-  },
-  "onboarding": [
-    {
-      "name": "language-setting",
-      "skip": true,
-      "default": {
-        "code": "en",
-        "label": "English"
-      },
-      "data": [
+    "onboarding": [
         {
-          "label": "हिंदी",
-          "code": "hi",
-          "isApplied": false,
-          "name": "Hindi"
+            "name": "language-setting",
+            "skip": true,
+            "default": { "code" :"en", "label": "English" }
         },
         {
-          "label": "English",
-          "code": "en",
-          "isApplied": false,
-          "name": "English"
+            "name": "user-type-selection",
+            "skip": true,
+            "default": "teacher"
+        },
+        {
+            "name": "profile-settings",
+            "skip": true,
+            "default": [
+                "board",
+                "medium",
+                "grade"
+            ]
+        },
+        {
+            "name": "district-mapping",
+            "skip": true,
+            "default": [
+                "state",
+                "city"
+            ]
         }
-      ]
-    },
-    {
-      "name": "user-type-selection",
-      "skip": true,
-      "default": "teacher"
-    },
-    {
-      "name": "profile-settings",
-      "skip": true,
-      "params": {
-        "showQrScanPage": false
-      },
-      "default": {
-        "syllabus": [
-          "ekstep_ncert_k-12"
-        ],
-        "board": [
-          "cbse"
-        ],
-        "medium": [
-          "english"
-        ],
-        "grade": [
-          "class5",
-          "class6"
-        ]
-      }
-    },
-    {
-      "name": "district-mapping",
-      "skip": true,
-      "default": {
-        "state": "Andaman & Nicobar Islands",
-        "stateId": "1e01c46f-6b5a-4aa4-8cce-aae729c7670c",
-        "district": "Nicobars",
-        "districtId": "6daef899-1e83-4b87-9c67-779985c3fd41"
-      }
-    }
-  ],
-  "tabs": [
-    
-  ],
-  "categories": [
-  ]
+    ],
+    "tabs": [
+        
+    ]
 }

@@ -1,0 +1,35 @@
+{
+  "_from": "git+https://github.com/project-sunbird/cordova-plugin-qr-scanner.git#release-5.0.2",
+  "_id": "cordova-plugin-qr-scanner@1.0.0",
+  "_inBundle": false,
+  "_integrity": "",
+  "_location": "/cordova-plugin-qr-scanner",
+  "_phantomChildren": {},
+  "_requested": {
+    "type": "git",
+    "raw": "https://github.com/project-sunbird/cordova-plugin-qr-scanner.git#release-5.0.2",
+    "rawSpec": "https://github.com/project-sunbird/cordova-plugin-qr-scanner.git#release-5.0.2",
+    "saveSpec": "git+https://github.com/project-sunbird/cordova-plugin-qr-scanner.git#release-5.0.2",
+    "fetchSpec": "https://github.com/project-sunbird/cordova-plugin-qr-scanner.git",
+    "gitCommittish": "release-5.0.2"
+  },
+  "_requiredBy": [
+    "#DEV:/",
+    "#USER"
+  ],
+  "_resolved": "git+https://github.com/project-sunbird/cordova-plugin-qr-scanner.git#daafe1d91b216d977bfe1c2b5dea28f382247eb6",
+  "_spec": "https://github.com/project-sunbird/cordova-plugin-qr-scanner.git#release-5.0.2",
+  "_where": "/home/aman/OFFICE/SPHERE/sphere-mobile",
+  "bundleDependencies": false,
+  "cordova": {
+    "id": "cordova-plugin-qr-scanner",
+    "platforms": [
+      "android",
+      "ios"
+    ]
+  },
+  "deprecated": false,
+  "description": "A starting point for a Cordova Plugin",
+  "name": "cordova-plugin-qr-scanner",
+  "version": "1.0.0"
+}

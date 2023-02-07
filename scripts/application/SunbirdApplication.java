@@ -12,7 +12,7 @@ import io.fabric.sdk.android.Fabric;
  * Created by swayangjit on 12/4/19.
  */
 public class SunbirdApplication extends MultiDexApplication {
-    public static final String PACKAGE_NAME = "com.sphere.aastrika";
+    public static final String PACKAGE_NAME = "org.sunbird.app";
 
     @Override
     public void onCreate() {

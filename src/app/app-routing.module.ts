@@ -10,6 +10,21 @@ import { MlGuard } from './manage-learn/core/guards/ml.guard';
 
 const routes: Routes = [
   {
+    path: '',
+    redirectTo: `${RouterLinks.LANGUAGE_SETTING}`,
+    pathMatch: 'full'
+  },
+  {
+    path: `${RouterLinks.LANGUAGE_SETTING}/:isFromSettings`,
+    loadChildren: './language-settings/language-settings.module#LanguageSettingsModule'
+  },
+  {
+    path: `${RouterLinks.LANGUAGE_SETTING}`,
+    loadChildren: './language-settings/language-settings.module#LanguageSettingsModule',
+    canLoad: [HasNotBeenOnboardedGuard],
+    resolve: { message: HasNotSelectedLanguageGuard }
+  },
+  {
     path: `${RouterLinks.USER_TYPE_SELECTION}`,
     loadChildren: './user-type-selection/user-type-selection.module#UserTypeSelectionPageModule',
     canLoad: [HasNotBeenOnboardedGuard],
