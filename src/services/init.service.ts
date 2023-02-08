@@ -203,13 +203,13 @@ export class InitService {
   }
   private async fetchFeaturesStatus(): Promise<Set<string>> {
     const featureConfigs = featureConfig
-    this.configSvc.restrictedFeatures = new Set(
+    /* this.configSvc.restrictedFeatures = new Set(
       Object.entries(featureConfigs)
         .filter(
           ([_k, v]) => !hasPermissions(v, this.configSvc.userRoles, this.configSvc.userGroups),
         )
         .map(([k]) => k),
-    )
+    ) */
     return this.configSvc.restrictedFeatures
   }
 

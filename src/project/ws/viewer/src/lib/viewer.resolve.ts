@@ -6,7 +6,7 @@ import { AccessControlService } from '@ws/author'
 import { WidgetContentService, NsContent, VIEWER_ROUTE_FROM_MIME } from '@ws-widget/collection'
 import { IResolveResponse, AuthMicrosoftService, ConfigurationsService } from '@ws-widget/utils'
 import { ViewerDataService } from './viewer-data.service'
-import { MobileAppsService } from '../../../../../src/app/services/mobile-apps.service'
+import { MobileAppsService } from '@app/services/mobile-apps.service'
 import { Platform } from '@angular/cdk/platform'
 
 // const ADDITIONAL_FIELDS_IN_CONTENT = ['creatorContacts', 'source', 'exclusiveContent', 'body']

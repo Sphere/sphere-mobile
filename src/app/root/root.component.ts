@@ -32,14 +32,15 @@ import {
 import { delay, filter, map } from 'rxjs/operators'
 import { MobileAppsService } from '../../services/mobile-apps.service'
 import { RootService } from './root.service'
-import { LoginResolverService } from '../../../../library/ws-widget/resolver/src/public-api'
-import { ExploreResolverService } from './../../../../library/ws-widget/resolver/src/lib/explore-resolver.service'
-import { OrgServiceService } from '../../../../project/ws/app/src/lib/routes/org/org-service.service'
+import { LoginResolverService } from '@ws-widget/resolver'
+import { ExploreResolverService } from '@ws-widget/resolver/src/lib/explore-resolver.service'
+import { OrgServiceService } from '@ws/app/src/lib/routes/org/org-service.service'
 import * as _ from 'lodash'
-import { Plugins } from '@capacitor/core'
+//import { Plugins } from '@capacitor/core'
 import { v4 as uuid } from 'uuid'
-const { App } = Plugins
-import { SignupService } from 'src/app/routes/signup/signup.service'
+//const { App } = Plugins
+import { SignupService } from '../modules/public/services/signup/signup.service'
+//import { SignupService } from 'src/app/routes/signup/signup.service'
 // import { SwUpdate } from '@angular/service-worker'
 // import { environment } from '../../../environments/environment'
 // import { MatDialog } from '@angular/material'
@@ -170,11 +171,11 @@ export class RootComponent implements OnInit, AfterViewInit {
         this.showNavigation = true
       }
     }
-    App.addListener('backButton', () => {
+    /* App.addListener('backButton', () => {
 
       window.history.go(-1)
 
-    })
+    }) */
 
     this.router.events.subscribe((event: any) => {
       if (event instanceof NavigationEnd) {
@@ -338,12 +339,12 @@ export class RootComponent implements OnInit, AfterViewInit {
   ngAfterViewInit() {
     // this.initAppUpdateCheck()
     try {
-      if (window.fcWidget) {
+      /* if (window.fcWidget) {
         window.fcWidget.hide()
         window.fcWidget.on('widget:closed', () => {
           // this.backToChatIcon()
         })
-      }
+      } */
     } catch (error) {
       // tslint:disable-next-line:no-console
       console.log(error)
@@ -354,7 +355,7 @@ export class RootComponent implements OnInit, AfterViewInit {
   // freshChat functionality
   fcSettingsFunc() {
     try {
-      if (window.fcWidget) {
+      /* if (window.fcWidget) {
         window.fcWidget.setConfig({ headerProperty: { hideChatButton: true } })
         // window.fcWidget.setConfig({ headerProperty: { direction: 'ltr' } })
         window.fcWidget.init()
@@ -364,7 +365,7 @@ export class RootComponent implements OnInit, AfterViewInit {
           window.fcWidget.user.setPhone(this.configSvc.userProfile.phone)
           window.fcWidget.user.setMeta({ userId: this.configSvc.userProfile.userId, username: this.configSvc.userProfile.userName })
         }
-      }
+      } */
     } catch (error) {
       // tslint:disable-next-line:no-console
       console.log(error)
@@ -375,9 +376,9 @@ export class RootComponent implements OnInit, AfterViewInit {
     try {
       setTimeout(() => {
         this.isCommonChatEnabled = false
-        window.fcWidget.init()
+        /* window.fcWidget.init()
         window.fcWidget.setConfig({ headerProperty: { hideChatButton: false } })
-        window.fcWidget.setConfig({ headerProperty: { direction: 'ltr' } })
+        window.fcWidget.setConfig({ headerProperty: { direction: 'ltr' } }) */
       }, 300)
       // window.fcWidget.show()
       //this.isCommonChatEnabled = false
@@ -393,8 +394,8 @@ export class RootComponent implements OnInit, AfterViewInit {
   backToChatIcon() {
     try {
       this.isCommonChatEnabled = true
-      window.fcWidget.setConfig({ headerProperty: { hideChatButton: true } })
-      window.fcWidget.init()
+      /* window.fcWidget.setConfig({ headerProperty: { hideChatButton: true } })
+      window.fcWidget.init() */
     } catch (error) {
       // tslint:disable-next-line:no-console
       console.log(error)

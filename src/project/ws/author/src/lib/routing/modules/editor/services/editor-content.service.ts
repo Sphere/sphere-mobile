@@ -183,9 +183,9 @@ export class EditorContentService {
     delete requestBody.status
     delete requestBody.categoryType
     delete requestBody.accessPaths
-    return this.editorService
+    /* return this.editorService
       .createAndReadContent(requestBody)
-      .pipe(tap(v => this.setOriginalMeta(v)))
+      .pipe(tap(v => this.setOriginalMeta(v))) */
   }
 
   isValid(id: string): boolean {

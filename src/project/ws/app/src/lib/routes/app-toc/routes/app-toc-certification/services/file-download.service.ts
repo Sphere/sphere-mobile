@@ -31,10 +31,10 @@ export class FileDownloadService {
   saveBlobToDevice(blob: Blob, documentName: string): boolean {
     try {
       // IE Download
-      if (this.window.navigator && this.window.navigator.msSaveOrOpenBlob) {
+      /* if (this.window.navigator && this.window.navigator.msSaveOrOpenBlob) {
         this.window.navigator.msSaveOrOpenBlob(blob, documentName)
         return true
-      }
+      } */
 
       // For other browsers
       const file: File = new File([blob], documentName)
@@ -42,7 +42,7 @@ export class FileDownloadService {
       const downloadLink = this.document.createElement('a')
       downloadLink.style.display = 'none'
       this.document.body.appendChild(downloadLink)
-      downloadLink.setAttribute('href', this.window.URL.createObjectURL(file))
+      //downloadLink.setAttribute('href', this.window.URL.createObjectURL(file))
       downloadLink.setAttribute('download', documentName)
       downloadLink.click()
       this.document.body.removeChild(downloadLink)

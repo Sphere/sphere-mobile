@@ -3,7 +3,7 @@ import { ConfigurationsService, TFetchStatus, LoggerService } from '@ws-widget/u
 import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser'
 import { ActivatedRoute } from '@angular/router'
 import { Subscription, interval } from 'rxjs'
-import { MobileAppsService } from '../../../../../../../../../../src/app/services/mobile-apps.service'
+import { MobileAppsService } from '@app/services/mobile-apps.service'
 import { IEvent } from '../models/event.model'
 import { EventsService } from '../services/events.service'
 
