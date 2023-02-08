@@ -11,6 +11,7 @@ import { FileOpener } from '@ionic-native/file-opener/ngx';
 import { FileTransfer, FileTransferObject } from '@ionic-native/file-transfer/ngx';
 import { File } from '@ionic-native/file/ngx';
 import {GooglePlus} from '@ionic-native/google-plus/ngx';
+import { ReactiveFormsModule } from '@angular/forms';
 // ionic cordova dependencies/plugins
 import { WebView } from '@ionic-native/ionic-webview/ngx';
 import { LocalNotifications } from '@ionic-native/local-notifications/ngx';
@@ -86,6 +87,43 @@ import { TranslateJsonPipe } from '@app/pipes/translate-json/translate-json';
 import { OnboardingConfigurationService } from '@app/services/onboarding-configuration.service';
 import onboarding from './../assets/configurations/config.json';
 // AoT requires an exported function for factories
+
+// import for sphere app 
+import {
+  MatButtonModule,
+  MatCardModule,
+  MatDialogModule,
+  MatDividerModule,
+  MatExpansionModule,
+  MatIconModule,
+  MatMenuModule,
+  MatProgressBarModule,
+  MatGridListModule,
+  MatRippleModule,
+  MatSliderModule,
+  MatToolbarModule,
+  MatTooltipModule,
+  MAT_PROGRESS_SPINNER_DEFAULT_OPTIONS,
+  MAT_SNACK_BAR_DEFAULT_OPTIONS,
+  MatInputModule,
+  MatFormFieldModule,
+  MatListModule,
+  MatAutocompleteModule,
+  MatDatepickerModule,
+  MatNativeDateModule,
+  MatSelectModule,
+} from '@angular/material'
+import { MatSnackBarModule } from '@angular/material';
+import { WidgetResolverModule } from '@ws-widget/resolver'
+import {  WIDGET_REGISTERED_MODULES, WIDGET_REGISTRATION_CONFIG } from '@ws-widget/collection'
+import {  ImageCropModule, LoggerService, PipeSafeSanitizerModule } from '@ws-widget/utils'
+import { InitService } from '../services/init.service';
+import { AuthKeycloakService } from '../../library/ws-widget/utils/src/lib/services/auth-keycloak.service'
+import { PublicModule } from './modules/public/public.module';
+import { CoreModule  as SpherCoreModule} from '../app/modules/core/core.module';
+import { AppTocModule, SearchModule } from '@ws/app/src/public-api'
+import { HomeModule } from './modules/home/home.module';
+
 export function translateHttpLoaderFactory(httpClient: HttpClient) {
   return new TranslateHttpLoader(httpClient, './assets/i18n/', '.json');
 }
@@ -459,6 +497,35 @@ declare const sbutility;
     AppRoutingModule,
     ComponentsModule,
     HttpClientModule,
+    MatSliderModule,
+    MatButtonModule,
+    MatCardModule,
+    MatToolbarModule,
+    MatIconModule,
+    MatListModule,
+    MatMenuModule,
+    MatGridListModule,
+    MatDividerModule,
+    MatProgressBarModule,
+    MatExpansionModule,
+    MatRippleModule,
+    MatDialogModule,
+    MatInputModule,
+    MatFormFieldModule,
+    MatTooltipModule,
+    MatAutocompleteModule,
+    MatDatepickerModule,
+    MatNativeDateModule,
+    MatSelectModule,
+    MatExpansionModule, 
+    MatSnackBarModule,
+    PublicModule,
+    SearchModule,
+    CoreModule,
+    HomeModule,
+    AppTocModule,
+    ReactiveFormsModule,
+    WidgetResolverModule.forRoot(WIDGET_REGISTRATION_CONFIG),
     TranslateModule.forRoot({
       loader: {
         provide: TranslateLoader,

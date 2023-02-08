@@ -9,9 +9,14 @@ import { IsGuestUserGuard } from '@app/guards/is-guest-user.guard';
 import { MlGuard } from './manage-learn/core/guards/ml.guard';
 
 const routes: Routes = [
+  
+  {
+    path: 'public/home',
+    loadChildren: () => import('./modules/public/public.module').then(m => m.PublicModule)
+  },
   {
     path: '',
-    redirectTo: `${RouterLinks.LANGUAGE_SETTING}`,
+    redirectTo: 'public/home',
     pathMatch: 'full'
   },
   {

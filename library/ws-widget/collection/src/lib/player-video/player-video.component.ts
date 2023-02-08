@@ -3,7 +3,7 @@ import { ActivatedRoute } from '@angular/router'
 import { NsWidgetResolver, WidgetBaseComponent } from '@ws-widget/resolver'
 import { EventService, ConfigurationsService } from '@ws-widget/utils'
 import videoJs from 'video.js'
-import { ViewerUtilService } from '../../../../../../project/ws/viewer/src/lib/viewer-util.service'
+import { ViewerUtilService } from '@ws/viewer/src/lib/viewer-util.service'
 import { ROOT_WIDGET_CONFIG } from '../collection.config'
 import { IWidgetsPlayerMediaData } from '../_models/player-media.model'
 import {
