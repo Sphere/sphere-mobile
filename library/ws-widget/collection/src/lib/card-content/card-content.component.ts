@@ -10,7 +10,7 @@ import { NsCardContent } from './card-content.model'
 import { MdePopoverTrigger } from '@material-extended/mde'
 import { Router } from '@angular/router'
 import { delay, mergeMap } from 'rxjs/operators'
-import { UserProfileService } from '../../../../../../project/ws/app/src/lib/routes/user-profile/services/user-profile.service'
+import { UserProfileService } from '@ws/app/src/lib/routes/user-profile/services/user-profile.service'
 import { Title } from '@angular/platform-browser'
 
 @Component({

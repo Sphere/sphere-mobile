@@ -19,7 +19,7 @@ import {
   saveContinueLearningFunction,
   fireRealTimeProgressFunction,
 } from '../_services/videojs-util'
-import { ViewerUtilService } from '../../../../../../project/ws/viewer/src/lib/viewer-util.service'
+import { ViewerUtilService } from '@ws/viewer/src/lib/viewer-util.service'
 import { WidgetContentService } from '../_services/widget-content.service'
 import { NsContent } from '../_services/widget-content.model'
 

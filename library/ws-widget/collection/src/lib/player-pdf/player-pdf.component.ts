@@ -15,7 +15,7 @@ import { EventService, LoggerService, WsEvents, ValueService, ConfigurationsServ
 import * as PDFJS from 'pdfjs-dist/webpack'
 import { fromEvent, interval, merge, Subject, Subscription } from 'rxjs'
 import { debounceTime, distinctUntilChanged } from 'rxjs/operators'
-import { ViewerUtilService } from '../../../../../../project/ws/viewer/src/lib/viewer-util.service'
+import { ViewerUtilService } from '@ws/viewer/src/lib/viewer-util.service'
 import { ROOT_WIDGET_CONFIG } from '../collection.config'
 import { NsContent } from '../_services/widget-content.model'
 import { WidgetContentService } from '../_services/widget-content.service'

@@ -1,0 +1,165 @@
+@import 'styles/_ws-common.scss';
+@import 'styles/_ws-mixins.scss';
+
+.login-page-content {
+  box-sizing: border-box;
+  @extend %page-center;
+  @extend %height-mat-toolbar-sibling;
+  padding: 0;
+  box-sizing: border-box;
+
+  @include breakpoint-gt-s {
+    max-width: 30%;
+  }
+
+  @include breakpoint-gt-m {
+    max-width: 25%;
+  }
+
+  @include breakpoint-gt-l {
+    max-width: 20%;
+  }
+
+  @include breakpoint-s {
+    max-width: 50%;
+    padding: 12px;
+  }
+
+  @include breakpoint-xs {
+    max-width: 90%;
+    margin: auto;
+    width: 90%;
+  }
+}
+
+.login-card {
+  margin: 0;
+  padding: 20px 20px 30px 20px;
+  color: #000;
+  font-size: 14px;
+  line-height: 17px;
+}
+
+a {
+  color: #2873b2;
+}
+
+.login-btn {
+  background: #1C5D95;
+  color: #fff;
+  line-height: 19px;
+}
+
+.login-btn:disabled {
+  background: #BFBFBF;
+  color: #808080;
+  cursor: default;
+}
+
+.f-w-500 {
+  font-weight: 500 !important;
+}
+
+
+.iconPosition {
+  position: absolute;
+  right: -18px;
+  top: 10px;
+}
+
+
+.f-black {
+  color: #000;
+}
+
+
+.border-radius {
+  border-radius: 20px;
+}
+
+
+:host::ng-deep .pwd {
+  // width: 93% !important;
+  width: 100% !important;
+}
+
+
+@media screen and (max-width:600px) {
+  .input-content {
+    width: 100%;
+  }
+}
+
+
+.register {
+  @include breakpoint-xs {
+    font-size: 16px !important;
+    font-weight: 500 !important;
+    line-height: 20px !important;
+  }
+}
+
+.non-register {
+  font-size: 40px !important;
+  line-height: 48px !important;
+}
+
+.ui.header {
+  margin: calc(2rem - 0.165em) 0 1rem;
+  padding: 0 0;
+  font-family: 'Poppins Regular', 'Noto Sans', sans-serif;
+  font-weight: 400;
+  min-height: 1rem;
+  font-size: 2.25rem !important;
+  text-transform: none;
+  color: #212121;
+}
+
+.fwb {
+  font-weight: bold;
+}
+
+.forgetPasswordLink {
+  color: rgb(0, 116, 182, 1) !important;
+  font-size: 12px;
+  transition: all .25s ease-in;
+  font-family: 'Poppins Medium', 'Noto Sans', sans-serif;
+}
+
+.blueButton {
+  width: 100%;
+  color: #FFFFFF !important;
+  background-color: #1C5D95 !important;
+  font-size: 14px;
+  border-radius: 50px;
+  cursor: pointer;
+  font-family: HelveticaNeueLTStd-Lt, Helvetica, Arial, sans-serif;
+  font-weight: 700;
+  padding: 0.78571429em 1.5em 0.78571429em;
+  line-height: 1em;
+}
+
+.or-holder {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.signUpMsg {
+  font-family: 'Poppins Medium', 'Noto Sans', sans-serif;
+  font-size: 14px;
+  text-align: center;
+  color: #707070;
+}
+
+.whiteButton {
+  color: #1C5D95 !important;
+  background-color: #fff !important;
+  border: 1px solid #1C5D95 !important;
+  height: 35px;
+  border-radius: 50px;
+  padding: 0.78571429em 1.5em 0.78571429em;
+  font-weight: 700;
+  line-height: 1em;
+  display: inline-block;
+}
