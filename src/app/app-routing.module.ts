@@ -16,7 +16,7 @@ const routes: Routes = [
   },
   {
     path: '',
-    redirectTo: 'public/home',
+    redirectTo: `${RouterLinks.LANGUAGE_SETTING}`,
     pathMatch: 'full'
   },
   {

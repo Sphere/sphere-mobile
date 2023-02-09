@@ -2,7 +2,7 @@
 import { Component, OnInit } from '@angular/core'
 import { NavigationExtras, Router } from '@angular/router'
 import { delay } from 'rxjs/operators'
-import  publciConfig from '../../../../../assets/configuration/mobile-public.json';
+import  publicConfig from '../../../../../assets/configurations/mobile-public.json';
 @Component({
   selector: 'ws-mobile-page',
   templateUrl: './mobile-page.component.html',
@@ -38,7 +38,7 @@ export class MobilePageComponent implements OnInit {
       },
     ]
 
-    this.pageLayout = publciConfig.pageLayout
+    this.pageLayout = publicConfig.pageLayout
   }
   openIframe(video: any) {
     const navigationExtras: NavigationExtras = {

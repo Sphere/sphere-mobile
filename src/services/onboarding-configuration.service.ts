@@ -48,14 +48,9 @@ interface TabConfig {
 })
 export class OnboardingConfigurationService {
 
-    onBoardingConfig: { 
-        overriddenDefaultChannelId: string,
-        theme: Theme
-        onboarding: Array<OnBoardingConfig> ,
-        categories: Array<Category>
-    };
+    onBoardingConfig: any
     initialOnboardingScreenName;
-    tabList: { tab: Array<TabConfig> };
+    tabList: any;
 
     constructor(
         @Inject('SHARED_PREFERENCES') private sharedPreferences: SharedPreferences,

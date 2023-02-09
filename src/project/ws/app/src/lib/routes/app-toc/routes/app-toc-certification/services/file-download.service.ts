@@ -31,10 +31,10 @@ export class FileDownloadService {
   saveBlobToDevice(blob: Blob, documentName: string): boolean {
     try {
       // IE Download
-      /* if (this.window.navigator && this.window.navigator.msSaveOrOpenBlob) {
-        this.window.navigator.msSaveOrOpenBlob(blob, documentName)
-        return true
-      } */
+      // if (this.window.navigator && this.window.navigator.msSaveOrOpenBlob) {
+      //   this.window.navigator.msSaveOrOpenBlob(blob, documentName)
+      //   return true
+      // }
 
       // For other browsers
       const file: File = new File([blob], documentName)
