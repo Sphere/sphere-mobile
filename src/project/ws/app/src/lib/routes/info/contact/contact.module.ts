@@ -1,8 +1,10 @@
 import { NgModule } from '@angular/core'
 import { CommonModule } from '@angular/common'
 import { ContactHomeComponent } from './components/contact-home.component'
-import { MatToolbarModule, MatCardModule, MatButtonModule } from '@angular/material'
 import { BtnPageBackModule } from '@ws-widget/collection'
+import { MatButtonModule } from '@angular/material/button'
+import { MatCardModule } from '@angular/material/card'
+import { MatToolbarModule } from '@angular/material/toolbar'
 
 @NgModule({
   declarations: [ContactHomeComponent],

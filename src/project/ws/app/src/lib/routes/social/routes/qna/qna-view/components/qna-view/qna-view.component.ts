@@ -1,5 +1,6 @@
 import { Component, OnInit, OnDestroy, ViewChild } from '@angular/core'
-import { MatSnackBar, MatDialog } from '@angular/material'
+import { MatDialog } from '@angular/material/dialog'
+import { MatSnackBar } from '@angular/material/snack-bar'
 import { ActivatedRoute, Data, Router } from '@angular/router'
 import { Subscription } from 'rxjs'
 import { NsWidgetResolver } from '@ws-widget/resolver'

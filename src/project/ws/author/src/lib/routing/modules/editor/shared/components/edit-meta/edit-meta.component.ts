@@ -12,7 +12,6 @@ import {
   ViewChild,
 } from '@angular/core'
 import { FormBuilder, FormControl, FormGroup } from '@angular/forms'
-import { MatAutocompleteSelectedEvent } from '@angular/material'
 import { MatChipInputEvent } from '@angular/material/chips'
 import { MatDialog } from '@angular/material/dialog'
 import { MatSnackBar } from '@angular/material/snack-bar'
@@ -44,6 +43,7 @@ import {
   switchMap,
   map,
 } from 'rxjs/operators'
+import { MatAutocompleteSelectedEvent } from '@angular/material/autocomplete'
 
 @Component({
   selector: 'ws-auth-edit-meta',

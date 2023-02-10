@@ -10,7 +10,7 @@ import {
 import { NsGoal, BtnGoalsService } from '@ws-widget/collection'
 import { TFetchStatus, EventService, ConfigurationsService } from '@ws-widget/utils'
 import { Router } from '@angular/router'
-import { MatSnackBar } from '@angular/material'
+import { MatSnackBar } from '@angular/material/snack-bar'
 
 @Component({
   selector: 'ws-app-goal-common-card',

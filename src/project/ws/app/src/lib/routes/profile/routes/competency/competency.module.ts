@@ -2,16 +2,6 @@ import { NgModule } from '@angular/core'
 import { CommonModule } from '@angular/common'
 import { RouterModule } from '@angular/router'
 
-import {
-  MatProgressSpinnerModule,
-  MatCardModule,
-  MatIconModule,
-  MatDividerModule,
-  MatButtonModule,
-  MatExpansionModule,
-  MatListModule,
-  MatTabsModule,
-} from '@angular/material'
 import { FormsModule, ReactiveFormsModule } from '@angular/forms'
 import { WidgetResolverModule } from '@ws-widget/resolver'
 
@@ -20,6 +10,14 @@ import { CompetencyHomeComponent } from './components/competency-home/competency
 import { AchievementsComponent } from './components/achievements/achievements.component'
 import { HorizontalScrollerModule } from '@ws-widget/utils'
 import { BadgesModule } from './../badges/badges.module'
+import { MatButtonModule } from '@angular/material/button'
+import { MatCardModule } from '@angular/material/card'
+import { MatDividerModule } from '@angular/material/divider'
+import { MatExpansionModule } from '@angular/material/expansion'
+import { MatIconModule } from '@angular/material/icon'
+import { MatListModule } from '@angular/material/list'
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner'
+import { MatTabsModule } from '@angular/material/tabs'
 
 @NgModule({
   declarations: [CardDetailComponent, CompetencyHomeComponent, AchievementsComponent],

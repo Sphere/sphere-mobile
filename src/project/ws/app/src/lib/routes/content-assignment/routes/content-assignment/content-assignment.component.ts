@@ -1,6 +1,7 @@
 import { STEPPER_GLOBAL_OPTIONS } from '@angular/cdk/stepper'
 import { Component, ElementRef, OnInit, ViewChild } from '@angular/core'
-import { MatDialog, MatDialogConfig, MatSnackBar } from '@angular/material'
+import { MatDialog, MatDialogConfig } from '@angular/material/dialog'
+import { MatSnackBar } from '@angular/material/snack-bar'
 import { MatPaginator, PageEvent } from '@angular/material/paginator'
 import { ActivatedRoute, Router } from '@angular/router'
 import { ContentAssignService, NsContent } from '@ws-widget/collection'

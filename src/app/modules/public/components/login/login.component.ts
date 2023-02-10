@@ -2,7 +2,7 @@ import { PlatformLocation, Location } from '@angular/common';
 import { HttpClient } from '@angular/common/http';
 import { AfterViewInit, Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { FormBuilder, FormControl, Validators, FormGroup } from '@angular/forms';
-import { MatSnackBar } from '@angular/material';
+import { MatSnackBar } from '@angular/material/snack-bar';
 import { Router, ActivatedRoute } from '@angular/router';
 import { WidgetContentService } from '@ws-widget/collection/src/public-api';
 import { SignupService } from '../../services/signup/signup.service';

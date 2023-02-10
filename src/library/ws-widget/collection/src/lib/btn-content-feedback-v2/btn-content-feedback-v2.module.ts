@@ -1,15 +1,5 @@
 import { NgModule } from '@angular/core'
 import { CommonModule } from '@angular/common'
-import {
-  MatButtonModule,
-  MatIconModule,
-  MatTooltipModule,
-  MatDialogModule,
-  MatProgressSpinnerModule,
-  MatFormFieldModule,
-  MatInputModule,
-  MatSnackBarModule,
-} from '@angular/material'
 
 import { EditorQuillModule } from '../discussion-forum/editor-quill/editor-quill.module'
 
@@ -18,6 +8,14 @@ import { BtnContentFeedbackDialogV2Component } from './components/btn-content-fe
 import { FeedbackSnackbarComponent } from './components/feedback-snackbar/feedback-snackbar.component'
 import { FormsModule, ReactiveFormsModule } from '@angular/forms'
 import { UserContentRatingModule } from './../_common/user-content-rating/user-content-rating.module'
+import { MatButtonModule } from '@angular/material/button'
+import { MatIconModule } from '@angular/material/icon'
+import { MatTooltipModule } from '@angular/material/tooltip'
+import { MatDialogModule } from '@angular/material/dialog'
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner'
+import { MatFormFieldModule } from '@angular/material/form-field'
+import { MatInputModule } from '@angular/material/input'
+import { MatSnackBarModule } from '@angular/material/snack-bar'
 
 @NgModule({
   declarations: [

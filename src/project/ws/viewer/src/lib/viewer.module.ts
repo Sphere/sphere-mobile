@@ -2,21 +2,6 @@ import { NgModule } from '@angular/core'
 import { CommonModule } from '@angular/common'
 import { FormsModule } from '@angular/forms'
 import { NgCircleProgressModule } from 'ng-circle-progress'
-import {
-  MatCardModule,
-  MatSidenavModule,
-  MatToolbarModule,
-  MatIconModule,
-  MatButtonModule,
-  MatDividerModule,
-  MatSlideToggleModule,
-  MatListModule,
-  MatTreeModule,
-  MatProgressSpinnerModule,
-  MatSnackBarModule,
-  MatTabsModule,
-  MatInputModule,
-} from '@angular/material'
 
 import { ViewerRoutingModule } from './viewer-routing.module'
 
@@ -51,6 +36,19 @@ import { FilterResourcePipe } from './pipes/filter-resource.pipe'
 import { BtnMailUserModule } from './../../../../../library/ws-widget/collection/src/lib/btn-mail-user/btn-mail-user.module'
 import { UserImageModule } from './../../../../../library/ws-widget/collection/src/lib/_common/user-image/user-image.module'
 import { AppTocModule } from '@ws/app'
+import { MatButtonModule } from '@angular/material/button'
+import { MatCardModule } from '@angular/material/card'
+import { MatDividerModule } from '@angular/material/divider'
+import { MatIconModule } from '@angular/material/icon'
+import { MatInputModule } from '@angular/material/input'
+import { MatListModule } from '@angular/material/list'
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner'
+import { MatSidenavModule } from '@angular/material/sidenav'
+import { MatSlideToggleModule } from '@angular/material/slide-toggle'
+import { MatSnackBarModule } from '@angular/material/snack-bar'
+import { MatTabsModule } from '@angular/material/tabs'
+import { MatToolbarModule } from '@angular/material/toolbar'
+import { MatTreeModule } from '@angular/material/tree'
 
 @NgModule({
   declarations: [ViewerComponent, ViewerTocComponent, FilterResourcePipe],

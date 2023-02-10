@@ -1,5 +1,6 @@
 import { Component, OnInit, Inject } from '@angular/core'
-import { MatSnackBar, MAT_DIALOG_DATA, MatDialogRef } from '@angular/material'
+import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog'
+import { MatSnackBar } from '@angular/material/snack-bar'
 import { NsFeedback } from '../btn-content-feedback.model'
 import { BtnContentFeedbackService } from '../btn-content-feedback.service'
 

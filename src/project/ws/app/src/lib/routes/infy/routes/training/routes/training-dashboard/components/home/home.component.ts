@@ -1,6 +1,6 @@
 import { Component, OnInit, OnDestroy } from '@angular/core'
 import { Router, ActivatedRoute, NavigationEnd } from '@angular/router'
-import { MatTabChangeEvent } from '@angular/material'
+import { MatTabChangeEvent } from '@angular/material/tabs'
 import { Observable, Subject } from 'rxjs'
 import { map, filter, switchMap, takeUntil } from 'rxjs/operators'
 

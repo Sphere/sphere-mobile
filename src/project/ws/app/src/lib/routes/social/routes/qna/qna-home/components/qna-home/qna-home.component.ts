@@ -4,7 +4,7 @@ import { Subscription } from 'rxjs'
 import { TFetchStatus, ConfigurationsService, NsPage } from '@ws-widget/utils'
 import { NsWidgetResolver } from '@ws-widget/resolver'
 import { NsError, ROOT_WIDGET_CONFIG, NsDiscussionForum, WsDiscussionForumService } from '@ws-widget/collection'
-import { MatButtonToggleChange } from '@angular/material'
+import { MatButtonToggleChange } from '@angular/material/button-toggle'
 
 @Component({
   selector: 'ws-app-qna-home',

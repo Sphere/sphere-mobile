@@ -1,7 +1,8 @@
 import { Component, OnInit, Input } from '@angular/core'
 import { NsDiscussionForum, DialogSocialDeletePostComponent } from '@ws-widget/collection'
 import { ConfigurationsService } from '@ws-widget/utils'
-import { MatSnackBar, MatDialog } from '@angular/material'
+import { MatDialog } from '@angular/material/dialog'
+import { MatSnackBar } from '@angular/material/snack-bar'
 
 @Component({
   selector: 'ws-app-qna-item',

@@ -123,6 +123,8 @@ import { RootComponent } from './root/root.component';
 import { MdePopoverModule } from '@material-extended/mde'
 import { NotificationComponent } from '@app/project/ws/author/src/lib/modules/shared/components/notification/notification.component';
 import { OrgComponent } from '@app/project/ws/app/src/lib/routes/org/components/org/org.component';
+import { MatAutocompleteModule } from '@angular/material/autocomplete';
+import { MatSelectModule } from '@angular/material/select';
 export function translateHttpLoaderFactory(httpClient: HttpClient) {
   return new TranslateHttpLoader(httpClient, './assets/i18n/', '.json');
 }

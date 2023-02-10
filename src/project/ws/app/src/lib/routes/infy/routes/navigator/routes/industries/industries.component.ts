@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core'
-import { MatTabChangeEvent } from '@angular/material'
+import { MatTabChangeEvent } from '@angular/material/tabs'
 import { ActivatedRoute, Router } from '@angular/router'
 import { NsContentStripMultiple } from '@ws-widget/collection'
 import { NsWidgetResolver } from '@ws-widget/resolver'

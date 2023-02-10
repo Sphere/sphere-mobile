@@ -2,8 +2,9 @@ import { Component, OnInit, ViewChild, ElementRef } from '@angular/core'
 import { ActivatedRoute } from '@angular/router'
 import { TFetchStatus } from '@ws-widget/utils'
 import { BtnGoalsService, NsGoal } from '@ws-widget/collection'
-import { MatTableDataSource, MatSnackBar } from '@angular/material'
 import { SelectionModel } from '@angular/cdk/collections'
+import { MatSnackBar } from '@angular/material/snack-bar'
+import { MatTableDataSource } from '@angular/material/table'
 // import { BtnGoalsService } from "@ws-widget/collection";
 
 @Component({

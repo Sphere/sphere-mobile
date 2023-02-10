@@ -1,11 +1,12 @@
 import { Component, OnInit, Inject } from '@angular/core'
-import { MatDialogRef, MAT_DIALOG_DATA, MatTabChangeEvent } from '@angular/material'
+import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog'
 import { HttpErrorResponse } from '@angular/common/http'
 
 import { TFetchStatus, ConfigurationsService } from '@ws-widget/utils'
 import { WsDiscussionForumService } from '../../ws-discussion-forum.services'
 import { WsDiscussionForumUserService } from '../../ws-discussion-forum-user.service'
 import { NsDiscussionForum } from '../../ws-discussion-forum.model'
+import { MatTabChangeEvent } from '@angular/material/tabs'
 
 const TAB_INDEX_ACTIVITY_TYPE_MAPPING: { [key: number]: string } = {
   0: 'like',

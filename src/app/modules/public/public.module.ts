@@ -4,7 +4,7 @@ import { PublicHomeComponent } from './components/public-home/public-home.compon
 import { PublicHomeRoutingModule } from './public-home-routing.module';
 import { FormsModule ,ReactiveFormsModule} from '@angular/forms';
 import { IonicModule } from '@ionic/angular';
-import { MatFormFieldModule, MatInputModule, MatIconModule } from '@angular/material'
+// import { MatFormFieldModule, MatInputModule, MatIconModule } from '@angular/material'
 import { MobilePageComponent } from './components/mobile-page/mobile-page.component';
 import { MobileHomeComponent } from './components/mobile-home/mobile-home.component';
 import { CreateAccountComponent } from './components/create-account/create-account.component';
@@ -14,6 +14,9 @@ import { WidgetResolverModule } from '@ws-widget/resolver'
 import {  WIDGET_REGISTERED_MODULES, WIDGET_REGISTRATION_CONFIG } from '@ws-widget/collection'
 import { LoginComponent } from './components/login/login.component';
 import { ForgotPasswordComponent } from './components/forgot-password/forgot-password.component';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatInputModule } from '@angular/material/input';
+import { MatIconModule } from '@angular/material/icon';
 @NgModule({
   declarations: [
     PublicHomeComponent,

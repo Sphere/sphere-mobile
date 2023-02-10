@@ -19,13 +19,11 @@ import { QuizModule } from './../quiz/quiz.module'
 import { CourseHeaderComponent } from './components/course-header/course-header.component'
 import { BtnPageBackModule } from '@ws-widget/collection'
 import { WebPageModule } from './../web-page/web-page.module'
+import { MatButtonModule } from '@angular/material/button'
+import { MatIconModule } from '@angular/material/icon'
+import { MatToolbarModule } from '@angular/material/toolbar'
+import { MatTooltipModule } from '@angular/material/tooltip'
 
-import {
-  MatToolbarModule,
-  MatIconModule,
-  MatButtonModule,
-  MatTooltipModule,
-} from '@angular/material'
 
 @NgModule({
   declarations: [

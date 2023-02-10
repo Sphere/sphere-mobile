@@ -1,7 +1,6 @@
 import { animate, transition, trigger } from '@angular/animations'
 import { Component, ElementRef, EventEmitter, OnInit, Output, ViewChild } from '@angular/core'
 import { FormBuilder, FormControl, FormGroup } from '@angular/forms'
-import { MatDialog, MatPaginator, MatTableDataSource } from '@angular/material'
 import { MatSnackBar } from '@angular/material/snack-bar'
 import { NOTIFICATION_TIME } from '@ws/author/src/lib/constants/constant'
 import { Notify } from '@ws/author/src/lib/constants/notificationMessage'
@@ -13,6 +12,9 @@ import { IapAssessmentService } from '../../services/iap-assessment.service'
 import { SectionDialogComponent } from '../section-dialog/section-dialog.component'
 import { ViewQuestionDialogComponent } from '../view-question-dialog/view-question-dialog.component'
 import { CONTENT_BASE_WEBHOST_ASSETS } from '../../../../../../../../constants/apiEndpoints'
+import { MatDialog } from '@angular/material/dialog'
+import { MatPaginator } from '@angular/material/paginator'
+import { MatTableDataSource } from '@angular/material/table'
 
 @Component({
   selector: 'ws-auth-general-details',

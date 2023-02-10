@@ -1,6 +1,6 @@
 import { Component, OnInit, Inject } from '@angular/core'
 import { FormGroup, FormControl, Validators, ValidationErrors } from '@angular/forms'
-import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material'
+import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog'
 
 import { IRequestFilterDialogResult } from '../../../../../app-toc/routes/app-toc-certification/models/certification.model'
 

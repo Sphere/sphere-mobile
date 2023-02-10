@@ -11,8 +11,8 @@ import { ErrorInternalServerComponent } from './components/error-internal-server
 import { ErrorNotFoundComponent } from './components/error-not-found/error-not-found.component'
 import { ErrorServiceUnavailableComponent } from './components/error-service-unavailable/error-service-unavailable.component'
 import { ErrorSomethingWrongComponent } from './components/error-something-wrong/error-something-wrong.component'
+import { MatButtonModule } from '@angular/material/button'
 
-import { MatButtonModule } from '@angular/material'
 
 @NgModule({
   declarations: [

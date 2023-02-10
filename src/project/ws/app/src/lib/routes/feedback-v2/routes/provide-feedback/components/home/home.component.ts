@@ -1,5 +1,5 @@
 import { Component, OnDestroy, OnInit } from '@angular/core'
-import { MatTabChangeEvent } from '@angular/material'
+import { MatTabChangeEvent } from '@angular/material/tabs'
 import { ActivatedRoute, NavigationEnd, Router } from '@angular/router'
 import { EFeedbackRole, EFeedbackType, IFeedbackSummary } from '@ws-widget/collection'
 import { IResolveResponse } from '@ws-widget/utils'

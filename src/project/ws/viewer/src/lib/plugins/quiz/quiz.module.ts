@@ -8,22 +8,6 @@ import { SubmitQuizDialogComponent } from './components/submit-quiz-dialog/submi
 
 import { PipeDurationTransformModule, PipeLimitToModule } from '@ws-widget/utils'
 
-import {
-  MatCardModule,
-  MatDialogModule,
-  MatFormFieldModule,
-  MatIconModule,
-  MatListModule,
-  MatRadioModule,
-  MatSidenavModule,
-  MatTableModule,
-  MatButtonModule,
-  MatTooltipModule,
-  MatProgressSpinnerModule,
-  MatTabsModule,
-  MatProgressBarModule,
-} from '@angular/material'
-
 import { BtnFullscreenModule } from '@ws-widget/collection'
 import { AssesmentOverviewComponent } from './components/assesment-overview/assesment-overview.component'
 import { AssesmentModalComponent } from './components/assesment-modal/assesment-modal.component'
@@ -35,6 +19,19 @@ import { QuizModalComponent } from './components/quiz-modal/quiz-modal.component
 import { ViewQuizQuestionComponent } from './components/view-quiz-question/view-quiz-question.component'
 import { CloseQuizModalComponent } from './components/close-quiz-modal/close-quiz-modal.component'
 import { ConfirmmodalComponent } from './confirm-modal-component'
+import { MatButtonModule } from '@angular/material/button'
+import { MatCardModule } from '@angular/material/card'
+import { MatDialogModule } from '@angular/material/dialog'
+import { MatFormFieldModule } from '@angular/material/form-field'
+import { MatIconModule } from '@angular/material/icon'
+import { MatListModule } from '@angular/material/list'
+import { MatProgressBarModule } from '@angular/material/progress-bar'
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner'
+import { MatRadioModule } from '@angular/material/radio'
+import { MatSidenavModule } from '@angular/material/sidenav'
+import { MatTableModule } from '@angular/material/table'
+import { MatTabsModule } from '@angular/material/tabs'
+import { MatTooltipModule } from '@angular/material/tooltip'
 
 @NgModule({
   declarations: [

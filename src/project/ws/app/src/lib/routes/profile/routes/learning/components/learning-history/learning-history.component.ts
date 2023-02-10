@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core'
-import { PageEvent } from '@angular/material'
 import { ActivatedRoute } from '@angular/router'
 import { NsContent } from '@ws-widget/collection'
 import { ConfigurationsService, ValueService, TFetchStatus } from '@ws-widget/utils'
@@ -8,6 +7,7 @@ import { AnalyticsService } from '../../../analytics/services/analytics.service'
 import { NSLearningHistory } from '../../models/learning.models'
 import { LearningHistoryService } from '../../services/learning-history.service'
 import { FormControl } from '@angular/forms'
+import { PageEvent } from '@angular/material/paginator'
 
 interface ILearningHistoryContent {
   content: NSLearningHistory.ILearningHistory

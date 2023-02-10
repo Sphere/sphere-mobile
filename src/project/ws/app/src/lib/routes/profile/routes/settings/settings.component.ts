@@ -19,8 +19,10 @@ import { BtnSettingsService } from '@ws-widget/collection'
 import { FormControl } from '@angular/forms'
 import { Subscription } from 'rxjs'
 import { Router, ActivatedRoute } from '@angular/router'
-import { MatSnackBar, MatSelectChange, MatTabChangeEvent } from '@angular/material'
 import { UserProfileService } from 'project/ws/app/src/lib/routes/user-profile/services/user-profile.service'
+import { MatSelectChange } from '@angular/material/select'
+import { MatSnackBar } from '@angular/material/snack-bar'
+import { MatTabChangeEvent } from '@angular/material/tabs'
 
 @Component({
   selector: 'ws-app-settings',

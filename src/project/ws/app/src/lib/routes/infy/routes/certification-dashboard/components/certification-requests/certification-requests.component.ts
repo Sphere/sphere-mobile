@@ -11,7 +11,7 @@ import {
 } from '../../../../../app-toc/routes/app-toc-certification/models/certification.model'
 import { RequestFilterDialogComponent } from '../request-filter-dialog/request-filter-dialog.component'
 import { CertificationDashboardService } from '../../services/certification-dashboard.service'
-import { MatDialog } from '@angular/material'
+import { MatDialog } from '@angular/material/dialog'
 
 @Component({
   selector: 'ws-app-certification-requests',

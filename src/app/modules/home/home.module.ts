@@ -2,13 +2,15 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule ,ReactiveFormsModule} from '@angular/forms';
 import { IonicModule } from '@ionic/angular';
-import { MatFormFieldModule, MatInputModule, MatIconModule } from '@angular/material'
 import { MobileCategoryComponent } from './components/mobile-category/mobile-category.component';
 import { MobileCourseViewComponent } from './components/mobile-course-view/mobile-course-view.component';
 import { MobileDashboardComponent } from './components/mobile-dashboard/mobile-dashboard.component';
 import { MobileHowDoesWorkComponent } from './components/mobile-how-does-work/mobile-how-does-work.component';
 import { HomeComponent } from './components/home/home.component';
 import { HomeRoutingModule } from './home-routing.module';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatIconModule } from '@angular/material/icon';
+import { MatInputModule } from '@angular/material/input';
 
 @NgModule({
     declarations: [

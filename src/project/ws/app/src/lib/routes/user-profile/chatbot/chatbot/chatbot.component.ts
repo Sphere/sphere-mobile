@@ -7,10 +7,11 @@ import { map, startWith } from 'rxjs/operators'
 import { Observable, of } from 'rxjs'
 import moment from 'moment'
 import { Router } from '@angular/router'
-import { MatSnackBar, DateAdapter, MAT_DATE_FORMATS } from '@angular/material'
 import { ConfigurationsService } from '../../../../../../../../../library/ws-widget/utils/src/public-api'
 import { BtnProfileService } from '@ws-widget/collection/src/lib/btn-profile/btn-profile.service'
 import { AppDateAdapter, APP_DATE_FORMATS } from '../../services/format-datepicker'
+import { DateAdapter, MAT_DATE_FORMATS } from '@angular/material/core'
+import { MatSnackBar } from '@angular/material/snack-bar'
 declare var $: any
 @Component({
   selector: 'ws-app-chatbot',

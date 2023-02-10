@@ -2,7 +2,8 @@ import { Component, OnInit, Input, SimpleChanges, Output, EventEmitter, OnChange
 import { NsPlaylist } from '@ws-widget/collection'
 import { Subscription } from 'rxjs'
 import { ConfigurationsService, TFetchStatus } from '@ws-widget/utils/src/public-api'
-import { MatDialog, MatSnackBar } from '@angular/material'
+import { MatDialog } from '@angular/material/dialog'
+import { MatSnackBar } from '@angular/material/snack-bar'
 import { PersonProfileService } from '../../services/person-profile.service'
 
 @Component({

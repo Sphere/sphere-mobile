@@ -3,11 +3,12 @@ import {
   Output,
   EventEmitter,
 } from '@angular/core'
-import { MatSelectChange, MatButtonToggleChange } from '@angular/material'
 import { TFetchStatus, ConfigurationsService } from '@ws-widget/utils'
 import { GamificationService } from '../../../../services/gamification.service'
 import { FormControl } from '@angular/forms'
 import { DatePipe } from '@angular/common'
+import { MatButtonToggleChange } from '@angular/material/button-toggle'
+import { MatSelectChange } from '@angular/material/select'
 @Component({
   selector: 'ws-app-leaderboard',
   templateUrl: './leaderboard-home.component.html',

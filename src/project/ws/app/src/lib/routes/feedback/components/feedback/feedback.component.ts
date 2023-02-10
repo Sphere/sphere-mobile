@@ -1,6 +1,6 @@
 import { Component, ElementRef, Input, OnDestroy, OnInit, ViewChild } from '@angular/core'
 import { NgForm } from '@angular/forms'
-import { MatSnackBar } from '@angular/material'
+import { MatSnackBar } from '@angular/material/snack-bar'
 import { ActivatedRoute, Router } from '@angular/router'
 import { NsFeedback } from '@ws-widget/collection'
 import { BtnContentFeedbackService } from '@ws-widget/collection/src/lib/btn-content-feedback/btn-content-feedback.service'

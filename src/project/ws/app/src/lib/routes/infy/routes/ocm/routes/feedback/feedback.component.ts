@@ -1,5 +1,5 @@
 import { Component, OnInit, Input, ViewChild, ElementRef } from '@angular/core'
-import { MatSnackBar } from '@angular/material'
+import { MatSnackBar } from '@angular/material/snack-bar'
 import { NgForm } from '@angular/forms'
 import { IWsFeedbackConfig } from '../../models/ocm.model'
 import { IWsFeedbackTypeRequest } from '../../models/feedback.model'

@@ -3,7 +3,6 @@ import { FormGroup, FormControl, Validators, FormArray, FormBuilder } from '@ang
 import { ENTER, COMMA } from '@angular/cdk/keycodes'
 import { Subscription, Observable } from 'rxjs'
 import { startWith, map, debounceTime, distinctUntilChanged } from 'rxjs/operators'
-import { MatSnackBar, MatChipInputEvent, DateAdapter, MAT_DATE_FORMATS, MatDialog, MatTabGroup } from '@angular/material'
 import { AppDateAdapter, APP_DATE_FORMATS, changeformat } from '../../services/format-datepicker'
 import { ImageCropComponent } from '@ws-widget/utils/src/public-api'
 import { IMAGE_MAX_SIZE, IMAGE_SUPPORT_TYPES } from '@ws/author/src/lib/constants/upload'
@@ -31,6 +30,11 @@ import { BtnProfileService } from '@ws-widget/collection/src/lib/btn-profile/btn
 import * as _ from 'lodash'
 import { HttpClient } from '@angular/common/http'
 import moment from 'moment'
+import { MatChipInputEvent } from '@angular/material/chips'
+import { DateAdapter, MAT_DATE_FORMATS } from '@angular/material/core'
+import { MatDialog } from '@angular/material/dialog'
+import { MatSnackBar } from '@angular/material/snack-bar'
+import { MatTabGroup } from '@angular/material/tabs'
 // import { LanguageDialogComponent } from '../../../../../../../../../src/app/routes/language-dialog/language-dialog.component'
 @Component({
   selector: 'ws-app-user-profile',

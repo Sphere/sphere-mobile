@@ -1,5 +1,5 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core'
-import { MatSnackBar } from '@angular/material'
+import { MatSnackBar } from '@angular/material/snack-bar'
 import { NsGalleryView } from '@ws-widget/collection/src/public-api'
 import { NsWidgetResolver } from '@ws-widget/resolver'
 import {

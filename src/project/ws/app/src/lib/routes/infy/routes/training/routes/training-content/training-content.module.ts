@@ -1,23 +1,5 @@
 import { NgModule } from '@angular/core'
 import { CommonModule } from '@angular/common'
-import {
-  MatDividerModule,
-  MatButtonModule,
-  MatIconModule,
-  MatMenuModule,
-  MatCardModule,
-  MatDialogModule,
-  MatFormFieldModule,
-  MatSelectModule,
-  MatDatepickerModule,
-  MatNativeDateModule,
-  MatInputModule,
-  MatCheckboxModule,
-  MatProgressSpinnerModule,
-  MatBadgeModule,
-  MatTooltipModule,
-  MatChipsModule,
-} from '@angular/material'
 
 import { DisplayContentTypeModule, UserAutocompleteModule } from '@ws-widget/collection'
 import { PipeConciseDateRangeModule } from '@ws-widget/utils'
@@ -38,6 +20,22 @@ import { TrainingShareDialogComponent } from './components/training-share-dialog
 import { TrainingNominateDialogComponent } from './components/training-nominate-dialog/training-nominate-dialog.component'
 import { TrainingCountResolver } from './resolvers/training-count.resolver'
 import { TrainingPrivilegesResolver } from '../../resolvers/training-privileges.resolver'
+import { MatBadgeModule } from '@angular/material/badge'
+import { MatButtonModule } from '@angular/material/button'
+import { MatCardModule } from '@angular/material/card'
+import { MatCheckboxModule } from '@angular/material/checkbox'
+import { MatChipsModule } from '@angular/material/chips'
+import { MatNativeDateModule } from '@angular/material/core'
+import { MatDatepickerModule } from '@angular/material/datepicker'
+import { MatDialogModule } from '@angular/material/dialog'
+import { MatDividerModule } from '@angular/material/divider'
+import { MatFormFieldModule } from '@angular/material/form-field'
+import { MatIconModule } from '@angular/material/icon'
+import { MatInputModule } from '@angular/material/input'
+import { MatMenuModule } from '@angular/material/menu'
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner'
+import { MatSelectModule } from '@angular/material/select'
+import { MatTooltipModule } from '@angular/material/tooltip'
 
 @NgModule({
   declarations: [

@@ -1,5 +1,4 @@
 import { Component, OnInit, ViewChild, AfterViewInit, ElementRef } from '@angular/core'
-import { MatPaginator, MatTableDataSource, MatSnackBar } from '@angular/material'
 import { IScheduleDataResponse, IDateObj, IScheduleData, IScheduleObj, IRegisterObj } from '../../../../models/training-schedules.model'
 import { TFetchStatus } from '@ws-widget/utils'
 import {
@@ -8,6 +7,9 @@ import {
 } from '@angular/forms'
 import { TrainingApiService } from '../../../../apis/training-api.service'
 import { ITrainingApiResponse } from '../../../../models/training-api.model'
+import { MatPaginator } from '@angular/material/paginator'
+import { MatSnackBar } from '@angular/material/snack-bar'
+import { MatTableDataSource } from '@angular/material/table'
 
 export interface IScheduleTable {
   courseTitle: string

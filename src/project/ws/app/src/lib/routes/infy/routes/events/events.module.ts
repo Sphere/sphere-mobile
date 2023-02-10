@@ -10,9 +10,10 @@ import { MatIconModule } from '@angular/material/icon'
 import { MatButtonModule } from '@angular/material/button'
 import { MatCardModule } from '@angular/material/card'
 import { MatDividerModule } from '@angular/material/divider'
-import { MatExpansionModule, MatSnackBarModule } from '@angular/material'
 import { WidgetResolverModule } from '@ws-widget/resolver'
 import { BtnPageBackModule } from '@ws-widget/collection'
+import { MatExpansionModule } from '@angular/material/expansion'
+import { MatSnackBarModule } from '@angular/material/snack-bar'
 
 @NgModule({
   declarations: [LiveEventsComponent],

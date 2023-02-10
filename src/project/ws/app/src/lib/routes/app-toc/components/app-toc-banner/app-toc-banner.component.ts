@@ -1,5 +1,4 @@
 import { Component, Input, OnChanges, OnDestroy, OnInit, HostListener, Inject } from '@angular/core'
-import { MatDialog, MatSnackBar } from '@angular/material'
 import { DomSanitizer, SafeStyle } from '@angular/platform-browser'
 import { ActivatedRoute, Event, NavigationEnd, Router } from '@angular/router'
 import {
@@ -28,6 +27,8 @@ import * as FileSaver from 'file-saver'
 import moment from 'moment'
 
 import { DOCUMENT } from '@angular/common'
+import { MatDialog } from '@angular/material/dialog'
+import { MatSnackBar } from '@angular/material/snack-bar'
 
 @Component({
   selector: 'ws-app-toc-banner',

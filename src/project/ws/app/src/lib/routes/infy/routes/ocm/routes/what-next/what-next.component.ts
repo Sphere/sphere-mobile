@@ -1,5 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core'
-import { MatCalendarCellCssClasses } from '@angular/material'
+import { MatCalendarCellCssClasses } from '@angular/material/datepicker'
 import { IWsEventsConfig, IWsEvent } from '../../models/ocm.model'
 
 @Component({

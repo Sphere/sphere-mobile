@@ -1,20 +1,6 @@
 import { NgModule } from '@angular/core'
 import { CommonModule } from '@angular/common'
 import { ReactiveFormsModule, FormsModule } from '@angular/forms'
-import {
-  MatTabsModule,
-  MatToolbarModule,
-  MatIconModule,
-  MatFormFieldModule,
-  MatSelectModule,
-  MatCardModule,
-  MatButtonModule,
-  MatDialogModule,
-  MatSnackBarModule,
-  MatProgressSpinnerModule,
-  MatInputModule,
-  MatDatepickerModule,
-} from '@angular/material'
 
 import { BtnPageBackModule } from '@ws-widget/collection'
 import { PipeDateConcatModule } from '@ws-widget/utils'
@@ -35,6 +21,18 @@ import { CertificationDashboardService } from './services/certification-dashboar
 import { WINDOW_PROVIDERS } from '../../../app-toc/routes/app-toc-certification/services/window.service'
 import { FileDownloadService } from '../../../app-toc/routes/app-toc-certification/services/file-download.service'
 import { AppTocCertificationModule } from '../../../app-toc/routes/app-toc-certification/app-toc-certification.module'
+import { MatButtonModule } from '@angular/material/button'
+import { MatCardModule } from '@angular/material/card'
+import { MatDatepickerModule } from '@angular/material/datepicker'
+import { MatDialogModule } from '@angular/material/dialog'
+import { MatFormFieldModule } from '@angular/material/form-field'
+import { MatIconModule } from '@angular/material/icon'
+import { MatInputModule } from '@angular/material/input'
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner'
+import { MatSelectModule } from '@angular/material/select'
+import { MatSnackBarModule } from '@angular/material/snack-bar'
+import { MatTabsModule } from '@angular/material/tabs'
+import { MatToolbarModule } from '@angular/material/toolbar'
 
 @NgModule({
   declarations: [

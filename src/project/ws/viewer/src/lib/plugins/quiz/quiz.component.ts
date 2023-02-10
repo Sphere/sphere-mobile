@@ -9,7 +9,6 @@ import {
   ViewChild, ViewChildren,
 } from '@angular/core'
 import { Location } from '@angular/common'
-import { MatDialog, MatSidenav } from '@angular/material'
 import { interval, Subject, Subscription } from 'rxjs'
 import { map, takeUntil, first } from 'rxjs/operators'
 import { NSQuiz } from './quiz.model'
@@ -39,6 +38,8 @@ import {
   ConfigurationsService,
 } from '@ws-widget/utils'
 import moment from 'moment'
+import { MatDialog } from '@angular/material/dialog'
+import { MatSidenav } from '@angular/material/sidenav'
 
 @Component({
   selector: 'viewer-plugin-quiz',

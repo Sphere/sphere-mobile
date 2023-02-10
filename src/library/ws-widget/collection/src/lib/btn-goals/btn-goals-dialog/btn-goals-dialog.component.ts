@@ -1,7 +1,7 @@
 import { Component, OnInit, Inject } from '@angular/core'
+import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog'
 import { TFetchStatus } from '../../../../../utils/src/public-api'
 import { NsGoal } from '../btn-goals.model'
-import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material'
 
 @Component({
   selector: 'ws-widget-btn-goals-dialog',

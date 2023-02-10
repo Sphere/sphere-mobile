@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core'
-import { MatDatepickerModule, MatNativeDateModule } from '@angular/material'
+import { MatNativeDateModule } from '@angular/material/core'
+import { MatDatepickerModule } from '@angular/material/datepicker'
 import { CalendarComponent } from './calendar.component'
 
 @NgModule({

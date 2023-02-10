@@ -21,27 +21,6 @@ import { MultilineSnackbarComponent } from '../navigator/components/multiline-sn
 
 import { BtnGoalsModule, BtnPageBackModule } from '@ws-widget/collection'
 
-import {
-  MatButtonModule,
-  MatCardModule,
-  MatListModule,
-  MatRadioModule,
-  MatChipsModule,
-  MatSnackBarModule,
-  MatInputModule,
-  MatDialogModule,
-  MatTooltipModule,
-  MatTreeModule,
-  MatIconModule,
-  MatSidenavModule,
-  MatMenuModule,
-  MatProgressSpinnerModule,
-  MatToolbarModule,
-  MatExpansionModule,
-  MatTabsModule,
-  MatGridListModule,
-  MatCheckboxModule,
-} from '@angular/material'
 import { NavigatorHomeComponent } from './routes/navigator-home/navigator-home.component'
 import { FeatureCardComponent } from './routes/navigator-home/components/feature-card/feature-card.component'
 import { ResultComponent } from './routes/learning-path/components/result/result.component'
@@ -57,6 +36,25 @@ import { FsHomeComponent } from './routes/fs-home/fs-home.component'
 import { IndustryAnalyticsComponent } from './routes/industry-analytics/industry-analytics.component'
 import { RoleDetailsComponent } from './routes/role/role-details/role-details.component'
 import { BpmDetailsComponent } from './routes/bpm-details/bpm-details.component'
+import { MatButtonModule } from '@angular/material/button'
+import { MatCardModule } from '@angular/material/card'
+import { MatCheckboxModule } from '@angular/material/checkbox'
+import { MatChipsModule } from '@angular/material/chips'
+import { MatDialogModule } from '@angular/material/dialog'
+import { MatExpansionModule } from '@angular/material/expansion'
+import { MatGridListModule } from '@angular/material/grid-list'
+import { MatIconModule } from '@angular/material/icon'
+import { MatInputModule } from '@angular/material/input'
+import { MatListModule } from '@angular/material/list'
+import { MatMenuModule } from '@angular/material/menu'
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner'
+import { MatRadioModule } from '@angular/material/radio'
+import { MatSidenavModule } from '@angular/material/sidenav'
+import { MatSnackBarModule } from '@angular/material/snack-bar'
+import { MatTabsModule } from '@angular/material/tabs'
+import { MatToolbarModule } from '@angular/material/toolbar'
+import { MatTooltipModule } from '@angular/material/tooltip'
+import { MatTreeModule } from '@angular/material/tree'
 
 @NgModule({
   declarations: [

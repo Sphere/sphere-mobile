@@ -3,7 +3,7 @@ import { ActivatedRoute, Router } from '@angular/router'
 import { WidgetContentService, NsContent, BtnPlaylistService, NsPlaylist } from '@ws-widget/collection'
 import { TFetchStatus, NsPage, ConfigurationsService } from '../../../../../../../../../../library/ws-widget/utils/src/public-api'
 import { FormControl } from '@angular/forms'
-import { MatSnackBar } from '@angular/material'
+import { MatSnackBar } from '@angular/material/snack-bar'
 import { Subscription } from 'rxjs'
 import { InterestService } from '../../../../profile/routes/interest/services/interest.service'
 

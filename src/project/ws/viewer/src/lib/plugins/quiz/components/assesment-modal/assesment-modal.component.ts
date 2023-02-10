@@ -1,5 +1,4 @@
 import { AfterViewInit, Component, Inject, OnDestroy, OnInit, ViewEncapsulation } from '@angular/core'
-import { MatDialogRef, MatSnackBar, MAT_DIALOG_DATA } from '@angular/material'
 import { ActivatedRoute } from '@angular/router'
 import { interval, Subscription } from 'rxjs'
 import { map } from 'rxjs/operators'
@@ -11,6 +10,8 @@ import { ValueService } from '@ws-widget/utils'
 import * as _ from 'lodash'
 import { ViewerDataService } from '../../../../viewer-data.service'
 import { ConfigurationsService } from '@ws-widget/utils'
+import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog'
+import { MatSnackBar } from '@angular/material/snack-bar'
 @Component({
   selector: 'viewer-assesment-modal',
   templateUrl: './assesment-modal.component.html',

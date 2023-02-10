@@ -1,6 +1,5 @@
 import { CommonModule } from '@angular/common'
 import { NgModule } from '@angular/core'
-import { MatButtonModule, MatIconModule, MatMenuModule, MatToolbarModule, MatTooltipModule } from '@angular/material'
 import { RouterModule } from '@angular/router'
 import { WidgetResolverModule } from '@ws-widget/resolver'
 import { BtnPageBackModule } from '../btn-page-back/btn-page-back.module'
@@ -9,6 +8,11 @@ import { PageComponent } from './page.component'
 import { BtnFeatureModule } from '../btn-feature/btn-feature.module'
 import { CardBreadcrumbModule } from './../card-breadcrumb/card-breadcrumb.module'
 import { ContentStripMultipleModule } from './../content-strip-multiple/content-strip-multiple.module'
+import { MatButtonModule } from '@angular/material/button'
+import { MatToolbarModule } from '@angular/material/toolbar'
+import { MatIconModule } from '@angular/material/icon'
+import { MatTooltipModule } from '@angular/material/tooltip'
+import { MatMenuModule } from '@angular/material/menu'
 
 @NgModule({
   declarations: [PageComponent],

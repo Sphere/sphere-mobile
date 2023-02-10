@@ -1,5 +1,6 @@
 import { Component, OnChanges, OnInit } from '@angular/core'
-import { MatListOption, MatSnackBar } from '@angular/material'
+import { MatListOption } from '@angular/material/list'
+import { MatSnackBar } from '@angular/material/snack-bar'
 import { ActivatedRoute, Router } from '@angular/router'
 import { BtnGoalsService, NsGoal } from '@ws-widget/collection'
 import { ConfigurationsService, TFetchStatus, ValueService } from '@ws-widget/utils'

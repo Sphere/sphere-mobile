@@ -1,11 +1,5 @@
 import { CommonModule } from '@angular/common'
 import { NgModule } from '@angular/core'
-import {
-  MatToolbarModule,
-  MatIconModule,
-  MatButtonModule,
-  MatTooltipModule,
-} from '@angular/material'
 import { ViewerTopBarComponent } from './viewer-top-bar.component'
 import { BtnFullscreenModule, BtnPageBackModule ,
   BtnContentLikeModule,
@@ -17,6 +11,10 @@ import { BtnFullscreenModule, BtnPageBackModule ,
   BtnContentFeedbackV2Module } from '@ws-widget/collection'
 import { RouterModule } from '@angular/router'
 import { ValueService, PipePartialContentModule } from '@ws-widget/utils'
+import { MatButtonModule } from '@angular/material/button'
+import { MatIconModule } from '@angular/material/icon'
+import { MatToolbarModule } from '@angular/material/toolbar'
+import { MatTooltipModule } from '@angular/material/tooltip'
 @NgModule({
   declarations: [ViewerTopBarComponent],
   imports: [

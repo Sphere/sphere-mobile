@@ -2,7 +2,6 @@ import { NestedTreeControl } from '@angular/cdk/tree'
 import {
   Component, EventEmitter, OnDestroy, OnInit, Output, Input, ViewChild, ElementRef, AfterViewInit, OnChanges,
 } from '@angular/core'
-import { MatTreeNestedDataSource } from '@angular/material'
 import { DomSanitizer, SafeUrl } from '@angular/platform-browser'
 import { ActivatedRoute, Router } from '@angular/router'
 import {
@@ -23,6 +22,7 @@ import { ViewerDataService } from '../../viewer-data.service'
 import { ViewerUtilService } from '../../viewer-util.service'
 import { PlayerStateService } from '../../player-state.service'
 import * as _ from 'lodash'
+import { MatTreeNestedDataSource } from '@angular/material/tree'
 interface IViewerTocCard {
   identifier: string
   completionPercentage: number

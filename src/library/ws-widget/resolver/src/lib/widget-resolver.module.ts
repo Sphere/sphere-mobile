@@ -6,7 +6,6 @@ import { RestrictedComponent } from './restricted/restricted.component'
 import { InvalidRegistrationComponent } from './invalid-registration/invalid-registration.component'
 import { InvalidPermissionComponent } from './invalid-permission/invalid-permission.component'
 import { UnresolvedComponent } from './unresolved/unresolved.component'
-import { MatButtonModule, MatIconModule, MatCardModule } from '@angular/material'
 import { NsWidgetResolver } from './widget-resolver.model'
 import { WidgetResolverService } from './widget-resolver.service'
 import { LoginResolverService } from './login-resolver.service'
@@ -16,6 +15,9 @@ import {
 } from './widget-resolver.constant'
 import { WidgetBaseComponent } from './widget-base.component'
 import { ExploreResolverDirective } from './explore-resolver.directive'
+import { MatButtonModule } from '@angular/material/button'
+import { MatIconModule } from '@angular/material/icon'
+import { MatCardModule } from '@angular/material/card'
 @NgModule({
   declarations: [
     WidgetBaseComponent,

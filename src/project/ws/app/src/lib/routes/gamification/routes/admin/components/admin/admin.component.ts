@@ -1,6 +1,6 @@
 import { Component, OnInit, Output, EventEmitter } from '@angular/core'
 import { TFetchStatus, ConfigurationsService } from '@ws-widget/utils'
-import { MatSelectChange } from '@angular/material'
+import { MatSelectChange } from '@angular/material/select'
 import { GamificationService } from '../../../../services/gamification.service'
 import { ExcelService } from '../excel.service'
 @Component({

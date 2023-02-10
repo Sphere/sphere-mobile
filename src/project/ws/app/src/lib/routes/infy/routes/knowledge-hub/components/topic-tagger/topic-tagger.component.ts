@@ -1,7 +1,6 @@
 import { Component, OnInit, Input, ViewChild, ElementRef } from '@angular/core'
 import { ENTER, COMMA } from '@angular/cdk/keycodes'
 import { FormControl } from '@angular/forms'
-import { MatAutocompleteSelectedEvent, MatAutocomplete, MatSnackBar } from '@angular/material'
 import { distinctUntilChanged, debounceTime } from 'rxjs/operators'
 import {
   ITopicTaggerAction,
@@ -10,6 +9,8 @@ import {
   IWsKhubPostTag,
 } from '../../models/knowledgeHub.model'
 import { KnowledgeHubService } from '../../services/knowledge-hub.service'
+import { MatAutocomplete, MatAutocompleteSelectedEvent } from '@angular/material/autocomplete'
+import { MatSnackBar } from '@angular/material/snack-bar'
 // import { WsSocialService } from '../../../../../social/services/ws-social.service';
 
 @Component({

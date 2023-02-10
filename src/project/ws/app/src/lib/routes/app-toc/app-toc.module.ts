@@ -5,30 +5,6 @@ import { ReactiveFormsModule, FormsModule } from '@angular/forms'
 import { AppTocRoutingModule } from './app-toc-routing.module'
 import { NgCircleProgressModule } from 'ng-circle-progress'
 
-import {
-  MatToolbarModule,
-  MatIconModule,
-  MatButtonModule,
-  MatMenuModule,
-  MatCardModule,
-  MatTooltipModule,
-  MatTabsModule,
-  MatChipsModule,
-  MatDividerModule,
-  MatProgressBarModule,
-  MatListModule,
-  MatDialogModule,
-  MatRadioModule,
-  MatExpansionModule,
-  MatProgressSpinnerModule,
-  MatCheckboxModule,
-  MatInputModule,
-  MatFormFieldModule,
-  MatSelectModule,
-  MatSnackBarModule,
-  MatDatepickerModule,
-  MatNativeDateModule,
-} from '@angular/material'
 
 // comps
 import { AppTocContentsComponent } from './routes/app-toc-contents/app-toc-contents.component'
@@ -94,6 +70,28 @@ import { AssessmentDetailComponent } from './components/assessment-detail/assess
 import { AppTocDialogIntroVideoComponent } from './components/app-toc-dialog-intro-video/app-toc-dialog-intro-video.component'
 import { AppTocOverviewDirective } from './routes/app-toc-overview/app-toc-overview.directive'
 import { RetainScrollDirective } from './components/app-toc-home/retain-scroll.directive'
+import { MatToolbarModule } from '@angular/material/toolbar'
+import { MatCheckboxModule } from '@angular/material/checkbox'
+import { MatIconModule } from '@angular/material/icon'
+import { MatButtonModule } from '@angular/material/button'
+import { MatFormFieldModule } from '@angular/material/form-field'
+import { MatInputModule } from '@angular/material/input'
+import { MatMenuModule } from '@angular/material/menu'
+import { MatCardModule } from '@angular/material/card'
+import { MatChipsModule } from '@angular/material/chips'
+import { MatTooltipModule } from '@angular/material/tooltip'
+import { MatRadioModule } from '@angular/material/radio'
+import { MatTabsModule } from '@angular/material/tabs'
+import { MatListModule } from '@angular/material/list'
+import { MatDividerModule } from '@angular/material/divider'
+import { MatProgressBarModule } from '@angular/material/progress-bar'
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner'
+import { MatDialogModule } from '@angular/material/dialog'
+import { MatSelectModule } from '@angular/material/select'
+import { MatSnackBarModule } from '@angular/material/snack-bar'
+import { MatDatepickerModule } from '@angular/material/datepicker'
+import { MatExpansionModule } from '@angular/material/expansion'
+import { MatNativeDateModule } from '@angular/material/core'
 
 @NgModule({
   declarations: [

@@ -1,6 +1,6 @@
 import { Component, ElementRef, OnInit, ViewChild, Input, OnChanges, SimpleChanges } from '@angular/core'
 import { FormControl } from '@angular/forms'
-import { MatSnackBar } from '@angular/material'
+import { MatSnackBar } from '@angular/material/snack-bar'
 import { ActivatedRoute } from '@angular/router'
 import { ConfigurationsService, EventService } from '@ws-widget/utils'
 // import { startWith, map } from 'rxjs/operators'

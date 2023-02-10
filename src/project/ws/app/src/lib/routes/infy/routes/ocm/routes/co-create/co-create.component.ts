@@ -1,6 +1,6 @@
 import { Component, ElementRef, Input, OnInit, ViewChild } from '@angular/core'
 import { NgForm } from '@angular/forms'
-import { MatSnackBar } from '@angular/material'
+import { MatSnackBar } from '@angular/material/snack-bar'
 import { ConfigurationsService } from '@ws-widget/utils'
 import { IWsEmailTextRequest } from '../../models/co-create.model'
 import { IWsCoCreatorConfig, IWsContribution } from '../../models/ocm.model'

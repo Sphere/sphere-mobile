@@ -1,6 +1,6 @@
 import { Component, OnInit, Inject } from '@angular/core'
 import { FormGroup, FormControl } from '@angular/forms'
-import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material'
+import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog'
 import { noop } from 'rxjs'
 import { ITrainingRequest } from '../../../../models/training-api.model'
 import { TrainingApiService } from '../../../../apis/training-api.service'

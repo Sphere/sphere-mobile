@@ -1,6 +1,5 @@
 import { CommonModule } from '@angular/common'
 import { NgModule } from '@angular/core'
-import { MatPaginatorModule, MatTableModule } from '@angular/material'
 import { ConfirmDialogComponent } from '@ws/author/src/lib/modules/shared/components/confirm-dialog/confirm-dialog.component'
 import { SharedModule } from '../../../../../../modules/shared/shared.module'
 import { AuthViewerModule } from '../../../../../../modules/viewer/viewer.module'
@@ -14,6 +13,8 @@ import { IapAssessmentComponent } from './components/iap-assessment/iap-assessme
 import { SectionDialogComponent } from './components/section-dialog/section-dialog.component'
 import { ViewQuestionDialogComponent } from './components/view-question-dialog/view-question-dialog.component'
 import { IapAssessmentRoutingModule } from './iap-assessment.routing.module'
+import { MatPaginatorModule } from '@angular/material/paginator'
+import { MatTableModule } from '@angular/material/table'
 
 @NgModule({
   declarations: [IapAssessmentComponent, SectionDialogComponent, ViewQuestionDialogComponent, GeneralDetailsComponent],

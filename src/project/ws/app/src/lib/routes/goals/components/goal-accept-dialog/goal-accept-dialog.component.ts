@@ -1,6 +1,7 @@
 import { Component, OnInit, Inject, ViewChild, ElementRef } from '@angular/core'
+import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog'
+import { MatSnackBar } from '@angular/material/snack-bar'
 import { NsGoal, BtnGoalsService } from '@ws-widget/collection'
-import { MAT_DIALOG_DATA, MatSnackBar, MatDialogRef } from '@angular/material'
 import { TFetchStatus } from '@ws-widget/utils'
 
 @Component({

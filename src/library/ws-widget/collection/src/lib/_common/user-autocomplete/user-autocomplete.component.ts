@@ -3,10 +3,11 @@ import { UserAutocompleteService } from './user-autocomplete.service'
 import { ENTER, COMMA } from '@angular/cdk/keycodes'
 import { FormControl } from '@angular/forms'
 import { TFetchStatus, ConfigurationsService } from '@ws-widget/utils'
-import { MatAutocompleteSelectedEvent, MatSnackBar } from '@angular/material'
 import { debounceTime, distinctUntilChanged, switchMap, catchError, filter } from 'rxjs/operators'
 import { NsAutoComplete } from './user-autocomplete.model'
 import { of } from 'rxjs'
+import { MatSnackBar } from '@angular/material/snack-bar'
+import { MatAutocompleteSelectedEvent } from '@angular/material/autocomplete'
 
 @Component({
   selector: 'ws-widget-user-autocomplete',

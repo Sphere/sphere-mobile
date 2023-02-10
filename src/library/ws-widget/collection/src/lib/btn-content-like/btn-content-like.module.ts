@@ -1,7 +1,10 @@
 import { NgModule } from '@angular/core'
 import { CommonModule } from '@angular/common'
-import { MatIconModule, MatButtonModule, MatTooltipModule, MatBadgeModule } from '@angular/material'
 import { BtnContentLikeComponent } from './btn-content-like.component'
+import { MatButtonModule } from '@angular/material/button'
+import { MatTooltipModule } from '@angular/material/tooltip'
+import { MatIconModule } from '@angular/material/icon'
+import { MatBadgeModule } from '@angular/material/badge'
 
 @NgModule({
   declarations: [BtnContentLikeComponent],

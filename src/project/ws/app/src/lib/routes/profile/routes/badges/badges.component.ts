@@ -4,7 +4,7 @@ import { TFetchStatus, LoggerService, ConfigurationsService } from '@ws-widget/u
 import { IBadgeResponse } from './badges.model'
 import { Subscription, fromEvent } from 'rxjs'
 import { BadgesService } from './badges.service'
-import { MatSnackBar } from '@angular/material'
+import { MatSnackBar } from '@angular/material/snack-bar'
 import { debounceTime, throttleTime } from 'rxjs/operators'
 import { jsPDF } from 'jspdf'
 import 'jspdf-autotable'

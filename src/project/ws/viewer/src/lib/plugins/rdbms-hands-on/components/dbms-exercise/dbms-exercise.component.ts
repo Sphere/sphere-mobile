@@ -1,7 +1,8 @@
 import { Component, Input, ViewChild, ElementRef, OnDestroy, OnChanges } from '@angular/core'
 import { RdbmsHandsOnService } from '../../rdbms-hands-on.service'
 import { NSRdbmsHandsOn } from '../../rdbms-hands-on.model'
-import { MatSnackBar, MatDialog } from '@angular/material'
+import { MatDialog } from '@angular/material/dialog'
+import { MatSnackBar } from '@angular/material/snack-bar'
 import { SubmissionDialogComponent } from '../submission-dialog/submission-dialog.component'
 import { EventService } from '@ws-widget/utils'
 
