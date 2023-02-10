@@ -187,7 +187,7 @@ export class EditorContentService {
       .createAndReadContent(requestBody)
       .pipe(tap((v:any)=>{
         return this.setOriginalMeta(v)
-      }))
+      }))*/
   }
 
   isValid(id: string): boolean {

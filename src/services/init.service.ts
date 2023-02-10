@@ -13,10 +13,10 @@ import {
   NsInstanceConfig,
 } from '@ws-widget/utils'
 /* tslint:disable */
-import  hostConfig from '../assets/configuration/host.config.json';
-import appsConfig from '../assets/configuration/apps.json';
+import  hostConfig from '../assets/configurations/host.config.json';
+import appsConfig from '../assets/configurations/apps.json';
 import featureConfig from '../assets/configurations/fconfig.json'
-import siteConfig from '../assets/configuration/site.config.json'
+import siteConfig from '../assets/configurations/site.config.json'
 import * as _ from "lodash"
 import { map } from 'rxjs/operators'
 import { v4 as uuid } from 'uuid'
