@@ -21,7 +21,7 @@ export class BtnContentShareDialogComponent implements OnInit {
   sendInProgress = false
   message = ''
   isSocialMediaShareEnabled = false
-  qrdata = window.location.href
+  //qrdata = window.location.href
   sendStatus: 'INVALID_IDS_ALL' | 'SUCCESS' | 'INVALID_ID_SOME' | 'ANY' | 'NONE' = 'NONE'
   constructor(
     private events: EventService,

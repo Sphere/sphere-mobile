@@ -4,15 +4,12 @@ import { RouterModule } from '@angular/router'
 import { ContentStripSingleComponent } from './content-strip-single.component'
 import { HorizontalScrollerModule } from '@ws-widget/utils'
 import { WidgetResolverModule } from '@ws-widget/resolver'
-import {
-  MatButtonModule,
-  MatIconModule,
-  MatTooltipModule,
-  MatProgressSpinnerModule,
-  MatChipsModule,
-  MatCardModule,
-} from '@angular/material'
-
+import { MatIconModule } from '@angular/material/icon'
+import { MatButtonModule } from '@angular/material/button'
+import {MatCardModule} from '@angular/material/card';
+import { MatChipsModule } from '@angular/material/chips'
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner'
+import {MatTooltipModule} from '@angular/material/tooltip'
 @NgModule({
   declarations: [ContentStripSingleComponent],
   imports: [

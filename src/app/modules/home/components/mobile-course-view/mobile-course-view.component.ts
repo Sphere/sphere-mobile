@@ -2,7 +2,7 @@ import { Component, OnInit, Input } from '@angular/core'
 import { Router } from '@angular/router'
 import { delay, mergeMap } from 'rxjs/operators'
 import { of } from 'rxjs'
-import { ConfigurationsService } from '../../../../../../library/ws-widget/utils/src/lib/services/configurations.service'
+import { ConfigurationsService } from '@app/library/ws-widget/utils/src/public-api'
 import { UserProfileService } from '@ws/app/src/lib/routes/user-profile/services/user-profile.service'
 import { SignupService } from '../../../public/services/signup/signup.service'
 

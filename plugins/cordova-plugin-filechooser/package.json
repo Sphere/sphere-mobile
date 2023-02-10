@@ -16,8 +16,7 @@
     "fetchSpec": "^1.2.0"
   },
   "_requiredBy": [
-    "#DEV:/",
-    "#USER"
+    "#DEV:/"
   ],
   "_resolved": "https://registry.npmjs.org/cordova-plugin-filechooser/-/cordova-plugin-filechooser-1.2.0.tgz",
   "_shasum": "3a3a3d9c5bef733076f1f6b59e465f60a0d96577",

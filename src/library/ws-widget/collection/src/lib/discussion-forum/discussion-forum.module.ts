@@ -4,20 +4,15 @@ import { DiscussionForumComponent } from './components/discussion-forum/discussi
 import { DiscussionPostComponent } from './components/discussion-post/discussion-post.component'
 import { DiscussionReplyComponent } from './components/discussion-reply/discussion-reply.component'
 import { ApiService } from 'project/ws/author/src/lib/modules/shared/services/api.service'
-import {
-  MatInputModule,
-  MatFormFieldModule,
-  MatIconModule,
-  MatToolbarModule,
-  MatButtonModule,
-  MatTooltipModule,
-  MatChipsModule,
-  MatMenuModule,
-  MatCardModule,
-  MatProgressSpinnerModule,
-  MatCheckboxModule,
-  // MatSnackBarModule,
-} from '@angular/material'
+
+import {MatProgressSpinnerModule} from '@angular/material/progress-spinner'
+import { MatCheckboxModule } from '@angular/material/checkbox'
+import { MatIconModule } from '@angular/material/icon'
+import { MatButtonModule } from '@angular/material/button'
+import {MatCardModule} from '@angular/material/card';
+import { MatChipsModule } from '@angular/material/chips'
+import {MatMenuModule} from '@angular/material/menu';
+import {MatTooltipModule} from '@angular/material/tooltip'
 import { EditorQuillModule } from './editor-quill/editor-quill.module'
 import { UserImageModule } from '../_common/user-image/user-image.module'
 import { BtnSocialVoteModule } from './actionBtn/btn-social-vote/btn-social-vote.module'

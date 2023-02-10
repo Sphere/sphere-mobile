@@ -11,13 +11,13 @@ import { MlGuard } from './manage-learn/core/guards/ml.guard';
 const routes: Routes = [
   
   {
-    path: 'public/home',
-    loadChildren: () => import('./modules/public/public.module').then(m => m.PublicModule)
-  },
-  {
     path: '',
     redirectTo: `${RouterLinks.LANGUAGE_SETTING}`,
     pathMatch: 'full'
+  },
+  {
+    path: `${RouterLinks.LANGUAGE_SETTING}/:isFromSettings`,
+    loadChildren: './language-settings/language-settings.module#LanguageSettingsModule'
   },
   {
     path: `${RouterLinks.LANGUAGE_SETTING}/:isFromSettings`,

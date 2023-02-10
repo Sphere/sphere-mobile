@@ -4,14 +4,10 @@ import { IapComponent } from './iap.component'
 import { IapRoutingModule } from './iap-routing.module'
 import { WidgetResolverModule } from '@ws-widget/resolver'
 import { IapModule as IapViewContainerModule } from '../../route-view-container/iap/iap.module'
-
-import {
-  MatCardModule,
-  MatDividerModule,
-  MatButtonModule,
-  MatSnackBarModule,
-} from '@angular/material'
-
+import { MatDividerModule} from '@angular/material/divider'
+import { MatButtonModule } from '@angular/material/button'
+import { MatCardModule} from '@angular/material/card'
+import { MatSnackBarModule } from '@angular/material/snack-bar'
 import {
   BtnContentDownloadModule,
   BtnContentFeedbackModule,

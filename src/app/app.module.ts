@@ -89,41 +89,40 @@ import onboarding from './../assets/configurations/config.json';
 // AoT requires an exported function for factories
 
 // import for sphere app 
-import {
-  MatButtonModule,
-  MatCardModule,
-  MatDialogModule,
-  MatDividerModule,
-  MatExpansionModule,
-  MatIconModule,
-  MatMenuModule,
-  MatProgressBarModule,
-  MatGridListModule,
-  MatRippleModule,
-  MatSliderModule,
-  MatToolbarModule,
-  MatTooltipModule,
-  MAT_PROGRESS_SPINNER_DEFAULT_OPTIONS,
-  MAT_SNACK_BAR_DEFAULT_OPTIONS,
-  MatInputModule,
-  MatFormFieldModule,
-  MatListModule,
-  MatAutocompleteModule,
-  MatDatepickerModule,
-  MatNativeDateModule,
-  MatSelectModule,
-} from '@angular/material'
-import { MatSnackBarModule } from '@angular/material';
+import {MAT_SNACK_BAR_DEFAULT_OPTIONS} from '@angular/material/snack-bar'
+import { MAT_PROGRESS_SPINNER_DEFAULT_OPTIONS } from '@angular/material/progress-spinner';
+import { MatTooltipModule } from '@angular/material/tooltip';
+import { MatNativeDateModule } from '@angular/material/core';
+import { MatDatepickerModule } from '@angular/material/datepicker';
+import { MatListModule } from '@angular/material/list';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatInputModule } from '@angular/material/input';
+import { MatToolbarModule } from '@angular/material/toolbar';
+import {MatSliderModule} from '@angular/material/slider'
+import { MatRippleModule } from '@angular/material/core';
+import { MatGridListModule } from '@angular/material/grid-list';
+import {MatProgressBarModule} from '@angular/material/progress-bar'
+import {MatMenuModule} from '@angular/material/menu'
+import { MatExpansionModule } from '@angular/material/expansion';
+import { MatDividerModule } from '@angular/material/divider';
+import { MatDialogModule } from '@angular/material/dialog';
+import { MatButtonModule } from '@angular/material/button';
+import { MatIconModule } from '@angular/material/icon';
+import { MatCardModule } from '@angular/material/card';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { WidgetResolverModule } from '@ws-widget/resolver'
 import {  WIDGET_REGISTERED_MODULES, WIDGET_REGISTRATION_CONFIG } from '@ws-widget/collection'
 import {  ImageCropModule, LoggerService, PipeSafeSanitizerModule } from '@ws-widget/utils'
 import { InitService } from '../services/init.service';
-import { AuthKeycloakService } from '../../library/ws-widget/utils/src/lib/services/auth-keycloak.service'
 import { PublicModule } from './modules/public/public.module';
 import { CoreModule  as SpherCoreModule} from '../app/modules/core/core.module';
-import { AppTocModule, SearchModule } from '@ws/app/src/public-api'
+import { AppTocModule, SearchModule } from '@ws/app/src/public-api';
+import { SharedModule } from '@app/project/ws/author/src/lib/modules/shared/shared.module';
 import { HomeModule } from './modules/home/home.module';
-
+import { RootComponent } from './root/root.component';
+import { MdePopoverModule } from '@material-extended/mde'
+import { NotificationComponent } from '@app/project/ws/author/src/lib/modules/shared/components/notification/notification.component';
+import { OrgComponent } from '@app/project/ws/app/src/lib/routes/org/components/org/org.component';
 export function translateHttpLoaderFactory(httpClient: HttpClient) {
   return new TranslateHttpLoader(httpClient, './assets/i18n/', '.json');
 }
@@ -489,8 +488,8 @@ export const sunbirdSdkFactory =
 
 declare const sbutility;
 @NgModule({
-  declarations: [AppComponent],
-  entryComponents: [PageFilterPage, PageFilterOptionsPage],
+  declarations: [AppComponent, RootComponent,OrgComponent],
+  entryComponents: [PageFilterPage, PageFilterOptionsPage,NotificationComponent],
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
@@ -525,6 +524,8 @@ declare const sbutility;
     HomeModule,
     AppTocModule,
     ReactiveFormsModule,
+    SharedModule,
+    MdePopoverModule,
     WidgetResolverModule.forRoot(WIDGET_REGISTRATION_CONFIG),
     TranslateModule.forRoot({
       loader: {
@@ -549,6 +550,7 @@ declare const sbutility;
     CoreModule,
     SbSearchFilterModule.forRoot('mobile')
   ],
+  exports:[MatIconModule],
   providers: [
     StatusBar,
     AppVersion,

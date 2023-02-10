@@ -1,5 +1,5 @@
 {
-  "_from": "cordova-plugin-android-permissions@^1.1.2",
+  "_from": "cordova-plugin-android-permissions@^1.1.5",
   "_id": "cordova-plugin-android-permissions@1.1.5",
   "_inBundle": false,
   "_integrity": "sha512-oTTV9cCMBqXTCmU+nYRebsP2IQfrtdvl2vYXHjoJgv5NHCIDgY4KFg6kJTcwXQOiymeGXuw0+MTvJJOueAdleA==",
@@ -8,20 +8,19 @@
   "_requested": {
     "type": "range",
     "registry": true,
-    "raw": "cordova-plugin-android-permissions@^1.1.2",
+    "raw": "cordova-plugin-android-permissions@^1.1.5",
     "name": "cordova-plugin-android-permissions",
     "escapedName": "cordova-plugin-android-permissions",
-    "rawSpec": "^1.1.2",
+    "rawSpec": "^1.1.5",
     "saveSpec": null,
-    "fetchSpec": "^1.1.2"
+    "fetchSpec": "^1.1.5"
   },
   "_requiredBy": [
-    "#DEV:/",
-    "#USER"
+    "#DEV:/"
   ],
   "_resolved": "https://registry.npmjs.org/cordova-plugin-android-permissions/-/cordova-plugin-android-permissions-1.1.5.tgz",
   "_shasum": "aeecda735c4e5fe39ffc243e67a7a6faa6dd57d4",
-  "_spec": "cordova-plugin-android-permissions@^1.1.2",
+  "_spec": "cordova-plugin-android-permissions@^1.1.5",
   "_where": "/home/aman/OFFICE/SPHERE/sphere-mobile",
   "author": {
     "name": "Jason Yang"

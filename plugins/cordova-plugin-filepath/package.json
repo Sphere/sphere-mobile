@@ -1,5 +1,5 @@
 {
-  "_from": "cordova-plugin-filepath@^1.5.8",
+  "_from": "cordova-plugin-filepath@^1.6.0",
   "_id": "cordova-plugin-filepath@1.6.0",
   "_inBundle": false,
   "_integrity": "sha512-DwKuH5tXhZJImU/rHDzQhG3bY2ihAUw5QqdNllso96MZ9TQTAbFvKPLppuJwx21XxYS2g3uB9R17AXEEme+sKA==",
@@ -8,20 +8,19 @@
   "_requested": {
     "type": "range",
     "registry": true,
-    "raw": "cordova-plugin-filepath@^1.5.8",
+    "raw": "cordova-plugin-filepath@^1.6.0",
     "name": "cordova-plugin-filepath",
     "escapedName": "cordova-plugin-filepath",
-    "rawSpec": "^1.5.8",
+    "rawSpec": "^1.6.0",
     "saveSpec": null,
-    "fetchSpec": "^1.5.8"
+    "fetchSpec": "^1.6.0"
   },
   "_requiredBy": [
-    "#DEV:/",
-    "#USER"
+    "#DEV:/"
   ],
   "_resolved": "https://registry.npmjs.org/cordova-plugin-filepath/-/cordova-plugin-filepath-1.6.0.tgz",
   "_shasum": "dc467c5f1f569a915774deed832fdbf5ab56386e",
-  "_spec": "cordova-plugin-filepath@^1.5.8",
+  "_spec": "cordova-plugin-filepath@^1.6.0",
   "_where": "/home/aman/OFFICE/SPHERE/sphere-mobile",
   "author": {
     "name": "Ramesh Nair",

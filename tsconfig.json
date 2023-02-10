@@ -12,7 +12,6 @@
     "declaration": false,
     "module": "esnext",
     "moduleResolution": "node",
-    "emitDecoratorMetadata": true,
     "allowSyntheticDefaultImports": true,
     "experimentalDecorators": true,
     "importHelpers": true,
@@ -33,6 +32,13 @@
       "dom"
     ],
     "paths": {
+      "@app/*": ["*"],
+      "sunbird-sdk": ["../node_modules/@project-sunbird/sunbird-sdk"],
+      "sunbird-sdk/*": ["../node_modules/@project-sunbird/sunbird-sdk/*"],
+      "@project-sunbird/common-consumption": ["../node_modules/@project-sunbird/common-consumption-v9"],
+      "@project-sunbird/common-consumption/*": ["../node_modules/@project-sunbird/common-consumption-v9/*"],
+      "common-form-elements": ["../node_modules/@project-sunbird/common-form-elements-v9"],
+      "common-form-elements/*": ["../node_modules/@project-sunbird/common-form-elements-v9/*"],
       "@ws-widget/resolver": ["library/ws-widget/resolver"],
       "@ws-widget/resolver/*": ["library/ws-widget/resolver/*"],
       "@ws-widget/collection": ["library/ws-widget/collection"],
@@ -51,13 +57,6 @@
       "@ws/viewer/*": ["project/ws/viewer/*"],
       "@ws/learning-hub": ["project/ws/learning-hub"],
       "@ws/learning-hub/*": ["project/ws/learning-hub/*"],
-      "@app/*": ["*"],
-      "sunbird-sdk": ["../node_modules/@project-sunbird/sunbird-sdk"],
-      "sunbird-sdk/*": ["../node_modules/@project-sunbird/sunbird-sdk/*"],
-      "@project-sunbird/common-consumption": ["../node_modules/@project-sunbird/common-consumption-v9"],
-      "@project-sunbird/common-consumption/*": ["../node_modules/@project-sunbird/common-consumption-v9/*"],
-      "common-form-elements": ["../node_modules/@project-sunbird/common-form-elements-v9"],
-      "common-form-elements/*": ["../node_modules/@project-sunbird/common-form-elements-v9/*"],
    
     }
   },

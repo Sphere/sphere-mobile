@@ -95,7 +95,7 @@
               "node_modules/videojs-http-source-selector/dist/videojs-http-source-selector.min.js",
               "node_modules/datatables.net-fixedcolumns/js/dataTables.fixedColumns.min.js"
             ],
-            "es5BrowserSupport": true,
+            "es5BrowserSupport": false,
             "preserveSymlinks": true
           },
           "configurations": {
