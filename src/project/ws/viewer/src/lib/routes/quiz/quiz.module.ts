@@ -31,6 +31,7 @@ import { QuizComponent } from './quiz.component'
 import { QuizRoutingModule } from './quiz-routing.module'
 
 import { QuizModule as QuizViewContainerModule } from '../../route-view-container/quiz/quiz.module'
+import { MatIconModule } from '@angular/material/icon'
 
 @NgModule({
   declarations: [QuizComponent],

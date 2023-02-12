@@ -1,6 +1,6 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core'
 import { ENTER, COMMA, SEMICOLON } from '@angular/cdk/keycodes'
-import {MatChipsModule} from '@angular/material/chips'
+import {MatChipInputEvent, MatChipsModule} from '@angular/material/chips'
 
 interface IUserShareId {
   email: string

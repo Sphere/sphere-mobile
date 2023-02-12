@@ -19,6 +19,9 @@ import { BtnSocialVoteModule } from './actionBtn/btn-social-vote/btn-social-vote
 import { BtnSocialLikeModule } from './actionBtn/btn-social-like/btn-social-like.module'
 import { DialogSocialActivityUserModule } from './dialog/dialog-social-activity-user/dialog-social-activity-user.module'
 import { DialogSocialDeletePostModule } from './dialog/dialog-social-delete-post/dialog-social-delete-post.module'
+import { MatFormFieldModule } from '@angular/material/form-field'
+import { MatInputModule } from '@angular/material/input'
+import { MatToolbarModule } from '@angular/material/toolbar'
 
 @NgModule({
   declarations: [DiscussionForumComponent, DiscussionPostComponent, DiscussionReplyComponent],
