@@ -90,9 +90,9 @@
 
       <ws-auth-url-upload [isCollectionEditor]="true" *ngIf="!showAddchapter && viewMode === 'curate'"
         [isSubmitPressed]="isSubmitPressed" (data)="action($event)"></ws-auth-url-upload>
-      <ws-auth-file-upload [isCollectionEditor]="true" *ngIf="!showAddchapter && viewMode === 'upload'"
+      <!-- <ws-auth-file-upload [isCollectionEditor]="true" *ngIf="!showAddchapter && viewMode === 'upload'"
         [isSubmitPressed]="isSubmitPressed" (data)="action($event)">
-      </ws-auth-file-upload>
+      </ws-auth-file-upload> -->
       <ws-auth-quiz [isCollectionEditor]="true" *ngIf="!showAddchapter && viewMode === 'assessment'"
         [isSubmitPressed]="isSubmitPressed" (data)="action($event)"></ws-auth-quiz>
 

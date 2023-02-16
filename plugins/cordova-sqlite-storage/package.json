@@ -1,27 +1,26 @@
 {
-  "_from": "cordova-sqlite-storage@6.0.0",
-  "_id": "cordova-sqlite-storage@6.0.0",
+  "_from": "cordova-sqlite-storage@^6.1.0",
+  "_id": "cordova-sqlite-storage@6.1.0",
   "_inBundle": false,
-  "_integrity": "sha512-njRloA3AICaUFztKHXoFfVcwlL7zbvyFxtdZIkK7P+MA3umILXtSKhYAQkSe2GtHr0LBNzJI5xUUqAlZl/Js0A==",
+  "_integrity": "sha512-ko/edy+u9MJVYrXdB6OXUklH0eIRWpa/Rvang7YkvQvsswc9vZr0pM/Ty6eX0MJtLOMJuCXIOiiHZZZbZSZikw==",
   "_location": "/cordova-sqlite-storage",
   "_phantomChildren": {},
   "_requested": {
-    "type": "version",
+    "type": "range",
     "registry": true,
-    "raw": "cordova-sqlite-storage@6.0.0",
+    "raw": "cordova-sqlite-storage@^6.1.0",
     "name": "cordova-sqlite-storage",
     "escapedName": "cordova-sqlite-storage",
-    "rawSpec": "6.0.0",
+    "rawSpec": "^6.1.0",
     "saveSpec": null,
-    "fetchSpec": "6.0.0"
+    "fetchSpec": "^6.1.0"
   },
   "_requiredBy": [
-    "#DEV:/",
-    "#USER"
+    "#DEV:/"
   ],
-  "_resolved": "https://registry.npmjs.org/cordova-sqlite-storage/-/cordova-sqlite-storage-6.0.0.tgz",
-  "_shasum": "25eba8eb4657d2b526c4b753747e6d1533fcb73b",
-  "_spec": "cordova-sqlite-storage@6.0.0",
+  "_resolved": "https://registry.npmjs.org/cordova-sqlite-storage/-/cordova-sqlite-storage-6.1.0.tgz",
+  "_shasum": "e426935b198006feaf71143bde5af1bd6e0d8477",
+  "_spec": "cordova-sqlite-storage@^6.1.0",
   "_where": "/home/aman/OFFICE/SPHERE/sphere-mobile",
   "author": {
     "name": "various"
@@ -41,14 +40,15 @@
     ]
   },
   "dependencies": {
-    "cordova-sqlite-storage-dependencies": "4.0.0"
+    "cordova-sqlite-storage-dependencies": "4.1.0"
   },
   "deprecated": false,
   "description": "Native interface to SQLite for PhoneGap / Cordova - cordova-sqlite-storage plugin version",
   "devDependencies": {
     "coffeescript": "1",
     "cross-spawn": "^6.0.5",
-    "fs-extra": "^8.1.0"
+    "fs-extra": "^8.1.0",
+    "rimraf": "^3.0.2"
   },
   "homepage": "https://github.com/xpbrew/cordova-sqlite-storage",
   "keywords": [
@@ -67,9 +67,9 @@
     "url": "git+https://github.com/xpbrew/cordova-sqlite-storage.git"
   },
   "scripts": {
-    "clean-spec": "rm -rf spec/[mnp]* && git cl spec/config.xml spec/package.json && git status --ignored",
+    "clean-spec": "rimraf spec/[mnp]* && git checkout -- spec/config.xml spec/package.json && git status --ignored",
     "prepare-js": "coffee -p SQLitePlugin.coffee.md > www/SQLitePlugin.js",
     "prepare-spec": "node scripts/prepareSpec.js"
   },
-  "version": "6.0.0"
+  "version": "6.1.0"
 }

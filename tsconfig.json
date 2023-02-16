@@ -2,36 +2,41 @@
   "allowSyntheticDefaultImports": true,
   "compileOnSave": false,
   "angularCompilerOptions": {
-    "enableIvy": false,
-    "types":["node"]
+    "enableIvy": false
   },
   "compilerOptions": {
     "baseUrl": "./src",
     "outDir": "./dist/out-tsc",
     "sourceMap": true,
     "declaration": false,
-    "module": "esnext",
+    "module": "es2015",
     "moduleResolution": "node",
-    "emitDecoratorMetadata": true,
     "allowSyntheticDefaultImports": true,
     "experimentalDecorators": true,
     "importHelpers": true,
-    "target": "es2015",
+    "target": "es5",
     "skipLibCheck": true,
+    "resolveJsonModule":true,
     "types": [
       "node",
       "reflect-metadata",
       "jest"
     ],
     "typeRoots": [
-      "./node_modules/@types",
-      "./custom_typings"
+      "./node_modules/@types"
     ],
     "lib": [
       "es2018",
       "dom"
     ],
     "paths": {
+      "@app/*": ["*"],
+      "sunbird-sdk": ["../node_modules/@project-sunbird/sunbird-sdk"],
+      "sunbird-sdk/*": ["../node_modules/@project-sunbird/sunbird-sdk/*"],
+      "@project-sunbird/common-consumption": ["../node_modules/@project-sunbird/common-consumption-v9"],
+      "@project-sunbird/common-consumption/*": ["../node_modules/@project-sunbird/common-consumption-v9/*"],
+      "common-form-elements": ["../node_modules/@project-sunbird/common-form-elements-v9"],
+      "common-form-elements/*": ["../node_modules/@project-sunbird/common-form-elements-v9/*"],
       "@ws-widget/resolver": ["library/ws-widget/resolver"],
       "@ws-widget/resolver/*": ["library/ws-widget/resolver/*"],
       "@ws-widget/collection": ["library/ws-widget/collection"],
@@ -50,23 +55,17 @@
       "@ws/viewer/*": ["project/ws/viewer/*"],
       "@ws/learning-hub": ["project/ws/learning-hub"],
       "@ws/learning-hub/*": ["project/ws/learning-hub/*"],
-      "@app/*": ["*"],
-      "sunbird-sdk": ["../node_modules/@project-sunbird/sunbird-sdk"],
-      "sunbird-sdk/*": ["../node_modules/@project-sunbird/sunbird-sdk/*"],
-      "@project-sunbird/common-consumption": ["../node_modules/@project-sunbird/common-consumption-v9"],
-      "@project-sunbird/common-consumption/*": ["../node_modules/@project-sunbird/common-consumption-v9/*"],
-      "common-form-elements": ["../node_modules/@project-sunbird/common-form-elements-v9"],
-      "common-form-elements/*": ["../node_modules/@project-sunbird/common-form-elements-v9/*"],
    
     }
   },
   "include": [
     "src/**/*.ts",
     "./typings/*.d.ts",
-    "./content-player/**/*.ts"
+    "./content-player/**/*.ts",
   ],
   "exclude": [
     "node_modules",
+    "src/library/**/*.spec.ts",
     "src/**/*.spec.ts",
     "src/**/*.spec.data.ts",
     "src/**/__tests__/*.ts"

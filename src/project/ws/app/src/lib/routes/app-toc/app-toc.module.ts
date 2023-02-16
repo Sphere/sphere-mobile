@@ -37,6 +37,7 @@ import { AppTocOverviewComponent } from './components/app-toc-overview/app-toc-o
 import { AppTocContentCardComponent } from './components/app-toc-content-card/app-toc-content-card.component'
 import { AppTocHomeComponent as AppTocHomeRootComponent } from './routes/app-toc-home/app-toc-home.component'
 import { AppTocBannerComponent } from './components/app-toc-banner/app-toc-banner.component'
+import { CreateBatchDialogComponent } from './components/create-batch-dialog/create-batch-dialog.component'
 
 // services
 import { AppTocService } from './services/app-toc.service'
@@ -112,6 +113,7 @@ import { RetainScrollDirective } from './components/app-toc-home/retain-scroll.d
     AppTocHomeDirective,
     RetainScrollDirective,
     LicenseComponent,
+    CreateBatchDialogComponent
   ],
   imports: [
     CommonModule,
@@ -193,7 +195,8 @@ import { RetainScrollDirective } from './components/app-toc-home/retain-scroll.d
     AppTocHomeComponent,
     AppTocOverviewComponent,
     AppTocHomePageComponent,
-    AppTocDialogIntroVideoComponent
+    AppTocDialogIntroVideoComponent,
+    CreateBatchDialogComponent,
   ],
 })
 export class AppTocModule { }

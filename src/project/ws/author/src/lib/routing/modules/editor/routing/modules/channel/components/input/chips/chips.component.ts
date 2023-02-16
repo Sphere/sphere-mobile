@@ -18,7 +18,6 @@ import { NOTIFICATION_TIME } from '@ws/author/src/lib/constants/constant'
 import { MatSnackBar } from '@angular/material'
 import { Notify } from '@ws/author/src/lib/constants/notificationMessage'
 import { ISortEvent } from '@ws/author/src/lib/modules/shared/directives/draggable/sortable-list.directive'
-
 @Component({
   selector: 'ws-auth-chips',
   templateUrl: './chips.component.html',

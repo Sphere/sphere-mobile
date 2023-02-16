@@ -1,5 +1,5 @@
 {
-  "_from": "cordova-plugin-media@^6.0.0",
+  "_from": "cordova-plugin-media@^6.1.0",
   "_id": "cordova-plugin-media@6.1.0",
   "_inBundle": false,
   "_integrity": "sha512-JvSjPrnfZ3z/MakupF+SqJDrwNSDh8yNOJWr5lsU4uvqfkVEcSGTzs/mMLUeYWVxv3F5tYL2GMaeo/1CdmfS7Q==",
@@ -8,20 +8,19 @@
   "_requested": {
     "type": "range",
     "registry": true,
-    "raw": "cordova-plugin-media@^6.0.0",
+    "raw": "cordova-plugin-media@^6.1.0",
     "name": "cordova-plugin-media",
     "escapedName": "cordova-plugin-media",
-    "rawSpec": "^6.0.0",
+    "rawSpec": "^6.1.0",
     "saveSpec": null,
-    "fetchSpec": "^6.0.0"
+    "fetchSpec": "^6.1.0"
   },
   "_requiredBy": [
-    "#DEV:/",
-    "#USER"
+    "#DEV:/"
   ],
   "_resolved": "https://registry.npmjs.org/cordova-plugin-media/-/cordova-plugin-media-6.1.0.tgz",
   "_shasum": "bbbb44b2ba1a385e0514f8129459ee25c644495c",
-  "_spec": "cordova-plugin-media@^6.0.0",
+  "_spec": "cordova-plugin-media@^6.1.0",
   "_where": "/home/aman/OFFICE/SPHERE/sphere-mobile",
   "author": {
     "name": "Apache Software Foundation"

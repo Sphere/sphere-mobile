@@ -1,15 +1,12 @@
 import { NgModule } from '@angular/core'
 import { CommonModule } from '@angular/common'
 import { RouterModule } from '@angular/router'
-
-import {
-  MatCardModule,
-  MatDividerModule,
-  MatIconModule,
-  MatSnackBarModule,
-  MatChipsModule,
-  MatButtonModule,
-} from '@angular/material'
+import { MatChipsModule } from '@angular/material/chips'
+import { MatButtonModule } from '@angular/material/button'
+import { MatDividerModule} from '@angular/material/divider'
+import { MatIconModule } from '@angular/material/icon'
+import { MatCardModule} from '@angular/material/card'
+import { MatSnackBarModule } from '@angular/material/snack-bar'
 
 import {
   BtnContentDownloadModule,

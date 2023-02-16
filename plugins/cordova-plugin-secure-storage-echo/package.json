@@ -16,8 +16,7 @@
     "fetchSpec": "^5.1.1"
   },
   "_requiredBy": [
-    "#DEV:/",
-    "#USER"
+    "#DEV:/"
   ],
   "_resolved": "https://registry.npmjs.org/cordova-plugin-secure-storage-echo/-/cordova-plugin-secure-storage-echo-5.1.1.tgz",
   "_shasum": "2d18419d2c05717ef5adb1433d5bc9f0c988b905",
