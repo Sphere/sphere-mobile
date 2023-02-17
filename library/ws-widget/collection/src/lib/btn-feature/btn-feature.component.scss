@@ -115,3 +115,12 @@ img.org-logo.img-responsive {
   height: 31px;
   margin-left: -32px;
 }
+
+a {
+  text-decoration: none !important;
+  text-decoration-line: none;
+  text-decoration-thickness: initial;
+  text-decoration-style: initial;
+  text-decoration-color: initial;
+  color: inherit;
+}
