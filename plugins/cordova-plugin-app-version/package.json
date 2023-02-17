@@ -1,5 +1,5 @@
 {
-  "_from": "cordova-plugin-app-version@^0.1.12",
+  "_from": "cordova-plugin-app-version@^0.1.14",
   "_id": "cordova-plugin-app-version@0.1.14",
   "_inBundle": false,
   "_integrity": "sha512-HN6Yz6IIdRO+iMvCHN/qMe8/O4miOpHH/pDtWNjIYTjV3MzP+XdzFJoFnq2zxlNNXFz0Zn8REGQhFY77vV4AWQ==",
@@ -8,21 +8,20 @@
   "_requested": {
     "type": "range",
     "registry": true,
-    "raw": "cordova-plugin-app-version@^0.1.12",
+    "raw": "cordova-plugin-app-version@^0.1.14",
     "name": "cordova-plugin-app-version",
     "escapedName": "cordova-plugin-app-version",
-    "rawSpec": "^0.1.12",
+    "rawSpec": "^0.1.14",
     "saveSpec": null,
-    "fetchSpec": "^0.1.12"
+    "fetchSpec": "^0.1.14"
   },
   "_requiredBy": [
-    "#DEV:/",
-    "#USER"
+    "#DEV:/"
   ],
   "_resolved": "https://registry.npmjs.org/cordova-plugin-app-version/-/cordova-plugin-app-version-0.1.14.tgz",
   "_shasum": "a9f231d5cf7a5bfaf63a82915d42e0caef024b16",
-  "_spec": "cordova-plugin-app-version@^0.1.12",
-  "_where": "/home/aman/OFFICE/SPHERE/sphere-mobile",
+  "_spec": "cordova-plugin-app-version@^0.1.14",
+  "_where": "/home/sonashaju/OFFICE/sphere-mobile",
   "author": {
     "name": "whiteoctober"
   },

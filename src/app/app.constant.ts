@@ -631,12 +631,14 @@ export class RouterLinks {
     public static readonly GENERIC_REPORT = 'generic-report';
     // sign-in page
     public static readonly SIGN_IN = 'sign-in';
+    public static readonly SIGN_IN_CARD = 'signin-card'
     // my-playlist page
     public static readonly MY_PLAYLIST = 'my-playlist';
     // Registration Pages
     public static readonly SIGNUP_BASIC = 'signup-basic-info';
     public static readonly SIGNUP_EMAIL = 'signup-email';
     public static readonly OTP = 'otp';
+
 }
 
 export class ShareItemType {

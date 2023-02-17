@@ -16,13 +16,12 @@
     "fetchSpec": "^1.1.6"
   },
   "_requiredBy": [
-    "#DEV:/",
-    "#USER"
+    "#DEV:/"
   ],
   "_resolved": "https://registry.npmjs.org/cordova-plugin-filepicker/-/cordova-plugin-filepicker-1.1.6.tgz",
   "_shasum": "de5061421426290728485bbda45a95c0d608e97f",
   "_spec": "cordova-plugin-filepicker@^1.1.6",
-  "_where": "/home/aman/OFFICE/SPHERE/sphere-mobile",
+  "_where": "/home/sonashaju/OFFICE/sphere-mobile",
   "author": {
     "name": "jcesarmobile"
   },

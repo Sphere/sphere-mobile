@@ -38,6 +38,7 @@ export class ProfileSwitchHandler {
             this.events.publish('refresh:profile');
             this.events.publish(AppGlobalService.USER_INFO_UPDATED);
             this.appGlobalService.setSelectedUser(undefined);
+            console.log
             this.router.navigate([RouterLinks.TABS]);
         }, 1000);
     }

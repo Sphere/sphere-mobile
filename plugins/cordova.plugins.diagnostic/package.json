@@ -16,13 +16,12 @@
     "fetchSpec": "^5.0.2"
   },
   "_requiredBy": [
-    "#DEV:/",
-    "#USER"
+    "#DEV:/"
   ],
   "_resolved": "https://registry.npmjs.org/cordova.plugins.diagnostic/-/cordova.plugins.diagnostic-5.0.2.tgz",
   "_shasum": "2657e8db33ae4ec347fef87f83a710d07d898a59",
   "_spec": "cordova.plugins.diagnostic@^5.0.2",
-  "_where": "/home/aman/OFFICE/SPHERE/sphere-mobile",
+  "_where": "/home/sonashaju/OFFICE/sphere-mobile",
   "author": {
     "name": "Dave Alden"
   },

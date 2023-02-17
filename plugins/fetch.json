@@ -20,7 +20,7 @@
   "ionic-plugin-keyboard": {
     "source": {
       "type": "registry",
-      "id": "ionic-plugin-keyboard@2.2.1"
+      "id": "ionic-plugin-keyboard@^2.2.1"
     },
     "is_top_level": true,
     "variables": {}
@@ -38,7 +38,7 @@
   "cordova-plugin-app-version": {
     "source": {
       "type": "registry",
-      "id": "cordova-plugin-app-version@^0.1.12"
+      "id": "cordova-plugin-app-version@^0.1.14"
     },
     "is_top_level": true,
     "variables": {}
@@ -46,7 +46,7 @@
   "cordova-plugin-x-socialsharing": {
     "source": {
       "type": "registry",
-      "id": "cordova-plugin-x-socialsharing@^6.0.3"
+      "id": "cordova-plugin-x-socialsharing@^6.0.4"
     },
     "is_top_level": true,
     "variables": {}
@@ -62,7 +62,7 @@
   "cordova-plugin-device": {
     "source": {
       "type": "registry",
-      "id": "cordova-plugin-device@^2.0.3"
+      "id": "cordova-plugin-device@^2.1.0"
     },
     "is_top_level": true,
     "variables": {}
@@ -162,7 +162,7 @@
   "cordova-plugin-android-permissions": {
     "source": {
       "type": "registry",
-      "id": "cordova-plugin-android-permissions@^1.1.2"
+      "id": "cordova-plugin-android-permissions@^1.1.5"
     },
     "is_top_level": true,
     "variables": {}
@@ -236,7 +236,7 @@
   "cordova-plugin-filepath": {
     "source": {
       "type": "registry",
-      "id": "cordova-plugin-filepath@^1.5.8"
+      "id": "cordova-plugin-filepath@^1.6.0"
     },
     "is_top_level": true,
     "variables": {}
@@ -287,7 +287,7 @@
   "cordova-sqlite-storage": {
     "source": {
       "type": "registry",
-      "id": "cordova-sqlite-storage@6.0.0"
+      "id": "cordova-sqlite-storage@^6.0.0"
     },
     "is_top_level": true,
     "variables": {}
@@ -331,7 +331,7 @@
   "cordova-plugin-media": {
     "source": {
       "type": "registry",
-      "id": "cordova-plugin-media@^6.0.0"
+      "id": "cordova-plugin-media@^6.1.0"
     },
     "is_top_level": true,
     "variables": {}

@@ -490,7 +490,7 @@ export class CommonUtilService {
     }
 
     handleToTopicBasedNotification() {
-        this.profileService.getActiveSessionProfile({ requiredFields: ProfileConstants.REQUIRED_FIELDS }).toPromise()
+        /* this.profileService.getActiveSessionProfile({ requiredFields: ProfileConstants.REQUIRED_FIELDS }).toPromise()
             .then(async (response: Profile) => {
                 const profile = response;
                 const subscribeTopic: Array<string> = [];
@@ -525,7 +525,7 @@ export class CommonUtilService {
                 });
                 await this.preferences.putString(PreferenceKey.CURRENT_USER_PROFILE, JSON.stringify(profile)).toPromise();
                 await this.preferences.putString(PreferenceKey.SUBSCRIBE_TOPICS, JSON.stringify(subscribeTopic)).toPromise();
-            });
+            }); */
     }
 
     getFormattedDate(date: string | Date) {

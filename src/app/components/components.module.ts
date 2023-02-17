@@ -5,7 +5,7 @@ import { IonicModule } from '@ionic/angular';
 import { TranslateModule } from '@ngx-translate/core';
 import { ApplicationHeaderComponent } from './application-header/application-header.component';
 import { ApplicationHeaderKebabMenuComponent } from './application-header/application-header-kebab-menu.component';
-import { SignInCardComponent } from './sign-in-card/sign-in-card.component';
+//import { SignInCardComponent } from './sign-in-card/sign-in-card.component';
 import { PipesModule } from '../../pipes/pipes.module';
 import { PbHorizontalComponent } from './pb-horizontal/pb-horizontal.component';
 import { SbGenericPopoverComponent } from './popups/sb-generic-popover/sb-generic-popover.component';
@@ -84,7 +84,7 @@ import { DownloadTranscriptPopupComponent } from './popups/download-transcript-p
   declarations: [
     ApplicationHeaderComponent,
     ApplicationHeaderKebabMenuComponent,
-    SignInCardComponent,
+    //SignInCardComponent,
     PbHorizontalComponent,
     SbGenericPopoverComponent,
     SbPopoverComponent,
@@ -164,7 +164,7 @@ import { DownloadTranscriptPopupComponent } from './popups/download-transcript-p
   entryComponents: [
     ApplicationHeaderComponent,
     ApplicationHeaderKebabMenuComponent,
-    SignInCardComponent,
+    //SignInCardComponent,
     SbGenericPopoverComponent,
     SbPopoverComponent,
     SbNoNetworkPopupComponent,
@@ -215,7 +215,7 @@ import { DownloadTranscriptPopupComponent } from './popups/download-transcript-p
   exports: [
     ApplicationHeaderComponent,
     ApplicationHeaderKebabMenuComponent,
-    SignInCardComponent,
+    //SignInCardComponent,
     PbHorizontalComponent,
     SbGenericPopoverComponent,
     SbPopoverComponent,

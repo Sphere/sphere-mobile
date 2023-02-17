@@ -17,7 +17,7 @@ export class HasNotSelectedUserTypeGuard implements Resolve<any> {
     ) { }
 
     async resolve(route: ActivatedRouteSnapshot): Promise<any> {
-
+console.log('~~~~~~~~~~~~~~~~~ Coming has-not-selected-user-type.guard')
         if (await this.onboardingConfigurationService.skipOnboardingStep(OnboardingScreenType.USER_TYPE_SELECTION)) {
             if (await this.sharedPreferences.getString(PreferenceKey.SELECTED_USER_TYPE).toPromise() === ProfileType.ADMIN) {
                 this.router.navigate([RouterLinks.SIGN_IN], { state: { hideBackBtn: true } });

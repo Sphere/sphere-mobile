@@ -820,6 +820,8 @@ export class AppComponent implements OnInit, AfterViewInit {
   }
 
   handleHeaderEvents($event) {
+    console.log('Handle header events ', $event)
+    
     if ($event.name === 'back') {
       const routeUrl = this.router.url;
 
@@ -935,7 +937,8 @@ export class AppComponent implements OnInit, AfterViewInit {
           if (routerValue === PageId.USER || routerValue === PageId.RESOURCES) {
             this.router.navigate([RouterLinks.SIGN_IN], {state: {source: routerValue}});
           } else {
-            this.router.navigate([RouterLinks.SIGN_IN]);
+            console.log('%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 2')
+            this.router.navigate([RouterLinks.SIGN_IN_CARD]);
           }
         }
         break;

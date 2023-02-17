@@ -27,6 +27,7 @@ export class AppHeaderService {
     sideMenuItemEventEmitted$ = this.sideMenuItemEvent.asObservable();
 
     sidebarEvent(name: any) {
+        console.log('sidebar event name = ', name)
         this.headerEvent.next(name);
     }
 

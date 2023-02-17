@@ -17,6 +17,7 @@ export class HasNotBeenOnboardedGuard implements CanLoad {
     }
 
     async canLoad(): Promise<boolean> {
+        console.log('~~~~~~~~~~~~~~~~~ Coming has-not-been-onboarded.guard')
         const isOnboardCompleted = (await this.sharedPreferences.getString(PreferenceKey.IS_ONBOARDING_COMPLETED).toPromise() === 'true');
         const session = await this.authService.getSession().toPromise();
         if (!isOnboardCompleted && !session) {

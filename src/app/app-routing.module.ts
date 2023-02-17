@@ -1,5 +1,5 @@
 import { NgModule } from '@angular/core';
-import { RouterModule, Routes } from '@angular/router';
+import { Router, RouterModule, Routes } from '@angular/router';
 import { RouterLinks } from './app.constant';
 import { HasNotBeenOnboardedGuard } from '@app/guards/has-not-been-onboarded.guard';
 import { HasNotSelectedFrameworkGuard } from '@app/guards/has-not-selected-framework.guard';
@@ -9,14 +9,9 @@ import { IsGuestUserGuard } from '@app/guards/is-guest-user.guard';
 import { MlGuard } from './manage-learn/core/guards/ml.guard';
 
 const routes: Routes = [
-  
-  {
-    path: 'public/home',
-    loadChildren: () => import('./modules/public/public.module').then(m => m.PublicModule)
-  },
   {
     path: '',
-    redirectTo: 'public/home',
+    redirectTo: `${RouterLinks.LANGUAGE_SETTING}`,
     pathMatch: 'full'
   },
   {
@@ -131,6 +126,7 @@ const routes: Routes = [
     loadChildren:  './manage-learn/imp-suggestions/imp-suggestions.module#ImpSuggestionsPageModule'
   },
   { path: RouterLinks.SIGN_IN, loadChildren: './sign-in/sign-in.module#SignInPageModule'},
+  { path: RouterLinks.SIGN_IN_CARD, loadChildren: './components/sign-in-card/sign-in-card.module#SignInCardModule'},
   {
     path: RouterLinks.SIGNUP_BASIC,
     loadChildren: './signup/signup-basic-info/signup-basic-info.module#SignupBasicInfoPageModule'
@@ -142,7 +138,7 @@ const routes: Routes = [
   {
     path: RouterLinks.OTP,
     loadChildren: './signup/otp/otp.module#OtpPageModule'
-  }
+  },
 
 ];
 

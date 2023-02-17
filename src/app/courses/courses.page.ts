@@ -174,6 +174,7 @@ export class CoursesPage implements OnInit, OnDestroy {
    * Angular life cycle hooks
    */
   ngOnInit() {
+    console.log('@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@222')
     this.getCourseTabData();
 
     this.events.subscribe('event:update_course_data', () => {
@@ -747,6 +748,7 @@ export class CoursesPage implements OnInit, OnDestroy {
   }
 
   handleHeaderEvents($event) {
+    console.log('&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&')
     switch ($event.name) {
       case 'search':
         this.search();

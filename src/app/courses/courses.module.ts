@@ -11,6 +11,7 @@ import { PipesModule } from '../../pipes/pipes.module';
 import { DirectivesModule } from '@app/directives/directives.module';
 import { ComponentsModule } from '../components/components.module';
 import { CommonConsumptionModule } from '@project-sunbird/common-consumption';
+import { SignInCardModule } from '../components/sign-in-card/sign-in-card.module';
 
 const routes: Routes = [
   {
@@ -31,7 +32,8 @@ const routes: Routes = [
     PipesModule,
     DirectivesModule,
     ComponentsModule,
-    CommonConsumptionModule
+    CommonConsumptionModule, 
+    SignInCardModule
   ],
   declarations: [CoursesPage]
 })
