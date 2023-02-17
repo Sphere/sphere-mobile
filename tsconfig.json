@@ -22,7 +22,7 @@
     "importHelpers": true,
     "target": "es2015",
     "types": [ "node" ],
-    "typeRoots": ["node_modules/@types", "./custom_typings"],
+    "typeRoots": ["node_modules/@types", "./custom_typings","./typings"],
     "module": "esnext",
     "lib": [
       "es2018", 

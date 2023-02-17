@@ -1,0 +1,153 @@
+{
+  "prepare_queue": {
+    "installed": [],
+    "uninstalled": []
+  },
+  "config_munge": {
+    "files": {}
+  },
+  "installed_plugins": {
+    "cordova-plugin-statusbar": {
+      "PACKAGE_NAME": "org.sunbird.app"
+    },
+    "cordova-plugin-device": {
+      "PACKAGE_NAME": "org.sunbird.app"
+    },
+    "cordova-plugin-ionic-webview": {
+      "PACKAGE_NAME": "org.sunbird.app"
+    },
+    "cordova-plugin-ionic-keyboard": {
+      "PACKAGE_NAME": "org.sunbird.app"
+    },
+    "cordova-plugin-androidx-adapter": {
+      "PACKAGE_NAME": "org.sunbird.app"
+    },
+    "sb-cordova-plugin-utility": {
+      "PACKAGE_NAME": "org.sunbird.app"
+    },
+    "cordova-plugin-android-downloadmanager": {
+      "PACKAGE_NAME": "org.sunbird.app"
+    },
+    "cordova-plugin-app-version": {
+      "PACKAGE_NAME": "org.sunbird.app"
+    },
+    "cordova-plugin-awesome-shared-preferences": {
+      "PACKAGE_NAME": "org.sunbird.app"
+    },
+    "cordova-plugin-badge-fix": {
+      "PACKAGE_NAME": "org.sunbird.app"
+    },
+    "cordova-plugin-console": {
+      "PACKAGE_NAME": "org.sunbird.app"
+    },
+    "cordova-plugin-fcm-with-dependecy-updated": {
+      "PACKAGE_NAME": "org.sunbird.app"
+    },
+    "cordova-plugin-file-transfer": {
+      "PACKAGE_NAME": "org.sunbird.app"
+    },
+    "cordova-plugin-inappupdatemanager": {
+      "PACKAGE_NAME": "org.sunbird.app"
+    },
+    "cordova-plugin-local-notification": {
+      "PACKAGE_NAME": "org.sunbird.app"
+    },
+    "cordova-plugin-openrap": {
+      "PACKAGE_NAME": "org.sunbird.app"
+    },
+    "cordova-plugin-proguard": {
+      "PACKAGE_NAME": "org.sunbird.app"
+    },
+    "cordova-plugin-qr-scanner": {
+      "PACKAGE_NAME": "org.sunbird.app"
+    },
+    "cordova-plugin-screen-orientation": {
+      "PACKAGE_NAME": "org.sunbird.app"
+    },
+    "cordova-plugin-sunbirdsplash": {
+      "PACKAGE_NAME": "org.sunbird.app"
+    },
+    "sb-cordova-plugin-sync": {
+      "PACKAGE_NAME": "org.sunbird.app"
+    },
+    "sb-cordova-plugin-customtabs": {
+      "URL_SCHEME": "@string/custom_scheme_url",
+      "URL_HOST": "mobile",
+      "PACKAGE_NAME": "org.sunbird.app"
+    },
+    "cordova-plugin-printer": {
+      "PACKAGE_NAME": "org.sunbird.app"
+    },
+    "ionic-plugin-keyboard": {
+      "PACKAGE_NAME": "org.sunbird.app"
+    },
+    "cordova-plugin-x-socialsharing": {
+      "PHOTO_LIBRARY_ADD_USAGE_DESCRIPTION": "This app requires photo library access to function properly.",
+      "PHOTO_LIBRARY_USAGE_DESCRIPTION": "This app requires photo library access to function properly.",
+      "PACKAGE_NAME": "org.sunbird.app"
+    },
+    "cordova-plugin-inappbrowser": {
+      "PACKAGE_NAME": "org.sunbird.app"
+    },
+    "cordova-plugin-network-information": {
+      "PACKAGE_NAME": "org.sunbird.app"
+    },
+    "cordova-plugin-webview-checker": {
+      "PACKAGE_NAME": "org.sunbird.app"
+    },
+    "cordova-plugin-advanced-http": {
+      "PACKAGE_NAME": "org.sunbird.app"
+    },
+    "cordova-plugin-android-permissions": {
+      "PACKAGE_NAME": "org.sunbird.app"
+    },
+    "cordova.plugins.diagnostic": {
+      "PACKAGE_NAME": "org.sunbird.app"
+    },
+    "com.telerik.plugins.nativepagetransitions": {
+      "PACKAGE_NAME": "org.sunbird.app"
+    },
+    "cordova-plugin-secure-storage-echo": {
+      "PACKAGE_NAME": "org.sunbird.app"
+    },
+    "cordova-plugin-chooser": {
+      "PACKAGE_NAME": "org.sunbird.app"
+    },
+    "cordova-plugin-appavailability": {
+      "PACKAGE_NAME": "org.sunbird.app"
+    },
+    "cordova-plugin-filepicker": {
+      "PACKAGE_NAME": "org.sunbird.app"
+    },
+    "cordova-plugin-document-viewer": {
+      "PACKAGE_NAME": "org.sunbird.app"
+    },
+    "com-sarriaroman-photoviewer": {
+      "PACKAGE_NAME": "org.sunbird.app"
+    },
+    "cordova-plugin-filepath": {
+      "PACKAGE_NAME": "org.sunbird.app"
+    },
+    "cordova-sqlite-storage": {
+      "PACKAGE_NAME": "org.sunbird.app"
+    },
+    "cordova-plugin-media": {
+      "KEEP_AVAUDIOSESSION_ALWAYS_ACTIVE": "NO",
+      "PACKAGE_NAME": "org.sunbird.app"
+    },
+    "uk.co.workingedge.phonegap.plugin.istablet": {
+      "PACKAGE_NAME": "org.sunbird.app"
+    }
+  },
+  "dependent_plugins": {
+    "cordova-plugin-file": {
+      "PACKAGE_NAME": "org.sunbird.app"
+    },
+    "es6-promise-plugin": {
+      "PACKAGE_NAME": "org.sunbird.app"
+    },
+    "cordova-plugin-add-swift-support": {
+      "PACKAGE_NAME": "org.sunbird.app"
+    }
+  }
+}

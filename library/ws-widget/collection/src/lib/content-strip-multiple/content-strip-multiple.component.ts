@@ -1,4 +1,4 @@
-import { Component, OnInit, Input, OnDestroy } from '@angular/core'
+import { Component, OnInit, Input, OnDestroy, Inject } from '@angular/core'
 import { NsWidgetResolver, WidgetBaseComponent } from '@ws-widget/resolver'
 import { NsContentStripMultiple } from './content-strip-multiple.model'
 import { ContentStripMultipleService } from './content-strip-multiple.service'
@@ -17,6 +17,8 @@ import { filter } from 'rxjs/operators'
 import * as _ from 'lodash-es'
 import { WidgetUserService } from '../_services/widget-user.service'
 // import { AppTocService } from '@ws/app/src/lib/routes/app-toc/services/app-toc.service'
+import { ContentsGroupedByPageSection, ContentSearchCriteria, ContentData, SearchType, ProfileService, Profile, ContentService, CourseService, FormService, CachedItemRequestSourceFrom, ContentAggregatorRequest } from '@project-sunbird/sunbird-sdk';
+import { AggregatorConfigField } from '@project-sunbird/sunbird-sdk/content/handlers/content-aggregator'
 
 interface IStripUnitContentData {
   key: string
@@ -66,6 +68,7 @@ export class ContentStripMultipleComponent extends WidgetBaseComponent
   callPublicApi = false
   explorePage = false
 
+  private searchCriteria: ContentSearchCriteria;
   constructor(
     private contentStripSvc: ContentStripMultipleService,
     private contentSvc: WidgetContentService,
@@ -75,7 +78,11 @@ export class ContentStripMultipleComponent extends WidgetBaseComponent
     protected utilitySvc: UtilityService,
     // private searchServSvc: SearchServService,
     private userSvc: WidgetUserService,
-    // private tocSvc: AppTocService
+    // private tocSvc: AppTocService,
+    @Inject('PROFILE_SERVICE') private profileService: ProfileService,
+    @Inject('FORM_SERVICE') private formService: FormService,
+    @Inject('COURSE_SERVICE') private courseService: CourseService,
+    @Inject('CONTENT_SERVICE') private contentService: ContentService,
   ) {
     super()
   }
@@ -534,7 +541,30 @@ export class ContentStripMultipleComponent extends WidgetBaseComponent
       )
     }
   }
-
+  private async fetchAndSortData(){
+    const temp = ((await this.contentService.buildContentAggregator
+      (this.formService, this.courseService, this.profileService)
+      .aggregate({
+        interceptSearchCriteria: () => ({}),
+        userPreferences: {
+         
+        }
+      },
+        [], null, [{
+          dataSrc: {
+            type: 'CONTENTS',
+            request: {
+              type: 'POST',
+              path: '/api/content/v1/search',
+              withBearerToken: true
+            },
+            mapping: []
+          },
+         
+        } as AggregatorConfigField<'CONTENTS'>]).toPromise()).result);
+    (this as any)['filterCriteria'] = temp[0].meta.filterCriteria;
+    console.log('temp ', temp);
+  }
   fetchFromPublicSearch(strip: NsContentStripMultiple.IContentStripUnit, calculateParentStatus = true) {
     if (strip.request && strip.request.searchV6 && Object.keys(strip.request.searchV6).length) {
       // if (!(strip.request.searchV6.locale && strip.request.searchV6.locale.length > 0)) {
@@ -554,6 +584,8 @@ export class ContentStripMultipleComponent extends WidgetBaseComponent
           strip.request.searchV6.request.filters,
         )
       }
+
+      //this.fetchAndSortData()
 
       this.contentSvc.publicContentSearch(strip.request.searchV6).subscribe(
         results => {

@@ -7,6 +7,7 @@ import {
   ValueService,
   WsEvents,
 } from '@ws-widget/utils'
+import { Platform } from '@ionic/angular'
 @Component({
   selector: 'app-root',
   templateUrl: 'app.component.html',
@@ -18,8 +19,9 @@ export class AppComponent implements OnInit{
   showNavbar = true
   isNavBarRequired = false
   isXSmall$ = this.valueSvc.isXSmall$
-  constructor(private valueSvc: ValueService,public router:Router) {
-
+  constructor(private valueSvc: ValueService,public router:Router,
+    private platform: Platform) {
+      this.initializeApp()
   }
   ngOnInit() {
     this.router.events.subscribe((event:any)=>{
@@ -43,5 +45,9 @@ export class AppComponent implements OnInit{
       }
     })
   }
-  
+  initializeApp() {
+    this.platform.ready().then(() => {
+      // Cordova and its plugins have finished loading
+    });
+  }
 }
