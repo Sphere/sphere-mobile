@@ -1,5 +1,5 @@
 {
-  "_from": "cordova-sqlite-storage@^6.1.0",
+  "_from": "cordova-sqlite-storage@^6.0.0",
   "_id": "cordova-sqlite-storage@6.1.0",
   "_inBundle": false,
   "_integrity": "sha512-ko/edy+u9MJVYrXdB6OXUklH0eIRWpa/Rvang7YkvQvsswc9vZr0pM/Ty6eX0MJtLOMJuCXIOiiHZZZbZSZikw==",
@@ -8,20 +8,20 @@
   "_requested": {
     "type": "range",
     "registry": true,
-    "raw": "cordova-sqlite-storage@^6.1.0",
+    "raw": "cordova-sqlite-storage@^6.0.0",
     "name": "cordova-sqlite-storage",
     "escapedName": "cordova-sqlite-storage",
-    "rawSpec": "^6.1.0",
+    "rawSpec": "^6.0.0",
     "saveSpec": null,
-    "fetchSpec": "^6.1.0"
+    "fetchSpec": "^6.0.0"
   },
   "_requiredBy": [
     "#DEV:/"
   ],
   "_resolved": "https://registry.npmjs.org/cordova-sqlite-storage/-/cordova-sqlite-storage-6.1.0.tgz",
   "_shasum": "e426935b198006feaf71143bde5af1bd6e0d8477",
-  "_spec": "cordova-sqlite-storage@^6.1.0",
-  "_where": "/home/aman/OFFICE/SPHERE/sphere-mobile",
+  "_spec": "cordova-sqlite-storage@^6.0.0",
+  "_where": "/home/sonashaju/Documents/Aastrika/SunbirdEd-mobile-app",
   "author": {
     "name": "various"
   },

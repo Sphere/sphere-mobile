@@ -10,13 +10,11 @@ const routes: Routes = [
     children: [
       {
         path: 'curate',
-        loadChildren: () =>
-          import('./routing/modules/curate/curate.module').then(u => u.CurateModule),
+        loadChildren: './routing/modules/curate/curate.module#CurateModule',
       },
       {
         path: 'upload',
-        loadChildren: () =>
-          import('./routing/modules/upload/upload.module').then(u => u.UploadModule),
+        loadChildren: './routing/modules/upload/upload.module#UploadModule',
       },
       {
         path: 'collection',
@@ -26,20 +24,19 @@ const routes: Routes = [
         resolve: {
           script: InitResolver,
         },
-        loadChildren: () =>
-          import('./routing/modules/collection/collection.module').then(u => u.CollectionModule),
+        loadChildren: './routing/modules/collection/collection.module#CollectionModule',
       },
       {
         path: 'quiz',
-        loadChildren: () => import('./routing/modules/quiz/quiz.module').then(u => u.QuizModule),
+        loadChildren: './routing/modules/quiz/quiz.module#QuizModule',
       },
       {
         path: 'assessment',
-        loadChildren: () => import('./routing/modules/quiz/quiz.module').then(u => u.QuizModule),
+        loadChildren: './routing/modules/quiz/quiz.module#QuizModule',
       },
       {
         path: 'web-module',
-        loadChildren: () => import('./routing/modules/web-page/web-page.module').then(u => u.WebPageModule),
+        loadChildren: './routing/modules/web-page/web-page.module#WebPageModule',
       },
     ],
   },

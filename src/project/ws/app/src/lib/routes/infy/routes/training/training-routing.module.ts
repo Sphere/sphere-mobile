@@ -5,15 +5,11 @@ import { HomeComponent } from './components/home/home.component'
 const routes: Routes = [
   {
     path: 'dashboard',
-    loadChildren: () =>
-      import('./routes/training-dashboard/training-dashboard.module').then(
-        u => u.TrainingDashboardModule,
-      ),
+    loadChildren: './routes/training-dashboard/training-dashboard.module#TrainingDashboardModule'
   },
   {
     path: ':contentId',
-    loadChildren: () =>
-      import('./routes/training-content/training-content.module').then(u => u.TrainingContentModule),
+    loadChildren: './routes/training-content/training-content.module#TrainingContentModule'
   },
   {
     path: '',

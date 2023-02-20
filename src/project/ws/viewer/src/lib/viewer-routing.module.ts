@@ -43,32 +43,28 @@ const routes: Routes = [
     data: {
       resourceType: 'certification',
     },
-    loadChildren: () =>
-      import('./routes/certification/certification.module').then(u => u.CertificationModule),
+    loadChildren: './routes/certification/certification.module#CertificationModule'
   },
   {
     path: 'class-diagram',
     data: {
       resourceType: 'class-diagram',
     },
-    loadChildren: () =>
-      import('./routes/class-diagram/class-diagram.module').then(u => u.ClassDiagramModule),
+    loadChildren: './routes/class-diagram/class-diagram.module#ClassDiagramModule'
   },
   {
     path: 'dnd-quiz',
     data: {
       resourceType: 'dnd-quiz',
     },
-    loadChildren: () =>
-      import('./routes/dnd-quiz/dnd-quiz.module').then(u => u.DndQuizModule),
+    loadChildren: './routes/dnd-quiz/dnd-quiz.module#DndQuizModule'
   },
   {
     path: 'hands-on',
     data: {
       resourceType: 'hands-on',
     },
-    loadChildren: () =>
-      import('./routes/hands-on/hands-on.module').then(u => u.HandsOnModule),
+    loadChildren: './routes/hands-on/hands-on.module#HandsOnModule'
   },
   {
     path: 'html/:resourceId',
@@ -85,8 +81,7 @@ const routes: Routes = [
     data: {
       resourceType: 'html-picker',
     },
-    loadChildren: () =>
-      import('./routes/html-picker/html-picker.module').then(u => u.HtmlPickerModule),
+    loadChildren: './routes/html-picker/html-picker.module#HtmlPickerModule'
   },
   {
     path: 'channel/:resourceId',
@@ -103,16 +98,14 @@ const routes: Routes = [
     data: {
       resourceType: 'iap',
     },
-    loadChildren: () =>
-      import('./routes/iap/iap.module').then(u => u.IapModule),
+    loadChildren: './routes/iap/iap.module#IapModule'
   },
   {
     path: 'interactive-exercise',
     data: {
       resourceType: 'interactive-exercise',
     },
-    loadChildren: () =>
-      import('./routes/interactive-exercise/interactive-exercise.module').then(u => u.InteractiveExerciseModule),
+    loadChildren: './routes/interactive-exercise/interactive-exercise.module#InteractiveExerciseModule'
   },
   {
     path: 'pdf/:resourceId',
@@ -129,24 +122,21 @@ const routes: Routes = [
     data: {
       resourceType: 'quiz',
     },
-    loadChildren: () =>
-      import('./routes/quiz/quiz.module').then(u => u.QuizModule),
+    loadChildren: './routes/quiz/quiz.module#QuizModule'
   },
   {
     path: 'rdbms-hands-on',
     data: {
       resourceType: 'rdbms-hands-on',
     },
-    loadChildren: () =>
-      import('./routes/rdbms-hands-on/rdbms-hands-on.module').then(u => u.RdbmsHandsOnModule),
+    loadChildren: './routes/rdbms-hands-on/rdbms-hands-on.module#RdbmsHandsOnModule'
   },
   {
     path: 'resource-collection',
     data: {
       resourceType: 'resource-collection',
     },
-    loadChildren: () => import('./routes/resource-collection/resource-collection.module')
-      .then(u => u.ResourceCollectionModule),
+    loadChildren:  './routes/resource-collection/resource-collection.module#ResourceCollectionModule'
   },
   {
     path: 'video/:resourceId',
@@ -163,8 +153,7 @@ const routes: Routes = [
     data: {
       resourceType: 'web-module',
     },
-    loadChildren: () =>
-      import('./routes/web-module/web-module.module').then(u => u.WebModuleModule),
+    loadChildren: './routes/web-module/web-module.module#WebModuleModule'
   },
   {
     path: 'youtube/:resourceId',

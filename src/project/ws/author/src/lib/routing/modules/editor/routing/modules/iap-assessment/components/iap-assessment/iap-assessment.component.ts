@@ -193,7 +193,7 @@ export class IapAssessmentComponent implements OnInit {
   preview() {
     const updatedContent = this.contentService.upDatedContent[this.currentContent] || {}
     const saveCall = Object.keys(updatedContent).length
-      ? this.triggerSave(updatedContent, this.currentContent)
+      ? this.triggerSave(updatedContent as any, this.currentContent)
       : of({} as any)
     this.loaderService.changeLoad.next(true)
     saveCall.subscribe(
@@ -237,7 +237,7 @@ export class IapAssessmentComponent implements OnInit {
     if (Object.keys(upDatedContent).length) {
       this.isChanged = true
       this.loaderService.changeLoad.next(true)
-      this.triggerSave(upDatedContent, this.currentContent).subscribe(
+      this.triggerSave(upDatedContent as any, this.currentContent).subscribe(
         () => {
           this.loaderService.changeLoad.next(false)
           this.snackBar.openFromComponent(NotificationComponent, {
@@ -456,7 +456,7 @@ export class IapAssessmentComponent implements OnInit {
       const needSave = Object.keys(this.contentService.upDatedContent[this.currentContent] || {})
         .length
       const saveCall = (needSave
-        ? this.triggerSave(updatedContent, this.currentContent)
+        ? this.triggerSave(updatedContent as any, this.currentContent)
         : of({} as any)
       ).pipe(mergeMap(() => this.editorService.forwardBackward(body, this.currentContent)))
       this.loaderService.changeLoad.next(true)

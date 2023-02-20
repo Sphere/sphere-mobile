@@ -5,13 +5,11 @@ import { HomeComponent } from './components/home/home.component'
 const routes: Routes = [
   {
     path: 'my-feedback',
-    loadChildren: () =>
-      import('./routes/my-feedback/my-feedback.module').then(u => u.MyFeedbackModule),
+    loadChildren: './routes/my-feedback/my-feedback.module#MyFeedbackModule',
   },
   {
     path: '',
-    loadChildren: () =>
-      import('./routes/provide-feedback/provide-feedback.module').then(u => u.ProvideFeedbackModule),
+    loadChildren: './routes/provide-feedback/provide-feedback.module#ProvideFeedbackModule',
   },
 ]
 

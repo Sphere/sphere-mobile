@@ -38,10 +38,7 @@ const routes: Routes = [
       },
       {
         path: 'certification',
-        loadChildren: () =>
-          import('./routes/app-toc-certification/app-toc-certification.module').then(
-            u => u.AppTocCertificationModule,
-          ),
+        loadChildren: './routes/app-toc-certification/app-toc-certification.module#AppTocCertificationModule',
         // canActivate: [GeneralGuard],
         resolve: {
           certificationMetaResolve: CertificationMetaResolver,

@@ -4,38 +4,77 @@ import { APP_INITIALIZER, CUSTOM_ELEMENTS_SCHEMA, ErrorHandler, NgModule, Provid
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 // ionic cordova dependencies/plugins
-import { IonicModule, IonicRouteStrategy } from '@ionic/angular';
+import { SegmentationTagService } from '@app/services/segmentation-tag/segmentation-tag.service';
+import { AppVersion } from '@ionic-native/app-version/ngx';
 import { Device } from '@ionic-native/device/ngx';
+import { FileOpener } from '@ionic-native/file-opener/ngx';
+import { FileTransfer, FileTransferObject } from '@ionic-native/file-transfer/ngx';
+import { File } from '@ionic-native/file/ngx';
+import {GooglePlus} from '@ionic-native/google-plus/ngx';
+// ionic cordova dependencies/plugins
+import { WebView } from '@ionic-native/ionic-webview/ngx';
+import { LocalNotifications } from '@ionic-native/local-notifications/ngx';
+import { Network } from '@ionic-native/network/ngx';
+import { SocialSharing } from '@ionic-native/social-sharing/ngx';
+import { StatusBar } from '@ionic-native/status-bar/ngx';
+import { IonicModule, IonicRouteStrategy } from '@ionic/angular';
 // 3rd party dependencies
 import { TranslateLoader, TranslateModule, TranslateService } from '@ngx-translate/core';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
+import { CsContentType } from '@project-sunbird/client-services/services/content';
+import { QuestionCursor } from '@project-sunbird/sunbird-quml-player-v9';
 // app dependencies like directive, sdk, services etc
+import { SunbirdSdk } from 'sunbird-sdk';
+import { QumlPlayerService } from '@app/services/quml-player/quml-player.service';
 import { DirectivesModule } from '../directives/directives.module';
+import {
+  ActivePageService, AndroidPermissionsService, AppGlobalService,
+  AppHeaderService,
+  AppRatingService,
+  CanvasPlayerService,
+  CollectionService, ComingSoonMessageService, CommonUtilService,
+  ContainerService,
+  ContentAggregatorHandler, CourseUtilService,
+  FormAndFrameworkUtilService,
+  GroupHandlerService, LoginHandlerService, LogoutHandlerService,
+  NotificationService, QRScannerResultHandler,
+  SplashScreenService, SunbirdQRScanner, TelemetryGeneratorService,
+  UtilityService
+} from '../services/index';
+import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { ComponentsModule } from './components/components.module';
-import { AppRoutingModule } from './app-routing.module';
-import 'hammerjs'
-import { AuthKeycloakService, UtilityService } from '@ws-widget/utils'; 
-import { CoreModule } from './modules/core/core.module';
-import { TncAppResolverService } from '../services/tnc-app-resolver.service';
-import { TncPublicResolverService } from '../services/tnc-public-resolver.service';
-const appInitFactory = (initSvc: InitService, logger: LoggerService)=> async()=>{
-  try {
-    await initSvc.init()
-  } catch (error) {
-    logger.error('ERROR DURING APP INITIALIZATION >', error)
-  }
-}
-import { ReactiveFormsModule } from '@angular/forms';
-import { IonicStorageModule } from '@ionic/storage';
 import { PageFilterOptionsPageModule } from './page-filter/page-filter-options/page-filter-options.module';
 import { PageFilterOptionsPage } from './page-filter/page-filter-options/page-filter-options.page';
 import { PageFilterPageModule } from './page-filter/page-filter.module';
 import { PageFilterPage } from './page-filter/page-filter.page';
 import { TermsAndConditionsPageModule } from './terms-and-conditions/terms-and-conditions.module';
+import { TncUpdateHandlerService } from '@app/services/handlers/tnc-update-handler.service';
+import {
+  SplashcreenTelemetryActionHandlerDelegate
+} from '@app/services/sunbird-splashscreen/splashcreen-telemetry-action-handler-delegate';
+import { SplashscreenImportActionHandlerDelegate } from '@app/services/sunbird-splashscreen/splashscreen-import-action-handler-delegate';
+import { SplaschreenDeeplinkActionHandlerDelegate } from '@app/services/sunbird-splashscreen/splaschreen-deeplink-action-handler-delegate';
+import { LocalCourseService } from '@app/services/local-course.service';
+import { ExternalIdVerificationService } from '@app/services/externalid-verification.service';
+import { TextbookTocService } from '@app/app/collection-detail-etb/textbook-toc-service';
+import { NativePageTransitions } from '@ionic-native/native-page-transitions/ngx';
+import { NavigationService } from '@app/services/navigation-handler.service';
+import {AliasBoardName} from '../pipes/alias-board-name/alias-board-name';
+import { DownloadPdfService } from '@app/services/download-pdf/download-pdf.service';
+import {ConsentService} from '@app/services/consent-service';
+import { ProfileHandler } from '@app/services/profile-handler';
+import { IonicStorageModule } from '@ionic/storage';
+import { Camera } from '@ionic-native/camera/ngx';
+import { FilePath } from '@ionic-native/file-path/ngx';
+import { Chooser } from '@ionic-native/chooser/ngx';
+import { PhotoViewer } from '@ionic-native/photo-viewer/ngx';
+import { StreamingMedia } from '@ionic-native/streaming-media/ngx';
+import {configuration} from '@app/configuration/configuration';
+import { LocationHandler } from '@app/services/location-handler';
+import { CoreModule } from './manage-learn/core/core.module';
+import { DiscussionTelemetryService } from '@app/services/discussion/discussion-telemetry.service';
 import { UserTypeSelectionPageModule } from './user-type-selection/user-type-selection.module';
-import { MatAutocompleteModule, MatSelectModule } from '@angular/material';
-// import { SunbirdSdk } from 'sunbird-sdk';
 import { RouteReuseStrategy } from '@angular/router';
 import { CrashAnalyticsErrorLogger } from '@app/services/crash-analytics/crash-analytics-error-logger';
 import { PrintPdfService } from '@app/services/print-pdf/print-pdf.service';
@@ -47,77 +86,6 @@ import { TranslateJsonPipe } from '@app/pipes/translate-json/translate-json';
 import { OnboardingConfigurationService } from '@app/services/onboarding-configuration.service';
 import onboarding from './../assets/configurations/config.json';
 // AoT requires an exported function for factories
-
-// import for sphere app 
-import {MAT_SNACK_BAR_DEFAULT_OPTIONS} from '@angular/material/snack-bar'
-import { MAT_PROGRESS_SPINNER_DEFAULT_OPTIONS } from '@angular/material/progress-spinner';
-import { MatTooltipModule } from '@angular/material/tooltip';
-import { MatNativeDateModule } from '@angular/material/core';
-import { MatDatepickerModule } from '@angular/material/datepicker';
-import { MatListModule } from '@angular/material/list';
-import { MatFormFieldModule } from '@angular/material/form-field';
-import { MatInputModule } from '@angular/material/input';
-import { MatToolbarModule } from '@angular/material/toolbar';
-import {MatSliderModule} from '@angular/material/slider'
-import { MatRippleModule } from '@angular/material/core';
-import { MatGridListModule } from '@angular/material/grid-list';
-import {MatProgressBarModule} from '@angular/material/progress-bar'
-import {MatMenuModule} from '@angular/material/menu'
-import { MatExpansionModule } from '@angular/material/expansion';
-import { MatDividerModule } from '@angular/material/divider';
-import { MatDialogModule } from '@angular/material/dialog';
-import { MatButtonModule } from '@angular/material/button';
-import { MatIconModule } from '@angular/material/icon';
-import { MatCardModule } from '@angular/material/card';
-import { MatSnackBarModule } from '@angular/material/snack-bar';
-import { WidgetResolverModule } from '@ws-widget/resolver'
-import {  WIDGET_REGISTERED_MODULES, WIDGET_REGISTRATION_CONFIG } from '@ws-widget/collection'
-import {  ImageCropModule, LoggerService, PipeSafeSanitizerModule } from '@ws-widget/utils'
-import { InitService } from '../services/init.service';
-import { PublicModule } from './modules/public/public.module';
-import { CoreModule  as SpherCoreModule} from '../app/modules/core/core.module';
-import { AppTocModule, SearchModule } from '@ws/app/src/public-api';
-import { SharedModule } from '@app/project/ws/author/src/lib/modules/shared/shared.module';
-import { HomeModule } from './modules/home/home.module';
-import { RootComponent } from './root/root.component';
-import { MdePopoverModule } from '@material-extended/mde'
-import { NotificationComponent } from '@app/project/ws/author/src/lib/modules/shared/components/notification/notification.component';
-import { OrgComponent } from '@app/project/ws/app/src/lib/routes/org/components/org/org.component';
-import { configuration } from '@app/configuration/configuration';
-import { CsContentType } from '@project-sunbird/client-services/services/content';
-import { SunbirdSdk } from '@project-sunbird/sunbird-sdk';
-import { AliasBoardName } from '@app/pipes/alias-board-name/alias-board-name';
-import { AppGlobalService, CourseUtilService, TelemetryGeneratorService, QRScannerResultHandler, SunbirdQRScanner, CommonUtilService, LogoutHandlerService, LoginHandlerService, ContainerService, LocalCourseService, AppHeaderService, AppRatingService, FormAndFrameworkUtilService, CollectionService, AndroidPermissionsService, ComingSoonMessageService, ActivePageService, CanvasPlayerService, SplashScreenService, GroupHandlerService, ContentAggregatorHandler, NotificationService } from '@app/services';
-import { ConsentService } from '@app/services/consent-service';
-import { DiscussionTelemetryService } from '@app/services/discussion/discussion-telemetry.service';
-import { DownloadPdfService } from '@app/services/download-pdf/download-pdf.service';
-import { ExternalIdVerificationService } from '@app/services/externalid-verification.service';
-import { TncUpdateHandlerService } from '@app/services/handlers/tnc-update-handler.service';
-import { LocationHandler } from '@app/services/location-handler';
-import { NavigationService } from '@app/services/navigation-handler.service';
-import { ProfileHandler } from '@app/services/profile-handler';
-import { QumlPlayerService } from '@app/services/quml-player/quml-player.service';
-import { SegmentationTagService } from '@app/services/segmentation-tag/segmentation-tag.service';
-import { SplaschreenDeeplinkActionHandlerDelegate } from '@app/services/sunbird-splashscreen/splaschreen-deeplink-action-handler-delegate';
-import { SplashcreenTelemetryActionHandlerDelegate } from '@app/services/sunbird-splashscreen/splashcreen-telemetry-action-handler-delegate';
-import { SplashscreenImportActionHandlerDelegate } from '@app/services/sunbird-splashscreen/splashscreen-import-action-handler-delegate';
-import { AppVersion } from '@ionic-native/app-version/ngx';
-import { Camera } from '@ionic-native/camera/ngx';
-import { Chooser } from '@ionic-native/chooser/ngx';
-import { FileOpener } from '@ionic-native/file-opener/ngx';
-import { FilePath } from '@ionic-native/file-path/ngx';
-import { FileTransferObject, FileTransfer } from '@ionic-native/file-transfer/ngx';
-import { GooglePlus } from '@ionic-native/google-plus/ngx';
-import { WebView } from '@ionic-native/ionic-webview/ngx';
-import { LocalNotifications } from '@ionic-native/local-notifications/ngx';
-import { NativePageTransitions } from '@ionic-native/native-page-transitions/ngx';
-import { Network } from '@ionic-native/network/ngx';
-import { PhotoViewer } from '@ionic-native/photo-viewer/ngx';
-import { SocialSharing } from '@ionic-native/social-sharing/ngx';
-import { StatusBar } from '@ionic-native/status-bar/ngx';
-import { StreamingMedia } from '@ionic-native/streaming-media/ngx';
-import { QuestionCursor } from '@project-sunbird/sunbird-quml-player-v9';
-import { TextbookTocService } from './collection-detail-etb/textbook-toc-service';
 export function translateHttpLoaderFactory(httpClient: HttpClient) {
   return new TranslateHttpLoader(httpClient, './assets/i18n/', '.json');
 }
@@ -483,52 +451,21 @@ export const sunbirdSdkFactory =
 
 declare const sbutility;
 @NgModule({
-  declarations: [AppComponent, RootComponent,OrgComponent],
-  entryComponents: [PageFilterPage, PageFilterOptionsPage,NotificationComponent],
+  declarations: [AppComponent],
+  entryComponents: [PageFilterPage, PageFilterOptionsPage],
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
     AppRoutingModule,
     ComponentsModule,
     HttpClientModule,
-    MatSliderModule,
-    MatButtonModule,
-    MatCardModule,
-    MatToolbarModule,
-    MatIconModule,
-    MatListModule,
-    MatMenuModule,
-    MatGridListModule,
-    MatDividerModule,
-    MatProgressBarModule,
-    MatExpansionModule,
-    MatRippleModule,
-    MatDialogModule,
-    MatInputModule,
-    MatFormFieldModule,
-    MatTooltipModule,
-    MatAutocompleteModule,
-    MatDatepickerModule,
-    MatNativeDateModule,
-    MatSelectModule,
-    MatExpansionModule, 
-    MatSnackBarModule,
-    PublicModule,
-    SearchModule,
-    CoreModule,
-    HomeModule,
-    AppTocModule,
-    ReactiveFormsModule,
-    SharedModule,
-    MdePopoverModule,
-    WidgetResolverModule.forRoot(WIDGET_REGISTRATION_CONFIG),
-    /* TranslateModule.forRoot({
+    TranslateModule.forRoot({
       loader: {
         provide: TranslateLoader,
         useFactory: (translateHttpLoaderFactory),
         deps: [HttpClient]
       }
-    }), */
+    }),
     IonicModule.forRoot({
       scrollPadding: false,
       scrollAssist: true,
@@ -543,11 +480,10 @@ declare const sbutility;
     TermsAndConditionsPageModule,
     IonicStorageModule.forRoot(),
     CoreModule,
-    HomeModule,
-    ReactiveFormsModule
+    SbSearchFilterModule.forRoot('mobile')
   ],
-  exports:[MatIconModule],
   providers: [
+    AppGlobalService,
     StatusBar,
     AppVersion,
     LocalNotifications,
@@ -557,7 +493,6 @@ declare const sbutility;
     FileTransferObject,
     FileOpener,
     FileTransfer,
-    AppGlobalService,
     CourseUtilService,
     TelemetryGeneratorService,
     QRScannerResultHandler,
@@ -624,6 +559,7 @@ export class AppModule {
   constructor(
     private translate: TranslateService) {
     this.setDefaultLanguage();
+    console.log('Onboarding Config', onboarding);
     
   }
 

@@ -344,7 +344,7 @@ export class ChannelComponent implements OnInit, OnDestroy {
         Object.keys(this.storeService.updatedContent[this.currentContent] || {}).length
       const saveCall = (needSave
         ? this.wrapperForTriggerSave(
-          this.contentService.upDatedContent[this.currentContent] || {},
+          this.contentService.upDatedContent[this.currentContent] || {} as any,
           this.currentContent,
         )
         : of({} as any)
@@ -394,7 +394,7 @@ export class ChannelComponent implements OnInit, OnDestroy {
     const saveCall =
       Object.keys(updatedContent).length ||
         Object.keys(this.storeService.updatedContent[this.currentContent] || {}).length
-        ? this.wrapperForTriggerSave(updatedContent, this.currentContent)
+        ? this.wrapperForTriggerSave(updatedContent as any, this.currentContent)
         : of({} as any)
     this.loaderService.changeLoad.next(true)
     saveCall.subscribe(

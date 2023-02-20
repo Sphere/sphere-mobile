@@ -10,8 +10,7 @@ const routes: Routes = [
   },
   {
     path: 'home',
-    loadChildren: () =>
-      import('./routing/home/home.module').then(u => u.LearningHubHomeModule),
+    loadChildren: './routing/home/home.module#LearningHubHomeModule'
   },
 ]
 

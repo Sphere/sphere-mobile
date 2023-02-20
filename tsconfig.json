@@ -11,19 +11,20 @@
     "declaration": false,
     "module": "es2015",
     "moduleResolution": "node",
+    "emitDecoratorMetadata": true,
     "allowSyntheticDefaultImports": true,
     "experimentalDecorators": true,
     "importHelpers": true,
     "target": "es5",
+    "downlevelIteration": true ,
     "skipLibCheck": true,
-    "resolveJsonModule":true,
     "types": [
       "node",
       "reflect-metadata",
       "jest"
     ],
     "typeRoots": [
-      "./node_modules/@types"
+      "./node_modules/@types", "./custom_typings"
     ],
     "lib": [
       "es2018",
@@ -55,13 +56,12 @@
       "@ws/viewer/*": ["project/ws/viewer/*"],
       "@ws/learning-hub": ["project/ws/learning-hub"],
       "@ws/learning-hub/*": ["project/ws/learning-hub/*"],
-   
     }
   },
   "include": [
     "src/**/*.ts",
     "./typings/*.d.ts",
-    "./content-player/**/*.ts",
+    "./content-player/**/*.ts"
   ],
   "exclude": [
     "node_modules",

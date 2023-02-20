@@ -5,14 +5,11 @@ import { CertificationsGuard } from './routes/certification-dashboard/guards/cer
 const routes: Routes = [
   {
     path: 'training',
-    loadChildren: () => import('./routes/training/training.module').then(u => u.TrainingModule),
+    loadChildren: './routes/training/training.module#TrainingModule'
   },
   {
     path: 'certification-dashboard',
-    loadChildren: () =>
-      import('./routes/certification-dashboard/certification-dashboard.module').then(
-        u => u.CertificationDashboardModule,
-      ),
+    loadChildren: './routes/certification-dashboard/certification-dashboard.module#CertificationDashboardModule',
     canActivate: [CertificationsGuard],
     data: {
       requiredFeatures: ['certificationLHub'],
@@ -20,28 +17,27 @@ const routes: Routes = [
   },
   {
     path: 'navigator',
-    loadChildren: () => import('./routes/navigator/navigator.module').then(u => u.NavigatorModule),
+    loadChildren: './routes/navigator/navigator.module#NavigatorModule'
   },
   {
     path: 'experience-wow',
-    loadChildren: () => import('./routes/ocm/ocm.module').then(u => u.OcmModule),
+    loadChildren: './routes/ocm/ocm.module#OcmModule'
   },
   {
     path: 'khub',
-    loadChildren: () =>
-      import('./routes/knowledge-hub/knowledge-hub.module').then(u => u.KnowledgeHubModule),
+    loadChildren: './routes/knowledge-hub/knowledge-hub.module#KnowledgeHubModule'
   },
   {
     path: 'marketing',
-    loadChildren: () => import('./routes/marketing/marketing.module').then(u => u.MarketingModule),
+    loadChildren: './routes/marketing/marketing.module#MarketingModule'
   },
   {
     path: 'channels',
-    loadChildren: () => import('./routes/channels/channels.module').then(u => u.ChannelsModule),
+    loadChildren: './routes/channels/channels.module#ChannelsModule'
   },
   {
     path: 'events',
-    loadChildren: () => import('./routes/events/events.module').then(u => u.EventsModule),
+    loadChildren: './routes/events/events.module#EventsModule'
   },
 ]
 

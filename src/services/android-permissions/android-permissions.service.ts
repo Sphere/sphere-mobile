@@ -4,9 +4,7 @@ import { defer, Observable } from 'rxjs';
 
 declare const cordova;
 
-@Injectable({
-  providedIn: 'root'
-})
+@Injectable()
 export class AndroidPermissionsService {
   checkPermissions(permissions: AndroidPermission[]): Observable<{ [key: string]: AndroidPermissionsStatus }> {
     return defer(async () => {

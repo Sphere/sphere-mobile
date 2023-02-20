@@ -11,7 +11,7 @@ import { IAssessmentDetails } from '../routing/modules/iap-assessment/interface/
 @Injectable()
 export class EditorContentService {
   originalContent: { [key: string]: NSContent.IContentMeta } = {}
-  upDatedContent: any = {}
+  upDatedContent: { [key: string]: NSContent.IContentMeta } = {}
   iapContent: { [key: string]: IAssessmentDetails } = {}
   public currentContent!: string
   public parentContent!: string
@@ -183,11 +183,9 @@ export class EditorContentService {
     delete requestBody.status
     delete requestBody.categoryType
     delete requestBody.accessPaths
-    /* return this.editorService
+    return this.editorService
       .createAndReadContent(requestBody)
-      .pipe(tap((v:any)=>{
-        return this.setOriginalMeta(v)
-      }))
+      .pipe(tap(v => this.setOriginalMeta(v as any)))
   }
 
   isValid(id: string): boolean {

@@ -96,13 +96,12 @@ const routes: Routes = [
   },
   {
     path: 'forums',
-    loadChildren: () => import('./routes/forums/forum-home.module').then(u => u.ForumHomeModule),
+    loadChildren: './routes/forums/forum-home.module#ForumHomeModule'
     // component: ForumHomeComponent
   },
   {
     path: 'socialSearch',
-    loadChildren: () =>
-      import('./routes/socialSearch/social-search.module').then(u => u.SocialSearchModule),
+    loadChildren: './routes/socialSearch/social-search.module#SocialSearchModule'
     // component: ForumHomeComponent
   },
   {

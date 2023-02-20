@@ -15,6 +15,7 @@
     "@angular/router": "~8.2.1"
   },
   "devDependencies": {
-    "@types/dom-to-image": "^2.6.4"
+    "@types/dom-to-image": "^2.6.4",
+    "@types/hammerjs": "^2.0.41"
   }
 }

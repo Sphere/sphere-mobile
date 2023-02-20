@@ -20,7 +20,7 @@ const routes: Routes = [
   },
   {
     path: 'editor',
-    loadChildren: () => import('./routing/modules/editor/editor.module').then(u => u.EditorModule),
+    loadChildren: './routing/modules/editor/editor.module#EditorModule',
     data: {
       load: ['ordinals', 'ckeditor', 'meta'],
     },
@@ -30,7 +30,7 @@ const routes: Routes = [
   },
   {
     path: 'editor/:id',
-    loadChildren: () => import('./routing/modules/editor/editor.module').then(u => u.EditorModule),
+    loadChildren: './routing/modules/editor/editor.module#EditorModule',
     data: { load: ['ordinals', 'ckeditor', 'meta'] },
     resolve: {
       script: InitResolver,
@@ -39,8 +39,7 @@ const routes: Routes = [
   },
   {
     path: 'my-content',
-    loadChildren: () =>
-      import('./routing/modules/my-content/my-content.module').then(u => u.MyContentModule),
+    loadChildren: './routing/modules/my-content/my-content.module#MyContentModule',
     data: { load: ['ordinals', 'meta'] },
     resolve: {
       script: InitResolver,
