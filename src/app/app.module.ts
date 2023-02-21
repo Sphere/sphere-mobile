@@ -85,6 +85,8 @@ import { StoragePermissionHandlerService } from '@app/services/storage-permissio
 import { TranslateJsonPipe } from '@app/pipes/translate-json/translate-json';
 import { OnboardingConfigurationService } from '@app/services/onboarding-configuration.service';
 import onboarding from './../assets/configurations/config.json';
+import { WidgetResolverModule } from '@ws-widget/resolver';
+import { WIDGET_REGISTERED_MODULES, WIDGET_REGISTRATION_CONFIG } from '@ws-widget/collection'
 // AoT requires an exported function for factories
 export function translateHttpLoaderFactory(httpClient: HttpClient) {
   return new TranslateHttpLoader(httpClient, './assets/i18n/', '.json');
@@ -480,9 +482,12 @@ declare const sbutility;
     TermsAndConditionsPageModule,
     IonicStorageModule.forRoot(),
     CoreModule,
-    SbSearchFilterModule.forRoot('mobile')
+    SbSearchFilterModule.forRoot('mobile'),
+    ...WIDGET_REGISTERED_MODULES,
+    WidgetResolverModule.forRoot(WIDGET_REGISTRATION_CONFIG),
   ],
   providers: [
+    AppGlobalService,
     StatusBar,
     AppVersion,
     LocalNotifications,
@@ -492,7 +497,6 @@ declare const sbutility;
     FileTransferObject,
     FileOpener,
     FileTransfer,
-    AppGlobalService,
     CourseUtilService,
     TelemetryGeneratorService,
     QRScannerResultHandler,

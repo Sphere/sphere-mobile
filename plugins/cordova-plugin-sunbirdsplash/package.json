@@ -19,7 +19,7 @@
   ],
   "_resolved": "git+https://github.com/project-sunbird/cordova-plugin-sunbirdsplash.git#4d4aaeb3029a3e3c684e305780dac463b329c27c",
   "_spec": "https://github.com/project-sunbird/cordova-plugin-sunbirdsplash.git#release-5.0.2",
-  "_where": "/home/sonashaju/OFFICE/sphere-mobile",
+  "_where": "/home/sonashaju/Documents/Aastrika/SunbirdEd-mobile-app",
   "bundleDependencies": false,
   "cordova": {
     "id": "cordova-plugin-sunbirdsplash",

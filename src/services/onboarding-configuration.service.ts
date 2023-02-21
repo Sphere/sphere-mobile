@@ -67,7 +67,6 @@ export class OnboardingConfigurationService {
         private appGlobalService: AppGlobalService,
         private commonUtilService: CommonUtilService,
     ) {
-        console.log('WEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEE')
         this.onBoardingConfig = onboarding;
         this.checkInitialScreen();
     }
@@ -104,7 +103,6 @@ export class OnboardingConfigurationService {
     }
 
     private async guestOnboardingStep(config) {
-        console.log('###################################################')
         let skipOnboarding = true;
 
         switch (config.name) {
@@ -204,7 +202,6 @@ export class OnboardingConfigurationService {
         await this.commonUtilService.handleToTopicBasedNotification();
         this.events.publish('onboarding-card:completed', { isOnBoardingCardCompleted: true });
         this.events.publish('refresh:profile');
-        console.log('#################################### 1')
         this.appGlobalService.guestUserProfile = profile;
 
     }

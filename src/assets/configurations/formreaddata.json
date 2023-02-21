@@ -513,6 +513,17 @@
                             }
                         }
                     ]
+                },
+                {
+                    "code": "localNotification",
+                    "name": "LocalNotification",
+                    "type": 1,
+                    "config": [{
+                        "msg": "Welcome! You've choosen English",
+                        "isEnabled": true,
+                        "id": 1005,
+                        "title": "Welcome! You've choosen English"
+                    }]
                 }
             ]
         },

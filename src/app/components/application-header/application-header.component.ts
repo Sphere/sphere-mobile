@@ -270,7 +270,7 @@ export class ApplicationHeaderComponent implements OnInit, OnDestroy {
   }
 
   emitEvent($event, name) {
-console.log('!!!!!!!!!!clicked the search event = ' + $event + ', name = ' + name, )
+
     if (name === 'filter') {
       if (this.commonUtilService.networkInfo.isNetworkAvailable) {
         this.headerEvents.emit({ name, event: $event });

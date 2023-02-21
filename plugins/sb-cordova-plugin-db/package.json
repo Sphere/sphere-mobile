@@ -19,7 +19,7 @@
   ],
   "_resolved": "git+https://github.com/Sunbird-Ed/sb-cordova-plugin-db.git#a86ab12796a30ff003d6abb121d592b7800137f4",
   "_spec": "https://github.com/Sunbird-Ed/sb-cordova-plugin-db.git#release-4.6.0",
-  "_where": "/home/sonashaju/OFFICE/sphere-mobile",
+  "_where": "/home/sonashaju/Documents/Aastrika/SunbirdEd-mobile-app",
   "bundleDependencies": false,
   "cordova": {
     "id": "sb-cordova-plugin-db",

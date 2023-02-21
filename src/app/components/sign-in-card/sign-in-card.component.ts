@@ -70,7 +70,6 @@ export class SignInCardComponent {
   }
 
   async signIn(skipNavigation?) {
-    console.log('################## HEllo')
     this.appGlobalService.resetSavedQuizContent();
     // clean the preferences to avoid unnecessary enrolment
     if (!this.fromEnrol) {

@@ -58,14 +58,12 @@ export class FormAndFrameworkUtilService {
     }
 
     getWebviewSessionProviderConfig(context: 'login' | 'merge' | 'migrate' | 'register' | 'state'): Promise<WebviewSessionProviderConfig> {
-        
         return this.getFormFields(FormConstants.LOGIN_CONFIG).then((fields) => {
             const config = fields.find(c => c.context === context);
             if (!config) {
                 throw new SignInError('SESSION_PROVIDER_CONFIG_NOT_FOUND');
             }
 
-            console.log('!!!!!!!!!!! inside form and frame work util service 333333 config: ', config)
             return config;
         });
     }
@@ -655,7 +653,6 @@ export class FormAndFrameworkUtilService {
         formRequest.rootOrgId = rootOrgId || '*' ;
         const formData = form;
         //const formData  = await this.formService.getForm(formRequest).toPromise() as any;
-        console.log('!!!!!!!!!!! inside getformfield form data', formData)
         return  (formData && formData.form && formData.form.data && formData.form.data.fields) || [];
     }
 

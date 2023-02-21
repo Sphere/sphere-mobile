@@ -16,6 +16,7 @@
     "experimentalDecorators": true,
     "importHelpers": true,
     "target": "es5",
+    "downlevelIteration": true ,
     "skipLibCheck": true,
     "types": [
       "node",
@@ -23,7 +24,7 @@
       "jest"
     ],
     "typeRoots": [
-      "./node_modules/@types"
+      "./node_modules/@types", "./custom_typings"
     ],
     "lib": [
       "es2018",
@@ -36,7 +37,28 @@
       "@project-sunbird/common-consumption": ["../node_modules/@project-sunbird/common-consumption-v9"],
       "@project-sunbird/common-consumption/*": ["../node_modules/@project-sunbird/common-consumption-v9/*"],
       "common-form-elements": ["../node_modules/@project-sunbird/common-form-elements-v9"],
-      "common-form-elements/*": ["../node_modules/@project-sunbird/common-form-elements-v9/*"]
+      "common-form-elements/*": ["../node_modules/@project-sunbird/common-form-elements-v9/*"],
+      "@ws-widget/resolver": ["library/ws-widget/resolver"],
+      "@ws-widget/resolver/*": ["library/ws-widget/resolver/*"],
+      "@ws-widget/collection": ["library/ws-widget/collection"],
+      "@ws-widget/collection/*": ["library/ws-widget/collection/*"],
+      "@ws-widget/utils": ["library/ws-widget/utils"],
+      "@ws-widget/utils/*": ["library/ws-widget/utils/*"],
+      "@ws/app": ["project/ws/app"],
+      "@ws/app/*": ["project/ws/app/*"],
+      "@ws/author": ["project/ws/author"],
+      "@ws/author/*": ["project/ws/author/*"],
+      "@ws/admin": ["project/ws/admin"],
+      "@ws/admin/*": ["project/ws/admin/*"],
+      "@ws/analytics": ["project/ws/analytics"],
+      "@ws/analytics/*": ["project/ws/analytics/*"],
+      "@ws/viewer": ["project/ws/viewer"],
+      "@ws/viewer/*": ["project/ws/viewer/*"],
+      "@ws/learning-hub": ["project/ws/learning-hub"],
+      "@ws/learning-hub/*": ["project/ws/learning-hub/*"],
+      "crypto": [
+        "node_modules/crypto-browserify"
+      ]
     }
   },
   "include": [
@@ -46,8 +68,9 @@
   ],
   "exclude": [
     "node_modules",
+    "src/library/**/*.spec.ts",
     "src/**/*.spec.ts",
     "src/**/*.spec.data.ts",
     "src/**/__tests__/*.ts"
-  ]
+  ],
 }

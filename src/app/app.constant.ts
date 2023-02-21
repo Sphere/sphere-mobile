@@ -638,7 +638,6 @@ export class RouterLinks {
     public static readonly SIGNUP_BASIC = 'signup-basic-info';
     public static readonly SIGNUP_EMAIL = 'signup-email';
     public static readonly OTP = 'otp';
-
 }
 
 export class ShareItemType {

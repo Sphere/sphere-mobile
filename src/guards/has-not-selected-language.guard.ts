@@ -17,7 +17,6 @@ export class HasNotSelectedLanguageGuard implements Resolve<any> {
 
     async resolve(route: ActivatedRouteSnapshot): Promise<any> {
 
-        console.log('~~~~~~~~~~~~~~~~~ Coming has-not-selected-language.guard')
         if(await this.onboardingConfigurationService.skipOnboardingStep(OnboardingScreenType.LANGUAGE_SETTINGS)){
             this.navigateToUserTypeSelection();
             return false;

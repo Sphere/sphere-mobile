@@ -278,7 +278,6 @@ export class AppGlobalService implements OnDestroy {
      * getLoggedinUserId
      */
     getUserId(): string | undefined {
-        console.log('$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$ 12')
         if (!this.session) {
             this.authService.getSession().toPromise()
                 .then((session) => {
@@ -380,7 +379,6 @@ export class AppGlobalService implements OnDestroy {
     }
 
     async setOnBoardingCompleted() {
-        console.log('$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$ 12*1')
         const session = await this.authService.getSession().toPromise();
         if (!session) {
             this.isOnBoardingCompleted = true;
@@ -393,10 +391,8 @@ export class AppGlobalService implements OnDestroy {
         /* to make sure there are no duplicate calls to getSession and profile setting
          * from login flow only eventParams are received via events
          */
-        console.log('$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$ 12*2')
         if (!eventParams || (eventParams && !eventParams.skipSession)) {
             this.authService.getSession().toPromise().then((session) => {
-
                 if (!session) {
                     this.isGuestUser = true;
                     this.session = session;
@@ -482,7 +478,7 @@ export class AppGlobalService implements OnDestroy {
                         this.isGuestUser = true;
                         resolve(this.guestProfileType);
                     }
-                }).catch((err) => {
+                }).catch(() => {
                     reject();
                 });
         });

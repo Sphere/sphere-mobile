@@ -7,14 +7,14 @@ import {TranslateModule} from '@ngx-translate/core';
 import { CommonFormElementsModule } from 'common-form-elements';
 import { SignInCardComponent } from './sign-in-card.component';
 import { Routes, RouterModule } from '@angular/router';
-const routes: Routes = [
+/* const routes: Routes = [
   {
     path: '',
     component: SignInCardComponent
   }
-];
+]; */
 @NgModule({
-    imports: [
+    /* imports: [
         CommonModule,
         FormsModule,
         IonicModule,
@@ -23,6 +23,6 @@ const routes: Routes = [
         CommonFormElementsModule
     ],
   declarations: [SignInCardComponent],
-  exports: [RouterModule],
+  exports: [RouterModule], */
 })
 export class SignInCardModule {}

@@ -1,5 +1,5 @@
 import { NgModule } from '@angular/core';
-import { Router, RouterModule, Routes } from '@angular/router';
+import { RouterModule, Routes } from '@angular/router';
 import { RouterLinks } from './app.constant';
 import { HasNotBeenOnboardedGuard } from '@app/guards/has-not-been-onboarded.guard';
 import { HasNotSelectedFrameworkGuard } from '@app/guards/has-not-selected-framework.guard';
@@ -9,7 +9,16 @@ import { IsGuestUserGuard } from '@app/guards/is-guest-user.guard';
 import { MlGuard } from './manage-learn/core/guards/ml.guard';
 
 const routes: Routes = [
-  {
+{
+  path: 'public/home',
+  loadChildren: './modules/public/public.module#PublicModule'
+},
+{
+  path: '',
+  redirectTo: 'public/home',
+  pathMatch: 'full'
+},
+  /* {
     path: '',
     redirectTo: `${RouterLinks.LANGUAGE_SETTING}`,
     pathMatch: 'full'
@@ -17,7 +26,7 @@ const routes: Routes = [
   {
     path: `${RouterLinks.LANGUAGE_SETTING}/:isFromSettings`,
     loadChildren: './language-settings/language-settings.module#LanguageSettingsModule'
-  },
+  }, */
   {
     path: `${RouterLinks.LANGUAGE_SETTING}`,
     loadChildren: './language-settings/language-settings.module#LanguageSettingsModule',
@@ -138,7 +147,7 @@ const routes: Routes = [
   {
     path: RouterLinks.OTP,
     loadChildren: './signup/otp/otp.module#OtpPageModule'
-  },
+  }
 
 ];
 

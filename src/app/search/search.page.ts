@@ -239,7 +239,6 @@ export class SearchPage implements OnInit, AfterViewInit, OnDestroy, OnTabViewWi
   }
 
   async ngOnInit() {
-    console.log('Hit with the search')
     this.getAppName();
     this.supportedUserTypesConfig = await this.profileHandler.getSupportedUserTypes();
     this.appPrimaryColor = getComputedStyle(document.querySelector('html')).getPropertyValue('--app-primary-medium');

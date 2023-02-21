@@ -58,6 +58,7 @@ declare const window;
   templateUrl: 'app.component.html'
 })
 export class AppComponent implements OnInit, AfterViewInit {
+  showPublicNavbar = true
   rootPage: any;
   public counter = 0;
   headerConfig = {
@@ -820,8 +821,6 @@ export class AppComponent implements OnInit, AfterViewInit {
   }
 
   handleHeaderEvents($event) {
-    console.log('Handle header events ', $event)
-    
     if ($event.name === 'back') {
       const routeUrl = this.router.url;
 
@@ -937,8 +936,7 @@ export class AppComponent implements OnInit, AfterViewInit {
           if (routerValue === PageId.USER || routerValue === PageId.RESOURCES) {
             this.router.navigate([RouterLinks.SIGN_IN], {state: {source: routerValue}});
           } else {
-            console.log('%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 2')
-            this.router.navigate([RouterLinks.SIGN_IN_CARD]);
+            this.router.navigate([RouterLinks.SIGN_IN]);
           }
         }
         break;

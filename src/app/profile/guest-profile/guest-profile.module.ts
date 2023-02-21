@@ -3,7 +3,6 @@ import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { RouterModule, Routes } from '@angular/router';
 import { ComponentsModule } from '@app/app/components/components.module';
-import { SignInCardModule } from '@app/app/components/sign-in-card/sign-in-card.module';
 import { PipesModule } from '@app/pipes/pipes.module';
 import { IonicModule } from '@ionic/angular';
 import { TranslateModule } from '@ngx-translate/core';
@@ -24,8 +23,7 @@ const routes: Routes = [
         RouterModule.forChild(routes),
         TranslateModule,
         ComponentsModule,
-        PipesModule,
-        SignInCardModule
+        PipesModule
     ],
   declarations: [GuestProfilePage]
 })

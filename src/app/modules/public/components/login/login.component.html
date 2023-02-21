@@ -1,0 +1,81 @@
+<ws-header></ws-header>
+<div class="login-page-content" *ngIf="!otpPage">
+  <div class="login-card">
+    <div>
+      <div *ngIf="source === 'register'; else welcome ">
+        <h1 class="register mb-1">
+          Registration successful!
+        </h1>
+        <h1 class="register">
+          Login here using the mobile number or your email id and the password that you used while creating your
+          account.
+        </h1>
+      </div>
+      <ng-template #welcome>
+        <h1 class="ui header"> Welcome! </h1>
+        <p class="fwb">Login with your Aastrika account</p>
+      </ng-template>
+
+      <div class="input-content">
+        <div class="input-content-wrapper">
+          <form [formGroup]="loginForm">
+            <div style="margin-bottom: 10px; margin-top: 10px;">
+              <mat-error class="text-danger" *ngIf="errorMessage!==''">{{errorMessage}}</mat-error>
+            </div>
+            <div class="form-group" style="margin-bottom: 0;">
+              <input type="text" class="form-control" i18n-placeholder placeholder="Phone Number/Email ID"
+                id="userid-field" formControlName="username">
+            </div>
+            <div style="margin-top: 4px;">
+              <mat-error class="text-danger" i18n *ngIf="loginForm.controls['username'].hasError('required') &&
+                  (loginForm.controls['username'].dirty || loginForm.controls['username'].touched)">
+                This field is required</mat-error>
+              <mat-error class="text-danger" i18n *ngIf="loginForm.controls['username'].hasError('pattern')">
+                Invalid email or number</mat-error>
+            </div>
+            <div class="form-group input-group pwd" style="margin-top: 1rem;">
+              <input [type]="hide ? 'password' : 'text'" i18n-placeholder placeholder="Password" id="password-field"
+                formControlName="password" class="form-control">
+            </div>
+            <div style="margin-top: 4px;">
+              <mat-error class="text-danger" i18n *ngIf="loginForm.controls['password'].hasError('required') &&
+                  (loginForm.controls['password'].dirty || loginForm.controls['password'].touched)">
+                This field is required</mat-error>
+            </div>
+            <div class="form-group">
+              <a id="fgtKeycloakFlow" class="ui right floated forgetPasswordLink " tabindex="1"
+                href="public/forgot-password" i18n>Forgot
+                Password?</a>
+            </div>
+            <div class="field form-group">
+              <button class="blueButton" [disabled]="!loginForm?.valid"
+                (click)="loginUser()">Login</button>
+            </div>
+            <div class="field form-group or-container">
+              <div class="or-holder">
+                <span class="">OR</span>
+              </div>
+            </div>
+            <div id="kc-registration" class="field form-group">
+              <div class="ui content signUpMsg">
+                <a class="ui fluid button whiteButton w-full" href="app/create-account"
+                  id="createAccount-loginOTP">Create an Account</a>
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Create Account Form Close-->
+<input type="hidden" i18-value i18-aria-value aria-value="Verification successful"
+  value="Thanks for Verifying your account" #toastSuccess />
+<input type="hidden" i18-value i18-aria-value aria-value="Unable to Signin" value="Error Signing in!" #toastError />
+
+<!-- OTP Form -->
+<div *ngIf="otpPage">
+  <ws-login-otp [loginData]="loginForm" (redirectToParent)="showParentForm($event)"></ws-login-otp>
+</div>
+<!-- OTP Form Close-->

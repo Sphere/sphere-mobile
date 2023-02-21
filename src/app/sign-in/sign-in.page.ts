@@ -63,7 +63,6 @@ export class SignInPage implements OnInit {
         public platform: Platform,
         private appGlobalService: AppGlobalService,
     ) {
-        console.log('############ hitting sign in')
         const extrasData = this.router.getCurrentNavigation().extras.state;
         this.skipNavigation = extrasData;
         this.appHeaderService.hideHeader();
@@ -164,12 +163,10 @@ export class SignInPage implements OnInit {
             
             await loginSessionProviderConfigloader.present();
             try {
-                console.log('$$$$$$ login with keyclock try')
                 keycloakLoginSessionProviderConfig = await this.formAndFrameworkUtilService.getWebviewSessionProviderConfig('login');
                 keycloakMigrateSessionProviderConfig = await this.formAndFrameworkUtilService.getWebviewSessionProviderConfig('migrate');
                 await loginSessionProviderConfigloader.dismiss();
             } catch (e) {
-                console.log('$$$$$$ login with keyclock catch')
                 this.sbProgressLoader.hide({id: 'login'});
                 await loginSessionProviderConfigloader.dismiss();
                 this.commonUtilService.showToast('ERROR_WHILE_LOGIN');

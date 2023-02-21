@@ -5,7 +5,7 @@ import { IonicModule } from '@ionic/angular';
 import { TranslateModule } from '@ngx-translate/core';
 import { ApplicationHeaderComponent } from './application-header/application-header.component';
 import { ApplicationHeaderKebabMenuComponent } from './application-header/application-header-kebab-menu.component';
-//import { SignInCardComponent } from './sign-in-card/sign-in-card.component';
+import { SignInCardComponent } from './sign-in-card/sign-in-card.component';
 import { PipesModule } from '../../pipes/pipes.module';
 import { PbHorizontalComponent } from './pb-horizontal/pb-horizontal.component';
 import { SbGenericPopoverComponent } from './popups/sb-generic-popover/sb-generic-popover.component';
@@ -80,11 +80,14 @@ import { ContentShareHandlerService } from '@app/services';
 import { ShowCertificateComponent } from './show-certificate-component/show-certificate-component.component';
 import { CertificateVerificationPopoverComponent } from './popups/certificate-verification/certificate-verification-popup.component';
 import { DownloadTranscriptPopupComponent } from './popups/download-transcript-popup/download-transcript-popup.component';
+import { AppPublicNavBarComponent } from './app-public-nav-bar/app-public-nav-bar.component';
+import { MatToolbarModule } from '@angular/material';
+import { WidgetResolverModule } from '@ws-widget/resolver/src/public-api';
 @NgModule({
   declarations: [
     ApplicationHeaderComponent,
     ApplicationHeaderKebabMenuComponent,
-    //SignInCardComponent,
+    SignInCardComponent,
     PbHorizontalComponent,
     SbGenericPopoverComponent,
     SbPopoverComponent,
@@ -146,7 +149,8 @@ import { DownloadTranscriptPopupComponent } from './popups/download-transcript-p
     QrScannerIOSComponent,
     ShowCertificateComponent,
     CertificateVerificationPopoverComponent,
-    DownloadTranscriptPopupComponent
+    DownloadTranscriptPopupComponent,
+    AppPublicNavBarComponent
   ],
   imports: [
     CommonModule,
@@ -160,11 +164,13 @@ import { DownloadTranscriptPopupComponent } from './popups/download-transcript-p
     SunbirdVideoPlayerModule,
     DashletModule,
     TranslateModule.forChild(),
+    MatToolbarModule,
+    WidgetResolverModule,
   ],
   entryComponents: [
     ApplicationHeaderComponent,
     ApplicationHeaderKebabMenuComponent,
-    //SignInCardComponent,
+    SignInCardComponent,
     SbGenericPopoverComponent,
     SbPopoverComponent,
     SbNoNetworkPopupComponent,
@@ -210,12 +216,13 @@ import { DownloadTranscriptPopupComponent } from './popups/download-transcript-p
     SbPreferencePopupComponent,
     QrScannerIOSComponent,
     CertificateVerificationPopoverComponent,
-    DownloadTranscriptPopupComponent
+    DownloadTranscriptPopupComponent,
+    AppPublicNavBarComponent
   ],
   exports: [
     ApplicationHeaderComponent,
     ApplicationHeaderKebabMenuComponent,
-    //SignInCardComponent,
+    SignInCardComponent,
     PbHorizontalComponent,
     SbGenericPopoverComponent,
     SbPopoverComponent,
@@ -275,7 +282,8 @@ import { DownloadTranscriptPopupComponent } from './popups/download-transcript-p
     QrScannerIOSComponent,
     ShowCertificateComponent,
     CertificateVerificationPopoverComponent,
-    DownloadTranscriptPopupComponent
+    DownloadTranscriptPopupComponent,
+    AppPublicNavBarComponent
   ],
   providers: [FileSizePipe, FilterPipe, Keyboard, ScreenOrientation, ContentShareHandlerService]
 })
