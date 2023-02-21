@@ -5,7 +5,6 @@ import { ConfigurationsService, NsPage, NsInstanceConfig, ValueService } from '@
 import { Observable, Subscription } from 'rxjs'
 import { ActivatedRoute, Router } from '@angular/router'
 import { NsWidgetResolver } from '@ws-widget/resolver'
-import { AuthKeycloakService } from '@ws-widget/utils/src/lib/services/auth-keycloak.service'
 import { RouterLinks } from '@app/app/app.constant'
 
 @Component({
@@ -45,8 +44,7 @@ export class AppPublicNavBarComponent implements OnInit, OnChanges, OnDestroy {
     private configSvc: ConfigurationsService,
     private router: Router,
     private activateRoute: ActivatedRoute,
-    private valueSvc: ValueService,
-    private authSvc: AuthKeycloakService) {
+    private valueSvc: ValueService) {
     this.isXSmall$ = this.valueSvc.isXSmall$
     this.btnAppsConfig = { ...this.basicBtnAppsConfig }
   }
