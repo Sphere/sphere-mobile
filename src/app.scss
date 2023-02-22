@@ -1610,10 +1610,6 @@ body {
   }
 }
 
-ion-content {
-  --background: var(--app-primary-background);
-  background: var(--app-primary-background) !important;
-}
 
 app-collection-detail-etb{
   sb-toc-item{
@@ -2319,9 +2315,6 @@ app-metadata-details,app-add-file {
   ion-card{
     margin: 0 0 10px 0 !important;
     --ion-item-background: white;
-  }
-  ion-content{
-    --ion-background-color: white;
   }
 .hr-border-bottom {
     box-sizing: border-box;
