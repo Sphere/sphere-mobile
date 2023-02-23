@@ -1,14 +1,16 @@
 <ion-app>
-  <ws-app-public-nav-bar *ngIf="showPublicNavbar"></ws-app-public-nav-bar>
+  <ws-app-public-nav-bar *ngIf="showPublicNavbar" (showSignInPage)="hideRouterOutlet($event)"></ws-app-public-nav-bar>
   <ws-app-nav-bar class="top-nav-bar" *ngIf="isNavBarRequired && showNavbar" [mode]="'top'"></ws-app-nav-bar>
-  <ion-content overflow-scroll="true">
-    <div class="height-adjust" [ngClass]="{
+  <ng-container *ngIf="!hideContent">
+    <ion-content overflow-scroll="true">
+      <div class="height-adjust" [ngClass]="{
       'height-on-bottom custom-scroll':
         (isXSmall$ | async) === true && showNavbar
     }">
 
-    <ion-router-outlet></ion-router-outlet>
-    </div>
-  </ion-content>
+        <ion-router-outlet></ion-router-outlet>
+      </div>
+    </ion-content>
+  </ng-container>
   <ws-app-nav-bar *ngIf="showNavbar" [mode]="'bottom'"></ws-app-nav-bar>
 </ion-app>

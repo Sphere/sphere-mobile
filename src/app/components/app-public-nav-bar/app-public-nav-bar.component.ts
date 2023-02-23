@@ -1,5 +1,5 @@
 import { IBtnAppsConfig } from '@ws-widget/collection/src/lib/btn-apps/btn-apps.model'
-import { Component, OnInit, OnDestroy, Input, SimpleChanges, OnChanges, HostListener } from '@angular/core'
+import { Component, OnInit, OnDestroy, Input, SimpleChanges, OnChanges, HostListener, Output, EventEmitter } from '@angular/core'
 import { DomSanitizer, SafeUrl } from '@angular/platform-browser'
 import { ConfigurationsService, NsPage, NsInstanceConfig, ValueService } from '@ws-widget/utils'
 import { Observable, Subscription } from 'rxjs'
@@ -14,6 +14,7 @@ import { RouterLinks } from '@app/app/app.constant'
 })
 export class AppPublicNavBarComponent implements OnInit, OnChanges, OnDestroy {
   @Input() mode: 'top' | 'bottom' = 'top'
+  @Output() showSignInPage = new EventEmitter()
   appIcon: SafeUrl | null = null
   logo = ''
   appName = ''
@@ -138,6 +139,7 @@ export class AppPublicNavBarComponent implements OnInit, OnChanges, OnDestroy {
   }
   login(key: 'E' | 'N' | 'S') {
     this.showSignInCard = true;
+    this.showSignInPage.emit(true)
   }
 
   ngOnDestroy() {

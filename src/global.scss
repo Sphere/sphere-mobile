@@ -626,12 +626,12 @@ fieldset {
   padding: 0;
 }
 
-ol,
-ul {
-  list-style: none;
-  margin: 0;
-  padding: 0;
-}
+// ol,
+// ul {
+//   list-style: none;
+//   margin: 0;
+//   padding: 0;
+// }
 
 /**
  * Tailwind custom reset styles
@@ -792,7 +792,7 @@ audio,
 iframe,
 embed,
 object {
-  display: block;
+  // display: block;
   vertical-align: middle;
 }
 
