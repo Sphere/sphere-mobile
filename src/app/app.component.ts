@@ -84,6 +84,7 @@ export class AppComponent implements OnInit, AfterViewInit {
   eventSubscription: Subscription;
   isTimeAvailable = false;
   isOnBoardingCompleted: boolean;
+  hideContent = false
   public swipeGesture = this.platform.is('ios')? false : true;
 
   constructor(
@@ -1093,6 +1094,14 @@ export class AppComponent implements OnInit, AfterViewInit {
     } else {
       this.screenOrientation.lock(this.screenOrientation.ORIENTATIONS.PORTRAIT);
       this.preferences.putString(PreferenceKey.ORIENTATION, AppOrientation.PORTRAIT).toPromise();
+    }
+  }
+
+  hideRouterOutlet(event) {
+    if (event === true) {
+      this.hideContent = true
+    } else {
+      this.hideContent = false
     }
   }
 }
