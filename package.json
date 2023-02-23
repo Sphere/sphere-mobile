@@ -98,6 +98,7 @@
     "hammerjs": "^2.0.8",
     "ionic4-rating": "^1.0.9",
     "jspdf": "^2.0.0",
+    "jspdf-autotable": "^3.5.13",
     "jsplumb": "2.11.2",
     "jwt-decode": "^2.2.0",
     "katex": "^0.12.0",

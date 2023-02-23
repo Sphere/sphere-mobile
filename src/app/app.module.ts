@@ -86,7 +86,11 @@ import { TranslateJsonPipe } from '@app/pipes/translate-json/translate-json';
 import { OnboardingConfigurationService } from '@app/services/onboarding-configuration.service';
 import onboarding from './../assets/configurations/config.json';
 import { WidgetResolverModule } from '@ws-widget/resolver';
-import { WIDGET_REGISTERED_MODULES, WIDGET_REGISTRATION_CONFIG } from '@ws-widget/collection'
+import { OrgComponent } from '@app/project/ws/app/src/lib/routes/org/components/org/org.component';
+import { BtnFeatureModule,WIDGET_REGISTERED_MODULES, WIDGET_REGISTRATION_CONFIG } from '@ws-widget/collection'
+import { RootComponent } from './root/root.component';
+import { SearchModule } from '@app/project/ws/app/src/public-api';
+import { MdePopoverModule } from '@material-extended/mde';
 // AoT requires an exported function for factories
 export function translateHttpLoaderFactory(httpClient: HttpClient) {
   return new TranslateHttpLoader(httpClient, './assets/i18n/', '.json');
@@ -453,7 +457,7 @@ export const sunbirdSdkFactory =
 
 declare const sbutility;
 @NgModule({
-  declarations: [AppComponent],
+  declarations: [AppComponent,OrgComponent,RootComponent],
   entryComponents: [PageFilterPage, PageFilterOptionsPage],
   imports: [
     BrowserModule,
@@ -485,6 +489,9 @@ declare const sbutility;
     SbSearchFilterModule.forRoot('mobile'),
     ...WIDGET_REGISTERED_MODULES,
     WidgetResolverModule.forRoot(WIDGET_REGISTRATION_CONFIG),
+    SearchModule,
+    BtnFeatureModule,
+    MdePopoverModule
   ],
   providers: [
     AppGlobalService,

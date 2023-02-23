@@ -81,8 +81,15 @@ import { ShowCertificateComponent } from './show-certificate-component/show-cert
 import { CertificateVerificationPopoverComponent } from './popups/certificate-verification/certificate-verification-popup.component';
 import { DownloadTranscriptPopupComponent } from './popups/download-transcript-popup/download-transcript-popup.component';
 import { AppPublicNavBarComponent } from './app-public-nav-bar/app-public-nav-bar.component';
-import { MatToolbarModule } from '@angular/material';
+import { AppNavBarComponent } from './app-nav-bar/app-nav-bar.component';
+import { MatExpansionModule, MatIconModule, MatMenuModule, MatToolbarModule } from '@angular/material';
 import { WidgetResolverModule } from '@ws-widget/resolver/src/public-api';
+import { TncRendererComponent } from './tnc-renderer/tnc-renderer.component';
+import { PipeSafeSanitizerModule } from '@app/library/ws-widget/utils/src/public-api';
+import { SearchModule } from '@app/project/ws/app/src/lib/routes/search/search.module';
+import { BtnFeatureModule } from '@app/library/ws-widget/collection/src/lib/btn-feature/btn-feature.module';
+import { RouterModule } from '@angular/router';
+import { MdePopoverModule } from '@material-extended/mde'
 @NgModule({
   declarations: [
     ApplicationHeaderComponent,
@@ -150,11 +157,15 @@ import { WidgetResolverModule } from '@ws-widget/resolver/src/public-api';
     ShowCertificateComponent,
     CertificateVerificationPopoverComponent,
     DownloadTranscriptPopupComponent,
-    AppPublicNavBarComponent
+    AppPublicNavBarComponent,
+    AppNavBarComponent,
+    TncRendererComponent
   ],
   imports: [
     CommonModule,
     FormsModule,
+    MdePopoverModule,
+    RouterModule,
     ReactiveFormsModule,
     IonicModule,
     ReactiveFormsModule,
@@ -166,6 +177,12 @@ import { WidgetResolverModule } from '@ws-widget/resolver/src/public-api';
     TranslateModule.forChild(),
     MatToolbarModule,
     WidgetResolverModule,
+    MatIconModule,
+    MatExpansionModule,
+    MatMenuModule,
+    PipeSafeSanitizerModule,
+    SearchModule,
+    BtnFeatureModule,
   ],
   entryComponents: [
     ApplicationHeaderComponent,
