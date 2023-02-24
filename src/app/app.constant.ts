@@ -453,6 +453,12 @@ export class ActionType {
 }
 
 export class RouterLinks {
+    public static readonly publicHome = 'public/home';
+    public static readonly privateHome = 'page/home';
+
+
+
+
     public static readonly TABS = 'tabs';
     public static readonly TABS_COURSE = 'tabs/courses';
 

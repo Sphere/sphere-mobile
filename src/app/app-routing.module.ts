@@ -11,16 +11,16 @@ import { MlGuard } from './manage-learn/core/guards/ml.guard';
 const routes: Routes = [
 {
   path: '',
-  redirectTo: 'public/home',
+  redirectTo: `${RouterLinks.publicHome}`,
   pathMatch: 'full'
 },
 {
-  path: 'public/home',
+  path:  `${RouterLinks.publicHome}`,
   loadChildren: './modules/public/public.module#PublicModule'
 },
 {
-  path: 'page/home',
-  loadChildren: './modules/home/home.module#HomeModule'
+  path: `${RouterLinks.privateHome}`,
+  loadChildren: './modules/home/home.module#HomeModule',
 },
   /* {
     path: '',
