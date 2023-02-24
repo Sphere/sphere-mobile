@@ -35,7 +35,7 @@ export class CreateAccountComponent implements OnInit {
   preferedLanguage: any = { id: 'en', lang: 'English' }
   @HostListener('window:popstate', ['$event'])
   onPopState() {
-    window.location.href = '/public/home'
+    this.router.navigate(['/public/home'])
   }
   constructor(
     formBuilder: FormBuilder,
@@ -119,7 +119,6 @@ export class CreateAccountComponent implements OnInit {
           this.showAllFields = false
           this.uploadSaveData = false
           this.otpPage = true
-          // form.reset()
           localStorage.setItem(`preferedLanguage`, this.preferedLanguage.id)
           localStorage.setItem(`userUUID`, res.userUUId)
         } else if (res.status === 'error') {
@@ -129,7 +128,6 @@ export class CreateAccountComponent implements OnInit {
         err => {
           this.openSnackbar(err.error.msg)
           this.uploadSaveData = false
-          // form.reset()
         }
       )
     } else {
@@ -143,11 +141,9 @@ export class CreateAccountComponent implements OnInit {
       this.signupService.registerWithMobile(requestBody).subscribe((res: any) => {
         if (res.status === 'success') {
           this.openSnackbar(res.msg)
-          // this.generateOtp('phone', form.value.emailOrMobile)
           this.showAllFields = false
           this.uploadSaveData = false
           this.otpPage = true
-          // form.reset()
           localStorage.setItem(`preferedLanguage`, this.preferedLanguage.id)
           localStorage.setItem(`userUUID`, res.userUUId)
         } else if (res.status === 'error') {

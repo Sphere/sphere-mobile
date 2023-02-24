@@ -234,7 +234,8 @@ import { MdePopoverModule } from '@material-extended/mde'
     QrScannerIOSComponent,
     CertificateVerificationPopoverComponent,
     DownloadTranscriptPopupComponent,
-    AppPublicNavBarComponent
+    AppPublicNavBarComponent,
+    AppNavBarComponent
   ],
   exports: [
     ApplicationHeaderComponent,
@@ -301,7 +302,8 @@ import { MdePopoverModule } from '@material-extended/mde'
     CertificateVerificationPopoverComponent,
     DownloadTranscriptPopupComponent,
     AppPublicNavBarComponent,
-    TncRendererComponent
+    TncRendererComponent,
+    AppNavBarComponent
   ],
   providers: [FileSizePipe, FilterPipe, Keyboard, ScreenOrientation, ContentShareHandlerService]
 })

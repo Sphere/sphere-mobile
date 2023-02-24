@@ -453,8 +453,10 @@ export class ActionType {
 }
 
 export class RouterLinks {
-    public static readonly publicHome = 'public/home';
-    public static readonly privateHome = 'page/home';
+    public static readonly PUBLIC_HOME = 'public/home';
+    public static readonly PRIVATE_HOME = 'page/home';
+    public static readonly CREATE_ACCOUNT = 'app/create-account';
+    public static readonly TOC_PAGE = 'app/toc';
 
 
 
