@@ -130,11 +130,12 @@ console.log("AAAAAAAAAAA comes till setsession()")
             setTimeout(() => {
 
 console.log("AAAAAAAAAAA comes after setsession()")
-              if (that.source === 'courses') {
+              that.router.navigateByUrl('page/home');
+              /* if (that.source === 'courses') {
                 that.router.navigateByUrl('tabs/courses');
               } else if (that.source === 'profile') {
                 that.router.navigateByUrl('tabs/profile');
-              }
+              } */
               that.preferences.putString('SHOW_WELCOME_TOAST', 'true').toPromise().then();
               // note: Navigating back to Resources is though the below event from App-Components.
               this.events.publish(EventTopics.SIGN_IN_RELOAD, skipNavigation);

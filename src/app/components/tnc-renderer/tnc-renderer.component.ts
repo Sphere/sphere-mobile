@@ -1,6 +1,6 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { ConfigurationsService } from '@ws-widget/utils/src/public-api';
-import { NsTnc } from '@app/app/models/tnc.model';
+import { NsTnc } from '@app/app/models/tnc.model'; 
 
 @Component({
   selector: 'ws-tnc-renderer',

@@ -300,7 +300,8 @@ import { MdePopoverModule } from '@material-extended/mde'
     ShowCertificateComponent,
     CertificateVerificationPopoverComponent,
     DownloadTranscriptPopupComponent,
-    AppPublicNavBarComponent
+    AppPublicNavBarComponent,
+    TncRendererComponent
   ],
   providers: [FileSizePipe, FilterPipe, Keyboard, ScreenOrientation, ContentShareHandlerService]
 })
