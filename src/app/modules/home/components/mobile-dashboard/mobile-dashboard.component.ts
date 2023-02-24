@@ -6,6 +6,7 @@ import { WidgetContentService,WidgetUserService } from '@app/library/ws-widget/c
 import { ConfigurationsService } from '@app/library/ws-widget/utils/src/public-api'
 import { forkJoin } from 'rxjs'
 import * as _ from 'lodash-es'
+import  publicConfig from '../../../../../assets/configurations/mobile-public.json';
 
 @Component({
   selector: 'ws-mobile-dashboard',
@@ -32,6 +33,7 @@ export class MobileDashboardComponent implements OnInit {
               private router: Router,
               private http: HttpClient
   ) {
+    console.log('** mobile-dashboard component hitting')
     if (localStorage.getItem('orgValue') === 'nhsrc') {
       this.router.navigateByUrl('/organisations/home')
     }
@@ -55,14 +57,14 @@ export class MobileDashboardComponent implements OnInit {
         description: 'Receive downloadable and shareable certificates',
       },
     ]
-    if (this.configSvc.userProfile) {
+     if (this.configSvc.userProfile) {
       this.firstName = this.configSvc.userProfile
       this.userId = this.configSvc.userProfile.userId 
-      forkJoin([this.userSvc.fetchUserBatchList(this.userId), this.ContentSvc.getLiveSearchResults(),
-      this.http.get(`assets/configurations/mobile-home.json`)]).pipe().subscribe((res: any) => {
-       this.homeFeature = res[2].userLoggedInSection
-        this.topCertifiedCourseIdentifier = res[2].topCertifiedCourseIdentifier
-        this.featuredCourseIdentifier = res[2].featuredCourseIdentifier
+      forkJoin([this.userSvc.fetchUserBatchList(this.userId), this.ContentSvc.getLiveSearchResults()
+      ]).pipe().subscribe((res: any) => {
+       this.homeFeature = publicConfig.userLoggedInSection
+        this.topCertifiedCourseIdentifier = publicConfig.topCertifiedCourseIdentifier
+        this.featuredCourseIdentifier = publicConfig.featuredCourseIdentifier
         this.formatmyCourseResponse(res[0])
         if (res[1].result.content.length > 0) {
           this.formatTopCertifiedCourseResponse(res[1])

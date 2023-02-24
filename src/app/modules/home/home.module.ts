@@ -9,6 +9,7 @@ import { MobileDashboardComponent } from './components/mobile-dashboard/mobile-d
 import { MobileHowDoesWorkComponent } from './components/mobile-how-does-work/mobile-how-does-work.component';
 import { HomeComponent } from './components/home/home.component';
 import { HomeRoutingModule } from './home-routing.module';
+import { UtilityService } from '../core/services/utility-service';
 
 @NgModule({
     declarations: [
@@ -30,6 +31,9 @@ import { HomeRoutingModule } from './home-routing.module';
     ],
     entryComponents: [
      
+    ],
+    providers: [
+    UtilityService
     ],
     exports: [ 
         MobileDashboardComponent,
