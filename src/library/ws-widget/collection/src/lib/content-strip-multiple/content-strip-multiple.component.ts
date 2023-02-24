@@ -603,7 +603,7 @@ export class ContentStripMultipleComponent extends WidgetBaseComponent
           strip.request.searchV6.request.filters,
         )
       }
-      await this.fetchAndSortData()
+      //await this.fetchAndSortData()
       this.contentSvc.publicContentSearch(strip.request.searchV6).subscribe(
         results => {
           results.result = this.filterCourse(results.result)
@@ -649,12 +649,7 @@ export class ContentStripMultipleComponent extends WidgetBaseComponent
       (this.formService, this.courseService, this.profileService)
       .aggregate({
         interceptSearchCriteria: () => ({}),
-        userPreferences: {
-          board: this.profile.board,
-          medium: this.profile.medium,
-          gradeLevel: this.profile.grade,
-          subject: this.profile.subject,
-        }
+        userPreferences: {}
       },
         [], null, [{
           dataSrc: {

@@ -562,6 +562,7 @@ declare const sbutility;
     TranslateJsonPipe
   ],
   bootstrap: [AppComponent],
+  exports: [RootComponent],
   schemas: [
     CUSTOM_ELEMENTS_SCHEMA
   ]
