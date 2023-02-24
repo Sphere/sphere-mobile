@@ -1,5 +1,5 @@
 import { HttpClient, HttpErrorResponse } from '@angular/common/http'
-import { Injectable } from '@angular/core'
+import { Inject, Injectable } from '@angular/core'
 import { ConfigurationsService } from '@ws-widget/utils/src/lib/services/configurations.service'
 import { Observable, of, throwError, Subject, BehaviorSubject } from 'rxjs'
 import { catchError, retry, map } from 'rxjs/operators'
@@ -8,6 +8,7 @@ import { NsContent } from './widget-content.model'
 import { NSSearch } from './widget-search.model'
 
 import { DataService } from '@app/app/modules/core/services/data.service'
+import { AuthService } from 'sunbird-sdk';
 // TODO: move this in some common place
 const PROTECTED_SLAG_V8 = '/apis/protected/v8'
 const PUBLIC_SLAG = '/apis/public/v8'
@@ -54,9 +55,10 @@ export class WidgetContentService extends DataService {
   updateValue$ = this._updateValue.asObservable()
   constructor(
     public http: HttpClient,
-    private configSvc: ConfigurationsService
+    private configSvc: ConfigurationsService,
+    @Inject('AUTH_SERVICE') public authService: AuthService,
   ) {
-    super(http)
+    super(http,authService)
     this.baseUrl = 'https://sphere.aastrika.org'
   }
 

@@ -1,7 +1,10 @@
-import { Injectable } from '@angular/core';
+import { Inject, Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import {mergeMap} from 'rxjs/operators'
 import { of as observableOf, throwError as observableThrowError, Observable } from 'rxjs';
+import * as jwt_decode from "jwt-decode";
+import * as moment from 'moment'
+import { AuthService } from 'sunbird-sdk';
 /**
  * DataService to make http call
  *
@@ -19,7 +22,7 @@ export class DataService {
    * angular HttpClient
    */
   http: HttpClient;
-  constructor(http:HttpClient) {
+  constructor(http:HttpClient, @Inject('AUTH_SERVICE') public authService: AuthService) {
     this.http = http
    }
   /**
@@ -47,6 +50,7 @@ export class DataService {
    * @param requestParam interface
    */
   post(requestParam:any){
+    this.checkTokenValidation()
     const httpOptions:any = {
       headers: requestParam.header ? this.getHeader(requestParam.header) : this.getHeader(),
       params: requestParam.param
@@ -60,6 +64,32 @@ export class DataService {
           return observableThrowError(data);
         }
         
+      })
+    )
+  }
+
+  checkTokenValidation(): Observable<any> {
+    return this.authService.getSession().pipe(
+      mergeMap(tokens => {
+        if(tokens){
+          console.log(tokens)
+          const token = jwt_decode(tokens.access_token);
+          const tokenExpiryTime = moment(token.exp * 1000);
+          const currentTime = moment(Date.now());
+          const duration = moment.duration(tokenExpiryTime.diff(currentTime));
+          const hourDifference = duration.asHours();
+          if (hourDifference < 2) {
+            return this.authService.refreshSession().pipe(
+              mergeMap(refreshData => {
+                return this.authService.getSession()
+              })
+            )
+          } else {
+            return this.authService.getSession()
+          }
+        }else{
+          return observableOf({})
+        }
       })
     )
   }

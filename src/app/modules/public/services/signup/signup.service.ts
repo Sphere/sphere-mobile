@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core'
+import { Inject, Injectable } from '@angular/core'
 import { HttpClient } from '@angular/common/http'
 import { Observable } from 'rxjs'
 import { map } from 'rxjs/operators'
@@ -7,6 +7,7 @@ import { v4 as uuid } from 'uuid'
 import { ConfigurationsService } from '@ws-widget/utils/src/public-api'
 import { DataService } from '../../../core/services/data.service'
 import { UtilityService } from '../../../core/services/utility-service'
+import { AuthService } from 'sunbird-sdk'
 
 const API_END_POINTS = {
   USER_SIGNUP: `apis/public/v8/emailMobile/signup`,
@@ -26,9 +27,10 @@ export class SignupService extends DataService {
   baseUrl: string;
   constructor(public  http: HttpClient,
     private configSvc: ConfigurationsService,
-    private utilityService:UtilityService
+    private utilityService:UtilityService,
+    @Inject('AUTH_SERVICE') public authService: AuthService,
   ) {
-    super(http)
+    super(http,authService)
     console.log('>>>>>>>>>here')
     this.utilityService.getBuildConfigValue('BASE_URL').then((url)=>{
       console.log('url here', url)
