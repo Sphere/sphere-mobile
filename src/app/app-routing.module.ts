@@ -7,20 +7,29 @@ import { HasNotSelectedLanguageGuard } from '@app/guards/has-not-selected-langua
 import { HasNotSelectedUserTypeGuard } from '@app/guards/has-not-selected-user-type.guard';
 import { IsGuestUserGuard } from '@app/guards/is-guest-user.guard';
 import { MlGuard } from './manage-learn/core/guards/ml.guard';
+import { CreateAccountComponent } from './modules/public/components/create-account/create-account.component';
 
 const routes: Routes = [
 {
   path: '',
-  redirectTo: 'public/home',
+  redirectTo: `${RouterLinks.PUBLIC_HOME}`,
   pathMatch: 'full'
 },
 {
-  path: 'public/home',
+  path:  `${RouterLinks.PUBLIC_HOME}`,
   loadChildren: './modules/public/public.module#PublicModule'
 },
 {
-  path: 'page/home',
-  loadChildren: './modules/home/home.module#HomeModule'
+  path: `${RouterLinks.PRIVATE_HOME}`,
+  loadChildren: './modules/home/home.module#HomeModule',
+},
+{
+  path: `${RouterLinks.CREATE_ACCOUNT}`,
+  component: CreateAccountComponent,
+},
+{
+  path: `${RouterLinks.TOC_PAGE}`,
+  loadChildren: './modules/overview-toc/overview-toc.module#OverviewTocModule',
 },
   /* {
     path: '',

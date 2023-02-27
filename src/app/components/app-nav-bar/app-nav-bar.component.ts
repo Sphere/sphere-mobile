@@ -1,4 +1,4 @@
-import { Component, Input, OnChanges, OnInit, SimpleChanges, HostListener } from '@angular/core'
+import { Component, Input, OnChanges, OnInit, SimpleChanges } from '@angular/core'
 import { DomSanitizer, SafeUrl } from '@angular/platform-browser'
 import { IBtnAppsConfig, CustomTourService } from '@ws-widget/collection'
 import { NsWidgetResolver } from '@ws-widget/resolver'
@@ -49,7 +49,6 @@ export class AppNavBarComponent implements OnInit, OnChanges {
     private configSvc: ConfigurationsService,
     private tourService: CustomTourService,
     private router: Router,
-    // private accessService: AccessControlService,
     private valueSvc: ValueService,
     public dialog: MatDialog
   ) {
@@ -65,14 +64,12 @@ export class AppNavBarComponent implements OnInit, OnChanges {
         this.cancelTour()
       }
     })
-    // Header view
   }
 
   ngOnInit() {
     if (localStorage.getItem('orgValue') === 'nhsrc') {
       this.hideCreateButton = false
     }
-    // this.allowAuthor = this.accessService.hasRole(CREATE_ROLE)
     this.router.events.subscribe((e: Event) => {
       if (e instanceof NavigationEnd) {
         if ((e.url.includes('/app/setup') && this.configSvc.instanceConfig && !this.configSvc.instanceConfig.showNavBarInSetup)) {
@@ -88,15 +85,9 @@ export class AppNavBarComponent implements OnInit, OnChanges {
       }
     })
 
-    this.valueSvc.isXSmall$.subscribe(isXSmall => {
-      if (isXSmall && (this.configSvc.userProfile === null)) {
-        this.showCreateBtn = true
-      } else {
-        this.showCreateBtn = false
-      }
-      // Bellow code is added tepararly until login is handled
-      // this.showCreateBtn = false
-    })
+    if (this.configSvc.userProfile === null) {
+      this.showCreateBtn = true
+    }
 
     if (this.configSvc.instanceConfig) {
       if (localStorage.getItem('orgValue') === 'nhsrc') {
@@ -137,7 +128,6 @@ export class AppNavBarComponent implements OnInit, OnChanges {
   }
 
   goHomePage() {
-    // localStorage.setItem('url_before_login', '/page/home')
     this.router.navigateByUrl('/page/home')
   }
   ngOnChanges(changes: SimpleChanges) {
@@ -160,17 +150,6 @@ export class AppNavBarComponent implements OnInit, OnChanges {
     }
   }
 
-  @HostListener('window:resize', ['$event'])
-  onResize() {
-    this.valueSvc.isXSmall$.subscribe(isXSmall => {
-      if (isXSmall && (this.configSvc.userProfile === null)) {
-        this.showCreateBtn = true
-      } else {
-        this.showCreateBtn = false
-      }
-    })
-  }
-
   startTour() {
     this.tourService.startTour()
     this.tourService.isTourComplete.subscribe((result: boolean) => {
@@ -178,7 +157,6 @@ export class AppNavBarComponent implements OnInit, OnChanges {
         this.tourService.startPopupTour()
         this.configSvc.completedTour = true
         this.configSvc.prefChangeNotifier.next({ completedTour: this.configSvc.completedTour })
-        // this.tour = tour
         setTimeout(
           () => {
             this.tourService.cancelPopupTour()

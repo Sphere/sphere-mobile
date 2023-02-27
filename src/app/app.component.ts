@@ -55,10 +55,13 @@ declare const window;
 
 @Component({
   selector: 'app-root',
-  templateUrl: 'app.component.html'
+  templateUrl: 'app.component.html',
+  styleUrls: ['app.component.scss'],
 })
 export class AppComponent implements OnInit, AfterViewInit {
   showPublicNavbar = true
+  showNavbar = true
+  isNavBarRequired = false
   rootPage: any;
   public counter = 0;
   headerConfig = {
@@ -258,6 +261,33 @@ export class AppComponent implements OnInit, AfterViewInit {
     this.triggerSignInEvent();
     this.segmentationTagService.getPersistedSegmentaion();
     this.checkCurrentOrientation();
+
+    this.routerSubscriptions()
+  }
+
+  routerSubscriptions() {
+    console.log('router subscribe')
+    this.router.events.subscribe((event: any) => {
+      if(event instanceof NavigationStart){
+        if(event.url.includes('/app/create-account') 
+        || event.url.includes('app/new-tnc')
+        || event.url.includes('app/login')
+        || event.url.includes('public/forgot-password')
+        ){
+          this.showPublicNavbar= false
+          this.showNavbar = false
+        } else if (event.url.includes('page/home')) {
+          this.isNavBarRequired = true
+          this.showPublicNavbar= false
+          this.showNavbar = true
+          this.hideContent = false
+        }
+        else if (event.url.includes('public/home')) {
+          this.showPublicNavbar= true
+          this.showNavbar = true
+        }
+      }
+    })
   }
 
   checkAndroidWebViewVersion() {
