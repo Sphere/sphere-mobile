@@ -91,6 +91,7 @@ import { BtnFeatureModule,WIDGET_REGISTERED_MODULES, WIDGET_REGISTRATION_CONFIG 
 import { RootComponent } from './root/root.component';
 import { SearchModule } from '@app/project/ws/app/src/public-api';
 import { MdePopoverModule } from '@material-extended/mde';
+import { KeycloakService } from 'keycloak-angular';
 import { PublicModule } from './modules/public/public.module';
 import { CoreModule as AastrikCoreModule } from './modules/core/core.module';
 import { HomeModule } from './modules/home/home.module';
@@ -565,7 +566,9 @@ declare const sbutility;
     StreamingMedia,
     { provide: QuestionCursor, useClass: QumlPlayerService },
     { provide: 'SB_NOTIFICATION_SERVICE', useClass: NotificationService },
-    TranslateJsonPipe
+    TranslateJsonPipe,
+    KeycloakService,
+    UtilityService
   ],
   bootstrap: [AppComponent],
   exports: [RootComponent],

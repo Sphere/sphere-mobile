@@ -1,0 +1,67 @@
+{
+  "_from": "git+https://github.com/Sunbird-Ed/jjdltc-cordova-plugin-zip.git",
+  "_id": "cordova-zip-plugin@1.1.0",
+  "_inBundle": false,
+  "_integrity": "",
+  "_location": "/cordova-zip-plugin",
+  "_phantomChildren": {},
+  "_requested": {
+    "type": "git",
+    "raw": "https://github.com/Sunbird-Ed/jjdltc-cordova-plugin-zip.git",
+    "rawSpec": "https://github.com/Sunbird-Ed/jjdltc-cordova-plugin-zip.git",
+    "saveSpec": "git+https://github.com/Sunbird-Ed/jjdltc-cordova-plugin-zip.git",
+    "fetchSpec": "https://github.com/Sunbird-Ed/jjdltc-cordova-plugin-zip.git",
+    "gitCommittish": null
+  },
+  "_requiredBy": [
+    "#DEV:/",
+    "#USER"
+  ],
+  "_resolved": "git+https://github.com/Sunbird-Ed/jjdltc-cordova-plugin-zip.git#450f719aad9ca1b14650545b53f7e26043cf2f17",
+  "_spec": "https://github.com/Sunbird-Ed/jjdltc-cordova-plugin-zip.git",
+  "_where": "/home/aman/OFFICE/SPHERE/sphere-mobile",
+  "author": {
+    "name": "Joel De La Torriente",
+    "email": "jjdltc@gmail.com",
+    "url": "https://github.com/jjdltc"
+  },
+  "bugs": {
+    "url": "https://github.com/jjdltc/jjdltc-cordova-plugin-zip/issues"
+  },
+  "bundleDependencies": false,
+  "cordova": {
+    "id": "com.jjdltc.cordova.plugin.zip",
+    "platforms": [
+      "android",
+      "ios"
+    ]
+  },
+  "deprecated": false,
+  "description": "Cordova zip compress and decompress",
+  "engines": {
+    "cordovaDependencies": {
+      "1.1.0": {
+        "cordova": ">=7.0.0",
+        "cordova-ios": ">=4.4.0"
+      }
+    }
+  },
+  "homepage": "https://github.com/jjdltc/jjdltc-cordova-plugin-zip#readme",
+  "keywords": [
+    "cordova",
+    "zip",
+    "compress",
+    "decompress",
+    "unzip",
+    "ecosystem:cordova",
+    "cordova-android",
+    "cordova-ios"
+  ],
+  "license": "MIT",
+  "name": "cordova-zip-plugin",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/swayangjit/jjdltc-cordova-plugin-zip.git"
+  },
+  "version": "1.1.0"
+}
