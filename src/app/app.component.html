@@ -12,5 +12,7 @@
       </div>
     </ion-content>
   </ng-container>
-  <ws-app-nav-bar *ngIf="showNavbar" [mode]="'bottom'"></ws-app-nav-bar>
+  <ng-container *ngIf="showNavbar && !hideContent">
+    <ws-app-nav-bar [mode]="'bottom'"></ws-app-nav-bar>
+  </ng-container>
 </ion-app>
