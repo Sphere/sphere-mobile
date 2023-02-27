@@ -11,7 +11,7 @@ import { ToastService } from '@app/app/manage-learn/core/services/toast/toast.se
 import { ApiUtilsService } from '@app/app/manage-learn/core/services/api-utils.service';
 import { UtilityService } from '@app/services/utility-service';
 const API_END_POINTS = {
-  USER_READ: `apis/user`,
+  USER_READ: `api/user/v2/read`,
 }
 @Injectable({
   providedIn: 'root'
@@ -33,6 +33,10 @@ export class UserService extends CordovaHttpService{
     !this.baseUrl ? this.utilityService.getBuildConfigValue('BASE_URL').then((url) => (this.baseUrl = url)) :'';
   }
 
-  userRead(serverProfileDetailsRequest: any) {
+  userRead() {
+    const requestParam = {
+      url: API_END_POINTS.USER_READ,
+    };
+    return this.get(requestParam)
   }
 }

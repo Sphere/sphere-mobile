@@ -7,7 +7,7 @@ import { ConfigurationsService } from '@app/library/ws-widget/utils/src/public-a
 import { forkJoin } from 'rxjs'
 import * as _ from 'lodash-es'
 import  publicConfig from '../../../../../assets/configurations/mobile-public.json';
-
+import { UserService } from '../../services/user.service'
 @Component({
   selector: 'ws-mobile-dashboard',
   templateUrl: './mobile-dashboard.component.html',
@@ -31,7 +31,8 @@ export class MobileDashboardComponent implements OnInit {
               private userSvc: WidgetUserService,
               private ContentSvc : WidgetContentService,
               private router: Router,
-              private http: HttpClient
+              private http: HttpClient,
+              private userHomeSvc:UserService
   ) {
     console.log('** mobile-dashboard component hitting')
     if (localStorage.getItem('orgValue') === 'nhsrc') {
@@ -57,6 +58,9 @@ export class MobileDashboardComponent implements OnInit {
         description: 'Receive downloadable and shareable certificates',
       },
     ]
+    this.userHomeSvc.userRead().pipe().subscribe((res)=>{
+      console.log(res)
+    })
      if (this.configSvc.userProfile) {
       this.firstName = this.configSvc.userProfile
       this.userId = this.configSvc.userProfile.userId 

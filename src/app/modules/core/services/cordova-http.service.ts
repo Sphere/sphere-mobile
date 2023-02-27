@@ -33,7 +33,7 @@ export class CordovaHttpService {
 
   setHeaders(session) {
     const headers = {
-      'Authorization': this.authToken ? this.authToken  : '',
+      'Authorization': `Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJTNHNNVFdjZUZqYkxUWGxiczkzUzk4dmFtODBhdkRPUiJ9.nPOCY0-bVX28iNcxxnYbGpihY3ZzfNwx0-SFCnJwjas`,
       'x-auth-token': session ? session.access_token : '',
       'X-authenticated-user-token': session ? session.access_token : '',
       'Content-Type': 'application/json',
@@ -48,6 +48,7 @@ export class CordovaHttpService {
   }
 
   get(requestParam: RequestParams): Observable<any> {
+    console.log(this.baseUrl)
     return this.checkTokenValidation().pipe(
       mergeMap(session => {
         const headers = session ? this.setHeaders(session) : {};

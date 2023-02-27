@@ -130,7 +130,7 @@ export class SignInCardComponent {
             setTimeout(() => {
 
               console.log("AAAAAAAAAAA comes after setsession()")
-              that.refreshProfileData()
+              //that.refreshProfileData()
               that.router.navigateByUrl('page/home');
               /* if (that.source === 'courses') {
                 that.router.navigateByUrl('tabs/courses');
