@@ -1,1 +1,0 @@
-# sb-cordova-plugin-db
