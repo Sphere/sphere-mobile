@@ -106,7 +106,7 @@ export class SignInCardComponent {
         this.commonUtilService.showToast('ERROR_WHILE_LOGIN');
         return;
       }
-console.log("AAAAAAAAAAA comes till setsession()")
+      console.log("AAAAAAAAAAA comes till setsession()")
       this.authService.setSession(
         new WebviewLoginSessionProvider(
           webviewLoginSessionProviderConfig,
@@ -116,20 +116,21 @@ console.log("AAAAAAAAAAA comes till setsession()")
         .toPromise()
         .then(async () => {
 
-          await this.sbProgressLoader.show(this.generateIgnoreTelemetryContext());
+          // await this.sbProgressLoader.show(this.generateIgnoreTelemetryContext());
 
-          initTabs(that.container, LOGIN_TEACHER_TABS);
-          return that.refreshProfileData();
+          // initTabs(that.container, LOGIN_TEACHER_TABS);
+          // return that.refreshProfileData();
         })
-        .then(value => {
-          return that.refreshTenantData(value.slug, value.title);
-        })
+        // .then(value => {
+        //   return that.refreshTenantData(value.slug, value.title);
+        // })
         .then(async () => {
           if (!this.appGlobalService.signinOnboardingLoader) { }
           that.ngZone.run(() => {
             setTimeout(() => {
 
-console.log("AAAAAAAAAAA comes after setsession()")
+              console.log("AAAAAAAAAAA comes after setsession()")
+              that.refreshProfileData()
               that.router.navigateByUrl('page/home');
               /* if (that.source === 'courses') {
                 that.router.navigateByUrl('tabs/courses');
@@ -138,7 +139,7 @@ console.log("AAAAAAAAAAA comes after setsession()")
               } */
               that.preferences.putString('SHOW_WELCOME_TOAST', 'true').toPromise().then();
               // note: Navigating back to Resources is though the below event from App-Components.
-              this.events.publish(EventTopics.SIGN_IN_RELOAD, skipNavigation);
+              //this.events.publish(EventTopics.SIGN_IN_RELOAD, skipNavigation);
             }, 2000);
           });
         })
@@ -158,6 +159,7 @@ console.log("AAAAAAAAAAA comes after setsession()")
     return new Promise<any>((resolve, reject) => {
       that.authService.getSession().toPromise()
         .then((session: OAuthSession) => {
+          console.log('get session', session)
           if (session) {
             const req: ServerProfileDetailsRequest = {
               userId: session.userToken,
@@ -165,6 +167,7 @@ console.log("AAAAAAAAAAA comes after setsession()")
             };
             that.profileService.getServerProfilesDetails(req).toPromise()
               .then(async (success: any) => {
+                console.log('get ProfilesDetails', success)
                 const currentProfileType = (() => {
                   if (
                     (success.userType === ProfileType.OTHER.toUpperCase()) ||
