@@ -11,7 +11,7 @@ import { ToastService } from '@app/app/manage-learn/core/services/toast/toast.se
 import { ApiUtilsService } from '@app/app/manage-learn/core/services/api-utils.service';
 import { UtilityService } from '@app/services/utility-service';
 const API_END_POINTS = {
-  USER_READ: `api/user/v2/read`,
+  USER_READ: (userId: string | undefined) =>`api/user/v2/read${userId}`
 }
 @Injectable({
   providedIn: 'root'
@@ -34,9 +34,17 @@ export class UserService extends CordovaHttpService{
   }
 
   userRead() {
-    const requestParam = {
-      url: API_END_POINTS.USER_READ,
-    };
-    return this.get(requestParam)
+    this.authService.getSession().toPromise()
+    .then((session: any) => {
+      console.log('get session', session)
+      if (session) {
+        const userId=  session.userToken
+        const requestParam = {
+          url: API_END_POINTS.USER_READ(userId),
+        };
+        return this.get(requestParam)
+      }
+    })
+   
   }
 }
