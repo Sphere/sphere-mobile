@@ -27,9 +27,9 @@ export class UserService extends CordovaHttpService{
     @Inject('SHARED_PREFERENCES') public preferences : SharedPreferences,
     private utils: ApiUtilsService,
     public ionicHttp:HTTP,
-    private utilityService: UtilityService,
+    public utilityService: UtilityService,
   ) { 
-    super(http, toast, modalController, authService, deviceInfo,preferences, utils,ionicHttp);
+    super(http, toast, modalController, authService, deviceInfo,preferences, utils,ionicHttp,utilityService);
     !this.baseUrl ? this.utilityService.getBuildConfigValue('BASE_URL').then((url) => (this.baseUrl = url)) :'';
   }
 

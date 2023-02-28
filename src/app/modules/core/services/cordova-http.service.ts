@@ -10,6 +10,7 @@ import * as moment from 'moment';
 import { mergeMap, catchError } from 'rxjs/operators';
 import { ToastService } from '@app/app/manage-learn/core/services/toast/toast.service';
 import { ApiUtilsService } from '@app/app/manage-learn/core/services/api-utils.service';
+import { UtilityService } from './utility-service';
 
 @Injectable({
   providedIn: 'root'
@@ -27,13 +28,19 @@ export class CordovaHttpService {
     @Inject('SHARED_PREFERENCES') public preferences: SharedPreferences,
     public apiUtils: ApiUtilsService,
     public ionicHttp: HTTP,
+    public utilityService:UtilityService,
   ) {
     this.getToken();
+    this.utilityService.getBuildConfigValue('BASE_URL').then((url)=>{
+      console.log('url here>>>>>>>>>>>>', url)
+      this.baseUrl = url 
+    })
+    this.baseUrl = 'https://sphere.aastrika.org/'
   }
 
   setHeaders(session) {
     const headers = {
-      'Authorization': `Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJTNHNNVFdjZUZqYkxUWGxiczkzUzk4dmFtODBhdkRPUiJ9.nPOCY0-bVX28iNcxxnYbGpihY3ZzfNwx0-SFCnJwjas`,
+      'Authorization': this.authToken ? this.authToken  : '',
       'x-auth-token': session ? session.access_token : '',
       'X-authenticated-user-token': session ? session.access_token : '',
       'Content-Type': 'application/json',
