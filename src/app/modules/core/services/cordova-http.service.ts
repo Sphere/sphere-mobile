@@ -41,11 +41,10 @@ export class CordovaHttpService {
   setHeaders(session) {
     const headers = {
       'Authorization': `Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJTNHNNVFdjZUZqYkxUWGxiczkzUzk4dmFtODBhdkRPUiJ9.nPOCY0-bVX28iNcxxnYbGpihY3ZzfNwx0-SFCnJwjas`,
-      'x-auth-token': session ? session.access_token : '',
+      
       'X-authenticated-user-token': session ? session.access_token : '',
       'Content-Type': 'application/json',
-      'X-App-Id': this.apiUtils.appName,
-      'deviceId': this.deviceInfo.getDeviceID(),
+     
     }
     console.log(">>>>>>>>>>>>",this.authToken)
     if(!session?.access_token){

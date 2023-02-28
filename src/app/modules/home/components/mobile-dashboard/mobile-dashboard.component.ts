@@ -1,5 +1,5 @@
 import { HttpClient } from '@angular/common/http'
-import { Component, OnInit } from '@angular/core'
+import { Component, Inject, OnInit } from '@angular/core'
 import { NavigationExtras, Router } from '@angular/router'
 import { delay } from 'rxjs/operators'
 import { WidgetContentService,WidgetUserService } from '@app/library/ws-widget/collection/src/public-api'
@@ -8,6 +8,7 @@ import { forkJoin } from 'rxjs'
 import * as _ from 'lodash-es'
 import  publicConfig from '../../../../../assets/configurations/mobile-public.json';
 import { UserService } from '../../services/user.service'
+import { AuthService } from '@project-sunbird/sunbird-sdk'
 @Component({
   selector: 'ws-mobile-dashboard',
   templateUrl: './mobile-dashboard.component.html',
@@ -32,7 +33,8 @@ export class MobileDashboardComponent implements OnInit {
               private ContentSvc : WidgetContentService,
               private router: Router,
               private http: HttpClient,
-              private userHomeSvc:UserService
+              private userHomeSvc:UserService,
+              @Inject('AUTH_SERVICE') public authService: AuthService,
   ) {
     console.log('** mobile-dashboard component hitting')
     if (localStorage.getItem('orgValue') === 'nhsrc') {
@@ -58,9 +60,15 @@ export class MobileDashboardComponent implements OnInit {
         description: 'Receive downloadable and shareable certificates',
       },
     ]
-    this.userHomeSvc.userRead().pipe().subscribe((res)=>{
-      console.log(res)
-    })
+    this.authService.getSession().toPromise()
+    .then((session: any) => {
+      console.log('get session', session)
+      if (session) {
+        this.userHomeSvc.userRead(session.userToken).pipe().subscribe((res)=>{
+          console.log(res)
+        })
+      }})
+   
      if (this.configSvc.userProfile) {
       this.firstName = this.configSvc.userProfile
       this.userId = this.configSvc.userProfile.userId 
