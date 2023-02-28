@@ -34,17 +34,18 @@ export class UserService extends CordovaHttpService{
   }
 
   userRead() {
+    let userId =''
     this.authService.getSession().toPromise()
     .then((session: any) => {
       console.log('get session', session)
       if (session) {
-        const userId=  session.userToken
-        const requestParam = {
-          url: API_END_POINTS.USER_READ(userId),
-        };
-        return this.get(requestParam)
+        userId=  session.userToken
       }
     })
+    const requestParam = {
+      url: API_END_POINTS.USER_READ(userId),
+    };
+    return this.get(requestParam)
    
   }
 }
