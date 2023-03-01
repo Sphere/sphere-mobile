@@ -108,9 +108,9 @@ html[data-theme="JOYFUL"]{
     --color: var(--app-gray) !important;
   }
 
-  ion-card, button{
-    box-shadow: var(--button-style-shadow) !important;
-  }
+  // ion-card, button{
+  //   box-shadow: var(--button-style-shadow) !important;
+  // }
 
   ion-back-button{
     box-shadow: none !important;

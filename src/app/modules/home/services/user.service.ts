@@ -11,7 +11,7 @@ import { ToastService } from '@app/app/manage-learn/core/services/toast/toast.se
 import { ApiUtilsService } from '@app/app/manage-learn/core/services/api-utils.service';
 import { UtilityService } from '@app/services/utility-service';
 const API_END_POINTS = {
-  USER_READ: (userId: string | undefined) =>`api/user/v2/read/${userId}`
+  USER_READ: (userId: string | undefined) =>`/api/user/v2/read/${userId}`
 }
 @Injectable({
   providedIn: 'root'
