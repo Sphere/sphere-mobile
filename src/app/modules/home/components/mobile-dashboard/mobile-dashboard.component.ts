@@ -67,13 +67,12 @@ export class MobileDashboardComponent implements OnInit {
         this.userHomeSvc.userRead(session.userToken).pipe().subscribe((res)=>{
           console.log(res)
         })
-      }})
-   
-     if (this.configSvc.userProfile) {
-      this.firstName = this.configSvc.userProfile
-      this.userId = this.configSvc.userProfile.userId 
+
+        //this.firstName = this.configSvc.userProfile
+      this.userId = session.userToken 
       forkJoin([this.userSvc.fetchUserBatchList(this.userId), this.ContentSvc.getLiveSearchResults()
       ]).pipe().subscribe((res: any) => {
+        console.log('widget user service response: ', res)
        this.homeFeature = publicConfig.userLoggedInSection
         this.topCertifiedCourseIdentifier = publicConfig.topCertifiedCourseIdentifier
         this.featuredCourseIdentifier = publicConfig.featuredCourseIdentifier
@@ -83,7 +82,24 @@ export class MobileDashboardComponent implements OnInit {
           this.formatFeaturedCourseResponse(res[1])
         }
       })
-    }
+      }})
+   console.log('*****************************', this.configSvc)
+    //  if (this.configSvc.userProfile) {
+    //   console.log('mobile dashboard ##: ', this.configSvc.userProfile)
+    //   this.firstName = this.configSvc.userProfile
+    //   this.userId = this.configSvc.userProfile.userId 
+    //   forkJoin([this.userSvc.fetchUserBatchList(this.userId), this.ContentSvc.getLiveSearchResults()
+    //   ]).pipe().subscribe((res: any) => {
+    //    this.homeFeature = publicConfig.userLoggedInSection
+    //     this.topCertifiedCourseIdentifier = publicConfig.topCertifiedCourseIdentifier
+    //     this.featuredCourseIdentifier = publicConfig.featuredCourseIdentifier
+    //     this.formatmyCourseResponse(res[0])
+    //     if (res[1].result.content.length > 0) {
+    //       this.formatTopCertifiedCourseResponse(res[1])
+    //       this.formatFeaturedCourseResponse(res[1])
+    //     }
+    //   })
+    // }
 
   }
   formatFeaturedCourseResponse(res: any) {
@@ -108,6 +124,7 @@ export class MobileDashboardComponent implements OnInit {
     })
 
     this.topCertifiedCourse = _.uniqBy(topCertifiedCourse, 'identifier')
+    console.log('top certified course: ', this.topCertifiedCourse)
   }
   formatmyCourseResponse(res: any) {
     const myCourse: any = []
