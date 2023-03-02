@@ -92,7 +92,7 @@ export class AppNavBarComponent implements OnInit, OnChanges {
     if (this.configSvc.instanceConfig) {
       if (localStorage.getItem('orgValue') === 'nhsrc') {
         this.appIcon = this.domSanitizer.bypassSecurityTrustResourceUrl(
-          '/fusion-assets/images/sphere-new-logo.svg',
+          'https://sphere.aastrika.org/assets/instances/eagle/app_logos/aastar-logo.svg',
         )
       } else {
         this.appIcon = this.domSanitizer.bypassSecurityTrustResourceUrl(
