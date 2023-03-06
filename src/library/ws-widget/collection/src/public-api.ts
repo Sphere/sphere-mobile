@@ -151,5 +151,6 @@ export * from './lib/_services/viewer-route-util'
 export * from './lib/_services/widget-content.model'
 // services
 export * from './lib/_services/widget-content.service'
+export * from './lib/_services/content-corodova.service'
 export * from './lib/_services/widget-search.model'
 export * from './lib/graph-general/graph-general.service'

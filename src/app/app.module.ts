@@ -95,7 +95,16 @@ import { KeycloakService } from 'keycloak-angular';
 import { PublicModule } from './modules/public/public.module';
 import { CoreModule as AastrikCoreModule } from './modules/core/core.module';
 import { HomeModule } from './modules/home/home.module';
+import { InitService } from '@app/services/init.service';
+import { LoggerService } from '@app/library/ws-widget/utils/src/lib/services/logger.service';
 // AoT requires an exported function for factories
+const appInitializer = (initSvc: InitService, logger: LoggerService) => async () => {
+  try {
+    await initSvc.init()
+  } catch (error) {
+    logger.error('ERROR DURING APP INITIALIZATION >', error)
+  }
+}
 export function translateHttpLoaderFactory(httpClient: HttpClient) {
   return new TranslateHttpLoader(httpClient, './assets/i18n/', '.json');
 }
@@ -559,6 +568,7 @@ declare const sbutility;
     ...sunbirdSdkServicesProvidersFactory(),
     { provide: ErrorHandler, useClass: CrashAnalyticsErrorLogger },
     { provide: APP_INITIALIZER, useFactory: sunbirdSdkFactory, deps: [], multi: true },
+    
     Camera,
     FilePath,
     Chooser,

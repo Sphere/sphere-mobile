@@ -15,7 +15,7 @@ import * as _ from "lodash"
 import { BehaviorSubject } from 'rxjs';
 import { map } from 'rxjs/operators';
 const API_END_POINTS = {
-  USER_READ: (userId: string | undefined) => `api/user/v2/read/${userId}`
+  USER_READ: (userId: string | undefined) => `/api/user/v2/read/${userId}`
 }
 @Injectable({
   providedIn: 'root'
@@ -43,7 +43,12 @@ export class UserService extends CordovaHttpService {
     const requestParam = {
       url: API_END_POINTS.USER_READ(userId),
     };
-    return this.get(requestParam)
+    this.get(requestParam).subscribe((res:any)=>{
+      const userProfile = res.result.response
+      this.setConfigService(userProfile)
+      console.log('before updating the value in subject ')
+      this._updateValue.next(userProfile)
+    })
   }
 
   setConfigService(userPidProfile: any) {

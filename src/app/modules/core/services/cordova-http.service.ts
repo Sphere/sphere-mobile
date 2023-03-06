@@ -30,12 +30,11 @@ export class CordovaHttpService {
     public ionicHttp: HTTP,
     public utilityService:UtilityService,
   ) {
-    this.getToken();
+    //this.getToken();
     this.utilityService.getBuildConfigValue('BASE_URL').then((url)=>{
-      console.log('url here>>>>>>>>>>>>', url)
       this.baseUrl = url 
     })
-    this.baseUrl = 'https://sphere.aastrika.org/'
+    this.baseUrl = 'https://sphere.aastrika.org'
   }
 
   setHeaders(session) {
@@ -135,6 +134,7 @@ export class CordovaHttpService {
 
   private handleError(result) {
     let status  = result.status <= 0 ? 0 :result.status;
+    console.log(result)
     switch (status) {
       case 0:
         this.toast.showMessage('FRMELEMNTS_MSG_YOU_ARE_WORKING_OFFLINE_TRY_AGAIN', 'danger')
