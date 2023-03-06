@@ -2,7 +2,7 @@ import { HttpClient } from '@angular/common/http'
 import { Component, Inject, OnInit } from '@angular/core'
 import { NavigationExtras, Router } from '@angular/router'
 import { delay, map, mergeMap } from 'rxjs/operators'
-import { WidgetContentService, WidgetUserService } from '@app/library/ws-widget/collection/src/public-api'
+import { ContentCorodovaService, WidgetUserService } from '@app/library/ws-widget/collection/src/public-api'
 import { ConfigurationsService } from '@app/library/ws-widget/utils/src/public-api'
 import { forkJoin } from 'rxjs'
 import * as _ from 'lodash-es'
@@ -30,7 +30,7 @@ export class MobileDashboardComponent implements OnInit {
   constructor(
     private configSvc: ConfigurationsService,
     private userSvc: WidgetUserService,
-    private ContentSvc: WidgetContentService,
+    private ContentSvc: ContentCorodovaService,
     private router: Router,
     private http: HttpClient,
     private userHomeSvc: UserService,
@@ -62,13 +62,13 @@ export class MobileDashboardComponent implements OnInit {
     ]
     await this.setUserprofile()
     setTimeout(()=>{
-      const data = this.userHomeSvc.updateValue$.subscribe((res:any)=>{
+      this.userHomeSvc.updateValue$.subscribe((res:any)=>{
         if(res){
           console.log(res)
           this.fetchData()
         }
       })
-    },1000)
+    },5000)
    
   }
  
@@ -105,20 +105,10 @@ export class MobileDashboardComponent implements OnInit {
     }, {})
   }
   async setUserprofile() {
+    
     const session = await this.authService.getSession().toPromise();
     console.log('get session ', session)
-    if (session) {
-      this.userHomeSvc.userRead(session.userToken).pipe().subscribe((res) => {
-        console.log('user response,', res)
-        if(res){
-          const userProfile = res.result.response
-          this.userHomeSvc.setConfigService(userProfile)
-          console.log('before updating the value in subject ')
-          this.userHomeSvc._updateValue.next(userProfile)
-        }
-       
-      })
-    }
+    this.userHomeSvc.userRead(session.userToken)
   }
 
   formatTopCertifiedCourseResponse(res: any) {
