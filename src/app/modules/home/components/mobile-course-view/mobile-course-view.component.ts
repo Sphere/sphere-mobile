@@ -5,6 +5,7 @@ import { of } from 'rxjs'
 import { ConfigurationsService } from '@app/library/ws-widget/utils/src/public-api'
 import { UserProfileService } from '@ws/app/src/lib/routes/user-profile/services/user-profile.service'
 import { SignupService } from '../../../public/services/signup/signup.service'
+import { UserService } from '../../services/user.service'
 
 @Component({
   selector: 'ws-mobile-course-view',
@@ -16,9 +17,10 @@ export class MobileCourseViewComponent implements OnInit {
   @Input() courseData: any
   @Input() enableConfig = false
   constructor(private router: Router,
-              private configSvc: ConfigurationsService,
-              private userProfileSvc: UserProfileService,
-              private signUpSvc: SignupService
+    private configSvc: ConfigurationsService,
+    private userProfileSvc: UserProfileService,
+    private signUpSvc: SignupService,
+    private userHomeSvc: UserService,
   ) { }
 
   ngOnInit() {
@@ -30,25 +32,16 @@ export class MobileCourseViewComponent implements OnInit {
     // this.router.navigateByUrl(`/app/toc/${contentIdentifier}/overview`)
 
     const url = `app/toc/` + `${contentIdentifier}` + `/overview`
-    if (this.configSvc.userProfile === null) {
-      this.signUpSvc.keyClockLogin()
-      // localStorage.setItem(`url_before_login`, url)
-      // this.router.navigateByUrl('app/login')
-    } else {
-      if (this.configSvc.unMappedUser) {
-        this.userProfileSvc.getUserdetailsFromRegistry(this.configSvc.unMappedUser.id).pipe(delay(500), mergeMap((data: any) => {
-          return of(data)
-        })).subscribe((userDetails: any) => {
-          if (userDetails.profileDetails.profileReq.personalDetails.dob !== undefined) {
-
-            // location.href = url
-            this.router.navigateByUrl(url)
-          } else {
-            const courseUrl = `/app/toc/${contentIdentifier}/overview`
-            this.router.navigate(['/app/about-you'], { queryParams: { redirect: courseUrl } })
-          }
-        })
-      }
+    const val = this.userHomeSvc.userRead(this.configSvc.unMappedUser.id)
+    if (this.configSvc.unMappedUser) {
+      this.userHomeSvc.updateValue$.subscribe((userDetails: any) => {
+        if (userDetails.profileDetails.profileReq.personalDetails.dob !== undefined) {
+          this.router.navigateByUrl(url)
+        } else {
+          const courseUrl = `/app/toc/${contentIdentifier}/overview`
+          this.router.navigate(['/app/about-you'], { queryParams: { redirect: courseUrl } })
+        }
+      })
     }
 
   }
