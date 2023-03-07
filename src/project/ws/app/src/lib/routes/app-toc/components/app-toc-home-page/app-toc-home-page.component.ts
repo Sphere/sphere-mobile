@@ -54,7 +54,7 @@ export class AppTocHomePageComponent implements OnInit, OnDestroy {
   isCohortsRestricted = false
   isInIframe = false
   forPreview = window.location.href.includes('/author/')
-  analytics = this.route.snapshot.data.pageData.data.analytics
+  //analytics = this.route.snapshot.data.pageData.data.analytics
   currentFragment = 'overview'
   batchId!: string
   sticky = false
@@ -127,7 +127,6 @@ export class AppTocHomePageComponent implements OnInit, OnDestroy {
     }
     if (this.route) {
       this.routeSubscription = this.route.data.subscribe((data: Data) => {
-
         // adding mock data
         // data.content.error = null
         // data.content.data = this.courseMockData.result.content
@@ -150,10 +149,10 @@ export class AppTocHomePageComponent implements OnInit, OnDestroy {
           }
         }
 
-        this.banners = data.pageData.data.banners
-        this.tocSvc.subtitleOnBanners = data.pageData.data.subtitleOnBanners || false
-        this.tocSvc.showDescription = data.pageData.data.showDescription || false
-        this.tocConfig = data.pageData.data
+        this.banners = _.get(data, 'pageData.data.banners')
+        this.tocSvc.subtitleOnBanners = _.get(data, 'pageData.data.subtitleOnBanners', false)
+        this.tocSvc.showDescription = _.get(data, 'pageData.data.showDescription', false)
+        this.tocConfig = _.get(data, 'pageData.data')
         this.initData(data)
       })
     }
@@ -195,7 +194,6 @@ export class AppTocHomePageComponent implements OnInit, OnDestroy {
     const initData = this.tocSvc.initData(data, true)
     this.content = initData.content
     this.errorCode = initData.errorCode
-
     switch (this.errorCode) {
       case NsAppToc.EWsTocErrorCode.API_FAILURE: {
         this.errorWidgetData.widgetData.errorType = ErrorType.internalServer
