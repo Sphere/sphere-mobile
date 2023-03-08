@@ -578,7 +578,13 @@ declare const sbutility;
     { provide: 'SB_NOTIFICATION_SERVICE', useClass: NotificationService },
     TranslateJsonPipe,
     KeycloakService,
-    UtilityService
+    UtilityService,
+    {
+      deps: [InitService, LoggerService],
+      multi: true,
+      provide: APP_INITIALIZER,
+      useFactory: appInitializer,
+    }
   ],
   bootstrap: [AppComponent],
   exports: [RootComponent],
