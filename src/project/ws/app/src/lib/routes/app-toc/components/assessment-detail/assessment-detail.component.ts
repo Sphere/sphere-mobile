@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core'
+import { Component, Inject, Input, OnInit } from '@angular/core'
 import { ViewerUtilService } from '../../../../../../../viewer/src/lib/viewer-util.service'
 import { NSQuiz } from '../../../../../../../viewer/src/lib/plugins/quiz/quiz.model'
 import { HttpClient } from '@angular/common/http'
@@ -6,13 +6,20 @@ import {
   WidgetContentService,
 } from '@ws-widget/collection'
 import { ActivatedRoute } from '@angular/router'
+import { AuthService, DeviceInfo, SharedPreferences } from 'sunbird-sdk';
+import { CordovaHttpService } from '@app/app/modules/core/services/cordova-http.service'
+import { HTTP } from '@ionic-native/http/ngx'
+import { ApiUtilsService, ToastService } from '@app/app/manage-learn/core'
+import { UtilityService } from '@app/services'
+import { ConfigurationsService } from '@app/library/ws-widget/utils/src/public-api'
+import { ModalController } from '@ionic/angular'
 
 @Component({
   selector: 'ws-app-assessment-detail',
   templateUrl: './assessment-detail.component.html',
   styleUrls: ['./assessment-detail.component.scss'],
 })
-export class AssessmentDetailComponent implements OnInit {
+export class AssessmentDetailComponent extends CordovaHttpService implements OnInit {
 
   @Input() forPreview = false
   @Input() resourceLink: any
@@ -38,10 +45,20 @@ export class AssessmentDetailComponent implements OnInit {
   }
 
   constructor(private viewSvc: ViewerUtilService,
-    private http: HttpClient,
+    public http: HttpClient,
     private contentSvc: WidgetContentService,
-    private activatedRoute: ActivatedRoute,) {
-  }
+    private activatedRoute: ActivatedRoute,
+    public toast: ToastService,
+    public modalController: ModalController,
+    @Inject('AUTH_SERVICE') public authService: AuthService,
+    @Inject('DEVICE_INFO') public deviceInfo: DeviceInfo,
+    @Inject('SHARED_PREFERENCES') public preferences: SharedPreferences,
+    private utils: ApiUtilsService,
+    public ionicHttp: HTTP,
+    public utilityService: UtilityService,
+    public configSvc: ConfigurationsService,) {
+      super(http, toast, modalController, authService, deviceInfo, preferences, utils, ionicHttp, utilityService);
+    }
 
   async ngOnInit() {
     this.assesmentdata = await this.transformQuiz(this.content)
@@ -52,8 +69,10 @@ export class AssessmentDetailComponent implements OnInit {
       if (content.artifactUrl) {
         const artifactUrl = this.viewSvc.getCompetencyAuthoringUrl(content.artifactUrl.split('/content')[1]
         )
-        let quizJSON: NSQuiz.IQuiz = await this.http
-          .get<any>(artifactUrl || '')
+        const options = {
+          url: artifactUrl || ''
+        }
+        let quizJSON: NSQuiz.IQuiz = await this.get(options)
           .toPromise()
           .catch((_err: any) => {
             // throw new DataResponseError('MANIFEST_FETCH_FAILED');
@@ -80,8 +99,10 @@ export class AssessmentDetailComponent implements OnInit {
 
         const artifactUrl = this.viewSvc.getCompetencyAuthoringUrl(contents.result.content.artifactUrl.split('/content')[1]
         )
-        let quizJSON: NSQuiz.IQuiz = await this.http
-          .get<any>(artifactUrl || '')
+        const options = {
+          url: artifactUrl || ''
+        }
+        let quizJSON: NSQuiz.IQuiz = await this.get(options)
           .toPromise()
           .catch((_err: any) => {
             // throw new DataResponseError('MANIFEST_FETCH_FAILED');
@@ -103,12 +124,16 @@ export class AssessmentDetailComponent implements OnInit {
         const artifactUrl = this.forPreview
           ? this.viewSvc.getAuthoringUrl(content.artifactUrl)
           : content.artifactUrl
-        let quizJSON: NSQuiz.IQuiz = await this.http
-          .get<any>(artifactUrl || '')
+          const options = {
+            url: artifactUrl || ''
+          }
+          console.log('assessment options: ', options)
+        let quizJSON: NSQuiz.IQuiz = await this.get(options)
           .toPromise()
           .catch((_err: any) => {
             // throw new DataResponseError('MANIFEST_FETCH_FAILED');
           })
+          console.log('assessment quizJSON: ', quizJSON)
         if (this.forPreview && quizJSON) {
           quizJSON = this.viewSvc.replaceToAuthUrl(quizJSON)
         }
@@ -131,8 +156,10 @@ export class AssessmentDetailComponent implements OnInit {
         const artifactUrl = this.forPreview
           ? this.viewSvc.getAuthoringUrl(contents.result.content.artifactUrl)
           : contents.result.content.artifactUrl
-        let quizJSON: NSQuiz.IQuiz = await this.http
-          .get<any>(artifactUrl || '')
+          const options = {
+            url: artifactUrl || ''
+          }
+        let quizJSON: NSQuiz.IQuiz = await this.get(options)
           .toPromise()
           .catch((_err: any) => {
             // throw new DataResponseError('MANIFEST_FETCH_FAILED');

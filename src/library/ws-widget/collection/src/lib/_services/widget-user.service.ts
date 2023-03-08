@@ -70,7 +70,6 @@ export class WidgetUserService extends CordovaHttpService {
   // }
   // tslint:disable-next-line:max-line-length
   fetchUserBatchList(userId: string | undefined, queryParams?: { orgdetails: any, licenseDetails: any, fields: any, batchDetails: any }): Observable<NsContent.ICourse[]> {
-        console.log('Hello world')
     let options = {url: ''};
     if (queryParams) {
       // tslint:disable-next-line: max-line-length
@@ -78,7 +77,6 @@ export class WidgetUserService extends CordovaHttpService {
       url: API_END_POINTS.FETCH_USER_ENROLLMENT_LIST_V2(userId, queryParams.orgdetails, queryParams.licenseDetails, queryParams.fields, queryParams.batchDetails),
     };
     } else {
-      console.log('Hello world2')
       options = {
         url: API_END_POINTS.FETCH_USER_ENROLLMENT_LIST(userId),
       };
