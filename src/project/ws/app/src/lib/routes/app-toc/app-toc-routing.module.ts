@@ -10,6 +10,7 @@ import { AppTocContentsComponent } from './routes/app-toc-contents/app-toc-conte
 import { AppTocHomeComponent } from './routes/app-toc-home/app-toc-home.component'
 import { LicenseComponent } from './components/license/license.component'
 import { AllDiscussionWidgetComponent } from './routes/widget/all-discussion-widget/all-discussion-widget.component'
+import { AppTocOverviewComponent } from './routes/app-toc-overview/app-toc-overview.component'
 // import { DiscussConfigResolve } from '../../../../../../../src/app/routes/discussion-forum/wrapper/resolvers/discuss-config-resolve'
 const routes: Routes = [
   {
@@ -52,6 +53,10 @@ const routes: Routes = [
       {
         path: 'license',
         component: LicenseComponent,
+      },
+      {
+        path: 'overview',
+        component: AppTocOverviewComponent,
       },
       {
         path: '',
