@@ -97,7 +97,11 @@ import { CoreModule as AastrikCoreModule } from './modules/core/core.module';
 import { HomeModule } from './modules/home/home.module';
 import { InitService } from '@app/services/init.service';
 import { LoggerService } from '@app/library/ws-widget/utils/src/lib/services/logger.service';
+import { APP_BASE_HREF, PlatformLocation } from '@angular/common';
 // AoT requires an exported function for factories
+const getBaseHref = (platformLocation: PlatformLocation): string => {
+  return platformLocation.getBaseHrefFromDOM()
+}
 const appInitializer = (initSvc: InitService, logger: LoggerService) => async () => {
   try {
     await initSvc.init()
@@ -401,7 +405,7 @@ export const sunbirdSdkFactory =
         profileServiceConfig: {
           profileApiPath: '/api/user/v1',
           profileApiPath_V2: '/api/user/v2',
-          profileApiPath_V5: '/api/user/v5',
+          profileApiPath_V5: '/api/user/v2',
           tenantApiPath: '/v1/tenant',
           otpApiPath: '/api/otp/v2',
           searchLocationApiPath: '/api/data/v1',
@@ -507,7 +511,7 @@ declare const sbutility;
     MdePopoverModule,
     PublicModule,
     AastrikCoreModule,
-    HomeModule
+    HomeModule,
   ],
   providers: [
     AppGlobalService,
@@ -584,6 +588,11 @@ declare const sbutility;
       multi: true,
       provide: APP_INITIALIZER,
       useFactory: appInitializer,
+    },
+    {
+      provide: APP_BASE_HREF,
+      useFactory: getBaseHref,
+      deps: [PlatformLocation],
     }
   ],
   bootstrap: [AppComponent],

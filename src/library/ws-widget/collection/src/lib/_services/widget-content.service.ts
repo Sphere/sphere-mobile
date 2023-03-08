@@ -8,7 +8,12 @@ import { NsContent } from './widget-content.model'
 import { NSSearch } from './widget-search.model'
 
 import { DataService } from '@app/app/modules/core/services/data.service'
-import { AuthService } from 'sunbird-sdk';
+import { AuthService, DeviceInfo, SharedPreferences } from 'sunbird-sdk';
+import { CordovaHttpService } from '@app/app/modules/core/services/cordova-http.service'
+import { ModalController } from '@ionic/angular'
+import { HTTP } from '@ionic-native/http/ngx'
+import { ApiUtilsService, ToastService } from '@app/app/manage-learn/core'
+import { UtilityService } from '@app/services'
 // TODO: move this in some common place
 const PROTECTED_SLAG_V8 = '/apis/protected/v8'
 const PUBLIC_SLAG = '/apis/public/v8'
@@ -34,20 +39,22 @@ const API_END_POINTS = {
     `${PROTECTED_SLAG_V8}/content/collection/${type}/${id}`,
   REGISTRATION_STATUS: `${PROTECTED_SLAG_V8}/admin/userRegistration/checkUserRegistrationContent`,
   MARK_AS_COMPLETE_META: (contentId: string) => `${PROTECTED_SLAG_V8}/user/progress/${contentId}`,
-  COURSE_BATCH_LIST: `/apis/proxies/v8/learner/course/v1/batch/list`,
+  COURSE_BATCH_LIST: `/api/course/v1/batch/list`,
   ENROLL_BATCH: `/apis/proxies/v8/learner/course/v1/enrol`,
   GOOGLE_AUTHENTICATE: `/apis/public/v8/google/callback`,
   LOGIN_USER: `/apis/public/v8/emailMobile/auth`,
   FETCH_USER_ENROLLMENT_LIST: (userId: string | undefined) =>
     // tslint:disable-next-line: max-line-length
-    `/apis/proxies/v8/learner/course/v1/user/enrollment/list/${userId}?orgdetails=orgName,email&licenseDetails=name,description,url&fields=contentType,topic,name,channel,mimeType,appIcon,gradeLevel,resourceType,thumbnail,identifier,medium,pkgVersion,board,subject,trackable,posterImage,duration,creatorLogo,license&batchDetails=name,endDate,startDate,status,enrollmentType,createdBy,certificates`,
+    `/api/course/v1/user/enrollment/list/${userId}?orgdetails=orgName,email&licenseDetails=name,description,url&fields=contentType,topic,name,channel,mimeType,appIcon,gradeLevel,resourceType,identifier,medium,pkgVersion,thumbnail,board,subject,trackable,posterImage,duration,creatorLogo,license&batchDetails=name,endDate,startDate,status,enrollmentType,createdBy,certificates`,
   SEARCH_V6PUBLIC: '/apis/public/v8/publicContent/v1/search',
+  USER_READ: `/api/user/v2/read`,
+  COURSE_HIERARCHY: `/api/course/v1/hierarchy`
 }
 
 @Injectable({
   providedIn: 'root',
 })
-export class WidgetContentService extends DataService {
+export class WidgetContentService extends CordovaHttpService {
   private messageSource = new Subject<any>()
   public currentMessage = this.messageSource.asObservable()
   public _updateValue = new BehaviorSubject<any>(undefined)
@@ -55,10 +62,17 @@ export class WidgetContentService extends DataService {
   updateValue$ = this._updateValue.asObservable()
   constructor(
     public http: HttpClient,
-    private configSvc: ConfigurationsService,
+    public toast: ToastService,
+    public modalController: ModalController,
     @Inject('AUTH_SERVICE') public authService: AuthService,
+    @Inject('DEVICE_INFO') public deviceInfo: DeviceInfo,
+    @Inject('SHARED_PREFERENCES') public preferences: SharedPreferences,
+    private utils: ApiUtilsService,
+    public ionicHttp: HTTP,
+    public utilityService: UtilityService,
+    public configSvc: ConfigurationsService,
   ) {
-    super(http,authService)
+    super(http, toast, modalController, authService, deviceInfo, preferences, utils, ionicHttp, utilityService);
     this.baseUrl = 'https://sphere.aastrika.org'
   }
 
@@ -105,7 +119,7 @@ export class WidgetContentService extends DataService {
     const url = `/apis/proxies/v8/course/batch/cert/v1/issue/`
     const options = {
       url: url,
-      data: req,
+      payload: req,
     };
     return this.post(options)
   }
@@ -139,9 +153,9 @@ export class WidgetContentService extends DataService {
   ): Observable<NsContent.IContent> {
     let url = ''
     if (primaryCategory && this.isResource(primaryCategory)) {
-      url = `/apis/proxies/v8/action/content/v3/read/${contentId}`
+      url = `${API_END_POINTS.USER_READ}/${contentId}`
     } else {
-      url = `/apis/proxies/v8/action/content/v3/hierarchy/${contentId}?hierarchyType=${hierarchyType}`
+      url = `${API_END_POINTS.COURSE_HIERARCHY}/${contentId}?hierarchyType=${hierarchyType}`
     }
     const options = {
       url: url,
@@ -190,7 +204,7 @@ export class WidgetContentService extends DataService {
   enrollUserToBatch(req: any) {
     const options = {
       url: API_END_POINTS.ENROLL_BATCH,
-      data: req,
+      payload: req,
     };
     return this.post(options)
   }
@@ -198,14 +212,14 @@ export class WidgetContentService extends DataService {
   fetchContentLikes(contentIds: { content_id: string[] }) {
     const options = {
       url: API_END_POINTS.CONTENT_LIKES,
-      data: contentIds,
+      payload: contentIds,
     }
     return this.post(options).toPromise()
   }
   fetchContentRatings(contentIds: { contentIds: string[] }) {
     const options = {
       url: `${API_END_POINTS.CONTENT_RATING}/rating`,
-      data: contentIds,
+      payload: contentIds,
     }
     return this.post(options).toPromise()
   }
@@ -221,7 +235,7 @@ export class WidgetContentService extends DataService {
     req.request.fields = ['progressdetails']
     const options = {
       url: `${API_END_POINTS.CONTENT_HISTORYV2}/${req.request.courseId}`,
-      data: req,
+      payload: req,
     };
     return this.post(options)
   }
@@ -260,7 +274,7 @@ export class WidgetContentService extends DataService {
     const url = API_END_POINTS.USER_CONTINUE_LEARNING
     const options = {
       url: url,
-      data: content,
+      payload: content,
     };
     return this.post(options)
   }
@@ -271,7 +285,7 @@ export class WidgetContentService extends DataService {
   ): Observable<any> {
     const options = {
       url: API_END_POINTS.SET_S3_COOKIE,
-      data: { contentId },
+      payload: { contentId },
     };
     return this.post(options).pipe(catchError(_err => of(true)))
   }
@@ -279,7 +293,7 @@ export class WidgetContentService extends DataService {
   setS3ImageCookie(): Observable<any> {
     const options = {
       url: API_END_POINTS.SET_S3_IMAGE_COOKIE,
-      data: {},
+      payload: {},
     };
     return this.post(options).pipe(catchError(_err => of(true)))
   }
@@ -287,18 +301,22 @@ export class WidgetContentService extends DataService {
   fetchManifest(url: string): Observable<any> {
     const options = {
       url: API_END_POINTS.FETCH_MANIFEST,
-      data: { url },
+      payload: { url },
     };
     return this.post(options)
   }
   fetchWebModuleContent(url: string): Observable<any> {
-    return this.get(`${API_END_POINTS.FETCH_WEB_MODULE_FILES}?url=${encodeURIComponent(url)}`)
+    const options = {
+      url: API_END_POINTS.FETCH_WEB_MODULE_FILES,
+      payload: { url: encodeURIComponent(url) },
+    };
+    return this.get(options)
   }
   search(req: NSSearch.ISearchRequest): Observable<NSSearch.ISearchApiResult> {
     req.query = req.query || ''
     const options = {
       url: API_END_POINTS.CONTENT_SEARCH_V5,
-      data: { request: req, },
+      payload: { request: req, },
     };
     return this.post(options)
   }
@@ -316,7 +334,7 @@ export class WidgetContentService extends DataService {
     }
     const options = {
       url: API_END_POINTS.CONTENT_SEARCH_REGION_RECOMMENDATION,
-      data: { request: req },
+      payload: { request: req },
     };
     return this.post(options)
   }
@@ -329,7 +347,7 @@ export class WidgetContentService extends DataService {
     ]
     const options = {
       url: API_END_POINTS.PUBLIC_CONTENT_SEARCH,
-      data: req,
+      payload: req,
     };
     return this.post(options)
   }
@@ -338,7 +356,7 @@ export class WidgetContentService extends DataService {
     req.query = req.query || ''
     const options = {
       url: API_END_POINTS.PUBLIC_CONTENT_SEARCH,
-      data: req,
+      payload: req,
     };
     return this.post(options)
   }
@@ -358,7 +376,7 @@ export class WidgetContentService extends DataService {
   addContentRating(contentId: string, data: { rating: number }): Observable<any> {
     const options = {
       url: `${API_END_POINTS.CONTENT_RATING}/${contentId}`,
-      data: data,
+      payload: data,
     };
     return this.post(options)
   }
@@ -404,7 +422,7 @@ export class WidgetContentService extends DataService {
   loginAuth(req: any): Observable<any> {
     const options = {
       url: API_END_POINTS.LOGIN_USER,
-      data: req,
+      payload: req,
     };
     return this.post(options).pipe(retry(1),
       map(
@@ -415,17 +433,17 @@ export class WidgetContentService extends DataService {
   googleAuthenticate(req: any): Observable<any> {
     const options = {
       url: API_END_POINTS.GOOGLE_AUTHENTICATE,
-      data: req,
+      payload: req,
     };
-    return this.post(options).pipe(catchError(this.handleError))
+    return this.post(options).pipe(catchError(this.handleErrors))
   }
-  handleError(error: HttpErrorResponse) {
+   handleErrors(error: HttpErrorResponse) {
     return throwError(error)
   }
   fetchCourseBatches(req: any): Observable<NsContent.IBatchListResponse> {
     const options = {
       url: API_END_POINTS.COURSE_BATCH_LIST,
-      data: req,
+      payload: req,
     };
     return this.post(options).pipe(
       retry(1),
@@ -453,7 +471,7 @@ export class WidgetContentService extends DataService {
     }
     const options = {
       url: API_END_POINTS.SEARCH_V6PUBLIC,
-      data: req,
+      payload: req,
     };
     return this.post(options)
   }
