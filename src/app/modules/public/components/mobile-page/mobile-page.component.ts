@@ -22,17 +22,17 @@ export class MobilePageComponent implements OnInit {
   fetchConfigData(){
     this.videoData = [
       {
-        url: '../../fusion-assets/videos/videoplayback.mp4',
+        url: '../../../../../assets/videos/videoplayback.mp4',
         title: 'Register for a course',
         description: 'Explore various courses and pick the ones you like',
       },
       {
-        url: '../../fusion-assets/videos/videoplayback.mp4',
+        url: '../../../../../assets/videos/videoplayback.mp4',
         title: 'Take the course',
         description: 'Access the course anytime, at your convinience',
       },
       {
-        url: '../../fusion-assets/videos/videoplayback.mp4',
+        url: '../../../../../assets/videos/videoplayback.mp4',
         title: 'Get certified',
         description: 'Receive downloadable and shareable certificates',
       },

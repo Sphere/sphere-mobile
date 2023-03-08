@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core'
+import { Inject, Injectable } from '@angular/core'
 import { Data } from '@angular/router'
 import { Subject, Observable, Subscription, BehaviorSubject } from 'rxjs'
 import { HttpClient } from '@angular/common/http'
@@ -6,6 +6,12 @@ import { NsContent } from '@ws-widget/collection/src/lib/_services/widget-conten
 import { NsContentConstants } from '@ws-widget/collection/src/lib/_constants/widget-content.constants'
 import { NsAppToc, NsCohorts } from '../models/app-toc.model'
 import { TFetchStatus, ConfigurationsService } from '@ws-widget/utils'
+import { CordovaHttpService } from '@app/app/modules/core/services/cordova-http.service'
+import { ApiUtilsService, ToastService } from '@app/app/manage-learn/core'
+import { ModalController } from '@ionic/angular'
+import { AuthService, DeviceInfo, SharedPreferences } from 'sunbird-sdk';
+import { UtilityService } from '@app/services'
+import { HTTP } from '@ionic-native/http/ngx'
 
 // TODO: move this in some common place
 const PROTECTED_SLAG_V8 = '/apis/protected/v8'
@@ -30,7 +36,7 @@ const API_END_POINTS = {
 }
 
 @Injectable()
-export class AppTocService {
+export class AppTocService extends CordovaHttpService {
   analyticsReplaySubject: Subject<any> = new Subject()
   analyticsFetchStatus: TFetchStatus = 'none'
   private showSubtitleOnBanners = false
@@ -42,7 +48,20 @@ export class AppTocService {
   resumeData: Subject<NsContent.IContinueLearningData | null> = new Subject<NsContent.IContinueLearningData | null>()
   resumeDataSubscription: Subscription | null = null
   gatingEnabled = false
-  constructor(private http: HttpClient, private configSvc: ConfigurationsService) { }
+  constructor(
+    public http: HttpClient, 
+    public toast: ToastService,
+    public modalController: ModalController,
+    @Inject('AUTH_SERVICE') public authService: AuthService,
+    @Inject('DEVICE_INFO') public deviceInfo: DeviceInfo,
+    @Inject('SHARED_PREFERENCES') public preferences: SharedPreferences,
+    private utils: ApiUtilsService,
+    public ionicHttp: HTTP,
+    public utilityService: UtilityService,
+    private configSvc: ConfigurationsService) { 
+      super(http, toast, modalController, authService, deviceInfo, preferences, utils, ionicHttp, utilityService);
+    
+    }
   private data: any
 
   getcontentForWidget() {
@@ -259,7 +278,10 @@ export class AppTocService {
   private getContentAnalyticsClient(contentId: string) {
     this.analyticsFetchStatus = 'fetching'
     const url = `${PROXY_SLAG_V8}/LA/api/la/contentanalytics?content_id=${contentId}&type=course`
-    this.http.get(url).subscribe(
+    const options = {
+      url: url
+    }
+    this.get(options).subscribe(
       result => {
         this.analyticsFetchStatus = 'done'
         this.analyticsReplaySubject.next(result)
@@ -282,7 +304,10 @@ export class AppTocService {
     const url = `${PROXY_SLAG_V8}/LA/LA/api/Users?refinementfilter=${encodeURIComponent(
       '"source":["Wingspan","Learning Hub"]',
     )}$${encodeURIComponent(`"courseCode": ["${contentId}"]`)}`
-    this.http.get(url).subscribe(
+    const options = {
+      url: url,
+    };
+    this.get(options).subscribe(
       result => {
         this.analyticsFetchStatus = 'done'
         this.analyticsReplaySubject.next(result)
@@ -301,80 +326,106 @@ export class AppTocService {
   }
 
   fetchContentParents(contentId: string): Observable<NsContent.IContentMinimal[]> {
-    return this.http.get<NsContent.IContentMinimal[]>(
-      `${API_END_POINTS.CONTENT_PARENTS}/${contentId}`,
-    )
+    const options = {
+      url: `${API_END_POINTS.CONTENT_PARENTS}/${contentId}`
+    }
+    return this.get(options)
   }
   fetchContentWhatsNext(
     contentId: string,
     contentType?: string,
   ): Observable<NsContent.IContentMinimal[]> {
     if (contentType) {
-      return this.http.get<NsContent.IContentMinimal[]>(
-        `${API_END_POINTS.CONTENT_NEXT}/${contentId}?contentType=${contentType}`,
-      )
+      const options = {
+        url: `${API_END_POINTS.CONTENT_NEXT}/${contentId}?contentType=${contentType}`
+      }
+      return this.get(options)
     }
-    return this.http.get<NsContent.IContentMinimal[]>(
-      `${API_END_POINTS.CONTENT_NEXT}/${contentId}?ts=${new Date().getTime()}`,
-    )
+    const options = {
+      url: `${API_END_POINTS.CONTENT_NEXT}/${contentId}?ts=${new Date().getTime()}`
+    }
+    return this.get(options)
   }
 
   fetchMoreLikeThisPaid(contentId: string): Observable<NsContent.IContentMinimal[]> {
-    return this.http.get<NsContent.IContentMinimal[]>(
-      `${API_END_POINTS.CONTENT_NEXT
-      }/${contentId}?exclusiveContent=true&ts=${new Date().getTime()}`,
-    )
+    const options = {
+      url: `${API_END_POINTS.CONTENT_NEXT
+      }/${contentId}?exclusiveContent=true&ts=${new Date().getTime()}`
+    }
+    return this.get(options)
   }
 
   fetchMoreLikeThisFree(contentId: string): Observable<NsContent.IContentMinimal[]> {
-    return this.http.get<NsContent.IContentMinimal[]>(
-      `${API_END_POINTS.CONTENT_NEXT
-      }/${contentId}?exclusiveContent=false&ts=${new Date().getTime()}`,
-    )
+    const options = {
+      url: `${API_END_POINTS.CONTENT_NEXT
+      }/${contentId}?exclusiveContent=false&ts=${new Date().getTime()}`
+    }
+    return this.get(options)
   }
 
   fetchContentCohorts(
     cohortType: NsCohorts.ECohortTypes,
     contentId: string,
   ): Observable<NsCohorts.ICohortsContent[]> {
-    return this.http.get<NsCohorts.ICohortsContent[]>(API_END_POINTS.COHORTS(cohortType, contentId))
+    const options = {
+      url: API_END_POINTS.COHORTS(cohortType, contentId)
+    }
+    return this.get(options)
   }
   fetchExternalContentAccess(contentId: string): Observable<{ hasAccess: boolean }> {
-    return this.http.get<{ hasAccess: boolean }>(API_END_POINTS.EXTERNAL_CONTENT(contentId))
+    const options = {
+      url: API_END_POINTS.EXTERNAL_CONTENT(contentId)
+    }
+    return this.get(options)
   }
   fetchCohortGroupUsers(groupId: number) {
-    return this.http.get<NsCohorts.ICohortsGroupUsers[]>(API_END_POINTS.COHORTS_GROUP_USER(groupId))
+    const options = {
+      url: API_END_POINTS.COHORTS_GROUP_USER(groupId)
+    }
+    return this.get(options)
   }
   fetchMoreLikeThis(contentId: string, contentType: string): Observable<any> {
-    return this.http.get<NsContent.IContent[]>(
-      API_END_POINTS.RELATED_RESOURCE(contentId, contentType),
-    )
+    const options = {
+      url: API_END_POINTS.RELATED_RESOURCE(contentId, contentType)
+    }
+    return this.get(options)
   }
 
   fetchPostAssessmentStatus(contentId: string) {
-    return this.http.get<{ result: NsAppToc.IPostAssessment[] }>(
-      API_END_POINTS.POST_ASSESSMENT(contentId),
-    )
+    const options = {
+      url: API_END_POINTS.POST_ASSESSMENT(contentId)
+    }
+    return this.get(options)
   }
 
   fetchContentParent(contentId: string, data: NsAppToc.IContentParentReq, forPreview = false) {
-    return this.http.post<NsAppToc.IContentParentResponse>(
-      forPreview
-        ? API_END_POINTS.CONTENT_AUTH_PARENT(
-          contentId,
-          this.configSvc.rootOrg || '',
-          this.configSvc.org ? this.configSvc.org[0] : '',
-        )
-        : API_END_POINTS.CONTENT_PARENT(contentId),
-      data,
-    )
+    let options: any;
+    if(forPreview){
+      const url = API_END_POINTS.CONTENT_AUTH_PARENT(
+        contentId,
+        this.configSvc.rootOrg || '',
+        this.configSvc.org ? this.configSvc.org[0] : '',
+      )
+      options = {
+        url: url,
+        payload: data
+      }
+    }
+    else{
+      options = {
+        url: API_END_POINTS.CONTENT_PARENT(contentId),
+        payload: data
+      }
+    }
+    return this.post(options)
   }
 
   createBatch(batchData: any) {
-    return this.http.post(
-      API_END_POINTS.BATCH_CREATE,
-      { request: batchData },
-    )
+    const options = {
+      url: API_END_POINTS.BATCH_CREATE,
+      payload: { request: batchData }
+    }
+    return this.post(options)
   }
   updateBatchData() {
     this.batchReplaySubject.next()
