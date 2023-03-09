@@ -206,7 +206,6 @@ export class AppPublicNavBarComponent implements OnInit, OnChanges, OnDestroy {
             setTimeout(() => {
               console.log("AAAAAAAAAAA comes after setsession()")
               this.refreshProfileData()
-              that.router.navigateByUrl('page/home');
               that.preferences.putString('SHOW_WELCOME_TOAST', 'true').toPromise().then();
             }, 2000);
           });
@@ -230,6 +229,12 @@ export class AppPublicNavBarComponent implements OnInit, OnChanges, OnDestroy {
           console.log('get session', session)
           if (session) {
             this.userHomeSvc.userRead(session.userToken)
+            this.userHomeSvc._updateValue.subscribe((res)=>{
+              if(res){
+                that.router.navigateByUrl('page/home');
+                this.showSignInPage.emit(true)
+              }
+            })
           } else {
             reject('session is null');
           }

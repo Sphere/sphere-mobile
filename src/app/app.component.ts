@@ -279,6 +279,7 @@ export class AppComponent implements OnInit, AfterViewInit {
           this.showPublicNavbar= false
           this.showNavbar = false
         } else if (event.url.includes('page/home')) {
+
           this.isNavBarRequired = true
           this.showPublicNavbar= false
           this.showNavbar = true
@@ -1132,6 +1133,7 @@ export class AppComponent implements OnInit, AfterViewInit {
 
   hideRouterOutlet(event) {
     if (event === true) {
+      this.routerSubscriptions()
       this.hideContent = true
     } else {
       this.hideContent = false
