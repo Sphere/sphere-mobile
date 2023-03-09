@@ -177,19 +177,19 @@
           <ng-container *ngIf="content.type">
             <div [ngSwitch]="content.type | lowercase">
               <div *ngSwitchCase="'pdf'">
-                <img src=".\fusion-assets\icons\pdf-icon.png">
+                <img src="../../../../../../../assets/icons/pdf-icon.png">
               </div>
               <div *ngSwitchCase="'lecture'">
-                <img src=".\fusion-assets\icons\pdf-icon.png">
+                <img src="../../../../../../../assets/icons/pdf-icon.png">
               </div>
               <div *ngSwitchCase="'video'">
-                <img src=".\fusion-assets\icons\video-icon.png">
+                <img src="../../../../../../../assets/icons/video-icon.png">
               </div>
               <div *ngSwitchCase="'scorm'">
-                <img src=".\fusion-assets\icons\video-icon.png">
+                <img src="../../../../../../../assets/icons/video-icon.png">
               </div>
               <div *ngSwitchCase="'link'">
-                <img src=".\fusion-assets\icons\link-icon.png">
+                <img src="../../../../../../../assets/icons/link-icon.png">
               </div>
               <div *ngSwitchDefault>{{content.type}}</div>
             </div>
@@ -220,7 +220,7 @@
             </ng-template>
             <ng-template #elseResourseLock>
               <ng-container *ngIf="content.disabledNode">
-                <img src=".\fusion-assets\icons\lock.png">
+                <img src="../../../../../../../assets/icons/lock.png">
               </ng-container>
             </ng-template>
           </div>
