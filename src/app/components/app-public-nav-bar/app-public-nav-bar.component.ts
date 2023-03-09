@@ -151,14 +151,15 @@ export class AppPublicNavBarComponent implements OnInit, OnChanges, OnDestroy {
   createAcct() {
     this.router.navigateByUrl('app/create-account')
   }
-  login(key: 'E' | 'N' | 'S') {
-    this.showSignInCard = true;
+  // login(key: 'E' | 'N' | 'S') {
+  //   this.showSignInCard = true;
+  //   this.showSignInPage.emit(true)
+  // }
+
+
+
+  async login() {
     this.showSignInPage.emit(true)
-  }
-
-
-
-  async signIn(skipNavigation?) {
     this.appGlobalService.resetSavedQuizContent();
 
     if (!this.commonUtilService.networkInfo.isNetworkAvailable) {
@@ -232,7 +233,6 @@ export class AppPublicNavBarComponent implements OnInit, OnChanges, OnDestroy {
             this.userHomeSvc._updateValue.subscribe((res)=>{
               if(res){
                 that.router.navigateByUrl('page/home');
-                this.showSignInPage.emit(true)
               }
             })
           } else {

@@ -88,7 +88,6 @@ export class AppComponent implements OnInit, AfterViewInit {
   eventSubscription: Subscription;
   isTimeAvailable = false;
   isOnBoardingCompleted: boolean;
-  hideContent = false
   public swipeGesture = this.platform.is('ios')? false : true;
 
   constructor(
@@ -283,8 +282,6 @@ export class AppComponent implements OnInit, AfterViewInit {
           this.isNavBarRequired = true
           this.showPublicNavbar= false
           this.showNavbar = true
-          this.hideContent = false
-           
         }
         else if (event.url.includes('public/home')) {
           this.showPublicNavbar= true
@@ -1133,10 +1130,10 @@ export class AppComponent implements OnInit, AfterViewInit {
 
   hideRouterOutlet(event) {
     if (event === true) {
-      this.routerSubscriptions()
-      this.hideContent = true
+      // this.routerSubscriptions()
+      this.showNavbar = false
     } else {
-      this.hideContent = false
+      this.showNavbar = true
     }
   }
 }
