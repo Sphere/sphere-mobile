@@ -85,9 +85,7 @@ export class AppNavBarComponent implements OnInit, OnChanges {
       }
     })
 
-    if (this.configSvc.userProfile === null) {
-      this.showCreateBtn = true
-    }
+    this.showCreateBtn = this.configSvc.userProfile === null ? true : false
 
     if (this.configSvc.instanceConfig) {
       if (localStorage.getItem('orgValue') === 'nhsrc') {
