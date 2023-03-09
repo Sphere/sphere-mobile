@@ -32,7 +32,7 @@ const API_END_POINTS = {
   CONTENT_SEARCH_V6: `/apis/proxies/v8/sunbirdigot/read`,
   CONTENT_SEARCH_REGION_RECOMMENDATION: `${PROTECTED_SLAG_V8}/content/searchRegionRecommendation`,
   CONTENT_HISTORY: `${PROTECTED_SLAG_V8}/user/history`,
-  CONTENT_HISTORYV2: `api/course/v1/content/state/read`,
+  CONTENT_HISTORYV2: `/api/course/v1/content/state/read`,
   USER_CONTINUE_LEARNING: `${PROTECTED_SLAG_V8}/user/history/continue`,
   CONTENT_RATING: `${PROTECTED_SLAG_V8}/user/rating`,
   COLLECTION_HIERARCHY: (type: string, id: string) =>
@@ -234,7 +234,7 @@ export class WidgetContentService extends CordovaHttpService {
   fetchContentHistoryV2(req: NsContent.IContinueLearningDataReq): Observable<NsContent.IContinueLearningData> {
     req.request.fields = ['progressdetails']
     const options = {
-      url: `${API_END_POINTS.CONTENT_HISTORYV2}/${req.request.courseId}`,
+      url: `${API_END_POINTS.CONTENT_HISTORYV2}`,
       payload: req,
     };
     return this.post(options)
