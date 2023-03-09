@@ -39,7 +39,7 @@ export class WidgetUserService extends CordovaHttpService {
     private utils: ApiUtilsService,
     public ionicHttp:HTTP,
     public utilityService: UtilityService,
-  ) { 
+  ) {
     super(http, toast, modalController, authService, deviceInfo,preferences, utils,ionicHttp,utilityService);
     }
 

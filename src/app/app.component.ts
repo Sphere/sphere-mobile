@@ -45,7 +45,7 @@ import {
   PreferenceKey, ProfileConstants, RouterLinks, SystemSettingsIds, AppOrientation, OnboardingScreenType
 } from './app.constant';
 import { EventParams } from './components/sign-in-card/event-params.interface';
-import { ApiUtilsService, DbService, LoaderService, LocalStorageService, NetworkService } from './manage-learn/core';
+import { ApiUtilsService, DbService, LoaderService, NetworkService } from './manage-learn/core';
 import { SBTagModule } from 'sb-tag-manager';
 import { SegmentationTagService, TagPrefixConstants } from '@app/services/segmentation-tag/segmentation-tag.service';
 import { ScreenOrientation } from '@ionic-native/screen-orientation/ngx';
@@ -127,7 +127,7 @@ export class AppComponent implements OnInit, AfterViewInit {
     private splaschreenDeeplinkActionHandlerDelegate: SplaschreenDeeplinkActionHandlerDelegate,
     private utils: ApiUtilsService,
     private networkServ: NetworkService,
-    private localStorage: LocalStorageService,
+    // private localStorage: LocalStorageService,
     private db: DbService,
     private loginHandlerService: LoginHandlerService,
     private segmentationTagService: SegmentationTagService,
@@ -175,7 +175,7 @@ export class AppComponent implements OnInit, AfterViewInit {
           window['segmentation'].SBTagService.pushTag([this.appVersion], TagPrefixConstants.APP_VER, true);
         });
       this.checkForExperiment();
-      this.receiveNotification();
+      // this.receiveNotification();
       this.utilityService.getDeviceSpec()
         .then((deviceSpec) => {
           this.debuggingService.deviceId = deviceSpec.id;
@@ -437,62 +437,62 @@ export class AppComponent implements OnInit, AfterViewInit {
   /* Notification data will be received in data variable
    * can take action on data variable
    */
-  private async receiveNotification() {
-    const val = await this.preferences.getString(PreferenceKey.NOTIFICAITON_RECEIVED_AT).toPromise();
-    if (val) {
-      const corRelationList: Array<CorrelationData> = [];
-      corRelationList.push({ id: val, type: CorReleationDataType.NOTIFICATION_RECEIVED_AT });
-      this.telemetryGeneratorService.generateInteractTelemetry(
-        InteractType.FCM,
-        '',
-        Environment.HOME,
-        this.activePageService.computePageId(this.router.url),
-        undefined,
-        undefined,
-        undefined,
-        corRelationList,
-        ID.NOTIFICATION_RECEIVED
-      );
-      await this.preferences.putString(PreferenceKey.NOTIFICAITON_RECEIVED_AT, '').toPromise();
-    }
-    FCMPlugin.onNotification((data) => {
-      data['isRead'] = data.wasTapped ? 1 : 0;
-      data['actionData'] = JSON.parse(data['actionData']);
-      this.notificationServices.addNotification(data).subscribe((status) => {
-        this.events.publish('notification:received');
-        this.events.publish('notification-status:update', { isUnreadNotifications: true });
-      });
-      if (data.wasTapped) {
-        // Notification was received on device tray and tapped by the user.
-        const value = {
-          notification_id: data.id
-        };
-        const corRelationList: Array<CorrelationData> = [];
-        const fcmId = data.id;
-        corRelationList.push({ id: fcmId ? fcmId + '' : '', type: CorReleationDataType.NOTIFICATION_ID });
-        this.telemetryGeneratorService.generateNotificationClickedTelemetry(
-          InteractType.FCM,
-          this.activePageService.computePageId(this.router.url),
-          value,
-          corRelationList
-        );
-        this.notificationSrc.notificationId = data.id || '';
-        this.notificationSrc.setNotificationParams(data);
-        if (this.isForeground) {
-          this.notificationSrc.handleNotification();
-        }
-      } else {
-        // Notification was received in foreground. Maybe the user needs to be notified.
-      }
+  // private async receiveNotification() {
+  //   const val = await this.preferences.getString(PreferenceKey.NOTIFICAITON_RECEIVED_AT).toPromise();
+  //   if (val) {
+  //     const corRelationList: Array<CorrelationData> = [];
+  //     corRelationList.push({ id: val, type: CorReleationDataType.NOTIFICATION_RECEIVED_AT });
+  //     this.telemetryGeneratorService.generateInteractTelemetry(
+  //       InteractType.FCM,
+  //       '',
+  //       Environment.HOME,
+  //       this.activePageService.computePageId(this.router.url),
+  //       undefined,
+  //       undefined,
+  //       undefined,
+  //       corRelationList,
+  //       ID.NOTIFICATION_RECEIVED
+  //     );
+  //     await this.preferences.putString(PreferenceKey.NOTIFICAITON_RECEIVED_AT, '').toPromise();
+  //   }
+  //   FCMPlugin.onNotification((data) => {
+  //     data['isRead'] = data.wasTapped ? 1 : 0;
+  //     data['actionData'] = JSON.parse(data['actionData']);
+  //     this.notificationServices.addNotification(data).subscribe((status) => {
+  //       this.events.publish('notification:received');
+  //       this.events.publish('notification-status:update', { isUnreadNotifications: true });
+  //     });
+  //     if (data.wasTapped) {
+  //       // Notification was received on device tray and tapped by the user.
+  //       const value = {
+  //         notification_id: data.id
+  //       };
+  //       const corRelationList: Array<CorrelationData> = [];
+  //       const fcmId = data.id;
+  //       corRelationList.push({ id: fcmId ? fcmId + '' : '', type: CorReleationDataType.NOTIFICATION_ID });
+  //       this.telemetryGeneratorService.generateNotificationClickedTelemetry(
+  //         InteractType.FCM,
+  //         this.activePageService.computePageId(this.router.url),
+  //         value,
+  //         corRelationList
+  //       );
+  //       this.notificationSrc.notificationId = data.id || '';
+  //       this.notificationSrc.setNotificationParams(data);
+  //       if (this.isForeground) {
+  //         this.notificationSrc.handleNotification();
+  //       }
+  //     } else {
+  //       // Notification was received in foreground. Maybe the user needs to be notified.
+  //     }
 
-    },
-      (success) => {
-        console.log('Notification Sucess Callback', success);
-      },
-      (err) => {
-        console.error('Notification Error Callback', err);
-      });
-  }
+  //   },
+  //     (success) => {
+  //       console.log('Notification Sucess Callback', success);
+  //     },
+  //     (err) => {
+  //       console.error('Notification Error Callback', err);
+  //     });
+  // }
 
   /**
    * Initializing the event for reloading the Tabs on Signing-In.

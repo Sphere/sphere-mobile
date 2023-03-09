@@ -1,11 +1,15 @@
 import { IBtnAppsConfig } from '@ws-widget/collection/src/lib/btn-apps/btn-apps.model'
-import { Component, OnInit, OnDestroy, Input, SimpleChanges, OnChanges, HostListener, Output, EventEmitter } from '@angular/core'
+import { Component, OnInit, OnDestroy, Input, SimpleChanges, OnChanges, HostListener, Output, EventEmitter, Inject, NgZone } from '@angular/core'
 import { DomSanitizer, SafeUrl } from '@angular/platform-browser'
 import { ConfigurationsService, NsPage, NsInstanceConfig, ValueService } from '@ws-widget/utils'
 import { Observable, Subscription } from 'rxjs'
 import { ActivatedRoute, Router } from '@angular/router'
 import { NsWidgetResolver } from '@ws-widget/resolver'
-import { RouterLinks } from '@app/app/app.constant'
+import { PreferenceKey, RouterLinks } from '@app/app/app.constant'
+import { AppGlobalService, InteractSubtype, Environment, CommonUtilService, FormAndFrameworkUtilService, PageId, SbProgressLoader, TelemetryGeneratorService } from '@app/services'
+import { WebviewSessionProviderConfig, WebviewLoginSessionProvider, SignInError, AuthService, SharedPreferences } from '@project-sunbird/sunbird-sdk'
+import { UserService } from '@app/app/modules/home/services/user.service'
+import { InteractType} from '@app/services/telemetry-constants';
 
 @Component({
   selector: 'ws-app-public-nav-bar',
@@ -39,13 +43,23 @@ export class AppPublicNavBarComponent implements OnInit, OnChanges, OnDestroy {
   btnAppsConfig!: NsWidgetResolver.IRenderConfigWithTypedData<IBtnAppsConfig>
   isXSmall$: Observable<boolean>
   showSignInCard = false;
-
+  source = 'profile'
   constructor(
     private domSanitizer: DomSanitizer,
     private configSvc: ConfigurationsService,
     private router: Router,
     private activateRoute: ActivatedRoute,
-    private valueSvc: ValueService) {
+    private valueSvc: ValueService,
+    private appGlobalService: AppGlobalService,
+    private commonUtilService: CommonUtilService,
+    private telemetryGeneratorService: TelemetryGeneratorService,
+    private formAndFrameworkUtilService: FormAndFrameworkUtilService,
+    private sbProgressLoader: SbProgressLoader,
+    private ngZone: NgZone,
+    @Inject('AUTH_SERVICE') private authService: AuthService,
+    @Inject('SHARED_PREFERENCES') private preferences: SharedPreferences,
+    private userHomeSvc: UserService,
+  ) {
     this.isXSmall$ = this.valueSvc.isXSmall$
     this.btnAppsConfig = { ...this.basicBtnAppsConfig }
   }
@@ -140,6 +154,98 @@ export class AppPublicNavBarComponent implements OnInit, OnChanges, OnDestroy {
   login(key: 'E' | 'N' | 'S') {
     this.showSignInCard = true;
     this.showSignInPage.emit(true)
+  }
+
+
+
+  async signIn(skipNavigation?) {
+    this.appGlobalService.resetSavedQuizContent();
+
+    if (!this.commonUtilService.networkInfo.isNetworkAvailable) {
+      // this.valueChange.emit(true);
+    } else {
+      this.telemetryGeneratorService.generateInteractTelemetry(
+        InteractType.TOUCH,
+        InteractSubtype.SIGNIN_OVERLAY_CLICKED,
+        Environment.HOME,
+        this.source, null
+      );
+
+      this.generateLoginInteractTelemetry(InteractType.TOUCH, InteractSubtype.LOGIN_INITIATE, '');
+
+      const that = this;
+      const webviewSessionProviderConfigloader = await this.commonUtilService.getLoader();
+
+      let webviewLoginSessionProviderConfig: WebviewSessionProviderConfig;
+      let webviewMigrateSessionProviderConfig: WebviewSessionProviderConfig;
+
+      await webviewSessionProviderConfigloader.present();
+      try {
+        webviewLoginSessionProviderConfig = await this.formAndFrameworkUtilService.getWebviewSessionProviderConfig('login');
+        webviewMigrateSessionProviderConfig = await this.formAndFrameworkUtilService.getWebviewSessionProviderConfig('migrate');
+        await webviewSessionProviderConfigloader.dismiss();
+      } catch (e) {
+        this.sbProgressLoader.hide({ id: 'login' });
+        await webviewSessionProviderConfigloader.dismiss();
+        this.commonUtilService.showToast('ERROR_WHILE_LOGIN');
+        return;
+      }
+      console.log("AAAAAAAAAAA comes till setsession()")
+      this.authService.setSession(
+        new WebviewLoginSessionProvider(
+          webviewLoginSessionProviderConfig,
+          webviewMigrateSessionProviderConfig
+        )
+      )
+        .toPromise()
+        .then(async () => {
+        })
+        .then(async () => {
+          if (!this.appGlobalService.signinOnboardingLoader) { }
+          that.ngZone.run(() => {
+            setTimeout(() => {
+              console.log("AAAAAAAAAAA comes after setsession()")
+              this.refreshProfileData()
+              that.router.navigateByUrl('page/home');
+              that.preferences.putString('SHOW_WELCOME_TOAST', 'true').toPromise().then();
+            }, 2000);
+          });
+        })
+        .catch(async (err) => {
+          this.sbProgressLoader.hide({ id: 'login' });
+          if (err instanceof SignInError) {
+            this.commonUtilService.showToast(err.message);
+          } else {
+            this.commonUtilService.showToast('ERROR_WHILE_LOGIN');
+          }
+        });
+    }
+  }
+  private refreshProfileData() {
+    console.log('call the refresh profile data ')
+    const that = this;
+    return new Promise<any>((resolve, reject) => {
+      that.authService.getSession().toPromise()
+        .then((session: any) => {
+          console.log('get session', session)
+          if (session) {
+            this.userHomeSvc.userRead(session.userToken)
+          } else {
+            reject('session is null');
+          }
+        });
+    });
+  }
+  private generateLoginInteractTelemetry(interactType, interactSubtype, uid) {
+    const valuesMap = new Map();
+    valuesMap['UID'] = uid;
+    this.telemetryGeneratorService.generateInteractTelemetry(
+      interactType,
+      interactSubtype,
+      Environment.HOME,
+      PageId.LOGIN,
+      undefined,
+      valuesMap);
   }
 
   ngOnDestroy() {

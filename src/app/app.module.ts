@@ -589,6 +589,12 @@ declare const sbutility;
     KeycloakService,
     UtilityService,
     {
+      deps: [InitService, LoggerService],
+      multi: true,
+      provide: APP_INITIALIZER,
+      useFactory: appInitializer,
+    },
+    {
       provide: APP_BASE_HREF,
       useFactory: getBaseHref,
       deps: [PlatformLocation],

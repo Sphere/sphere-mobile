@@ -40,7 +40,7 @@ const API_END_POINTS = {
   REGISTRATION_STATUS: `${PROTECTED_SLAG_V8}/admin/userRegistration/checkUserRegistrationContent`,
   MARK_AS_COMPLETE_META: (contentId: string) => `${PROTECTED_SLAG_V8}/user/progress/${contentId}`,
   COURSE_BATCH_LIST: `/api/course/v1/batch/list`,
-  ENROLL_BATCH: `/apis/proxies/v8/learner/course/v1/enrol`,
+  ENROLL_BATCH: `/api/course/v1/enrol`,
   GOOGLE_AUTHENTICATE: `/apis/public/v8/google/callback`,
   LOGIN_USER: `/apis/public/v8/emailMobile/auth`,
   FETCH_USER_ENROLLMENT_LIST: (userId: string | undefined) =>
@@ -201,6 +201,7 @@ export class WidgetContentService extends CordovaHttpService {
     )
   }
   enrollUserToBatch(req: any) {
+    console.log('Enoroll req: ', req)
     const options = {
       url: API_END_POINTS.ENROLL_BATCH,
       payload: req,

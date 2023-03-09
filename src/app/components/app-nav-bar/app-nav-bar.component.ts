@@ -26,7 +26,7 @@ export class AppNavBarComponent implements OnInit, OnChanges {
   }
   instanceVal = ''
   btnAppsConfig!: NsWidgetResolver.IRenderConfigWithTypedData<IBtnAppsConfig>
-  appIcon: SafeUrl | null = null
+  appIcon: SafeUrl | null = 'https://aastrika-stage.tarento.com/assets/instances/eagle/app_logos/aastar-logo.svg'
   appBottomIcon?: SafeUrl
   primaryNavbarBackground: Partial<NsPage.INavBackground> | null = null
   primaryNavbarConfig: NsInstanceConfig.IPrimaryNavbarConfig | null = null

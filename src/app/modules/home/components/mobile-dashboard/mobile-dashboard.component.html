@@ -30,11 +30,11 @@
   <!-- Top certified courses -->
   <section class="mt-4">
     <p class="text-2xl" i18n>Top certified courses</p>
-    <div *ngFor="let course of topCertifiedCourse">
-      <ng-container *ngIf="topCertifiedCourse && topCertifiedCourse.length>0"> 
+    <ng-container *ngIf="topCertifiedCourse && topCertifiedCourse.length>0">
+      <div *ngFor="let course of topCertifiedCourse">
         <ws-mobile-course-view [courseData]="course"></ws-mobile-course-view>
-       </ng-container> 
-    </div>
+      </div>
+    </ng-container>
     <a href="app/search/learning">
       <p class="text-center blue-color text-xl" i18n>View all courses</p>
     </a>
@@ -57,7 +57,7 @@
   <div class="horizontal-scroll-content">
     <div *ngFor="let i of [1,2,3,4,5,6,7]" style="height: 260px;">
       <div class="card follow-card">
-        <img src="../../../fusion-assets/images/about-you.png" alt="Course image" width="85" height="85"
+        <img src="../../../../../assets/imgs/about-you.png" alt="Course image" width="85" height="85"
           class="follow-img">
         <div class="card-body py-1 px-4">
           <p class="card-title blue-color text-base">Rahul Patel</p>
