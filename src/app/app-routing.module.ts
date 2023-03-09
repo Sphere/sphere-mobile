@@ -7,7 +7,6 @@ import { HasNotSelectedLanguageGuard } from '@app/guards/has-not-selected-langua
 import { HasNotSelectedUserTypeGuard } from '@app/guards/has-not-selected-user-type.guard';
 import { IsGuestUserGuard } from '@app/guards/is-guest-user.guard';
 import { MlGuard } from './manage-learn/core/guards/ml.guard';
-import { CreateAccountComponent } from './modules/public/components/create-account/create-account.component';
 
 const routes: Routes = [
 {
@@ -25,7 +24,7 @@ const routes: Routes = [
 },
 {
   path: `${RouterLinks.CREATE_ACCOUNT}`,
-  component: CreateAccountComponent,
+  loadChildren: './modules/auth/auth-routing.module#AuthRoutingModule',
 },
 {
   path: `${RouterLinks.TOC_PAGE}`,

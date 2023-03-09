@@ -77,7 +77,6 @@ export class WidgetContentService extends CordovaHttpService {
   }
 
   fetchMarkAsCompleteMeta(identifier: string) {
-
     const options = {
       url: API_END_POINTS.MARK_AS_COMPLETE_META(identifier),
     };
@@ -437,7 +436,7 @@ export class WidgetContentService extends CordovaHttpService {
     };
     return this.post(options).pipe(catchError(this.handleErrors))
   }
-   handleErrors(error: HttpErrorResponse) {
+  handleErrors(error: HttpErrorResponse) {
     return throwError(error)
   }
   fetchCourseBatches(req: any): Observable<NsContent.IBatchListResponse> {

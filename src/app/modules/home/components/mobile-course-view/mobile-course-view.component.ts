@@ -28,9 +28,6 @@ export class MobileCourseViewComponent implements OnInit {
 
   // For opening Course Page
   navigateToToc(contentIdentifier: any) {
-
-    // this.router.navigateByUrl(`/app/toc/${contentIdentifier}/overview`)
-
     const url = `app/toc/` + `${contentIdentifier}` + `/overview`
     const val = this.userHomeSvc.userRead(this.configSvc.unMappedUser.id)
     if (this.configSvc.unMappedUser) {

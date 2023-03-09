@@ -572,7 +572,12 @@ declare const sbutility;
     ...sunbirdSdkServicesProvidersFactory(),
     { provide: ErrorHandler, useClass: CrashAnalyticsErrorLogger },
     { provide: APP_INITIALIZER, useFactory: sunbirdSdkFactory, deps: [], multi: true },
-    
+    {
+      deps: [InitService, LoggerService],
+      multi: true,
+      provide: APP_INITIALIZER,
+      useFactory: appInitializer,
+    },
     Camera,
     FilePath,
     Chooser,

@@ -1,21 +1,19 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { PublicHomeComponent } from './components/public-home/public-home.component';
-import { PublicHomeRoutingModule } from './public-home-routing.module';
 import { FormsModule ,ReactiveFormsModule} from '@angular/forms';
 import { IonicModule } from '@ionic/angular';
 import { MatFormFieldModule, MatInputModule, MatIconModule } from '@angular/material'
-import { MobilePageComponent } from './components/mobile-page/mobile-page.component';
-import { MobileHomeComponent } from './components/mobile-home/mobile-home.component';
+import { AuthRoutingModule } from './auth-routing.module';
+import { CreateAccountComponent } from './components/create-account/create-account.component';
+import { LoginOtpComponent } from './components/login-otp/login-otp.component';
 import { WidgetResolverModule } from '@ws-widget/resolver'
 import {  WIDGET_REGISTERED_MODULES, WIDGET_REGISTRATION_CONFIG } from '@ws-widget/collection'
-
+import { ForgotPasswordComponent } from './components/forgot-password/forgot-password.component';
 @NgModule({
   declarations: [
-    PublicHomeComponent,
-    MobilePageComponent,
-    MobileHomeComponent,
-    
+    CreateAccountComponent,
+    LoginOtpComponent,
+    ForgotPasswordComponent
     ],
   imports: [
     CommonModule,
@@ -25,17 +23,15 @@ import {  WIDGET_REGISTERED_MODULES, WIDGET_REGISTRATION_CONFIG } from '@ws-widg
     MatInputModule, 
     MatIconModule,
     ReactiveFormsModule,
-    PublicHomeRoutingModule,
     ...WIDGET_REGISTERED_MODULES,
-    WidgetResolverModule.forRoot(WIDGET_REGISTRATION_CONFIG)
+    WidgetResolverModule.forRoot(WIDGET_REGISTRATION_CONFIG),
+    AuthRoutingModule
   ],
   entryComponents: [
-    MobilePageComponent,
-    MobileHomeComponent,
+    CreateAccountComponent,
   ],
   exports: [
-    MobilePageComponent,
-    MobileHomeComponent,
+    LoginOtpComponent
   ]
 })
-export class PublicModule { }
+export class AuthModule { }

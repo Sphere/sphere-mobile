@@ -111,6 +111,7 @@ export class AppTocDesktopComponent implements OnInit, OnChanges, OnDestroy {
   @HostListener('window:popstate', ['$event'])
   onPopState() {
     window.location.href = '/page/home'
+    console.log('this.content', this.content)
   }
 
   ngOnInit() {

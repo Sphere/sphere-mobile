@@ -43,14 +43,6 @@ export class WidgetUserService extends CordovaHttpService {
     super(http, toast, modalController, authService, deviceInfo,preferences, utils,ionicHttp,utilityService);
     }
 
-  // handleError(error: ErrorEvent) {
-  //   let errorMessage = ''
-  //   if (error.error instanceof ErrorEvent) {
-  //     errorMessage = `Error: ${error.error.message}`
-  //   }
-  //   return throwError(errorMessage)
-  // }
-
   fetchUserGroupDetails(userId: string): Observable<IUserGroupDetails[]> {
     const options = {
       url: API_END_POINTS.FETCH_USER_GROUPS(userId),
@@ -58,19 +50,9 @@ export class WidgetUserService extends CordovaHttpService {
     return this.get(options);
   }
 
-  // fetchUserBatchList(userId: string | undefined): Observable<NsContent.ICourse[]> {
-  //   return this.http
-  //     .get(API_END_POINTS.FETCH_USER_ENROLLMENT_LIST(userId))
-  //     .pipe(
-  //       catchError(this.handleError),
-  //       map(
-  //         (data: any) => data.result.courses
-  //       )
-  //     )
-  // }
+
   // tslint:disable-next-line:max-line-length
   fetchUserBatchList(userId: string | undefined, queryParams?: { orgdetails: any, licenseDetails: any, fields: any, batchDetails: any }): Observable<NsContent.ICourse[]> {
-        console.log('Hello world')
     let options = {url: ''};
     if (queryParams) {
       // tslint:disable-next-line: max-line-length
@@ -78,12 +60,10 @@ export class WidgetUserService extends CordovaHttpService {
       url: API_END_POINTS.FETCH_USER_ENROLLMENT_LIST_V2(userId, queryParams.orgdetails, queryParams.licenseDetails, queryParams.fields, queryParams.batchDetails),
     };
     } else {
-      console.log('Hello world2')
       options = {
         url: API_END_POINTS.FETCH_USER_ENROLLMENT_LIST(userId),
       };
     }
-    console.log('Hello world1 url: ', options)
     return this.get(options);
   }
 

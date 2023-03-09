@@ -31,6 +31,7 @@ import {
 } from 'sunbird-sdk';
 import { Context as SbProgressLoaderContext, SbProgressLoader } from '../../../services/sb-progress-loader.service';
 import { EventParams } from './event-params.interface';
+import { UserService } from '@app/app/modules/home/services/user.service';
 
 @Component({
   selector: 'app-sign-in-card',
@@ -59,6 +60,7 @@ export class SignInCardComponent {
     private telemetryGeneratorService: TelemetryGeneratorService,
     private events: Events,
     private appGlobalService: AppGlobalService,
+    private userHomeSvc: UserService,
     private router: Router,
     private sbProgressLoader: SbProgressLoader
   ) {
@@ -130,6 +132,7 @@ export class SignInCardComponent {
             setTimeout(() => {
 
               console.log("AAAAAAAAAAA comes after setsession()")
+             
               //that.refreshProfileData()
               that.router.navigateByUrl('page/home');
               /* if (that.source === 'courses') {
@@ -142,6 +145,7 @@ export class SignInCardComponent {
               //this.events.publish(EventTopics.SIGN_IN_RELOAD, skipNavigation);
             }, 2000);
           });
+          await this.setUserprofile()
         })
         .catch(async (err) => {
           this.sbProgressLoader.hide({ id: 'login' });
@@ -153,7 +157,12 @@ export class SignInCardComponent {
         });
     }
   }
-
+  async setUserprofile() {
+    
+    const session = await this.authService.getSession().toPromise();
+    console.log('get session ', session)
+    this.userHomeSvc.userRead(session.userToken)
+  }
   private refreshProfileData() {
     const that = this;
     return new Promise<any>((resolve, reject) => {

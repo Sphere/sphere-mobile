@@ -30,7 +30,7 @@ import {
   GetSystemSettingsRequest, NotificationService,
   Profile, ProfileService, ProfileType, SharedPreferences,
   SunbirdSdk, DebuggingService,
-  SystemSettings, SystemSettingsService, TelemetryAutoSyncService, TelemetryService
+  SystemSettings, SystemSettingsService, TelemetryAutoSyncService, TelemetryService, AuthService
 } from 'sunbird-sdk';
 import {
   AppGlobalService,
@@ -49,6 +49,7 @@ import { ApiUtilsService, DbService, LoaderService, LocalStorageService, Network
 import { SBTagModule } from 'sb-tag-manager';
 import { SegmentationTagService, TagPrefixConstants } from '@app/services/segmentation-tag/segmentation-tag.service';
 import { ScreenOrientation } from '@ionic-native/screen-orientation/ngx';
+import { UserService } from './modules/home/services/user.service';
 
 declare const cordova;
 declare const window;
@@ -132,7 +133,9 @@ export class AppComponent implements OnInit, AfterViewInit {
     private segmentationTagService: SegmentationTagService,
     private mlloader: LoaderService,
     private screenOrientation: ScreenOrientation,
-    private onboardingConfigurationService: OnboardingConfigurationService
+    private onboardingConfigurationService: OnboardingConfigurationService,
+    private userHomeSvc: UserService,
+    @Inject('AUTH_SERVICE') public authService: AuthService,
   ) {
     this.telemetryAutoSync = this.telemetryService.autoSync;
   }
@@ -266,7 +269,6 @@ export class AppComponent implements OnInit, AfterViewInit {
   }
 
   routerSubscriptions() {
-    console.log('router subscribe')
     this.router.events.subscribe((event: any) => {
       if(event instanceof NavigationStart){
         if(event.url.includes('/app/create-account') 
@@ -281,6 +283,7 @@ export class AppComponent implements OnInit, AfterViewInit {
           this.showPublicNavbar= false
           this.showNavbar = true
           this.hideContent = false
+           
         }
         else if (event.url.includes('public/home')) {
           this.showPublicNavbar= true
