@@ -21,7 +21,7 @@ import * as _ from "lodash"
 import { map } from 'rxjs/operators'
 import { v4 as uuid } from 'uuid'
 import { HttpClient } from '@angular/common/http';
-import { UserService } from '@app/app/modules/home/services/user.service';
+// import { UserService } from '@app/app/modules/home/services/user.service';
 
 @Injectable({
   providedIn: 'root'
@@ -34,7 +34,7 @@ export class InitService {
     private widgetResolverService: WidgetResolverService,
     domSanitizer: DomSanitizer,
     private http: HttpClient,
-    private userHomeSvc: UserService
+    // private userHomeSvc: UserService
   ) { }
   async init() {
     await this.fetchDefaultConfig()
