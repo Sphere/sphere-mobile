@@ -8,17 +8,33 @@ import { JSON_MAP } from './page.constant'
 import { NsPage } from './page.model'
 import { IResolveResponse } from './resolver.model'
 import { NsContent } from '../../../../collection/src/lib/_services/widget-content.model'
+import { AuthService, DeviceInfo, SharedPreferences } from 'sunbird-sdk';
+import { CordovaHttpService } from '@app/app/modules/core/services/cordova-http.service'
+import { ModalController } from '@ionic/angular'
+import { HTTP } from '@ionic-native/http/ngx'
+import { ApiUtilsService, ToastService } from '@app/app/manage-learn/core'
+import { UtilityService } from '@app/services'
 
 @Injectable({
   providedIn: 'root',
 })
-export class PageResolve implements Resolve<IResolveResponse<NsPage.IPage>> {
-  private baseUrl = this.configSvc.sitePath
+export class PageResolve extends CordovaHttpService implements Resolve<IResolveResponse<NsPage.IPage>> {
+  public baseUrl = this.configSvc.sitePath
   constructor(
     private configSvc: ConfigurationsService,
-    private http: HttpClient,
+    public http: HttpClient,
     @Inject(LOCALE_ID) private locale: string,
-  ) { }
+    public toast: ToastService,
+    public modalController: ModalController,
+    @Inject('AUTH_SERVICE') public authService: AuthService,
+    @Inject('DEVICE_INFO') public deviceInfo: DeviceInfo,
+    @Inject('SHARED_PREFERENCES') public preferences: SharedPreferences,
+    private utils: ApiUtilsService,
+    public ionicHttp: HTTP,
+    public utilityService: UtilityService,
+  ) {
+    super(http, toast, modalController, authService, deviceInfo, preferences, utils, ionicHttp, utilityService);
+   }
   resolve(
     route: ActivatedRouteSnapshot,
   ): Observable<IResolveResponse<NsPage.IPage>> | IResolveResponse<NsPage.IPage> {
@@ -54,17 +70,23 @@ export class PageResolve implements Resolve<IResolveResponse<NsPage.IPage>> {
   }
 
   private setS3Cookie(contentId: string): Observable<any> {
-    return this.http.post(`/apis/protected/v8/content/setCookie`, { contentId }).pipe(
+    const options = {
+      url: `/apis/protected/v8/content/setCookie`,
+      payload: { contentId }
+    }
+    const res= this.post(options).pipe(
       catchError(_err => of(true)),
     )
+    return res
   }
 
   private getContent(id: string) {
-    return this.http
-      .post<NsContent.IContent>(
-        `/apis/protected/v8/content/${id}?hierarchyType=minimal`,
-        ['status', 'artifactUrl'],
-      )
+    const options = {
+      url: `/apis/protected/v8/content/${id}?hierarchyType=minimal`,
+      payload: ['status', 'artifactUrl']
+    }
+    const res = this.post(options)
+    return res
   }
 
   private getData(url: string) {
@@ -76,8 +98,10 @@ export class PageResolve implements Resolve<IResolveResponse<NsPage.IPage>> {
           if (v.status === 'Expired' || v.status === 'Deleted' || !v.artifactUrl) {
             return of({ data: null, error: 'NoContent' })
           }
-          return this.http
-            .get<NsPage.IPage>(`${v.artifactUrl}?ts=${new Date().getTime()}`)
+          const options = {
+            url: `${v.artifactUrl}?ts=${new Date().getTime()}`
+          }
+          return this.get(options)
             .pipe(
               map(data => ({ data, error: null })),
               catchError(err => of({ data: null, error: err })),
@@ -123,7 +147,7 @@ export class PageResolve implements Resolve<IResolveResponse<NsPage.IPage>> {
     const pageRequest = [
       (equivalentId ? this.setS3Cookie(equivalentId) : of(true)).pipe(
         mergeMap(() =>
-          this.http.get<NsPage.IPage>(`${url}.json`).pipe(
+          this.get({url: `${url}.json`}).pipe(
             map(data => ({ data, error: null })),
             catchError(err => of({ data: null, error: err })),
           ),
@@ -131,7 +155,7 @@ export class PageResolve implements Resolve<IResolveResponse<NsPage.IPage>> {
       ),
       this.locale === 'en' || this.locale === 'en-US' ?
         of({ data: undefined as any, error: null }) :
-        this.http.get<NsPage.IPage>(`${url}.${this.locale}.json`).pipe(
+        this.get({url: `${url}.${this.locale}.json`}).pipe(
           map(data => ({ data, error: null })),
           catchError(err => of({ data: null, error: err })),
         ),
