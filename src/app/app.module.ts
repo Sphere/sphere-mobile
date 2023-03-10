@@ -100,6 +100,7 @@ import { RouteViewerModule } from './modules/route-viewer/route-viewer.module';
 import { InitService } from '@app/services/init.service';
 import { LoggerService } from '@app/library/ws-widget/utils/src/lib/services/logger.service';
 import { APP_BASE_HREF, PlatformLocation } from '@angular/common';
+import { SharedModule } from '@app/project/ws/author/src/lib/modules/shared/shared.module';
 // AoT requires an exported function for factories
 const getBaseHref = (platformLocation: PlatformLocation): string => {
   return platformLocation.getBaseHrefFromDOM()
@@ -515,6 +516,7 @@ declare const sbutility;
     AastrikCoreModule,
     HomeModule,
     AuthModule,
+    SharedModule
   ],
   providers: [
     AppGlobalService,
