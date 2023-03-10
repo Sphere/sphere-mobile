@@ -457,6 +457,7 @@ export class RouterLinks {
     public static readonly PRIVATE_HOME = 'page/home';
     public static readonly CREATE_ACCOUNT = 'app/create-account';
     public static readonly TOC_PAGE = 'app/toc';
+    public static readonly VIEWER='viewer'
 
 
 
@@ -647,7 +648,15 @@ export class RouterLinks {
     public static readonly SIGNUP_EMAIL = 'signup-email';
     public static readonly OTP = 'otp';
 }
-
+export enum ETopBar {
+    NONE = 'NONE',
+    APP = 'APP',
+    AUTHOR = 'AUTHOR',
+    ADMIN = 'ADMIN',
+    ANALYTICS = 'ANALYTICS',
+    PUBLIC = 'PUBLIC',
+  }
+  
 export class ShareItemType {
     public static readonly ROOT_CONTENT = 'root-content';
     public static readonly ROOT_COLECTION = 'root-collection';
