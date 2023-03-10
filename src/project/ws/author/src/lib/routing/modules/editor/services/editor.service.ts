@@ -24,6 +24,7 @@ import { Observable, of } from 'rxjs'
 import { map, mergeMap, catchError } from 'rxjs/operators'
 import { CONTENT_READ_MULTIPLE_HIERARCHY } from './../../../../constants/apiEndpoints'
 import { ISearchContent, ISearchResult } from '../../../../interface/search'
+import LicenseMetadata from '../../../../../../../../../assets/configurations/license.meta.json'
 
 @Injectable()
 export class EditorService {
@@ -172,7 +173,7 @@ export class EditorService {
   }
 
   fetchConfig() {
-    return this.apiService.get<any>(`${this.configSvc.sitePath}/license.meta.json`)
+    return LicenseMetadata
   }
 
   fetchOrgMeta() {

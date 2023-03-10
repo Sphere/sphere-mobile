@@ -8,6 +8,7 @@ import { RootService } from '@app/app/root/root.service'
 import { TStatus, ViewerDataService } from './viewer-data.service'
 import { ViewerUtilService } from './viewer-util.service'
 import { DiscussConfigResolve } from '@app/app/routes/discussion-forum/wrapper/resolvers/discuss-config-resolve'
+import LicenseMetadata from '../../../../../assets/configurations/license.meta.json'
 export enum ErrorType {
   accessForbidden = 'accessForbidden',
   notFound = 'notFound',
@@ -182,19 +183,10 @@ export class ViewerComponent implements OnInit, OnDestroy, AfterViewChecked {
     // this.getDiscussionConfig()
   }
   getLicenseConfig() {
-    const licenseurl = `${this.configSvc.sitePath}/license.meta.json`
-    this.widgetContentSvc.fetchConfig(licenseurl).subscribe(data => {
-      const licenseData = data
+      const licenseData = LicenseMetadata
       if (licenseData) {
         this.currentLicense = licenseData.licenses.filter((license: any) => license.licenseName === this.currentLicenseName)
       }
-
-    },
-                                                            err => {
-        if (err.status === 404) {
-          this.getLicenseConfig()
-        }
-      })
   }
   getDiscussionConfig() {
     this.viewerDataSubscription = this.viewerSvc
