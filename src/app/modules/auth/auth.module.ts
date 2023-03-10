@@ -9,11 +9,13 @@ import { LoginOtpComponent } from './components/login-otp/login-otp.component';
 import { WidgetResolverModule } from '@ws-widget/resolver'
 import {  WIDGET_REGISTERED_MODULES, WIDGET_REGISTRATION_CONFIG } from '@ws-widget/collection'
 import { ForgotPasswordComponent } from './components/forgot-password/forgot-password.component';
+import { HeaderComponent } from './components/header/header.component';
 @NgModule({
   declarations: [
     CreateAccountComponent,
     LoginOtpComponent,
-    ForgotPasswordComponent
+    ForgotPasswordComponent,
+    HeaderComponent
     ],
   imports: [
     CommonModule,
@@ -29,6 +31,7 @@ import { ForgotPasswordComponent } from './components/forgot-password/forgot-pas
   ],
   entryComponents: [
     CreateAccountComponent,
+    HeaderComponent
   ],
   exports: [
     LoginOtpComponent

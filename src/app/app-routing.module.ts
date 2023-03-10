@@ -24,7 +24,7 @@ const routes: Routes = [
 },
 {
   path: `${RouterLinks.CREATE_ACCOUNT}`,
-  loadChildren: './modules/auth/auth-routing.module#AuthRoutingModule',
+  loadChildren: './modules/auth/auth.module#AuthModule',
 },
 {
   path: `${RouterLinks.TOC_PAGE}`,

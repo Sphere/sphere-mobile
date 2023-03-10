@@ -151,13 +151,7 @@ export class AppPublicNavBarComponent implements OnInit, OnChanges, OnDestroy {
   createAcct() {
     this.router.navigateByUrl('app/create-account')
   }
-  // login(key: 'E' | 'N' | 'S') {
-  //   this.showSignInCard = true;
-  //   this.showSignInPage.emit(true)
-  // }
-
-
-
+  
   async login() {
     this.showSignInPage.emit(true)
     this.appGlobalService.resetSavedQuizContent();
