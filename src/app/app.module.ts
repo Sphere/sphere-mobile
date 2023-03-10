@@ -515,7 +515,6 @@ declare const sbutility;
     AastrikCoreModule,
     HomeModule,
     AuthModule,
-    RouteViewerModule
   ],
   providers: [
     AppGlobalService,

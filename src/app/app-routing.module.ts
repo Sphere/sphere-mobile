@@ -30,13 +30,13 @@ const routes: Routes = [
   path: `${RouterLinks.TOC_PAGE}`,
   loadChildren: './modules/overview-toc/overview-toc.module#OverviewTocModule',
 },
-{
-  path: `${RouterLinks.VIEWER}`,
-  data: {
-    topBar: ETopBar.NONE,
-  },
-  loadChildren: './modules/route-viewer/route-viewer.module#RouteViewerModule',
-},
+// {
+//   path: `${RouterLinks.VIEWER}`,
+//   data: {
+//     topBar: ETopBar.NONE,
+//   },
+//   loadChildren: './modules/route-viewer/route-viewer.module#RouteViewerModule',
+// },
   /* {
     path: '',
     redirectTo: `${RouterLinks.LANGUAGE_SETTING}`,
