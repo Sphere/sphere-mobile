@@ -12,6 +12,7 @@ import { takeUntil } from 'rxjs/operators'
 import { ConfigurationsService } from '../../../../../../../../../library/ws-widget/utils/src/public-api'
 import { HttpErrorResponse } from '@angular/common/http'
 import { NsWidgetResolver } from '@ws-widget/resolver'
+import LicenseMetadata from '../../../../../../../../../assets/configurations/license.meta.json'
 // import { HttpErrorResponse } from '@angular/common/http'
 
 @Component({
@@ -97,18 +98,10 @@ export class AppTocOverviewComponent implements OnInit, OnDestroy {
   }
 
   getLicenseConfig() {
-    const licenseurl = `${this.configSvc.sitePath}/license.meta.json`
-    this.widgetContentSvc.fetchConfig(licenseurl).subscribe(data => {
-      const licenseData = data
+      const licenseData = LicenseMetadata
       if (licenseData) {
         this.currentLicenseData = licenseData.licenses.filter((license: any) => license.licenseName === this.licenseName)
       }
-    },
-                                                            (err: HttpErrorResponse) => {
-        if (err.status === 404) {
-          this.getLicenseConfig()
-        }
-      })
   }
 
   get showSubtitleOnBanner() {

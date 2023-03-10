@@ -116,9 +116,9 @@ export class AppTocDesktopComponent implements OnInit, OnChanges, OnDestroy {
 
   ngOnInit() {
     this.enrollApi()
-    if (this.content) {
-      this.fetchCohorts(this.cohortTypesEnum.ACTIVE_USERS, this.content.identifier)
-    }
+    // if (this.content) {
+    //   this.fetchCohorts(this.cohortTypesEnum.ACTIVE_USERS, this.content.identifier)
+    // }
 
     this.route.data.subscribe(data => {
       this.tocConfig = data.pageData.data
@@ -811,35 +811,35 @@ export class AppTocDesktopComponent implements OnInit, OnChanges, OnDestroy {
     }
   }
 
-  fetchCohorts(cohortType: NsCohorts.ECohortTypes, identifier: string) {
-    if (!this.cohortResults[cohortType] && !this.forPreview) {
+  // fetchCohorts(cohortType: NsCohorts.ECohortTypes, identifier: string) {
+  //   if (!this.cohortResults[cohortType] && !this.forPreview) {
 
-      this.tocSvc.fetchContentCohorts(cohortType, identifier).subscribe(
-        data => {
-          this.cohortResults[cohortType] = {
-            contents: data || [],
-            hasError: false,
-            count: data ? data.length : 0,
-          }
-        },
-        () => {
-          this.cohortResults[cohortType] = {
-            contents: [],
-            hasError: true,
-            count: 0,
-          }
-        },
-      )
-    } else if (this.cohortResults[cohortType] && !this.forPreview) {
-      return
-    } else {
-      this.cohortResults[cohortType] = {
-        contents: [],
-        hasError: false,
-        count: 0,
-      }
-    }
-  }
+  //     this.tocSvc.fetchContentCohorts(cohortType, identifier).subscribe(
+  //       data => {
+  //         this.cohortResults[cohortType] = {
+  //           contents: data || [],
+  //           hasError: false,
+  //           count: data ? data.length : 0,
+  //         }
+  //       },
+  //       () => {
+  //         this.cohortResults[cohortType] = {
+  //           contents: [],
+  //           hasError: true,
+  //           count: 0,
+  //         }
+  //       },
+  //     )
+  //   } else if (this.cohortResults[cohortType] && !this.forPreview) {
+  //     return
+  //   } else {
+  //     this.cohortResults[cohortType] = {
+  //       contents: [],
+  //       hasError: false,
+  //       count: 0,
+  //     }
+  //   }
+  // }
   enrollUser(batchData: any) {
     let userId = ''
     if (batchData) {

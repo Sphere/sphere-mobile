@@ -24,11 +24,11 @@ const API_END_POINTS = {
   CONTENT_PARENT: (contentId: string) => `${PROTECTED_SLAG_V8}/content/${contentId}/parent`,
   CONTENT_AUTH_PARENT: (contentId: string, rootOrg: string, org: string) =>
     `/apis/authApi/action/content/parent/hierarchy/${contentId}?rootOrg=${rootOrg}&org=${org}`,
-  COHORTS: (cohortType: NsCohorts.ECohortTypes, contentId: string) =>
-    `${PROTECTED_SLAG_V8}/cohorts/${cohortType}/${contentId}`,
+  // COHORTS: (cohortType: NsCohorts.ECohortTypes, contentId: string) =>
+  //   `${PROTECTED_SLAG_V8}/cohorts/${cohortType}/${contentId}`,
   EXTERNAL_CONTENT: (contentId: string) =>
     `${PROTECTED_SLAG_V8}/content/external-access/${contentId}`,
-  COHORTS_GROUP_USER: (groupId: number) => `${PROTECTED_SLAG_V8}/cohorts/${groupId}`,
+  //COHORTS_GROUP_USER: (groupId: number) => `${PROTECTED_SLAG_V8}/cohorts/${groupId}`,
   RELATED_RESOURCE: (contentId: string, contentType: string) =>
     `${PROTECTED_SLAG_V8}/khub/fetchRelatedResources/${contentId}/${contentType}`,
   POST_ASSESSMENT: (contentId: string) =>
@@ -354,27 +354,27 @@ export class AppTocService extends CordovaHttpService {
     return this.get(options)
   }
 
-  fetchContentCohorts(
-    cohortType: NsCohorts.ECohortTypes,
-    contentId: string,
-  ): Observable<NsCohorts.ICohortsContent[]> {
-    const options = {
-      url: API_END_POINTS.COHORTS(cohortType, contentId)
-    }
-    return this.get(options)
-  }
+  // fetchContentCohorts(
+  //   cohortType: NsCohorts.ECohortTypes,
+  //   contentId: string,
+  // ): Observable<NsCohorts.ICohortsContent[]> {
+  //   const options = {
+  //     url: ''//API_END_POINTS.COHORTS(cohortType, contentId)
+  //   }
+  //   return this.get(options)
+  // }
   fetchExternalContentAccess(contentId: string): Observable<{ hasAccess: boolean }> {
     const options = {
       url: API_END_POINTS.EXTERNAL_CONTENT(contentId)
     }
     return this.get(options)
   }
-  fetchCohortGroupUsers(groupId: number) {
-    const options = {
-      url: API_END_POINTS.COHORTS_GROUP_USER(groupId)
-    }
-    return this.get(options)
-  }
+  // fetchCohortGroupUsers(groupId: number) {
+  //   const options = {
+  //     url: API_END_POINTS.COHORTS_GROUP_USER(groupId)
+  //   }
+  //   return this.get(options)
+  // }
   fetchMoreLikeThis(contentId: string, contentType: string): Observable<any> {
     const options = {
       url: API_END_POINTS.RELATED_RESOURCE(contentId, contentType)
