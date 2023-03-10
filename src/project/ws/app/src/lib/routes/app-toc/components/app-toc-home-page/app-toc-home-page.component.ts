@@ -260,8 +260,9 @@ export class AppTocHomePageComponent implements OnInit, OnDestroy {
       (courses: NsContent.ICourse[]) => {
         let enrolledCourse: NsContent.ICourse | undefined
         if (this.content && this.content.identifier && !this.forPreview) {
-          if (courses && courses.length) {
-            enrolledCourse = courses.find(course => {
+          const coursesList = _.get(courses, 'result.courses', null)
+          if (coursesList && coursesList.length) {
+            enrolledCourse = coursesList.find(course => {
               const identifier = this.content && this.content.identifier || ''
               if (course.courseId !== identifier) {
                 return undefined
