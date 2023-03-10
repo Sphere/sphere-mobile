@@ -96,6 +96,7 @@ import { PublicModule } from './modules/public/public.module';
 import { CoreModule as AastrikCoreModule } from './modules/core/core.module';
 import { HomeModule } from './modules/home/home.module';
 import { AuthModule } from './modules/auth/auth.module';
+import { RouteViewerModule } from './modules/route-viewer/route-viewer.module';
 import { InitService } from '@app/services/init.service';
 import { LoggerService } from '@app/library/ws-widget/utils/src/lib/services/logger.service';
 import { APP_BASE_HREF, PlatformLocation } from '@angular/common';
@@ -513,7 +514,8 @@ declare const sbutility;
     PublicModule,
     AastrikCoreModule,
     HomeModule,
-    AuthModule
+    AuthModule,
+    RouteViewerModule
   ],
   providers: [
     AppGlobalService,

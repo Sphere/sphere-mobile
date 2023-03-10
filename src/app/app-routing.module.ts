@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { RouterLinks } from './app.constant';
+import { RouterLinks , ETopBar} from './app.constant';
 import { HasNotBeenOnboardedGuard } from '@app/guards/has-not-been-onboarded.guard';
 import { HasNotSelectedFrameworkGuard } from '@app/guards/has-not-selected-framework.guard';
 import { HasNotSelectedLanguageGuard } from '@app/guards/has-not-selected-language.guard';
@@ -29,6 +29,13 @@ const routes: Routes = [
 {
   path: `${RouterLinks.TOC_PAGE}`,
   loadChildren: './modules/overview-toc/overview-toc.module#OverviewTocModule',
+},
+{
+  path: `${RouterLinks.VIEWER}`,
+  data: {
+    topBar: ETopBar.NONE,
+  },
+  loadChildren: './modules/route-viewer/route-viewer.module#RouteViewerModule',
 },
   /* {
     path: '',
