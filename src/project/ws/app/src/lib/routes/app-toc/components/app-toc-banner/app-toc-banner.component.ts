@@ -113,11 +113,6 @@ export class AppTocBannerComponent implements OnInit, OnChanges, OnDestroy {
   }
 
   ngOnInit() {
-    // this.locationURL = encodeURIComponent(window.location.href)
-    // if (this.content) {
-    //   this.fetchCohorts(this.cohortTypesEnum.ACTIVE_USERS, this.content.identifier)
-    // }
-
     this.route.data.subscribe(data => {
       this.tocConfig = data.pageData.data
       if (this.content && this.isPostAssessment) {
@@ -156,16 +151,7 @@ export class AppTocBannerComponent implements OnInit, OnChanges, OnDestroy {
       )
     }
 
-    // if (this.authAccessService.hasAccess(this.content as any) && !this.isInIFrame) {
-    //   const status: string = (this.content as any).status
-    //   if (!this.forPreview) {
-    //     this.editButton = true
-    //   } else if (['Draft', 'Live'].includes(status)) {
-    //     this.editButton = true
-    //   } else if (['InReview', 'Reviewed', 'QualityReview'].includes(status)) {
-    //     this.reviewButton = true
-    //   }
-    // }
+   
     this.checkRegistrationStatus()
     this.routerParamSubscription = this.router.events.subscribe((routerEvent: Event) => {
       if (routerEvent instanceof NavigationEnd) {
@@ -781,35 +767,6 @@ export class AppTocBannerComponent implements OnInit, OnChanges, OnDestroy {
     }
   }
 
-  // fetchCohorts(cohortType: NsCohorts.ECohortTypes, identifier: string) {
-  //   if (!this.cohortResults[cohortType] && !this.forPreview) {
-
-  //     this.tocSvc.fetchContentCohorts(cohortType, identifier).subscribe(
-  //       data => {
-  //         this.cohortResults[cohortType] = {
-  //           contents: data || [],
-  //           hasError: false,
-  //           count: data ? data.length : 0,
-  //         }
-  //       },
-  //       () => {
-  //         this.cohortResults[cohortType] = {
-  //           contents: [],
-  //           hasError: true,
-  //           count: 0,
-  //         }
-  //       },
-  //     )
-  //   } else if (this.cohortResults[cohortType] && !this.forPreview) {
-  //     return
-  //   } else {
-  //     this.cohortResults[cohortType] = {
-  //       contents: [],
-  //       hasError: false,
-  //       count: 0,
-  //     }
-  //   }
-  // }
   enrollUser(batchData: any) {
     let userId = ''
     if (batchData) {
@@ -826,10 +783,7 @@ export class AppTocBannerComponent implements OnInit, OnChanges, OnDestroy {
       this.contentSvc.enrollUserToBatch(req).subscribe((data: any) => {
 
         if (data && data.result && data.result.response === 'SUCCESS') {
-          // this.batchData = {
-          //   content: [data],
-          //   enrolled: true,
-          // }
+          
           this.router.navigate(
             [],
             {
@@ -868,12 +822,7 @@ export class AppTocBannerComponent implements OnInit, OnChanges, OnDestroy {
       width: '600px',
       data: { content },
     })
-    // dialogRef.componentInstance.xyz = this.configSvc
-    // dialogRef.afterClosed().subscribe((_result: any) => {
-    //   if (!this.batchId) {
-    //     this.tocSvc.updateBatchData()
-    //   }
-    // })
+   
   }
 
 }

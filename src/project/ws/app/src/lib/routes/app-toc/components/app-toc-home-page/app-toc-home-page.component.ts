@@ -13,6 +13,7 @@ import { AppTocOverviewComponent } from '../../routes/app-toc-overview/app-toc-o
 // import { DiscussConfigResolve } from '../../../../../../../../../src/app/routes/discussion-forum/wrapper/resolvers/discuss-config-resolve'
 import * as _ from 'lodash'
 import moment from 'moment'
+import tocData from '../../../../../../../../../assets/configurations/toc.json'
 
 export enum ErrorType {
   internalServer = 'internalServer'
@@ -148,11 +149,11 @@ export class AppTocHomePageComponent implements OnInit, OnDestroy {
             this.router.navigate(['/app/login'])
           }
         }
-
-        this.banners = _.get(data, 'pageData.data.banners')
-        this.tocSvc.subtitleOnBanners = _.get(data, 'pageData.data.subtitleOnBanners', false)
-        this.tocSvc.showDescription = _.get(data, 'pageData.data.showDescription', false)
-        this.tocConfig = _.get(data, 'pageData.data')
+        console.log('tocData',tocData)
+        this.banners = _.get(tocData, 'banners')
+        this.tocSvc.subtitleOnBanners = _.get(tocData, 'subtitleOnBanners', false)
+        this.tocSvc.showDescription = _.get(tocData, 'showDescription', false)
+        this.tocConfig = tocData
         this.initData(data)
       })
     }

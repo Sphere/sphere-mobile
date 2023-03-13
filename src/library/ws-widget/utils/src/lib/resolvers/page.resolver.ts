@@ -14,7 +14,6 @@ import { ModalController } from '@ionic/angular'
 import { HTTP } from '@ionic-native/http/ngx'
 import { ApiUtilsService, ToastService } from '@app/app/manage-learn/core'
 import { UtilityService } from '@app/services'
-
 @Injectable({
   providedIn: 'root',
 })
@@ -37,11 +36,12 @@ export class PageResolve extends CordovaHttpService implements Resolve<IResolveR
    }
   resolve(
     route: ActivatedRouteSnapshot,
-  ): Observable<IResolveResponse<NsPage.IPage>> | IResolveResponse<NsPage.IPage> {
+  ): Observable<any> | IResolveResponse<NsPage.IPage> {
     if (route.data.pageUrl) {
       return this.getData(route.data.pageUrl)
     }
     if (route.data.pageType === 'feature' && route.data.pageKey) {
+    
       return this.getData(`${this.baseUrl}/feature/${route.data.pageKey}`)
     }
     if (
@@ -144,6 +144,7 @@ export class PageResolve extends CordovaHttpService implements Resolve<IResolveR
     // }
      // tslint:disable-next-line:no-console
      console.log(this.locale, url)
+    
     const pageRequest = [
       (equivalentId ? this.setS3Cookie(equivalentId) : of(true)).pipe(
         mergeMap(() =>
@@ -160,7 +161,7 @@ export class PageResolve extends CordovaHttpService implements Resolve<IResolveR
           catchError(err => of({ data: null, error: err })),
         ),
     ]
-
+    
     return forkJoin(pageRequest).pipe(
       map(
         ([general, withLocale]): IResolveResponse<NsPage.IPage> => {
@@ -171,5 +172,6 @@ export class PageResolve extends CordovaHttpService implements Resolve<IResolveR
         },
       ),
     )
+    
   }
 }

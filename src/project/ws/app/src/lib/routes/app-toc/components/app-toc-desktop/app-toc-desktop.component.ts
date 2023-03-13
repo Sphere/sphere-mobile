@@ -25,6 +25,7 @@ import * as  lodash from 'lodash'
 import { CreateBatchDialogComponent } from '../create-batch-dialog/create-batch-dialog.component'
 import * as FileSaver from 'file-saver'
 import moment from 'moment'
+import tocData from '../../../../../../../../../assets/configurations/toc.json'
 
 import { DOCUMENT } from '@angular/common'
 
@@ -116,12 +117,8 @@ export class AppTocDesktopComponent implements OnInit, OnChanges, OnDestroy {
 
   ngOnInit() {
     this.enrollApi()
-    // if (this.content) {
-    //   this.fetchCohorts(this.cohortTypesEnum.ACTIVE_USERS, this.content.identifier)
-    // }
-
     this.route.data.subscribe(data => {
-      this.tocConfig = data.pageData.data
+      this.tocConfig = tocData
       if (this.content && this.isPostAssessment) {
         this.tocSvc.fetchPostAssessmentStatus(this.content.identifier).subscribe(res => {
           const assessmentData = res.result
@@ -811,35 +808,7 @@ export class AppTocDesktopComponent implements OnInit, OnChanges, OnDestroy {
     }
   }
 
-  // fetchCohorts(cohortType: NsCohorts.ECohortTypes, identifier: string) {
-  //   if (!this.cohortResults[cohortType] && !this.forPreview) {
-
-  //     this.tocSvc.fetchContentCohorts(cohortType, identifier).subscribe(
-  //       data => {
-  //         this.cohortResults[cohortType] = {
-  //           contents: data || [],
-  //           hasError: false,
-  //           count: data ? data.length : 0,
-  //         }
-  //       },
-  //       () => {
-  //         this.cohortResults[cohortType] = {
-  //           contents: [],
-  //           hasError: true,
-  //           count: 0,
-  //         }
-  //       },
-  //     )
-  //   } else if (this.cohortResults[cohortType] && !this.forPreview) {
-  //     return
-  //   } else {
-  //     this.cohortResults[cohortType] = {
-  //       contents: [],
-  //       hasError: false,
-  //       count: 0,
-  //     }
-  //   }
-  // }
+ 
   enrollUser(batchData: any) {
     let userId = ''
     if (batchData) {
