@@ -14,7 +14,7 @@ import { HttpErrorResponse } from '@angular/common/http'
 import { NsWidgetResolver } from '@ws-widget/resolver'
 import LicenseMetadata from '../../../../../../../../../assets/configurations/license.meta.json'
 // import { HttpErrorResponse } from '@angular/common/http'
-
+import tocData from '../../../../../../../../../assets/configurations/toc.json'
 @Component({
   selector: 'ws-app-app-toc-overview-root',
   templateUrl: './app-toc-overview.component.html',
@@ -92,7 +92,7 @@ export class AppTocOverviewComponent implements OnInit, OnDestroy {
     if (this.route && this.route.parent) {
       this.routeSubscription = this.route.parent.data.subscribe((data: Data) => {
         this.initData(data)
-        this.tocConfig = data.pageData.data
+        this.tocConfig = tocData
       })
     }
   }
