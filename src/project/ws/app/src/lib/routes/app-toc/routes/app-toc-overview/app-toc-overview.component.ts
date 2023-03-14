@@ -13,6 +13,7 @@ import { ConfigurationsService } from '../../../../../../../../../library/ws-wid
 import { HttpErrorResponse } from '@angular/common/http'
 import { NsWidgetResolver } from '@ws-widget/resolver'
 import LicenseMetadata from '../../../../../../../../../assets/configurations/license.meta.json'
+import tocData from '../../../../../../../../../assets/configurations/toc.json'
 // import { HttpErrorResponse } from '@angular/common/http'
 import tocData from '../../../../../../../../../assets/configurations/toc.json'
 @Component({
