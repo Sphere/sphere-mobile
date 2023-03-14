@@ -15,7 +15,7 @@ import { NsWidgetResolver } from '@ws-widget/resolver'
 import LicenseMetadata from '../../../../../../../../../assets/configurations/license.meta.json'
 import tocData from '../../../../../../../../../assets/configurations/toc.json'
 // import { HttpErrorResponse } from '@angular/common/http'
-
+import tocData from '../../../../../../../../../assets/configurations/toc.json'
 @Component({
   selector: 'ws-app-app-toc-overview-root',
   templateUrl: './app-toc-overview.component.html',
